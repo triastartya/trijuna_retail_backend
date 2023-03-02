@@ -1,0 +1,29 @@
+$table->id('id_voucher_master');
+$table->string('nama_voucher',50);
+$table->double('nilai_voucher',12,2);
+$table->date('expired);
+$table->boolean('is_deleted');
+$table->integer('user_deleted');
+$table->date('time_deleted');
+$table->integer('user_created');
+$table->integer('user_updated');
+$table->boolean('is_active');
+$table->timestamps();
+
+$table->id('id_voucher');
+$table->integer('id_voucher_master')->constrained('voucher_master');
+$table->string('kode_voucher');
+$table->boolean('terpakai');
+$table->datetime('tanggal_terpakai');
+$table->integer('id_customer');
+$table->timestamps();
+
+$table->id('id_voucher_syarat');
+$table->integer('id_voucher_master')->constrained('voucher_master');
+$table->integer('id_barang')->constrained('ms_barang');
+$table->timestamps();
+
+
+pengurangan penjualan
+
+1. per barang

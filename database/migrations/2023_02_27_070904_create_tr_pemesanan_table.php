@@ -1,0 +1,52 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tr_pemesanan', function (Blueprint $table) {
+            $table->id('id_pemesanan');        
+            $table->integer('id_supplier')->constrained('ms_supplier');
+            $table->string('nomor_pemesanan',50);
+            $table->date('tanggal_pemesanan');
+            $table->date('tangal_expired_pemesanan');
+            $table->integer('id_lokasi')->constrained('ms_lokasi');
+            $table->integer('id_warehouse')->constrained('ms_warehouse');
+            $table->date('tanggal_kirim');
+            $table->text('keterangan');
+            $table->string('status_pemesanan',20);
+            $table->double('qty',12,2);
+            $table->double('sub_total1',12,2);
+            $table->double('diskon_persen',12,2);
+            $table->double('diskon_nominal',12,2);
+            $table->double('sub_total2',12,2);
+            $table->double('ppn_nominal',12,2);
+            $table->double('total_transaksi',12,2);
+            $table->boolean('is_deleted');
+            $table->integer('user_deleted');
+            $table->date('time_deleted');
+            $table->integer('user_created');
+            $table->integer('user_updated');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tr_pemesanan');
+    }
+};
