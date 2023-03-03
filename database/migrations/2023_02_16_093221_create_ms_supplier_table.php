@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('no_handphone');
             $table->string('email');
             $table->double('sisa_hutang',12,2);
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('id_warehouse');
             $table->string('warehouse');
             $table->string('lokasi');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

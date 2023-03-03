@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('kota');
             $table->string('kecamatan');
             $table->string('kelurahan');
-            $table->string('pekerjaan');
+            $table->string('pekerjaan')->nullable();
             $table->string('jenis_kelamin');
             $table->string('no_handphone');
             $table->string('jenis_identitas');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->integer('limit_piutang');
             $table->double('sisa_piutang',12,2);
             $table->integer('jumlah_poin');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

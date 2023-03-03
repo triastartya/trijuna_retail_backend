@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ms_divisi', function (Blueprint $table) {
-            $table->id('id_divisi');
-            $table->string('kode_divisi');
-            $table->string('divisi');
-            $table->boolean('is_active')->default(true);
+        Schema::create('pos_payment_method', function (Blueprint $table) {
+            $table->id('id_payment_method');
+            $table->string('nama_payment_method',100);
+            $table->string('keterangan',200);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ms_divisi');
+        Schema::dropIfExists('pos_payment_method');
     }
 };

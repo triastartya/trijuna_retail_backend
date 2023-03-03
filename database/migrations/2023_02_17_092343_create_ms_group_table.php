@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('id_group');          
             $table->string('kode_group');
             $table->string('group');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

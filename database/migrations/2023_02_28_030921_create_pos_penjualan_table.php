@@ -33,6 +33,7 @@ return new class extends Migration
             $table->date('time_deleted');
             $table->integer('user_created');
             $table->integer('user_updated');
+            $table->integer('id_tutup_kasir')->nullable();
             $table->timestamps();
         });
     }

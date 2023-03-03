@@ -27,8 +27,8 @@ return new class extends Migration
             $table->boolean('is_deleted');
             $table->integer('user_deleted');
             $table->date('time_deleted');
-            $table->integer('user_created');
-            $table->integer('user_updated');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

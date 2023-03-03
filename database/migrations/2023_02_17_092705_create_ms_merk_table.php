@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('ms_merk', function (Blueprint $table) {
             $table->id('id_merk');
             $table->string('merk');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

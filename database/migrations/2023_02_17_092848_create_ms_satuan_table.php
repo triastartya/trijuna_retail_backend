@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('ms_satuan', function (Blueprint $table) {
             $table->id("id_satuan");
             $table->string("kode_satuan");
-            $table->string("nama_Satuan");
-            $table->boolean('is_active');
+            $table->string("nama_satuan");
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

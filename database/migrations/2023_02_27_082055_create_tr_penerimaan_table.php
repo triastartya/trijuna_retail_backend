@@ -23,7 +23,7 @@ return new class extends Migration
             $table->date('tanggal_nota');
             $table->integer('id_lokasi')->constrained('ms_lokasi');
             $table->integer('id_warehouse')->constrained('ms_warehouse');
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->string('status_penerimaan',20);
             $table->double('qty',12,2);
             $table->double('sub_total1',12,2);
@@ -37,8 +37,8 @@ return new class extends Migration
             $table->boolean('is_deleted');
             $table->integer('user_deleted');
             $table->date('time_deleted');
-            $table->integer('user_created');
-            $table->integer('user_updated');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

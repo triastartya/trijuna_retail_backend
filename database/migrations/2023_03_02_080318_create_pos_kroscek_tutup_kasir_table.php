@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pos_saldo_kasir', function (Blueprint $table) {
-            $table->id('id_saldo_kasir');
-            $table->integer('id_user_kasir')->constrained('users');
-            $table->date('tanggal_saldo_kasir');
-            $table->integer('id_tutup_kasir');
-            $table->boolean('is_deleted');
-            $table->integer('user_deleted');
-            $table->date('time_deleted');
+        Schema::create('pos_kroscek_tutup_kasir', function (Blueprint $table) {
+            $table->id('id_kroscek_tutup_kasir');
+            $table->integer('id_tutup_kasir')->constrained('pos_tutup_kasir');
+            $table->double('pendapatan_versi_user',12,2);
+            $table->double('pendapatan_versi_system',12,2);
+            $table->double('selisih',12,2);
+            $table->text('keterangan');
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pos_saldo_kasir');
+        Schema::dropIfExists('pos_kroscek_tutup_kasir');
     }
 };
