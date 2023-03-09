@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id('id_merk');
             $table->string('merk');
             $table->boolean('is_active')->default(true);
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

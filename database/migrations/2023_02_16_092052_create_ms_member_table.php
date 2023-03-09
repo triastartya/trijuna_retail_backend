@@ -31,6 +31,8 @@ return new class extends Migration
             $table->double('sisa_piutang',12,2);
             $table->integer('jumlah_poin');
             $table->boolean('is_active')->default(true);
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

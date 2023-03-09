@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id('id_group_setting');
             $table->integer('id_user')->constrained('users');
             $table->integer('id_group')->constrained('user_groups');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

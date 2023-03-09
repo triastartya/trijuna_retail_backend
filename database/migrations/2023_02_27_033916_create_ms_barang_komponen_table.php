@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('id_barang')->constrained('ms_barang');
             $table->integer('id_barang_komponen')->constrained('ms_barang');
             $table->double('qty_komponen');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

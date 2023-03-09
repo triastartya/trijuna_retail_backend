@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id('id_brang_satuan');
             $table->string('id_barang')->constrained('ms_barang');
             $table->string('id_satuan')->constrained('ms_satuan');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

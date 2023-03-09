@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('kode_divisi');
             $table->string('divisi');
             $table->boolean('is_active')->default(true);
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

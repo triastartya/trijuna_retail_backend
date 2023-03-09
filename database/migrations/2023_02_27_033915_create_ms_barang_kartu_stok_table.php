@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('id_kartu_stok');
             $table->integer('tahun');
             $table->integer('bulan');
-            $table->date('tanggal');
+            $table->datetime('tanggal');
             $table->integer('id_barang')->constrained('ms_barang');
             $table->integer('id_warehouse')->constrained('ms_warehouse');
             $table->string('nomor_reff');

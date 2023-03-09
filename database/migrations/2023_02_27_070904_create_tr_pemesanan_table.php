@@ -35,7 +35,7 @@ return new class extends Migration
             $table->integer('user_deleted')->nullable();
             $table->date('time_deleted')->nullable();
             $table->integer('created_by');
-            $table->integer('updated_by')->nullable();
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

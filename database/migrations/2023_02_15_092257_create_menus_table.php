@@ -22,6 +22,8 @@ return new class extends Migration
             $table->integer('show_menu');
             $table->string('icon');
             $table->integer('menu_order_by');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

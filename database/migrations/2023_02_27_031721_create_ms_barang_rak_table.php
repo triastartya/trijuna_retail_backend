@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id('id_barang_rak');
             $table->integer('id_barang');
             $table->integer('id_rak');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

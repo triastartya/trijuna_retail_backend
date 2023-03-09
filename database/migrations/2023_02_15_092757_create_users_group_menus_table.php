@@ -21,6 +21,8 @@ return new class extends Migration
             $table->boolean('use_read');
             $table->boolean('use_update');
             $table->boolean('use_delete');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

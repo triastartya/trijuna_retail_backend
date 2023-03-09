@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('email');
             $table->double('sisa_hutang',12,2);
             $table->boolean('is_active')->default(true);
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

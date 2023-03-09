@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('nama_bank');
             $table->string('biaya');
             $table->boolean('is_active');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }
