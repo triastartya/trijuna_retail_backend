@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('show_menu');
             $table->string('icon');
             $table->integer('menu_order_by');
+            $table->boolean('is_active')->default(true);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();

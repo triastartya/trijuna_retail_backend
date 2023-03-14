@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\userController;
+use App\Http\Controllers\userGroupController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('register',[userController::class,'register']);
+Route::post('login',[userController::class,'login']);
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::attResource('user_group', userGroupController::class);
 });

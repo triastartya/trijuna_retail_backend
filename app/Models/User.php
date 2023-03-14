@@ -2,15 +2,48 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Att\Workit\AttModel;
 use Laravel\Sanctum\HasApiTokens;
+use Att\Workit\Interfaces\ModelDictionary;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, HasApiTokens, AttModel, Notifiable;
+    
+    protected $primaryKey = 'id_user';
+    protected $modelFields = [
+        ['name' => 'id', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'nama', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
+        ['name' => 'id_group', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'id_level', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'email', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
+        ['name' => 'verifikasi_email_at', 'type' => ModelDictionary::COLUMN_TYPE_DATE],
+        ['name' => 'password', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
+        ['name' => 'is_active', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
+    ];
+    
+    protected $guarded = [];  
+    
+    protected $appends = [];
+    
+    public function rules()
+    {
+        return [
+            'id'=>'',
+            'nama'=>'required',
+            'id_group'=>'required',
+            'id_level'=>'required',
+            'email' => 'required',
+            'verifikasi_email_at'=>'',
+            'password' => 'required',
+            'is_active' => '',
+        ];
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +51,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nama',
+        'id_group',
+        'id_level',
         'email',
         'password',
+        'is_active',
     ];
 
     /**
@@ -30,7 +66,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        // 'remember_token',
     ];
 
     /**

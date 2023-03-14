@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('user_groups', function (Blueprint $table) {
             $table->id('id_group');
             $table->string('group_name');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
