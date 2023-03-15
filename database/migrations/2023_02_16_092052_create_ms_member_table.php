@@ -24,12 +24,14 @@ return new class extends Migration
             $table->string('pekerjaan')->nullable();
             $table->string('jenis_kelamin');
             $table->string('no_handphone');
+            $table->string('email');
+            $table->string('password');
             $table->string('jenis_identitas');
             $table->string('nomor_identitas');
             $table->date('tanggal_daftar');
             $table->integer('limit_piutang');
-            $table->double('sisa_piutang',12,2);
-            $table->integer('jumlah_poin');
+            $table->double('sisa_piutang',12,2)->default(0);
+            $table->integer('jumlah_poin')->default(0);
             $table->boolean('is_active')->default(true);
             $table->integer('created_by');
             $table->integer('updated_by');

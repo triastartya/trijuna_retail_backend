@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Master\memberController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\userGroupController;
+use App\Http\Middleware\ModifRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('register',[userController::class,'register']);
 Route::post('login',[userController::class,'login']);
 
-Route::group(['middleware' => 'auth:sanctum'], function () {
+Route::group(['middleware' => 'auth:sanctum','middleware' => ModifRequest::class], function () {
     Route::attResource('user_group', userGroupController::class);
+    Route::attResource('member',memberController::class);
 });
