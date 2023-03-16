@@ -40,7 +40,7 @@ return new class extends Migration
             $table->double('harga_grosir2',12,2)->default(0);
             $table->integer('tahun_produksi')->nullable();
             $table->integer('stok_min')->default(0);
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
