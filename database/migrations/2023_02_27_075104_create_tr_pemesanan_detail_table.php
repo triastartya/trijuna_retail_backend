@@ -19,11 +19,11 @@ return new class extends Migration
             $table->integer('urut');
             $table->integer('id_barang')->constrained('ms_barang');
             $table->double('banyak',12,2);
-            $table->double('banyak_terima',12,2);
+            $table->double('banyak_terima',12,2)->nullable();
             $table->string('kode_satuan',50);
             $table->double('isi',12,2);
             $table->double('qty',12,2);
-            $table->double('qty_terima',12,2);
+            $table->double('qty_terima',12,2)->nullable();
             $table->double('harga_order',12,2);
             $table->double('diskon_persen_1',12,2);
             $table->double('diskon_nominal_1',12,2);

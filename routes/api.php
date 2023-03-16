@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Master\groupController;
 use App\Http\Controllers\Master\memberController;
+use App\Http\Controllers\Master\supplierController;
+use App\Http\Controllers\Pembelian\pemesananController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\userGroupController;
 use App\Http\Middleware\ModifRequest;
@@ -29,4 +32,9 @@ Route::post('login',[userController::class,'login']);
 Route::group(['middleware' => 'auth:sanctum','middleware' => ModifRequest::class], function () {
     Route::attResource('user_group', userGroupController::class);
     Route::attResource('member',memberController::class);
+    Route::attResource('supplier',supplierController::class);
+    Route::attResource('group',groupController::class);
+    Route::prefix('pembelian')->group(function(){
+        Route::post('insert',[pemesananController::class,'insert']);
+    });
 });

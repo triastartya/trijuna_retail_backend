@@ -31,7 +31,7 @@ return new class extends Migration
             $table->double('sub_total2',12,2);
             $table->double('ppn_nominal',12,2)->default(0);
             $table->double('total_transaksi',12,2);
-            $table->boolean('is_deleted');
+            $table->boolean('is_deleted')->nullable();
             $table->integer('user_deleted')->nullable();
             $table->date('time_deleted')->nullable();
             $table->integer('created_by');
