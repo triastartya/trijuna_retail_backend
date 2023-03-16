@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\Master\barangController;
+use App\Http\Controllers\Master\barangKomponenController;
+use App\Http\Controllers\Master\barangRakController;
+use App\Http\Controllers\Master\barangSatuanController;
+use App\Http\Controllers\Master\barangStokController;
+use App\Http\Controllers\Master\barangUraiController;
 use App\Http\Controllers\Master\divisiController;
 use App\Http\Controllers\Master\memberController;
 use App\Http\Controllers\Master\merkController;
@@ -41,4 +46,8 @@ Route::group(['middleware' => 'auth:sanctum','middleware' => ModifRequest::class
     Route::attResource('rak',rakController::class);
     Route::attResource('warehouse',warehouseController::class);
     Route::attResource('barang',barangController::class);
+    Route::attResource('barang_rak',barangRakController::class);
+    Route::attResource('barang_satuan',barangSatuanController::class);
+    Route::attResource('barang_komponen',barangKomponenController::class);
+    Route::attResource('barang_urai',barangUraiController::class);
 });
