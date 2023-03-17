@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('ms_lokasi', function (Blueprint $table) {
             $table->id('id_lokasi');
-            $table->string('kode',50);
-            $table->string('nama',100);
+            $table->string('kode_lokasi',50);
+            $table->string('nama_lokasi',100);
             $table->text('alamat')->nullable();
             $table->string('telepon',50)->nullable();
             $table->string('npwp',50)->nullable();

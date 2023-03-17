@@ -19,8 +19,9 @@ return new class extends Migration
             $table->date('tanggal_saldo_kasir');
             $table->integer('id_tutup_kasir');
             $table->boolean('is_deleted');
-            $table->integer('user_deleted');
-            $table->date('time_deleted');
+            $table->integer('deleted_by')->nullable();
+            $table->date('deleted_at')->nullable();
+            $table->text('deleted_reason')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();

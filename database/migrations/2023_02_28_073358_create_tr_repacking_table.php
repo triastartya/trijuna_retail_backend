@@ -25,8 +25,9 @@ return new class extends Migration
             $table->double('total_hpp_avarage_repacking',12,2);
             $table->string('status_repacking');
             $table->boolean('is_deleted');
-            $table->integer('user_deleted');
-            $table->date('time_deleted');
+            $table->integer('deleted_by')->nullable();
+            $table->date('deleted_at')->nullable();
+            $table->text('deleted_reason')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();

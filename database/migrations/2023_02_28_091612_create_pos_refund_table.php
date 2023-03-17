@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('keterangan',200);
             $table->double('total_refund',12,2);
             $table->boolean('is_deleted');
-            $table->integer('user_deleted');
-            $table->date('time_deleted');
+            $table->integer('deleted_by')->nullable();
+            $table->date('deleted_at')->nullable();
+            $table->text('deleted_reason')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->integer('id_tutup_kasir')->nullable();

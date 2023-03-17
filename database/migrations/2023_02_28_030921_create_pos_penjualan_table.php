@@ -29,10 +29,11 @@ return new class extends Migration
             $table->double('total_bayar',12,2);
             $table->double('kembalian',12,2);
             $table->boolean('is_deleted');
-            $table->integer('user_deleted');
-            $table->date('time_deleted');
-            $table->integer('user_created');
-            $table->integer('user_updated');
+            $table->integer('deleted_by')->nullable();
+            $table->date('deleted_at')->nullable();
+            $table->text('deleted_reason')->nullable();
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->integer('id_tutup_kasir')->nullable();
             $table->timestamps();
         });
