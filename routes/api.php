@@ -4,10 +4,8 @@ use App\Http\Controllers\Master\barangController;
 use App\Http\Controllers\Master\barangKomponenController;
 use App\Http\Controllers\Master\barangRakController;
 use App\Http\Controllers\Master\barangSatuanController;
-use App\Http\Controllers\Master\barangStokController;
 use App\Http\Controllers\Master\barangUraiController;
 use App\Http\Controllers\Master\divisiController;
-use App\Http\Controllers\Master\memberController;
 use App\Http\Controllers\Master\merkController;
 use App\Http\Controllers\Master\rakController;
 use App\Http\Controllers\Master\satuanController;
@@ -19,7 +17,6 @@ use App\Http\Controllers\Pembelian\pemesananController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\userGroupController;
 use App\Http\Middleware\ModifRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,10 +51,11 @@ Route::group(['middleware' => 'auth:sanctum','middleware' => ModifRequest::class
     Route::attResource('barang_satuan',barangSatuanController::class);
     Route::attResource('barang_komponen',barangKomponenController::class);
     Route::attResource('barang_urai',barangUraiController::class);
-});
     Route::attResource('supplier',supplierController::class);
     Route::attResource('group',groupController::class);
     Route::prefix('pembelian')->group(function(){
         Route::post('insert',[pemesananController::class,'insert']);
+        Route::get('get_by_id/{id_pemesanan}',[pemesananController::class,'get_by_id']);
+        Route::post('get_by_param',[pemesananController::class,'get_by_param']);
     });
 });
