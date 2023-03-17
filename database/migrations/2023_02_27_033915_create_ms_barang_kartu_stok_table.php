@@ -32,8 +32,6 @@ return new class extends Migration
             $table->double('stok_akhir',12,2)->default(0);
             $table->double('nominal_akhir',12,2)->default(0);
             $table->string('keterangan')->nullable();
-            $table->integer('created_by');
-            $table->integer('updated_by');
             $table->timestamps();
         });
     }
