@@ -56,6 +56,12 @@ class ModifRequest
             ]);
         }
         
+        if($request->method()=="POST" & $this->parse($request)=="lokasi"){
+            $request->merge([
+                'kode'=>$this->GeneradeNomorSort('lokasi'),
+            ]);
+        }
+        
         
         return $next($request);
     }
