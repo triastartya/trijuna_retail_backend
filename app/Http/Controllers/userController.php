@@ -53,9 +53,9 @@ class userController extends AttController
             
             //==================
             
-            return response()->json(['status'=>true,'data'=>$hasil]);
+            return response()->json(['success'=>true,'data'=>$hasil]);
         } catch (\Exception $ex) {
-            return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
     
@@ -74,9 +74,9 @@ class userController extends AttController
             $hasil =  array_merge($user->toArray(), [
                 'token' => $user->createToken(config('app.name'))->plainTextToken
             ]);
-            return response()->json(['status'=>true,'data'=>$hasil]);
+            return response()->json(['success'=>true,'data'=>$hasil]);
         } catch (\Exception $ex) {
-            return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
 }
