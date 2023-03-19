@@ -32,8 +32,8 @@ class trPemesanan extends Model
         'ppn_nominal',
         'total_transaksi',
         'is_deleted',
-        'user_deleted',
-        'time_deleted'
+        'deleted_by',
+        'deleted_at'
     ];
     
     public function rules()
@@ -57,8 +57,8 @@ class trPemesanan extends Model
             'ppn_nominal'=>'required',
             'total_transaksi'=>'required',
             'is_deleted'=>'',
-            'user_deleted'=>'',
-            'time_deleted'=>'',
+            'deleted_by'=>'',
+            'deleted_at'=>'',
         ];
     }
 }

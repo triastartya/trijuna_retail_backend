@@ -49,7 +49,7 @@ class pemesananRepository extends AttRepository
                 inner join ms_supplier ms on tp.id_supplier = ms.id_supplier
                 inner join users uc on uc.id_user = tp.created_by
                 inner join users uu on uu.id_user = tp.updated_by
-                left join users ud on ud.id_user = tp.user_deleted
+                left join users ud on ud.id_user = tp.deleted_by
                 where tp.id_pemesanan = ?
             ",[request()->id_pemesanan])[0];
     }
@@ -124,7 +124,7 @@ class pemesananRepository extends AttRepository
             inner join ms_supplier ms on tp.id_supplier = ms.id_supplier
             inner join users uc on uc.id_user = tp.created_by
             inner join users uu on uu.id_user = tp.updated_by
-            left join users ud on ud.id_user = tp.user_deleted"
+            left join users ud on ud.id_user = tp.deleted_by"
         ,request());
     }
 }
