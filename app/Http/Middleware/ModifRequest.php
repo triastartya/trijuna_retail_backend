@@ -58,7 +58,7 @@ class ModifRequest
         
         if($request->method()=="POST" & $this->parse($request)=="lokasi"){
             $request->merge([
-                'kode'=>$this->GeneradeNomorSort('lokasi'),
+                'kode_lokasi'=>$this->GeneradeNomorSort('lokasi'),
             ]);
         }
         

@@ -15,8 +15,8 @@ class msLokasi extends Model
     protected $table = 'ms_lokasi';
     protected $fillable = [
         'id_lokasi',
-        'kode',
-        'nama',
+        'kode_lokasi',
+        'nama_lokasi',
         'alamat',
         'telepon',
         'npwp',
@@ -26,8 +26,8 @@ class msLokasi extends Model
     ];
     protected $primaryKey = 'id_lokasi';
     protected $modelFields = [
-        ['name' => 'kode', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
-        ['name' => 'nama', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
+        ['name' => 'kode_lokasi', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
+        ['name' => 'nama_lokasi', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
         ['name' => 'alamat', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
         ['name' => 'telepon', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
         ['name' => 'npwp', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
@@ -41,8 +41,8 @@ class msLokasi extends Model
     {
         return [
             'id_lokasi'=>'',
-            'kode'=>'required',
-            'nama'=>'required',
+            'kode_lokasi'=>'required',
+            'nama_lokasi'=>'required',
             'alamat'=>'required',
             'telepon'=>'required',
             'npwp'=>'required',
