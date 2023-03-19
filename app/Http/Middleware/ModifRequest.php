@@ -21,8 +21,14 @@ class ModifRequest
     {
         if($request->method()=="POST" & $this->parse($request)=="member"){
             $request->merge([
-                'kode_member'=>'12345',
+                'kode_member'=>GeneradeNomorHelper::long('member'),
                 'password'=>bcrypt($request->password)
+            ]);
+        }
+        
+        if($request->method()=="POST" & $this->parse($request)=="supplier"){
+            $request->merge([
+                'kode_supplier'=>GeneradeNomorHelper::long('supplier'),
             ]);
         }
         
@@ -35,6 +41,18 @@ class ModifRequest
         if($request->method()=="POST" & $this->parse($request)=="group"){
             $request->merge([
                 'kode_group'=>$this->GeneradeNomorSort('group'),
+            ]);
+        }
+        
+        if($request->method()=="POST" & $this->parse($request)=="merk"){
+            $request->merge([
+                'kode_merk'=>$this->GeneradeNomorSort('merk'),
+            ]);
+        }
+        
+        if($request->method()=="POST" & $this->parse($request)=="rak"){
+            $request->merge([
+                'kode_rak'=>$this->GeneradeNomorSort('rak'),
             ]);
         }
         

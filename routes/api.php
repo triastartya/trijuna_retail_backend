@@ -11,6 +11,7 @@ use App\Http\Controllers\Master\rakController;
 use App\Http\Controllers\Master\satuanController;
 use App\Http\Controllers\Master\warehouseController;
 use App\Http\Controllers\Master\groupController;
+use App\Http\Controllers\Master\lokasiController;
 use App\Http\Controllers\Master\memberController;
 use App\Http\Controllers\Master\supplierController;
 use App\Http\Controllers\Pembelian\pemesananController;
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'auth:sanctum','middleware' => ModifRequest::class
     Route::attResource('barang_urai',barangUraiController::class);
     Route::attResource('supplier',supplierController::class);
     Route::attResource('group',groupController::class);
+    Route::attResource('lokasi',lokasiController::class);
     Route::prefix('pembelian')->group(function(){
         Route::post('insert',[pemesananController::class,'insert']);
         Route::get('get_by_id/{id_pemesanan}',[pemesananController::class,'get_by_id']);
