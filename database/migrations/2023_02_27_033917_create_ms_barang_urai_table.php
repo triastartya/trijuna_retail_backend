@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('ms_barang_urai', function (Blueprint $table) {
             $table->id('id_barang_urai');
             $table->integer('id_barang')->constrained('ms_barang');
+            $table->integer('urai_barang')->constrained('ms_barang');
             $table->double('qty_urai');
             $table->integer('created_by');
             $table->integer('updated_by');
