@@ -36,10 +36,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::group(['middleware' => 'auth:sanctum'], function () {
+
+});
+
 Route::post('register',[userController::class,'register']);
 Route::post('login',[userController::class,'login']);
 
-Route::group(['middleware' => 'auth:sanctum','middleware' => ModifRequest::class], function () {
+Route::group(['middleware' => ModifRequest::class], function () {
     Route::attResource('user_group', userGroupController::class);
     Route::attResource('member',memberController::class);
     Route::attResource('divisi',divisiController::class);
