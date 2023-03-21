@@ -3,9 +3,9 @@
 namespace App\Repositories\Master;
 
 use App\Models\Master\msGroup;
-use Att\Workit\AttRepository;
+use Viershaka\Vier\VierRepository;
 
-class groupRepository extends AttRepository
+class groupRepository extends VierRepository
 {
     public function __construct()
     {

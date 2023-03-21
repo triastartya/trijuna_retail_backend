@@ -3,9 +3,9 @@
 namespace App\Repositories\Master;
 
 use App\Models\Master\msBarangRak;
-use Att\Workit\AttRepository;
+use Viershaka\Vier\VierRepository;
 
-class barangRakRepository extends AttRepository
+class barangRakRepository extends VierRepository
 {
     public function __construct()
     {

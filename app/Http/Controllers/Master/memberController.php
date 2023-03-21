@@ -4,17 +4,15 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Master\memberRepository;
-use App\Services\Master\memberService;
-use Att\Workit\AttController;
+use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 
-class memberController extends AttController
+class memberController extends VierController
 {
     public function __construct()
     {
         $repository = new memberRepository();
-        $service = new memberService();
 
-        parent::__construct($repository, $service);
+        parent::__construct($repository);
     }
 }

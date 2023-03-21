@@ -4,17 +4,15 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Master\supplierRepository;
-use App\Services\Master\supplierService;
-use Att\Workit\AttController;
+use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 
-class supplierController extends AttController
+class supplierController extends VierController
 {
     public function __construct()
     {
         $repository = new supplierRepository();
-        $service = new supplierService();
 
-        parent::__construct($repository, $service);
+        parent::__construct($repository);
     }
 }

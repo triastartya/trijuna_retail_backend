@@ -4,82 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5a0a320fb0be1671a2c7b40be29b2de",
+    "content-hash": "38fede01fb35d96e9b64907064c4a6c2",
     "packages": [
-        {
-            "name": "att/responisme",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.att.id/sofamh/responisme.git",
-                "reference": "538e6fea813f6d813b52051315c32abd5e2c43ae"
-            },
-            "require": {
-                "predis/predis": "^1.1"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Att\\Responisme\\ResponismeServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Att\\Responisme\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Team",
-                    "email": "it@attgroup.com"
-                }
-            ],
-            "description": "Standart format for response it att group",
-            "time": "2021-08-23T07:26:24+00:00"
-        },
-        {
-            "name": "att/workit",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.att.id/sofamh/workit.git",
-                "reference": "251bc88cd3caaef57f691e4792ae0e7114f5a5c6"
-            },
-            "require": {
-                "att/responisme": "dev-master",
-                "yajra/laravel-datatables-oracle": "^10.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Att\\Workit\\WorkItServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Att\\Workit\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ATT Group"
-                }
-            ],
-            "description": "Standart Framework of ATT Group",
-            "time": "2022-07-18T07:39:10+00:00"
-        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -5332,6 +5258,101 @@
             "time": "2023-01-03T09:29:04+00:00"
         },
         {
+            "name": "viershaka/shaka",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/triastartya/shaka.git",
+                "reference": "fded55e6cbacdb9fb45038b072855d7532265b26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/triastartya/shaka/zipball/fded55e6cbacdb9fb45038b072855d7532265b26",
+                "reference": "fded55e6cbacdb9fb45038b072855d7532265b26",
+                "shasum": ""
+            },
+            "require": {
+                "predis/predis": "^1.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Viershaka\\Shaka\\ShakaServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Viershaka\\Shaka\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vier Dan Shaka"
+                }
+            ],
+            "description": "respon testing",
+            "support": {
+                "issues": "https://github.com/triastartya/shaka/issues",
+                "source": "https://github.com/triastartya/shaka/tree/master"
+            },
+            "time": "2023-03-20T09:11:50+00:00"
+        },
+        {
+            "name": "viershaka/vier",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/triastartya/vier.git",
+                "reference": "f7781fce0dc7c060742f9ffc13a24673e956723f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/triastartya/vier/zipball/f7781fce0dc7c060742f9ffc13a24673e956723f",
+                "reference": "f7781fce0dc7c060742f9ffc13a24673e956723f",
+                "shasum": ""
+            },
+            "require": {
+                "viershaka/shaka": "dev-master",
+                "yajra/laravel-datatables-oracle": "^10.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Viershaka\\Vier\\VierServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Viershaka\\Vier\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vier Dan Shaka"
+                }
+            ],
+            "description": "meja kerja",
+            "support": {
+                "issues": "https://github.com/triastartya/vier/issues",
+                "source": "https://github.com/triastartya/vier/tree/master"
+            },
+            "time": "2023-03-20T13:48:19+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.5.0",
             "source": {
@@ -5549,16 +5570,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v10.3.0",
+            "version": "v10.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "9fda9c7d6da15deeb5f179e307936edc91390b9f"
+                "reference": "dc699abd8f297ece464f3e3889cc6d4f07a82549"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/9fda9c7d6da15deeb5f179e307936edc91390b9f",
-                "reference": "9fda9c7d6da15deeb5f179e307936edc91390b9f",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/dc699abd8f297ece464f3e3889cc6d4f07a82549",
+                "reference": "dc699abd8f297ece464f3e3889cc6d4f07a82549",
                 "shasum": ""
             },
             "require": {
@@ -5571,12 +5592,13 @@
             },
             "require-dev": {
                 "nunomaduro/larastan": "^2.4",
-                "orchestra/testbench": "^7.21",
+                "orchestra/testbench": "^8",
                 "yajra/laravel-datatables-html": "^9.3.4|^10"
             },
             "suggest": {
                 "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTables.",
                 "yajra/laravel-datatables-editor": "Plugin to use DataTables Editor (requires a license).",
+                "yajra/laravel-datatables-export": "Plugin for server-side exporting using livewire and queue worker.",
                 "yajra/laravel-datatables-fractal": "Plugin for server-side response using Fractal.",
                 "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTables."
             },
@@ -5620,23 +5642,15 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-datatables/issues",
-                "source": "https://github.com/yajra/laravel-datatables/tree/v10.3.0"
+                "source": "https://github.com/yajra/laravel-datatables/tree/v10.3.1"
             },
             "funding": [
                 {
-                    "url": "https://www.paypal.me/yajra",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/yajra",
+                    "url": "https://github.com/sponsors/yajra",
                     "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/yajra",
-                    "type": "patreon"
                 }
             ],
-            "time": "2023-02-07T04:05:19+00:00"
+            "time": "2023-02-20T06:45:10+00:00"
         }
     ],
     "packages-dev": [
@@ -8037,9 +8051,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "att/workit": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

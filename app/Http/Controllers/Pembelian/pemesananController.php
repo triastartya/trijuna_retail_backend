@@ -7,19 +7,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Pembelian\trPemesanan;
 use App\Models\Pembelian\trPemesananDetail;
 use App\Repositories\Pembelian\pemesananRepository;
-use App\Services\Pembelian\pemesananService;
-use Att\Workit\AttController;
+use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class pemesananController extends AttController
+class pemesananController extends VierController
 {
     public function __construct()
     {
         $repository = new pemesananRepository();
-        $service = new pemesananService();
 
-        parent::__construct($repository, $service);
+        parent::__construct($repository);
     }
     
     public function insert(Request $request){

@@ -2,10 +2,10 @@
 
 namespace App\Repositories\Master;
 
-use Att\Workit\AttRepository;
+use Viershaka\Vier\VierRepository;
 use App\Models\Master\userGroup;
 
-class userGroupRepository extends AttRepository
+class userGroupRepository extends VierRepository
 {
     public function __construct()
     {

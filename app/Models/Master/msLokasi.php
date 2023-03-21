@@ -2,15 +2,15 @@
 
 namespace App\Models\Master;
 
-use Att\Workit\AttModel;
-use Att\Workit\Interfaces\ModelDictionary;
+use Viershaka\Vier\VierModel;
+use Viershaka\Vier\Interfaces\ModelDictionary;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // use App\Traits\CreatedUpdatedBy;
 
 class msLokasi extends Model
 {
-    use HasFactory,AttModel;
+    use HasFactory,VierModel;
     
     protected $table = 'ms_lokasi';
     protected $fillable = [

@@ -3,9 +3,9 @@
 namespace App\Repositories\Master;
 
 use App\Models\Master\msDivisi;
-use Att\Workit\AttRepository;
+use Viershaka\Vier\VierRepository;
 
-class divisiRepository extends AttRepository
+class divisiRepository extends VierRepository
 {
     public function __construct()
     {

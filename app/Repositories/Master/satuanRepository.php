@@ -3,9 +3,9 @@
 namespace App\Repositories\Master;
 
 use App\Models\Master\msSatuan;
-use Att\Workit\AttRepository;
+use Viershaka\Vier\VierRepository;
 
-class satuanRepository extends AttRepository
+class satuanRepository extends VierRepository
 {
     public function __construct()
     {

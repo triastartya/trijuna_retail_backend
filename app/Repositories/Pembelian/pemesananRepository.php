@@ -3,10 +3,10 @@
 namespace App\Repositories\Pembelian;
 
 use App\Helpers\QueryHelper;
-use Att\Workit\AttRepository;
+use Viershaka\Vier\VierRepository;
 use Illuminate\Support\Facades\DB;
 
-class pemesananRepository extends AttRepository
+class pemesananRepository extends VierRepository
 {
     public function __construct()
     {

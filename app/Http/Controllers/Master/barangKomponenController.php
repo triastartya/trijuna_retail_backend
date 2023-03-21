@@ -4,17 +4,15 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Master\barangKomponenRepository;
-use App\Services\Master\barangKomponenService;
-use Att\Workit\AttController;
+use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 
-class barangKomponenController extends AttController
+class barangKomponenController extends VierController
 {
     public function __construct()
     {
         $repository = new barangKomponenRepository();
-        $service = new barangKomponenService();
 
-        parent::__construct($repository, $service);
+        parent::__construct($repository);
     }
 }

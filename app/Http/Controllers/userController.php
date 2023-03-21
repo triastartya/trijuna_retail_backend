@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Att\Workit\AttController;
+use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class userController extends AttController
+class userController extends VierController
 {
     public function __construct()
     {

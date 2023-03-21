@@ -4,17 +4,15 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Master\warehouseRepository;
-use App\Services\Master\warehouseService;
-use Att\Workit\AttController;
+use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 
-class warehouseController extends AttController
+class warehouseController extends VierController
 {
     public function __construct()
     {
         $repository = new warehouseRepository();
-        $service = new warehouseService();
 
-        parent::__construct($repository, $service);
+        parent::__construct($repository);
     }
 }

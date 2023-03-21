@@ -6,11 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "att/workit": "dev-master",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "viershaka/vier": "dev-master"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -28,8 +28,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files":[
-            "app/Http/Helpers/QueryHelper.php",
-            "app/Http/Helpers/GeneradeNomorHelper.php"
+            "app/Helpers/QueryHelper.php",
+            "app/Helpers/GeneradeNomorHelper.php"
         ]
     },
     "autoload-dev": {

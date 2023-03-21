@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Att\Workit\AttModel;
+use Viershaka\Vier\VierModel;
 use Laravel\Sanctum\HasApiTokens;
-use Att\Workit\Interfaces\ModelDictionary;
+use Viershaka\Vier\Interfaces\ModelDictionary;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -13,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, HasApiTokens, AttModel, Notifiable;
+    use HasFactory, HasApiTokens, VierModel, Notifiable;
     
     protected $primaryKey = 'id_user';
     protected $modelFields = [

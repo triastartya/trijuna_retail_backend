@@ -3,9 +3,9 @@
 namespace App\Repositories\Master;
 
 use App\Models\Master\msMerk;
-use Att\Workit\AttRepository;
+use Viershaka\Vier\VierRepository;
 
-class merkRepository extends AttRepository
+class merkRepository extends VierRepository
 {
     public function __construct()
     {

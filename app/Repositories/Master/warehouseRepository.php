@@ -3,9 +3,9 @@
 namespace App\Repositories\Master;
 
 use App\Models\Master\msWarehouse;
-use Att\Workit\AttRepository;
+use Viershaka\Vier\VierRepository;
 
-class warehouseRepository extends AttRepository
+class warehouseRepository extends VierRepository
 {
     public function __construct()
     {

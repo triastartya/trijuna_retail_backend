@@ -4,17 +4,15 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Master\satuanRepository;
-use App\Services\Master\satuanService;
-use Att\Workit\AttController;
+use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 
-class satuanController extends AttController
+class satuanController extends VierController
 {
     public function __construct()
     {
         $repository = new satuanRepository();
-        $service = new satuanService();
 
-        parent::__construct($repository, $service);
+        parent::__construct($repository);
     }
 }

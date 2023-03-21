@@ -3,9 +3,9 @@
 namespace App\Repositories\Master;
 
 use App\Models\Master\msLokasi;
-use Att\Workit\AttRepository;
+use Viershaka\Vier\VierRepository;
 
-class LokasiRepository extends AttRepository
+class LokasiRepository extends VierRepository
 {
     public function __construct()
     {
