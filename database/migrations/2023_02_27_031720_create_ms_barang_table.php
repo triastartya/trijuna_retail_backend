@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('ukuran',20)->nullable();
             $table->string('warna',20)->nullable();
             $table->double('berat',12,2)->nullable();
-            $table->string('id_supplier')->constrained('ms_supplier');
+            $table->integer('id_supplier')->constrained('ms_supplier');
             $table->double('harga_order',12,2)->default(0);
             $table->double('harga_beli_terakhir',12,2)->default(0);
             $table->double('hpp_average',12,2)->default(0);
