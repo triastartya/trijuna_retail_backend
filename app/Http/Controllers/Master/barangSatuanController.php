@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 
 class barangSatuanController extends VierController
 {
+    public $repository;
+    
     public function __construct()
     {
-        $repository = new barangSatuanRepository();
+        $this->repository = new barangSatuanRepository();
 
-        parent::__construct($repository);
+        parent::__construct($this->repository);
     }
 }

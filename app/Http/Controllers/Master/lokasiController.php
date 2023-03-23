@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class lokasiController extends VierController
 {
+    public $repository;
     public function __construct()
     {
-        $repository = new LokasiRepository();
+        $this->repository = new LokasiRepository();
 
-        parent::__construct($repository);
+        parent::__construct($this->repository);
     }
 }

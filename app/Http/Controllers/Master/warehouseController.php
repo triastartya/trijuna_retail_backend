@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class warehouseController extends VierController
 {
+    public $repository;
     public function __construct()
     {
-        $repository = new warehouseRepository();
+        $this->repository = new warehouseRepository();
 
-        parent::__construct($repository);
+        parent::__construct($this->repository);
     }
 }

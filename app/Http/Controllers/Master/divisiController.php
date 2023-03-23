@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 
 class divisiController extends VierController
 {
+    public $repository;
+    
     public function __construct()
     {
-        $repository = new divisiRepository();
+        $this->repository = new divisiRepository();
 
-        parent::__construct($repository, );
+        parent::__construct($this->repository);
     }
 }

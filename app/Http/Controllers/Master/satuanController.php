@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class satuanController extends VierController
 {
+    public $repository;
     public function __construct()
     {
-        $repository = new satuanRepository();
+        $this->repository = new satuanRepository();
 
-        parent::__construct($repository);
+        parent::__construct($this->repository);
     }
 }

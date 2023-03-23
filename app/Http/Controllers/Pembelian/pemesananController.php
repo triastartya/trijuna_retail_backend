@@ -6,6 +6,8 @@ use App\Helpers\GeneradeNomorHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Pembelian\trPemesanan;
 use App\Models\Pembelian\trPemesananDetail;
+use App\Repositories\Master\barangRepository;
+use App\Repositories\Master\supplierRepository;
 use App\Repositories\Pembelian\pemesananRepository;
 use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
@@ -13,10 +15,13 @@ use Illuminate\Support\Facades\DB;
 
 class pemesananController extends VierController
 {
+    protected $repository_barang;
+    protected $repository_supplier;
     public function __construct()
     {
         $repository = new pemesananRepository();
-
+        $this->repository_barang = new barangRepository();
+        $this->repository_supplier = new supplierRepository();
         parent::__construct($repository);
     }
     
@@ -54,6 +59,24 @@ class pemesananController extends VierController
     public function get_by_param(){
         try{
             $data = $this->repository->get_pemesanan_by_param();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+    
+    public function lookup_barang(){
+        try{
+            $data = $this->repository_barang->by_param_active();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+    
+    public function lookup_supplier(){
+        try{
+            $data = $this->repository_supplier->by_param_active();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);

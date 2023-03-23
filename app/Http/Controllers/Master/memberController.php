@@ -9,10 +9,21 @@ use Illuminate\Http\Request;
 
 class memberController extends VierController
 {
+    public $repository;
     public function __construct()
     {
-        $repository = new memberRepository();
+        $this->repository = new memberRepository();
 
-        parent::__construct($repository);
+        parent::__construct($this->repository);
+    }
+    
+    public function member_by_param()
+    {
+        try{
+            $data = $this->repository->by_param();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
     }
 }

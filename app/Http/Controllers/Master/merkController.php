@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class merkController extends VierController
 {
+    public $repository;
     public function __construct()
     {
-        $repository = new merkRepository();
+        $this->repository = new merkRepository();
 
-        parent::__construct($repository);
+        parent::__construct($this->repository);
     }
 }

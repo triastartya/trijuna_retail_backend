@@ -6,9 +6,10 @@ use Illuminate\Support\Facades\DB;
 
 class QueryHelper
 {
-    public static function queryParam($query,$parameter)
+    public static function queryParam($query,$parameter,String $lastString='')
     {
         $i = 0;
+        
         foreach($parameter->filter as $filter){
             $opration = '';
             $value = '';
@@ -29,12 +30,21 @@ class QueryHelper
             }
             
             if($i==0){
-                $query .= " where ".$filter['column']." ".$opration." ".$value;
+                $iswhere = (str_contains($query,'where'))?" and ":" where ";
+                $query .= $iswhere.$filter['column']." ".$opration." ".$value;
             }else{
                 $query .= " and ".$filter['column']." ".$opration." ".$value;
             }
+            
             $i++;
-        }        
+        }
+        
+        if($lastString==''){
+            $query .= ' limit 300';
+        }else{
+            $query .= $lastString;
+        }
+        
         return DB::select($query);
     }
 }

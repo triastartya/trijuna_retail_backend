@@ -10,10 +10,12 @@ use Illuminate\Http\Request;
 
 class barangUraiController extends VierController
 {
+    public $repository;
+    
     public function __construct()
     {
-        $repository = new barangUraiRepository();
+        $this->repository = new barangUraiRepository();
 
-        parent::__construct($repository);
+        parent::__construct($this->repository);
     }
 }

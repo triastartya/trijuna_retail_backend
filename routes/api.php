@@ -46,22 +46,28 @@ Route::post('login',[userController::class,'login']);
 Route::group(['middleware' => ModifRequest::class], function () {
     Route::pointResource('user_group', userGroupController::class);
     Route::pointResource('member',memberController::class);
+    Route::post('member/by_param',[memberController::class,'member_by_param']);
     Route::pointResource('divisi',divisiController::class);
     Route::pointResource('merk',merkController::class);
     Route::pointResource('satuan',satuanController::class);
     Route::pointResource('rak',rakController::class);
     Route::pointResource('warehouse',warehouseController::class);
     Route::pointResource('barang',barangController::class);
+    Route::post('barang/by_param',[barangController::class,'barang_by_param']);
     Route::pointResource('barang_rak',barangRakController::class);
+    Route::get('barang_rak/by_id_barang/{id_barang}',[barangRakController::class,'by_id_barang']);
     Route::pointResource('barang_satuan',barangSatuanController::class);
     Route::pointResource('barang_komponen',barangKomponenController::class);
     Route::pointResource('barang_urai',barangUraiController::class);
     Route::pointResource('supplier',supplierController::class);
+    Route::post('supplier/by_param',[supplierController::class,'supplier_by_param']);
     Route::pointResource('group',groupController::class);
     Route::pointResource('lokasi',lokasiController::class);
     Route::prefix('pembelian')->group(function(){
         Route::post('insert',[pemesananController::class,'insert']);
         Route::get('get_by_id/{id_pemesanan}',[pemesananController::class,'get_by_id']);
         Route::post('get_by_param',[pemesananController::class,'get_by_param']);
+        Route::post('lookup_barang',[pemesananController::class,'lookup_barang']);
+        Route::post('lookup_supplier',[pemesananController::class,'lookup_supplier']);
     });
 });

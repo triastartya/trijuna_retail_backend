@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class rakController extends VierController
 {
+    public $repository;
     public function __construct()
     {
-        $repository = new rakRepository();
+        $this->repository = new rakRepository();
 
-        parent::__construct($repository);
+        parent::__construct($this->repository);
     }
 }

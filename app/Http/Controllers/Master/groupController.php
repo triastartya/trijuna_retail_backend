@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 
 class groupController extends VierController
 {
+    public $repository;
+    
     public function __construct()
     {
-        $repository = new groupRepository();
+        $this->repository = new groupRepository();
 
-        parent::__construct($repository);
+        parent::__construct($this->repository);
     }
 }
