@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ms_barang_satuan', function (Blueprint $table) {
-            $table->id('id_brang_satuan');
-            $table->integer('id_barang')->constrained('ms_barang');
-            $table->integer('id_satuan')->constrained('ms_satuan');
+        Schema::create('tr_setting_harga', function (Blueprint $table) {
+            $table->id('id_setting_harga');
+            $table->integer('id_lokasi');
+            $table->datetime('tanggal_mulai_berlaku');
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ms_barang_satuan');
+        Schema::dropIfExists('tr_setting_harga');
     }
 };

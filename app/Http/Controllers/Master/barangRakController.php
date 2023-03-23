@@ -26,4 +26,13 @@ class barangRakController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+    
+    public function by_id_rak(){
+        try{
+            $data = $this->repository->by_id_rak();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
 }

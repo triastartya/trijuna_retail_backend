@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ms_barang_satuan', function (Blueprint $table) {
-            $table->id('id_brang_satuan');
-            $table->integer('id_barang')->constrained('ms_barang');
-            $table->integer('id_satuan')->constrained('ms_satuan');
-            $table->integer('created_by');
-            $table->integer('updated_by');
+        Schema::create('tr_setting_harga_detail_lokasi', function (Blueprint $table) {
+            $table->id('id_setting_harga_detail_lokasi');
+            $table->integer('id_setting_harga_detail')->constrained('tr_setting_harga_detail');
+            $table->integer('id_lokasi')->constrained('ms_lokasi');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ms_barang_satuan');
+        Schema::dropIfExists('tr_setting_harga_detail_lokasi');
     }
 };
