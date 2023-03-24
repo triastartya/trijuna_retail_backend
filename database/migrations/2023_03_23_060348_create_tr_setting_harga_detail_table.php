@@ -23,6 +23,7 @@ return new class extends Migration
             $table->double('harga_grosir1');
             $table->double('qty_grosir2');
             $table->double('harga_grosir2');
+            $table->integer('prioritas')->default(1);
             $table->timestamps();
         });
     }

@@ -13,6 +13,7 @@ use App\Http\Controllers\Master\warehouseController;
 use App\Http\Controllers\Master\groupController;
 use App\Http\Controllers\Master\lokasiController;
 use App\Http\Controllers\Master\memberController;
+use App\Http\Controllers\Master\settingHargaController;
 use App\Http\Controllers\Master\supplierController;
 use App\Http\Controllers\Pembelian\pemesananController;
 use App\Http\Controllers\userController;
@@ -67,6 +68,9 @@ Route::group(['middleware' => ModifRequest::class], function () {
     Route::post('supplier/by_param',[supplierController::class,'supplier_by_param']);
     Route::pointResource('group',groupController::class);
     Route::pointResource('lokasi',lokasiController::class);
+    Route::post('setting_harga',[settingHargaController::class,'insert']);
+    Route::post('setting_harga/by_param',[settingHargaController::class,'by_param']);
+    Route::get('setting_harga/{id_setting_harga}',[settingHargaController::class,'by_id']);
     Route::prefix('pembelian')->group(function(){
         Route::post('insert',[pemesananController::class,'insert']);
         Route::get('get_by_id/{id_pemesanan}',[pemesananController::class,'get_by_id']);

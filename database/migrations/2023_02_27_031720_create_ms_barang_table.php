@@ -34,10 +34,6 @@ return new class extends Migration
             $table->string('nama_label',100)->nullable();
             $table->integer('id_satuan')->constrained('ms_satuan');
             $table->integer('margin')->default(0);
-            $table->integer('qty_grosir1')->default(0);
-            $table->double('harga_grosir1',12,2)->default(0);
-            $table->integer('qty_grosir2')->default(0);
-            $table->double('harga_grosir2',12,2)->default(0);
             $table->integer('tahun_produksi')->nullable();
             $table->integer('stok_min')->default(0);
             $table->boolean('is_active')->default(true);

@@ -8,13 +8,17 @@ use Viershaka\Vier\VierRepository;
 
 class barangRepository extends VierRepository
 {
+
+    public $repository_setting_harga;
+    
     public function __construct()
     {
+        $this->repository_setting_harga =  new settingHargaRepository();
         parent::__construct(new msBarang());
     }
     
     public function by_param(){
-        return QueryHelper::queryParam('
+        $data =  QueryHelper::queryParam('
             select mb.id_barang,
             mb.id_divisi,
             md.divisi,
@@ -41,10 +45,6 @@ class barangRepository extends VierRepository
             m.kode_satuan,
             m.nama_satuan,
             mb.margin,
-            mb.qty_grosir1,
-            mb.harga_grosir1,
-            mb.qty_grosir2,
-            mb.harga_grosir2,
             mb.tahun_produksi,
             mb.stok_min,
             mb.is_active,
@@ -61,7 +61,13 @@ class barangRepository extends VierRepository
             inner join users uc on uc.id_user = mb.created_by
             inner join users uu on uu.id_user = mb.updated_by
         ',request(),'limit 200');
-
+        
+        foreach($data as $index => $row){
+            $data[$index] = (object) array_merge((array)$row,$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang));
+        }
+        
+        return $data;
+        
     }
     
     public function by_param_active(){
@@ -92,10 +98,6 @@ class barangRepository extends VierRepository
             m.kode_satuan,
             m.nama_satuan,
             mb.margin,
-            mb.qty_grosir1,
-            mb.harga_grosir1,
-            mb.qty_grosir2,
-            mb.harga_grosir2,
             mb.tahun_produksi,
             mb.stok_min,
             mb.is_active,
