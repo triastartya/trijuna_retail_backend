@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Deploy app to server development
           command: |
-            ssh -o StrictHostKeyChecking=no root@128.199.75.235 "cd /var/www/html/trijuna_retail_backend && ./deploy.sh"
+            ssh -o StrictHostKeyChecking=no root@203.175.10.195 "cd /var/www/html/trijuna_retail_backend && ./deploy.sh"
 workflows :
   basic-workflow:
     jobs:
