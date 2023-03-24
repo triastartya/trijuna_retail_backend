@@ -21,6 +21,7 @@ class barangSatuanRepository extends VierRepository
             mbs.id_satuan,
             ms.kode_satuan,
             ms.nama_satuan,
+            ms.isi,
             uc.nama as created_by,
             uu.nama as updated_by,
             mbs.created_at,
@@ -30,5 +31,18 @@ class barangSatuanRepository extends VierRepository
             inner join users uu on uu.id_user = mbs.updated_by
             where mbs.id_barang = ?
         ',[request()->id_barang]);
+    }
+    
+    public function to_barang_by_param($id_barang)
+    {
+        return DB::select('
+            select 
+            ms.kode_satuan,
+            ms.nama_satuan,
+            ms.isi,
+            from ms_barang_satuan mbs
+            inner join ms_satuan ms on ms.id_satuan=mbs.id_satuan   
+            where mbs.id_barang = ?
+        ',[$id_barang]);
     }
 }

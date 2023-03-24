@@ -10,10 +10,12 @@ class barangRepository extends VierRepository
 {
 
     public $repository_setting_harga;
+    public $repository_barang_satuan;
     
     public function __construct()
     {
         $this->repository_setting_harga =  new settingHargaRepository();
+        $this->repository_barang_satuan = new barangSatuanRepository();
         parent::__construct(new msBarang());
     }
     
@@ -64,6 +66,11 @@ class barangRepository extends VierRepository
         
         foreach($data as $index => $row){
             $data[$index] = (object) array_merge((array)$row,$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang));
+            $data[$index]->satuan = [
+            
+            ]; 
+            $this->repository_barang_satuan->by_id_barang($row->id_barang);
+            
         }
         
         return $data;

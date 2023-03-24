@@ -15,12 +15,14 @@ class msBarangSatuan extends Model
     protected $table = 'ms_barang_satuan';
     protected $fillable = [
         'id_barang',
-        'id_satuan'
+        'id_satuan',
+        'isi'
     ];
     protected $primaryKey = 'id_brang_satuan';
     protected $modelFields = [
         ['name' => 'id_barang', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
-        ['name' => 'id_rak', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER]
+        ['name' => 'id_rak', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'isi', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER]
     ];
     protected $guarded = [];  
     protected $appends = [];
@@ -30,6 +32,7 @@ class msBarangSatuan extends Model
         'id_brang_satuan'=>'',
         'id_barang'=>'required',
         'id_satuan'=>'required',
+        'isi' => 'required',
         'created_by'=>'',
         'updated_by'=>''
         ];
