@@ -6,11 +6,11 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - '40:08:d4:f0:aa:d2:98:24:70:69:0e:6c:2c:d7:9a:42'
+            - '6f:b2:e2:7c:b0:25:2d:98:7a:30:e2:8e:21:7b:b6:f2'
       - run:
           name: Deploy app to server development
           command: |
-            ssh -o StrictHostKeyChecking=no root@128.199.75.235 "cd /var/www/html/api-dpatriod-resto && ./deploy.sh"
+            ssh -o StrictHostKeyChecking=no root@128.199.75.235 "cd /var/www/html/trijuna_retail_backend && ./deploy.sh"
 workflows :
   basic-workflow:
     jobs:
