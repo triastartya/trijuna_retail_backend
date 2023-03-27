@@ -21,7 +21,7 @@ class barangSatuanRepository extends VierRepository
             mbs.id_satuan,
             ms.kode_satuan,
             ms.nama_satuan,
-            ms.isi,
+            mbs.isi,
             uc.nama as created_by,
             uu.nama as updated_by,
             mbs.created_at,
@@ -39,7 +39,7 @@ class barangSatuanRepository extends VierRepository
             select 
             ms.kode_satuan,
             ms.nama_satuan,
-            ms.isi,
+            mbs.isi,
             from ms_barang_satuan mbs
             inner join ms_satuan ms on ms.id_satuan=mbs.id_satuan   
             where mbs.id_barang = ?
