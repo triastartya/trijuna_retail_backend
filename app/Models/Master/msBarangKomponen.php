@@ -15,11 +15,13 @@ class msBarangKomponen extends Model
     protected $table = 'ms_barang_komponen';
     protected $fillable = [
         'id_barang',
+        'komponen_barang',
         'qty_komponen'
     ];
     protected $primaryKey = 'id_barang_komponen';
     protected $modelFields = [
         ['name' => 'id_barang', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'komponen_barang', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'qty_komponen', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER]
     ];
     protected $guarded = [];  
@@ -29,6 +31,7 @@ class msBarangKomponen extends Model
         return [
         'id_barang_komponen'=>'',
         'id_barang'=>'required',
+        'komponen_barang'=>'required',
         'qty_komponen'=>'required',
         'created_by'=>'',
         'updated_by'=>''

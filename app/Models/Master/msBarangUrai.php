@@ -15,12 +15,14 @@ class msBarangUrai extends Model
     protected $table = 'ms_barang_urai';
     protected $fillable = [
         'id_barang',
+        'urai_barang',
         'qty_urai'
     ];
     protected $primaryKey = 'id_barang_urai';
     protected $modelFields = [
         ['name' => 'id_barang', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'id_barang_urai', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'urai_barang', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'qty_urai', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER]
     ];
     protected $guarded = [];  
@@ -30,6 +32,7 @@ class msBarangUrai extends Model
         return [
         'id_barang_urai'=>'',
         'id_barang'=>'required',
+        'urai_barang'=>'required',
         'qty_urai'=>'required',
         'created_by'=>'',
         'updated_by'=>''
