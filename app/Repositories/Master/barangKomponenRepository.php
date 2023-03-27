@@ -17,7 +17,6 @@ class barangKomponenRepository extends VierRepository
     {
         return DB::select('
             select
-                mbk.id,
                 mbk.id_barang,
                 mbk.id_barang_komponen,
                 mb.barcode,
