@@ -1,3 +1,9 @@
+database
+host
+username
+password
+
+
 $table->id('id_voucher_master');
 $table->string('nama_voucher',50);
 $table->double('nilai_voucher',12,2);
