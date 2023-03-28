@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tr_penerimaan', function (Blueprint $table) {
-            $table->id('id_penermaan');
+            $table->id('id_penerimaan');
             $table->integer('jenis_penerimaan');
             $table->integer('id_pemesanan');
+            $table->integer('id_supplier');
             $table->string('nomor_penerimaan',50);
-            $table->date('tanggal_penerimaan');
             $table->string('no_nota',100);
             $table->date('tanggal_nota');
             $table->integer('id_lokasi')->constrained('ms_lokasi');
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->double('pembulatan',12,2);
             $table->double('total_transaksi',12,2);
             $table->double('total_biaya_barcode',12,2);
-            $table->boolean('is_deleted');
+            $table->boolean('is_deleted')->default(false);
             $table->integer('deleted_by')->nullable();
             $table->date('deleted_at')->nullable();
             $table->text('deleted_reason')->nullable();

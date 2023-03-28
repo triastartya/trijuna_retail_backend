@@ -16,6 +16,7 @@ use App\Http\Controllers\Master\memberController;
 use App\Http\Controllers\Master\settingHargaController;
 use App\Http\Controllers\Master\supplierController;
 use App\Http\Controllers\Pembelian\pemesananController;
+use App\Http\Controllers\Pembelian\penerimaanDenganPOController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\userGroupController;
 use App\Http\Middleware\ModifRequest;
@@ -77,5 +78,12 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('get_by_param',[pemesananController::class,'get_by_param']);
         Route::post('lookup_barang',[pemesananController::class,'lookup_barang']);
         Route::post('lookup_supplier',[pemesananController::class,'lookup_supplier']);
+    });
+    ROute::prefix('penerimaan_dengan_po')->group(function(){
+        Route::post('lookup_pemesanan',[penerimaanDenganPOController::class,'lookup_pemesanan']);
+        Route::post('lookup_barang/{id_pemesanan}',[penerimaanDenganPOController::class,'lookup_barang']);
+        Route::post('insert',[penerimaanDenganPOController::class,'insert']);
+        Route::post('get_by_param',[penerimaanDenganPOController::class,'get_by_param']);
+        Route::get('get_by_id/{id_penerimaan}',[penerimaanDenganPOController::class,'get_by_id']);
     });
 });

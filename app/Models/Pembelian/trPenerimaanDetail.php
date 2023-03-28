@@ -4,12 +4,10 @@ namespace App\Models\Pembelian;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\CreatedUpdatedBy;
-
 
 class trPenerimaanDetail extends Model
 {
-    use HasFactory,CreatedUpdatedBy;
+    use HasFactory;
     protected $table = 'tr_penerimaan_detail';
     protected $primaryKey = 'id_penerimaan_detail';
     protected $fillable = [

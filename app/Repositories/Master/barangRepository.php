@@ -66,11 +66,7 @@ class barangRepository extends VierRepository
         
         foreach($data as $index => $row){
             $data[$index] = (object) array_merge((array)$row,$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang));
-            $data[$index]->satuan = [
-            
-            ]; 
-            $this->repository_barang_satuan->by_id_barang($row->id_barang);
-            
+            $data[$index]->satuan = $this->repository_barang_satuan->to_barang_by_param($row->id_barang);
         }
         
         return $data;
@@ -78,7 +74,7 @@ class barangRepository extends VierRepository
     }
     
     public function by_param_active(){
-        return QueryHelper::queryParam('
+        $data = QueryHelper::queryParam('
             select mb.id_barang,
             mb.id_divisi,
             md.divisi,
@@ -122,5 +118,11 @@ class barangRepository extends VierRepository
             inner join users uu on uu.id_user = mb.updated_by 
             where mb.is_active = true 
         ',request(),'limit 200');
+        
+        foreach($data as $index => $row){
+            $data[$index]->satuan = $this->repository_barang_satuan->to_barang_by_param($row->id_barang);
+        }
+        
+        return $data;
     }
 }

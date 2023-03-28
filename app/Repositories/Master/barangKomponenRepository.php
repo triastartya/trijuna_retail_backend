@@ -17,17 +17,17 @@ class barangKomponenRepository extends VierRepository
     {
         return DB::select('
             select
-                mbk.id_barang,
-                mbk.id_barang_komponen,
-                mb.barcode,
-                mb.kode_barang,
-                mb.nama_barang,
-                mbk.qty_komponen,
-                mbk.created_by,
-                mbk.updated_by,
-                mbk.created_at,
-                mbk.updated_at from ms_barang_komponen mbk
-            inner join ms_barang mb on mbk.id_barang = mb.id_barang
+            mbk.id_barang,
+            mbk.id_barang_komponen,
+            mb.barcode,
+            mb.kode_barang,
+            mb.nama_barang,
+            mbk.qty_komponen,
+            uc.nama as created_by,
+            uu.nama as updated_by,
+            mbk.created_at,
+            mbk.updated_at from ms_barang_komponen mbk
+            left join ms_barang mb on mb.id_barang = mbk.komponen_barang
             inner join users uc on uc.id_user = mbk.created_by
             inner join users uu on uu.id_user = mbk.updated_by
             where mbk.id_barang = ?

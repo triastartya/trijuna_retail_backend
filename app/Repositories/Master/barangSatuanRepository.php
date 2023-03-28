@@ -36,13 +36,21 @@ class barangSatuanRepository extends VierRepository
     public function to_barang_by_param($id_barang)
     {
         return DB::select('
+            select
+            m.kode_satuan,
+            m.nama_satuan,
+            1 as isi
+            from ms_barang mb
+            inner join ms_satuan m on mb.id_satuan = m.id_satuan
+            where mb.id_barang = ?
+            union all
             select 
             ms.kode_satuan,
             ms.nama_satuan,
-            mbs.isi,
+            mbs.isi
             from ms_barang_satuan mbs
             inner join ms_satuan ms on ms.id_satuan=mbs.id_satuan   
             where mbs.id_barang = ?
-        ',[$id_barang]);
+        ',[$id_barang,$id_barang]);
     }
 }

@@ -11,8 +11,9 @@ class trPenerimaan extends Model
 {
     use HasFactory,CreatedUpdatedBy;
     protected $table = 'tr_penerimaan';
-    protected $primaryKey = 'id_penermaan';
+    protected $primaryKey = 'id_penerimaan';
     protected $fillable = [
+        'id_penerimaan',
         'jenis_penerimaan',
         'id_pemesanan',
         'nomor_penerimaan',
@@ -24,6 +25,7 @@ class trPenerimaan extends Model
         'keterangan',
         'status_penerimaan',
         'qty',
+        'sub_total1',
         'diskon_persen',
         'diskon_nominal',
         'sub_total2',
@@ -50,6 +52,7 @@ class trPenerimaan extends Model
             'keterangan'=>'',
             'status_penerimaan'=>'required',
             'qty'=>'required',
+            'sub_total1'=>'required',
             'diskon_persen'=>'required',
             'diskon_nominal'=>'',
             'sub_total2'=>'',
