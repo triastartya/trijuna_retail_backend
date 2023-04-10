@@ -33,6 +33,7 @@ class trPemesananDetail extends Model
         'diskon_nominal_3',
         'sub_total',
         'qty_bonus',
+        'biaya_barcode',
         'nama_bonus'
     ];
     

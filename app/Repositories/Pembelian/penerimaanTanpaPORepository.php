@@ -7,7 +7,7 @@ use App\Models\Pembelian\trPenerimaan;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierRepository;
 
-class penerimaanDenganPORepository extends VierRepository
+class penerimaanTanpaPORepository extends VierRepository
 {
     public function __construct()
     {
@@ -21,7 +21,6 @@ class penerimaanDenganPORepository extends VierRepository
             tp.id_penerimaan,
             tp.jenis_penerimaan,
             tp.id_pemesanan,
-            t.nomor_pemesanan,
             ms.kode_supplier,
             ms.nama_supplier,
             tp.nomor_penerimaan,
@@ -53,9 +52,8 @@ class penerimaanDenganPORepository extends VierRepository
             from tr_penerimaan tp
             inner join ms_lokasi ml on ml.id_lokasi=tp.id_lokasi
             inner join ms_warehouse mw on mw.id_warehouse=tp.id_warehouse
-            inner join tr_pemesanan t on tp.id_pemesanan = t.id_pemesanan
-            inner join ms_supplier ms on t.id_supplier = ms.id_supplier
-            where tp.jenis_penerimaan = 1 
+            inner join ms_supplier ms on tp.id_supplier = ms.id_supplier
+            where tp.jenis_penerimaan = 2 
         ',request());
     }
     
@@ -65,7 +63,6 @@ class penerimaanDenganPORepository extends VierRepository
             tp.id_penerimaan,
             tp.jenis_penerimaan,
             tp.id_pemesanan,
-            t.nomor_pemesanan,
             ms.kode_supplier,
             ms.nama_supplier,
             tp.nomor_penerimaan,
@@ -97,8 +94,7 @@ class penerimaanDenganPORepository extends VierRepository
             from tr_penerimaan tp
             inner join ms_lokasi ml on ml.id_lokasi=tp.id_lokasi
             inner join ms_warehouse mw on mw.id_warehouse=tp.id_warehouse
-            inner join tr_pemesanan t on tp.id_pemesanan = t.id_pemesanan
-            inner join ms_supplier ms on t.id_supplier = ms.id_supplier
+            inner join ms_supplier ms on tp.id_supplier = ms.id_supplier
             where tp.id_penerimaan = ?
         ",[request()->id_penerimaan]);
         return $data[0];
@@ -128,8 +124,7 @@ class penerimaanDenganPORepository extends VierRepository
             tpd.diskon_nominal_3,
             tpd.sub_total,
             tpd.qty_bonus,
-            tpd.nama_bonus,
-            tpd.biaya_barcode
+            tpd.nama_bonus
             from tr_penerimaan_detail tpd
             inner join ms_barang mb on tpd.id_barang = mb.id_barang
             inner join ms_satuan ms on tpd.kode_satuan = ms.kode_satuan

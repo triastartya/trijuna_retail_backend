@@ -15,13 +15,11 @@ return new class extends Migration
     {
         Schema::create('ms_barang_kartu_stok', function (Blueprint $table) {
             $table->id('id_kartu_stok');
-            $table->integer('tahun');
-            $table->integer('bulan');
             $table->datetime('tanggal');
             $table->integer('id_barang')->constrained('ms_barang');
             $table->integer('id_warehouse')->constrained('ms_warehouse');
             $table->string('nomor_reff');
-            $table->integer('id_header_tans');
+            $table->integer('id_header_trans');
             $table->integer('id_detail_trans');
             $table->double('stok_awal',12,2)->default(0);
             $table->double('nominal_awal',12,2)->default(0);

@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('tr_penerimaan', function (Blueprint $table) {
             $table->id('id_penerimaan');
             $table->integer('jenis_penerimaan');
-            $table->integer('id_pemesanan');
-            $table->integer('id_supplier');
+            $table->integer('id_pemesanan')->nullable();
+            $table->integer('id_supplier')->nullable();
             $table->string('nomor_penerimaan',50);
             $table->string('no_nota',100);
             $table->date('tanggal_nota');

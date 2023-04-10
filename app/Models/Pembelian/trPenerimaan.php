@@ -14,6 +14,7 @@ class trPenerimaan extends Model
     protected $primaryKey = 'id_penerimaan';
     protected $fillable = [
         'id_penerimaan',
+        'id_supplier',
         'jenis_penerimaan',
         'id_pemesanan',
         'nomor_penerimaan',
@@ -42,6 +43,7 @@ class trPenerimaan extends Model
     {
         return [
             'jenis_penerimaan'=>'',
+            'id_supplier'=>'',
             'id_pemesanan'=>'required',
             'nomor_penerimaan'=>'required',
             'tanggal_penerimaan'=>'required',

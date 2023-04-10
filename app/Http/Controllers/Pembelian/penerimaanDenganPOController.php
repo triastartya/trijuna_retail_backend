@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Pembelian;
 
 use App\Helpers\GeneradeNomorHelper;
+use App\Helpers\InventoryStokHelper;
+use App\Models\Master\msBarang;
 use App\Models\Pembelian\trPemesanan;
 use App\Models\Pembelian\trPemesananDetail;
 use App\Models\Pembelian\trPenerimaan;
@@ -51,7 +53,7 @@ class penerimaanDenganPOController extends VierController
             $data = $request->all();
             $data['status_penerimaan'] = 'OPEN';
             $data['jenis_penerimaan'] = 1;
-            $data['nomor_penerimaan'] = GeneradeNomorHelper::long('penerimaan');
+            $data['nomor_penerimaan'] = GeneradeNomorHelper::long('penerimaan dengan po');
             unset($data['detail']);
             $penerimaan = trPenerimaan::create($data);
             $pemesanan = trPemesanan::where('id_pemesanan',$data['id_pemesanan'])
@@ -60,11 +62,12 @@ class penerimaanDenganPOController extends VierController
                             ]);
             foreach($request->detail as $detail){
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
-                trPenerimaanDetail::create($detail);
+                $penerimaanDetail= trPenerimaanDetail::create($detail);
                 $pemesananDetail = trPemesananDetail::where('id_pemesanan_detail',$detail['id_pemesanan_detail'])->first();
-                $pemesananDetail->qty_terima = $pemesananDetail->qty_terima - $data['qty'];
+                $pemesananDetail->qty_terima = $pemesananDetail->qty_terima + $data['qty'];
                 $pemesananDetail->save();
             }
+            
             DB::commit();
             return response()->json(['success'=>true,'data'=>$penerimaan->id_penerimaan]);
         }
@@ -96,10 +99,50 @@ class penerimaanDenganPOController extends VierController
     public function validasi(){
         DB::beginTransaction();
         try{
-            $update = trPenerimaan::where('id_penerimaan',request()->id_penerimaan)
-                        ->update('status_penerimaan','validated');
+            //=== get update pemesanan
+            $penerimaan = trPenerimaan::where('id_penerimaan',request()->id_penerimaan)->first();
+            $penerimaan->status_penerimaan  = 'VALIDATED';
+            $penerimaan->sub_total1         = request()->sub_total1;
+            $penerimaan->diskon_persen      = request()->diskon_persen;
+            $penerimaan->diskon_nominal     = request()->diskon_nominal;
+            $penerimaan->sub_total2         = request()->sub_total2;
+            $penerimaan->ppn_nominal        = request()->ppn_nominal;
+            $penerimaan->pembulatan         = request()->pembulatan;
+            $penerimaan->total_transaksi    = request()->total_transaksi;
+            $penerimaan->total_biaya_barcode= request()->total_biaya_barcode;
+            $penerimaan->save();
+            $penerimaan->detail = trPenerimaanDetail::where('id_penerimaan',request()->id_penerimaan)->get();
+            //=== update stok
+            foreach(request()->detail as $detail){
+            
+                $penerimaan_detail                  = trPenerimaanDetail::where('id_penerimaan_detail',$detail['id_penerimaan_detail'])->first();
+                $penerimaan_detail->harga_order     = $detail['harga_order'];
+                $penerimaan_detail->diskon_persen_1 = $detail['diskon_persen_1'];
+                $penerimaan_detail->diskon_nominal_1= $detail['diskon_nominal_1'];
+                $penerimaan_detail->diskon_persen_2 = $detail['diskon_persen_2'];
+                $penerimaan_detail->diskon_nominal_2= $detail['diskon_nominal_2'];
+                $penerimaan_detail->diskon_persen_3 = $detail['diskon_persen_3'];
+                $penerimaan_detail->diskon_nominal_3= $detail['diskon_nominal_3'];
+                $penerimaan_detail->sub_total       = $detail['sub_total'];
+                $penerimaan_detail->qty_bonus       = $detail['qty_bonus'];
+                $penerimaan_detail->nama_bonus      = $detail['nama_bonus'];
+                $penerimaan_detail->biaya_barcode   = $detail['biaya_barcode'];
+                $penerimaan_detail->save();
+                
+                InventoryStokHelper::penambahan((object)[
+                    'id_barang'       => $detail['id_barang'],
+                    'nama_barang'     => '',
+                    'id_warehouse'    => $penerimaan->id_warehouse,
+                    'qty'             => $detail['qty'] + $detail['qty_bonus'],
+                    'nomor_reff'      => $penerimaan->nomor_penerimaan,
+                    'id_header_trans' => $penerimaan->id_penerimaan,
+                    'id_detail_trans' => $detail['id_penerimaan_detail'],
+                    'jenis'           => 'Penerimaan Dengan PO',
+                    'nominal'         => $detail['sub_total']
+                ]);
+            }
             DB::commit();
-            return response()->json(['success'=>true,'data'=>$update]);
+            return response()->json(['success'=>true,'data'=>$penerimaan]);
         } catch (\Exception $ex) {
             DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);

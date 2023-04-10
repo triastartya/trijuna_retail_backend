@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('tr_penerimaan_detail', function (Blueprint $table) {
             $table->id('id_penerimaan_detail');
+            $table->integer('id_pemesanan_detail')->constrained('tr_pemesanan_detail')->nullable();
             $table->integer('id_penerimaan')->constrained('tr_penerimaan');
             $table->integer('urut');
             $table->integer('id_barang')->constrained('ms_barang');
