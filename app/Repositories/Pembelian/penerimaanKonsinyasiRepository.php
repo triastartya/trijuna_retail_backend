@@ -7,7 +7,7 @@ use App\Models\Pembelian\trPenerimaan;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierRepository;
 
-class penerimaanTanpaPORepository extends VierRepository
+class penerimaanKonsinyasiRepository extends VierRepository
 {
     public function __construct()
     {
@@ -48,7 +48,7 @@ class penerimaanTanpaPORepository extends VierRepository
             tp.updated_by,
             tp.created_at,
             tp.updated_at
-            from tr_penerimaan_tanpa_po tp
+            from tr_penerimaan_konsinyasi tp
             inner join ms_lokasi ml on ml.id_lokasi=tp.id_lokasi
             inner join ms_warehouse mw on mw.id_warehouse=tp.id_warehouse
             inner join ms_supplier ms on tp.id_supplier = ms.id_supplier
@@ -89,7 +89,7 @@ class penerimaanTanpaPORepository extends VierRepository
             tp.updated_by,
             tp.created_at,
             tp.updated_at
-            from tr_penerimaan_tanpa_po tp
+            from tr_penerimaan_konsinyasi tp
             inner join ms_lokasi ml on ml.id_lokasi=tp.id_lokasi
             inner join ms_warehouse mw on mw.id_warehouse=tp.id_warehouse
             inner join ms_supplier ms on tp.id_supplier = ms.id_supplier
@@ -123,7 +123,7 @@ class penerimaanTanpaPORepository extends VierRepository
             tpd.sub_total,
             tpd.qty_bonus,
             tpd.nama_bonus
-            from tr_penerimaan_tanpa_po_detail tpd
+            from tr_penerimaan_konsinyasi_detail tpd
             inner join ms_barang mb on tpd.id_barang = mb.id_barang
             inner join ms_satuan ms on tpd.kode_satuan = ms.kode_satuan
             where tpd.id_penerimaan = ?

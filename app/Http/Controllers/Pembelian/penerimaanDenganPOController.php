@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Pembelian;
 
 use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\InventoryStokHelper;
-use App\Models\Master\msBarang;
 use App\Models\Pembelian\trPemesanan;
 use App\Models\Pembelian\trPemesananDetail;
 use App\Models\Pembelian\trPenerimaan;

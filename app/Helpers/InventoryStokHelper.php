@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\Master\msBarang;
 use App\Models\Master\msBarangKartuStok;
 use App\Models\Master\msBarangStok;
 use Illuminate\Support\Facades\DB;
@@ -71,6 +72,54 @@ class InventoryStokHelper
     
     public static function pengurangan($data)
     {
+        $barang_stok = msBarangStok::where('id_barang',$data->id_barang)
+                        ->where('id_warehouse',$data->id_warehouse)
+                        ->lockForUpdate()->first();
+                        
+        // update master barang stok
+        if(!$barang_stok){
+        
+            msBarangStok::create([
+                'id_barang' => $data->id_barang,
+                'id_warehouse' => $data->id_warehouse,
+                'qty' => $data->qty
+            ]);
+            
+        }else{
+        
+            if($barang_stok->qty < $data->qty){
+                $barang = msBarang::where('id_barang',$data->id_barang)->first();
+                return [false,'stok barang '.$barang->nama_barang.' tidak mencukupi, sisa stok '.$barang_stok->qty];
+            }
+            
+            $barang_stok->qty = $barang_stok->qty - $data->qty;
+            $barang_stok->save();
+        }
+        // update kartu stok
+        $kartu_stok = msBarangKartuStok::where('id_barang',$data->id_barang)
+                            ->orderBy('tanggal','desc')
+                            ->orderBy('id_kartu_stok','desc')
+                            ->lockForUpdate()
+                            ->first();
+                            
+        msBarangKartuStok::create([
+            'tanggal' => Date('Y-m-d'),
+            'id_barang' => $data->id_barang,
+            'id_warehouse' => $data->id_warehouse,
+            'nomor_reff' => $data->nomor_reff,
+            'id_header_trans' =>$data->id_header_trans,
+            'id_detail_trans' =>$data->id_detail_trans,
+            'stok_awal' =>$kartu_stok->stok_akhir,
+            'nominal_awal' => $kartu_stok->nominal_akhir,
+            'stok_masuk' =>0,
+            'nominal_masuk' =>0,
+            'stok_keluar' =>$data->qty,
+            'nominal_keluar' =>$data->nominal,
+            'stok_akhir'=>$kartu_stok->stok_akhir - $data->qty,
+            'nominal_akhir'=>$kartu_stok->nominal_akhir - $data->nominal,
+            'keterangan' => ''
+        ]);
+        
         return [true,'berhasil'];
     }
 }

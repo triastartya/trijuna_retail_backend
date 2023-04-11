@@ -4,22 +4,23 @@ namespace App\Http\Controllers\Pembelian;
 
 use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\InventoryStokHelper;
-use App\Models\Pembelian\trPenerimaanTanpaPo;
-use App\Models\Pembelian\trPenerimaanTanpaPoDetail;
+use App\Http\Controllers\Controller;
+use App\Models\Pembelian\trPenerimaanKonsinyasi;
+use App\Models\Pembelian\trPenerimaanKonsinyasiDetail;
 use App\Repositories\Pembelian\pemesananRepository;
-use App\Repositories\Pembelian\penerimaanTanpaPORepository;
+use App\Repositories\Pembelian\penerimaanKonsinyasiRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierController;
 
-class penerimaanTanpaPOController extends VierController
+class penerimaanKonsinyasiController extends VierController
 {
     public $repository;
     public $repository_pemesanan;
     
     public function __construct()
     {
-        $this->repository = new penerimaanTanpaPORepository();
+        $this->repository = new penerimaanKonsinyasiRepository();
         $this->repository_pemesanan = new pemesananRepository();
         parent::__construct($this->repository);
     }
@@ -29,13 +30,13 @@ class penerimaanTanpaPOController extends VierController
         try {
             $data = $request->all();
             $data['status_penerimaan'] = 'OPEN';
-            $data['jenis_penerimaan'] = 2;
+            $data['jenis_penerimaan'] = 3;
             $data['nomor_penerimaan'] = GeneradeNomorHelper::long('penerimaan tanpa po');
             unset($data['detail']);
-            $penerimaan = trPenerimaanTanpaPo::create($data);
+            $penerimaan = trPenerimaanKonsinyasi::create($data);
             foreach($request->detail as $detail){
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
-                $penerimaanDetail= trPenerimaanTanpaPoDetail::create($detail);
+                $penerimaanDetail= trPenerimaanKonsinyasiDetail::create($detail);
             }
             
             DB::commit();
@@ -70,10 +71,10 @@ class penerimaanTanpaPOController extends VierController
         DB::beginTransaction();
         try{
             //=== get update pemesanan
-            $penerimaan = trPenerimaanTanpaPo::find(request()->id_penerimaan);
+            $penerimaan = trPenerimaanKonsinyasi::find(request()->id_penerimaan);
             $penerimaan->status_penerimaan = 'validated';
             $penerimaan->save();
-            $penerimaan->detail = trPenerimaanTanpaPoDetail::where('id_penerimaan',request()->id_penerimaan)->get();
+            $penerimaan->detail = trPenerimaanKonsinyasiDetail::where('id_penerimaan',request()->id_penerimaan)->get();
             //=== update stok
             
             foreach($penerimaan->detail as $detail){
@@ -95,5 +96,5 @@ class penerimaanTanpaPOController extends VierController
             DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
-    }    
+    }
 }

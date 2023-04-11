@@ -17,7 +17,9 @@ use App\Http\Controllers\Master\settingHargaController;
 use App\Http\Controllers\Master\supplierController;
 use App\Http\Controllers\Pembelian\pemesananController;
 use App\Http\Controllers\Pembelian\penerimaanDenganPOController;
+use App\Http\Controllers\Pembelian\penerimaanKonsinyasiController;
 use App\Http\Controllers\Pembelian\penerimaanTanpaPOController;
+use App\Http\Controllers\Pembelian\returPembelianController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\userGroupController;
 use App\Http\Middleware\ModifRequest;
@@ -96,6 +98,20 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('get_by_param',[penerimaanTanpaPOController::class,'get_by_param']);
         Route::get('get_by_id/{id_penerimaan}',[penerimaanTanpaPOController::class,'get_by_id']);
         Route::post('validasi',[penerimaanTanpaPOController::class,'validasi']);
+    });
+    
+    Route::prefix('penerimaan_konsinyasi')->group(function(){
+        Route::post('insert',[penerimaanKonsinyasiController::class,'insert']);
+        Route::post('get_by_param',[penerimaanKonsinyasiController::class,'get_by_param']);
+        Route::get('get_by_id/{id_penerimaan}',[penerimaanKonsinyasiController::class,'get_by_id']);
+        Route::post('validasi',[penerimaanKonsinyasiController::class,'validasi']);
+    });
+    
+    Route::prefix('retur_pembelian')->group(function(){
+        Route::post('insert',[returPembelianController::class,'insert']);
+        Route::post('get_by_param',[returPembelianController::class,'get_by_param']);
+        Route::get('get_by_id/{id_retur_pembelian}',[returPembelianController::class,'get_by_id']);
+        Route::post('validasi',[returPembelianController::class,'validasi']);
     });
     
 });
