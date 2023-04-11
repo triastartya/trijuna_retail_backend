@@ -21,10 +21,8 @@ use App\Http\Controllers\Pembelian\penerimaanKonsinyasiController;
 use App\Http\Controllers\Pembelian\penerimaanTanpaPOController;
 use App\Http\Controllers\Pembelian\returPembelianController;
 use App\Http\Controllers\userController;
-use App\Http\Controllers\userGroupController;
 use App\Http\Middleware\ModifRequest;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,8 +33,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
@@ -115,3 +111,6 @@ Route::group(['middleware' => ModifRequest::class], function () {
     });
     
 });
+require __DIR__.'/pembelian/pembelian.php';
+require __DIR__.'/pembelian/penerimaan_dengan_po.php';
+require __DIR__.'/pembelian/penerimaan_tanpa_po.php';
