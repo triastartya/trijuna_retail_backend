@@ -19,6 +19,7 @@ use App\Http\Controllers\Pembelian\pemesananController;
 use App\Http\Controllers\Pembelian\penerimaanDenganPOController;
 use App\Http\Controllers\Pembelian\penerimaanKonsinyasiController;
 use App\Http\Controllers\Pembelian\penerimaanTanpaPOController;
+use App\Http\Controllers\Pembelian\returKonsinyasiController;
 use App\Http\Controllers\Pembelian\returPembelianController;
 use App\Http\Controllers\userController;
 use App\Http\Middleware\ModifRequest;
@@ -110,7 +111,10 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('validasi',[returPembelianController::class,'validasi']);
     });
     
+    Route::prefix('retur_konsinyasi')->group(function(){
+        Route::post('insert',[returKonsinyasiController::class,'insert']);
+        Route::post('get_by_param',[returKonsinyasiController::class,'get_by_param']);
+        Route::get('get_by_id/{id_retur_pembelian}',[returKonsinyasiController::class,'get_by_id']);
+        Route::post('validasi',[returKonsinyasiController::class,'validasi']);
+    });
 });
-require __DIR__.'/pembelian/pembelian.php';
-require __DIR__.'/pembelian/penerimaan_dengan_po.php';
-require __DIR__.'/pembelian/penerimaan_tanpa_po.php';
