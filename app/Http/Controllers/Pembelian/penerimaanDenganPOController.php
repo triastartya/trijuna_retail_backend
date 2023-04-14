@@ -100,6 +100,9 @@ class penerimaanDenganPOController extends VierController
         try{
             //=== get update pemesanan
             $penerimaan = trPenerimaan::where('id_penerimaan',request()->id_penerimaan)->first();
+            if($penerimaan->status_penerimaan == 'VALIDATED'){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si validasi']);
+            }
             $penerimaan->status_penerimaan  = 'VALIDATED';
             $penerimaan->sub_total1         = request()->sub_total1;
             $penerimaan->diskon_persen      = request()->diskon_persen;

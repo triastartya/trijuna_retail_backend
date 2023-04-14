@@ -67,7 +67,10 @@ class returPembelianController extends VierController
         try{
             //=== get update pemesanan
             $retur_pembelian = trReturPembelian::find(request()->id_retur_pembelian);
-            $retur_pembelian->status_retur = 'validated';
+            if($retur_pembelian->status_retur == 'VALIDATED'){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si validasi']);
+            }
+            $retur_pembelian->status_retur = 'VALIDATED';
             $retur_pembelian->save();
             $retur_pembelian->detail = trReturPembelianDetail::where('id_retur_pembelian',request()->id_retur_pembelian)->get();
             //=== update stok

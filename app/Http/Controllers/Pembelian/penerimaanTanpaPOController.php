@@ -71,7 +71,10 @@ class penerimaanTanpaPOController extends VierController
         try{
             //=== get update pemesanan
             $penerimaan = trPenerimaanTanpaPo::find(request()->id_penerimaan);
-            $penerimaan->status_penerimaan = 'validated';
+            if($penerimaan->status_penerimaan == 'VALIDATED'){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si validasi']);
+            }
+            $penerimaan->status_penerimaan = 'VALIDATED';
             $penerimaan->save();
             $penerimaan->detail = trPenerimaanTanpaPoDetail::where('id_penerimaan',request()->id_penerimaan)->get();
             //=== update stok
