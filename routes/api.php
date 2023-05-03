@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Inventory\mutasiController;
 use App\Http\Controllers\Master\barangController;
 use App\Http\Controllers\Master\barangKomponenController;
 use App\Http\Controllers\Master\barangRakController;
@@ -116,5 +117,11 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('get_by_param',[returKonsinyasiController::class,'get_by_param']);
         Route::get('get_by_id/{id_retur_pembelian}',[returKonsinyasiController::class,'get_by_id']);
         Route::post('validasi',[returKonsinyasiController::class,'validasi']);
+    });
+
+    Route::prefix('mutasi_warehouse')->group(function(){
+        Route::post('insert',[mutasiController::class,'insert']);
+        Route::get('get_by_id/{id_mutasi_warehouse}',[mutasiController::class,'get_by_id']);
+        Route::post('get_by_param',[mutasiController::class,'get_by_param']);
     });
 });
