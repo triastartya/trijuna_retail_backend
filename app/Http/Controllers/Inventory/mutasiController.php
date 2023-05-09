@@ -79,8 +79,8 @@ class mutasiController extends VierController
                     'id_warehouse'    => $mutasi->warehouse_asal,
                     'qty'             => $detail->qty,
                     'nomor_reff'      => $mutasi->id_mutasi_warehouse,
-                    'id_header_trans' => $mutasi->id_retur_pembelian,
-                    'id_detail_trans' => $detail->id_retur_pembelian_detail,
+                    'id_header_trans' => $mutasi->id_mutasi_warehouse,
+                    'id_detail_trans' => $detail->id_mutasi_warehouse_detail,
                     'jenis'           => 'Mutasi Warehouse Asal',
                     'nominal'         => $detail->sub_total
                 ]);
@@ -93,8 +93,8 @@ class mutasiController extends VierController
                     'id_warehouse'    => $mutasi->warehouse_tujuan,
                     'qty'             => $detail->qty, 
                     'nomor_reff'      => $mutasi->id_mutasi_warehouse,
-                    'id_header_trans' => $mutasi->id_retur_pembelian,
-                    'id_detail_trans' => $detail->id_retur_pembelian_detail,
+                    'id_header_trans' => $mutasi->id_mutasi_warehouse,
+                    'id_detail_trans' => $detail->id_mutasi_warehouse_detail,
                     'jenis'           => 'Mutasi Warehouse Tujuan',
                     'nominal'         => $detail->sub_total
                 ]);
