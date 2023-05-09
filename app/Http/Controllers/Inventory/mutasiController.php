@@ -78,10 +78,10 @@ class mutasiController extends VierController
                     'nama_barang'     => '',
                     'id_warehouse'    => $mutasi->warehouse_asal,
                     'qty'             => $detail->qty,
-                    'nomor_reff'      => $mutasi->nomor_retur_pembelian,
+                    'nomor_reff'      => $mutasi->id_mutasi_warehouse,
                     'id_header_trans' => $mutasi->id_retur_pembelian,
                     'id_detail_trans' => $detail->id_retur_pembelian_detail,
-                    'jenis'           => 'Retur Konsinyasi',
+                    'jenis'           => 'Mutasi Warehouse Asal',
                     'nominal'         => $detail->sub_total
                 ]);
                 if(!$inventoryPengurangan[0]){
@@ -92,10 +92,10 @@ class mutasiController extends VierController
                     'nama_barang'     => '',
                     'id_warehouse'    => $mutasi->warehouse_tujuan,
                     'qty'             => $detail->qty,
-                    'nomor_reff'      => $mutasi->nomor_retur_pembelian,
+                    'nomor_reff'      => $mutasi->id_mutasi_warehouse,
                     'id_header_trans' => $mutasi->id_retur_pembelian,
                     'id_detail_trans' => $detail->id_retur_pembelian_detail,
-                    'jenis'           => 'Retur Konsinyasi',
+                    'jenis'           => 'Mutasi Warehouse Tujuan',
                     'nominal'         => $detail->sub_total
                 ]);
                 if(!$inventoryPenambahan[0]){
