@@ -91,7 +91,7 @@ class mutasiController extends VierController
                     'id_barang'       => $detail->id_barang,
                     'nama_barang'     => '',
                     'id_warehouse'    => $mutasi->warehouse_tujuan,
-                    'qty'             => $detail->qty,
+                    'qty'             => $detail->qty, 
                     'nomor_reff'      => $mutasi->id_mutasi_warehouse,
                     'id_header_trans' => $mutasi->id_retur_pembelian,
                     'id_detail_trans' => $detail->id_retur_pembelian_detail,
