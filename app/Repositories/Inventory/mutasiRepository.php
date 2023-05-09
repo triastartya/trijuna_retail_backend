@@ -35,6 +35,26 @@ class mutasiRepository extends VierRepository
             ",[request()->id_mutasi_warehouse])[0];
     }
 
+    public function get_warehouse_detail_by_id_pemesanan(){
+        return DB::select("
+                select
+                tmw.id_mutasi_warehouse_detail,
+                tmw.id_mutasi_warehouse,
+                tmw.urut,
+                tmw.id_barang,
+                tmw.banyak,
+                tmw.kode_satuan,
+                tmw.isi,
+                tmw.qty,
+                tmw.harga_satuan,
+                tmw.sub_total
+                from tr_mutasi_warehouse_detail tmw
+                inner join ms_barang mb on tmw.id_barang = mb.id_barang
+                where tmw.id_mutasi_warehouse = ?
+                order by urut
+            ",[request()->id_mutasi_warehouse]);            
+    }
+
     public function get_warehouse_by_param(){
         return QueryHelper::queryParam(
             "select

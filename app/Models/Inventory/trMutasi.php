@@ -15,6 +15,7 @@ class trMutasi extends Model
     protected $fillable = [
         'id_mutasi_warehouse',
         'tanggal_mutasi_warehouse',
+        'nomor_mutasi',
         'warehouse_asal',
         'warehouse_tujuan',
         'qty',

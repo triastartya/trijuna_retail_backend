@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tr_mutasi_warehouse', function (Blueprint $table) {
             $table->id('id_mutasi_warehouse');
             $table->date('tanggal_mutasi_warehouse');
+            $table->integer('nomor_mutasi');
             $table->integer('warehouse_asal')->constrained('ms_warehouse');
             $table->integer('warehouse_tujuan')->constrained('ms_warehouse');
             $table->double('qty');

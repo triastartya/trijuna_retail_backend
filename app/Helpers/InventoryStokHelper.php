@@ -5,6 +5,7 @@ namespace App\Helpers;
 use App\Models\Master\msBarang;
 use App\Models\Master\msBarangKartuStok;
 use App\Models\Master\msBarangStok;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class InventoryStokHelper
@@ -101,7 +102,9 @@ class InventoryStokHelper
                             ->orderBy('id_kartu_stok','desc')
                             ->lockForUpdate()
                             ->first();
-                            
+        if($kartu_stok == null){
+            return [false, "stok tidak tersedia"];
+        }                    
         msBarangKartuStok::create([
             'tanggal' => Date('Y-m-d'),
             'id_barang' => $data->id_barang,

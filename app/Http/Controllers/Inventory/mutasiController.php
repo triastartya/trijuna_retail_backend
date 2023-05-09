@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Inventory;
 
 use App\Http\Controllers\Controller;
+use App\Helpers\GeneradeNomorHelper;
 use App\Repositories\Inventory\mutasiRepository;
 use App\Helpers\InventoryStokHelper;
 use Illuminate\Http\Request;
@@ -27,10 +28,12 @@ class mutasiController extends VierController
             $data = $request->all();
             $data['is_deleted'] = 0;
             $data['status_mutasi_warehouse'] = 'OPEN';
+            $data['nomor_mutasi'] = GeneradeNomorHelper::long('mutasi warehouse');
             unset($data['detail']);
             $mutasi = trMutasi::create($data);
             foreach($request->detail as $detail){
                 $detail['id_mutasi_warehouse'] = $mutasi->id_mutasi_warehouse;
+
                 trMutasiDetail::create($detail);
             }
             DB::commit();
@@ -45,6 +48,7 @@ class mutasiController extends VierController
     public function get_by_id(){
         try{
             $data = $this->repository->get_warehouse_by_id_warehouse();
+            $data->detail_warehouse = $this->repository->get_warehouse_detail_by_id_pemesanan();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
@@ -85,7 +89,7 @@ class mutasiController extends VierController
                     'nominal'         => $detail->sub_total
                 ]);
                 if(!$inventoryPengurangan[0]){
-                    throw($inventoryPengurangan[1]);
+                    throw new \Exception($inventoryPengurangan[1]);
                 }
                 $inventoryPenambahan = InventoryStokHelper::penambahan((object)[
                     'id_barang'       => $detail->id_barang,
