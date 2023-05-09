@@ -123,5 +123,6 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('insert',[mutasiController::class,'insert']);
         Route::get('get_by_id/{id_mutasi_warehouse}',[mutasiController::class,'get_by_id']);
         Route::post('get_by_param',[mutasiController::class,'get_by_param']);
+        Route::post('validasi',[mutasiController::class,'validasi']);
     });
 });

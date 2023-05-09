@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Inventory;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Inventory\mutasiRepository;
+use App\Helpers\InventoryStokHelper;
 use Illuminate\Http\Request;
 use Viershaka\Vier\VierController;
 use App\Models\Inventory\trMutasi;
@@ -55,6 +56,56 @@ class mutasiController extends VierController
             $data = $this->repository->get_warehouse_by_param();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function validasi(){
+        DB::beginTransaction();
+        try{
+            //=== get update pemesanan
+            $mutasi = trMutasi::find(request()->id_mutasi_warehouse);
+            if($mutasi->status_mutasi_warehouse == 'VALIDATED'){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si validasi']);
+            }
+            $mutasi->status_mutasi_warehouse = 'VALIDATED';
+            $mutasi->save();
+            $mutasi->detail = trMutasiDetail::where('id_mutasi_warehouse',request()->id_mutasi_warehouse)->get();
+            //=== update stok
+            foreach($mutasi->detail as $detail){
+                $inventoryPengurangan = InventoryStokHelper::pengurangan((object)[
+                    'id_barang'       => $detail->id_barang,
+                    'nama_barang'     => '',
+                    'id_warehouse'    => $mutasi->warehouse_asal,
+                    'qty'             => $detail->qty,
+                    'nomor_reff'      => $mutasi->nomor_retur_pembelian,
+                    'id_header_trans' => $mutasi->id_retur_pembelian,
+                    'id_detail_trans' => $detail->id_retur_pembelian_detail,
+                    'jenis'           => 'Retur Konsinyasi',
+                    'nominal'         => $detail->sub_total
+                ]);
+                if(!$inventoryPengurangan[0]){
+                    throw($inventoryPengurangan[1]);
+                }
+                $inventoryPenambahan = InventoryStokHelper::penambahan((object)[
+                    'id_barang'       => $detail->id_barang,
+                    'nama_barang'     => '',
+                    'id_warehouse'    => $mutasi->warehouse_tujuan,
+                    'qty'             => $detail->qty,
+                    'nomor_reff'      => $mutasi->nomor_retur_pembelian,
+                    'id_header_trans' => $mutasi->id_retur_pembelian,
+                    'id_detail_trans' => $detail->id_retur_pembelian_detail,
+                    'jenis'           => 'Retur Konsinyasi',
+                    'nominal'         => $detail->sub_total
+                ]);
+                if(!$inventoryPenambahan[0]){
+                    throw($inventoryPenambahan[1]);
+                }
+            }
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$mutasi]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
