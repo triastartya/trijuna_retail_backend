@@ -30,7 +30,7 @@ class pemesananController extends VierController
         try {
             $data = $request->all();
             $data['status_pemesanan'] = 'OPEN';
-            $data['nomor_pemesanan'] = GeneradeNomorHelper::long('mutasi warehouse');
+            $data['nomor_pemesanan'] = GeneradeNomorHelper::long('pemesanan');
             unset($data['detail']);
             $pemesanan = trPemesanan::create($data);
             foreach($request->detail as $detail){
