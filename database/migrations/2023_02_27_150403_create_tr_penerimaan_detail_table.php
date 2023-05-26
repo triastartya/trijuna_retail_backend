@@ -31,9 +31,9 @@ return new class extends Migration
             $table->double('diskon_persen_3',12,2);
             $table->double('diskon_nominal_3',12,2);
             $table->double('sub_total',12,2);
-            $table->double('biaya_barcode',12,2);
-            $table->double('qty_bonus',12,2);
-            $table->string('nama_bonus',50);
+            $table->double('biaya_barcode',12,2)->default(0);
+            $table->double('qty_bonus',12,2)->default(0);
+            $table->string('nama_bonus',50)->nullable();
             $table->timestamps();
         });
     }
