@@ -98,5 +98,5 @@ class penerimaanTanpaPOController extends VierController
             DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
-    }    
+    }
 }
