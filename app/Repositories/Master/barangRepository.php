@@ -125,4 +125,60 @@ class barangRepository extends VierRepository
         
         return $data;
     }
+    
+    public function by_id_wharehouse($id_warehouse){
+        $data = QueryHelper::queryParam("
+            select mb.id_barang,
+            mb.id_divisi,
+            md.divisi,
+            mb.id_group,
+            mg.group,
+            mb.kode_barang,
+            mb.barcode,
+            mb.image,
+            mb.persediaan,
+            mb.nama_barang,
+            mb.id_merk,
+            mb.ukuran,
+            mb.warna,
+            mb.berat,
+            mb.id_supplier,
+            ms.kode_supplier,
+            ms.nama_supplier,
+            mb.harga_order,
+            mb.harga_beli_terakhir,
+            mb.hpp_average,
+            mb.is_ppn,
+            mb.nama_label,
+            mb.id_satuan,
+            m.kode_satuan,
+            m.nama_satuan,
+            mb.margin,
+            mb.tahun_produksi,
+            mb.stok_min,
+            mb.is_active,
+            uc.nama as created_by,
+            mb.created_at,
+            uu.nama as updated_by,
+            mb.updated_at,
+            mbs.qty,
+            mbs.id_warehouse
+            from ms_barang mb
+            inner join ms_divisi md on mb.id_divisi = md.id_divisi
+            inner join ms_group mg on mb.id_group = mg.id_group
+            inner join ms_merk mm on mb.id_merk = mm.id_merk
+            inner join ms_supplier ms on mb.id_supplier = ms.id_supplier
+            inner join ms_satuan m on mb.id_satuan = m.id_satuan
+            inner join users uc on uc.id_user = mb.created_by
+            inner join users uu on uu.id_user = mb.updated_by
+            inner join ms_barang_stok mbs on mb.id_barang = mbs.id_barang
+            where mb.is_active = true and id_warehouse = ".$id_warehouse."
+        ",request(),'limit 200');
+        
+        foreach($data as $index => $row){
+            $data[$index]->satuan = $this->repository_barang_satuan->to_barang_by_param($row->id_barang);
+        }
+        
+        return $data;
+    }
 }

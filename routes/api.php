@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Inventory\mutasiController;
+use App\Http\Controllers\Inventory\mutasiLokasiController;
+use App\Http\Controllers\Inventory\produksiController;
 use App\Http\Controllers\Master\barangController;
 use App\Http\Controllers\Master\barangKomponenController;
 use App\Http\Controllers\Master\barangRakController;
@@ -41,6 +43,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
 
+});
+
+Route::get('health',function(){
+    return response()->json(['success'=>true,'data'=>'health']);
 });
 
 Route::post('register',[userController::class,'register']);
@@ -120,9 +126,28 @@ Route::group(['middleware' => ModifRequest::class], function () {
     });
 
     Route::prefix('mutasi_warehouse')->group(function(){
+        Route::post('lookup_barang/{id_warehouse}',[mutasiController::class,'lookup_barang']);
         Route::post('insert',[mutasiController::class,'insert']);
         Route::get('get_by_id/{id_mutasi_warehouse}',[mutasiController::class,'get_by_id']);
         Route::post('get_by_param',[mutasiController::class,'get_by_param']);
         Route::post('validasi',[mutasiController::class,'validasi']);
+    });
+    
+    Route::prefix('mutasi_lokasi')->group(function(){
+        Route::post('lookup_barang/{id_warehouse}',[mutasiLokasiController::class,'lookup_barang']);
+        Route::get('lookup_lokasi',[mutasiLokasiController::class,'lookup_lokasi']);
+        Route::post('insert',[mutasiLokasiController::class,'insert']);
+        Route::get('get_by_id/{id_mutasi_lokasi}',[mutasiLokasiController::class,'get_by_id']);
+        Route::post('get_by_param',[mutasiLokasiController::class,'get_by_param']);
+        
+        // Route::post('validasi',[mutasiLokasiController::class,'validasi']);
+    });
+    
+    Route::prefix('produksi')->group(function(){
+        Route::get('lookup_barang/{id_barang}',[produksiController::class,'lookup_barang']);
+        Route::post('insert',[produksiController::class,'insert']);
+        Route::get('get_by_id/{id_produksi}',[produksiController::class,'get_by_id']);
+        Route::post('get_by_param',[produksiController::class,'get_by_param']);
+        Route::post('validasi',[produksiController::class,'validasi']);
     });
 });

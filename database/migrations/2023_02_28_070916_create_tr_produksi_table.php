@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('tr_produksi', function (Blueprint $table) {
             $table->id('id_produksi');
+            $table->string('nomor_produksi');
             $table->date('tanggal_produksi');
             $table->integer('id_warehouse')->constrained('ms_warehouse');
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->integer('id_barang')->constrained('ms_barang');
             $table->double('qty_produksi',12,2);
             $table->double('hpp_avarage_produksi',12,2);

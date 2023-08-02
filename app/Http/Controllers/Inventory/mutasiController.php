@@ -10,15 +10,18 @@ use Illuminate\Http\Request;
 use Viershaka\Vier\VierController;
 use App\Models\Inventory\trMutasi;
 use App\Models\Inventory\trMutasiDetail;
+use App\Repositories\Master\barangRepository;
 use Illuminate\Support\Facades\DB;
 
 class mutasiController extends VierController
 {
     public $repository;
+    public $barangRepository;
     
     public function __construct()
     {
         $this->repository = new mutasiRepository();
+        $this->barangRepository = new barangRepository();
         parent::__construct($this->repository);
     }
 
@@ -110,6 +113,15 @@ class mutasiController extends VierController
             return response()->json(['success'=>true,'data'=>$mutasi]);
         } catch (\Exception $ex) {
             DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+    
+    public function lookup_barang(){
+        try{
+            $data = $this->barangRepository->by_id_wharehouse(request()->id_warehouse);
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
