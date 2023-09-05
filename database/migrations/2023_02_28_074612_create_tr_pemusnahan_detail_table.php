@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('tr_pemusnahan_detail', function (Blueprint $table) {
             $table->id('id_pemusnahan_detail');
+            $table->integer('id_pemusnahan')->constrained('tr_pemusnahan');
+            $table->integer('urut');
             $table->integer('id_barang')->constrained('ms_barang');
             $table->double('banyak',12,2);
             $table->string('kode_satuan',50);

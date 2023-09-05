@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('tr_repacking', function (Blueprint $table) {
             $table->id('id_repacking');
+            $table->string('nomor_repacking');
             $table->date('tanggal_repacking');
             $table->integer('id_warehouse')->constrained('ms_warehouse');
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->integer('id_barang')->constrained('ms_barang');
-            $table->double('qty_barang',12,2);
-            $table->double('hpp_avarage',12,2);
-            $table->double('total_hpp_avarage',12,2);
+            $table->double('qty_repacking',12,2);
+            $table->double('hpp_avarage_repacking',12,2);
             $table->double('total_hpp_avarage_repacking',12,2);
+            $table->double('total_hpp_avarage_urai',12,2);
             $table->string('status_repacking');
             $table->boolean('is_deleted');
             $table->integer('deleted_by')->nullable();

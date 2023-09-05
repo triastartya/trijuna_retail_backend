@@ -103,7 +103,7 @@ class InventoryStokHelper
                             ->lockForUpdate()
                             ->first();
         if($kartu_stok == null){
-            return [false, "stok tidak tersedia"];
+            return [false, $data->id_barang." stok tidak tersedia"];
         }                    
         msBarangKartuStok::create([
             'tanggal' => Date('Y-m-d'),

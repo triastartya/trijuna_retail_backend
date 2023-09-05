@@ -4,23 +4,23 @@ namespace App\Http\Controllers\Inventory;
 
 use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\InventoryStokHelper;
-use App\Models\Inventory\trProduksi;
-use App\Models\Inventory\trProduksiDetail;
-use App\Repositories\Inventory\produksiRepository;
-use App\Repositories\Master\barangKomponenRepository;
+use App\Models\Inventory\trRepacking;
+use App\Models\Inventory\trRepackingDetail;
+use App\Repositories\Inventory\repackingRepository;
+use App\Repositories\Master\barangUraiRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierController;
 
-class produksiController extends VierController
+class repackingController extends VierController
 {
     public $repository;
-    public $barangKomponenRepository;
+    public $barangUraiRepository;
     
     public function __construct()
     {
-        $this->repository = new produksiRepository();
-        $this->barangKomponenRepository = new barangKomponenRepository();
+        $this->repository = new repackingRepository();
+        $this->barangUraiRepository = new barangUraiRepository();
         parent::__construct($this->repository);
     }
     
@@ -30,16 +30,16 @@ class produksiController extends VierController
         try {
             $data = $request->all();
             $data['is_deleted'] = 0;
-            $data['status_produksi'] = 'OPEN';
-            $data['nomor_produksi'] = GeneradeNomorHelper::long('produksi');
+            $data['status_repacking'] = 'OPEN';
+            $data['nomor_repacking'] = GeneradeNomorHelper::long('repacking');
             unset($data['detail']);
-            $mutasi = trProduksi::create($data);
+            $mutasi = trRepacking::create($data);
             foreach($request->detail as $detail){
-                $detail['id_produksi'] = $mutasi->id_produksi;
-                trProduksiDetail::create($detail);
+                $detail['id_repacking'] = $mutasi->id_repacking;
+                trRepackingDetail::create($detail);
             }
             DB::commit();
-            return response()->json(['success'=>true,'data'=>$mutasi->id_produksi]);
+            return response()->json(['success'=>true,'data'=>$mutasi->id_repacking]);
         }
         catch(\Exception $err) {
             DB::rollBack();
@@ -49,7 +49,7 @@ class produksiController extends VierController
     
     public function lookup_barang(){
         try{
-            $data = $this->barangKomponenRepository->by_id_barang();
+            $data = $this->barangUraiRepository->by_id_barang();
             return response()->json(['status'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
@@ -79,47 +79,47 @@ class produksiController extends VierController
         DB::beginTransaction();
         try{
             //=== get update pemesanan
-            $produksi = trProduksi::find(request()->id_produksi);
-            if($produksi->status_produksi == 'VALIDATED'){
+            $repacking = trRepacking::find(request()->id_repacking);
+            if($repacking->status_repacking == 'VALIDATED'){
                 return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si validasi']);
             }
-            $produksi->status_produksi = 'VALIDATED';
-            $produksi->save();
-            $produksi->detail = trProduksiDetail::where('id_produksi',request()->id_produksi)->get();
+            $repacking->status_repacking = 'VALIDATED';
+            $repacking->save();
+            $repacking->detail = trRepackingDetail::where('id_repacking',request()->id_repacking)->get();
             //=== update stok header
-            $inventoryPenambahan = InventoryStokHelper::penambahan((object)[
-                'id_barang'       => $produksi->id_barang,
+            $inventoryPengurangan = InventoryStokHelper::pengurangan((object)[
+                'id_barang'       => $repacking->id_barang,
                 'nama_barang'     => '',
-                'id_warehouse'    => $produksi->id_warehouse,
-                'qty'             => $produksi->qty_produksi, 
-                'nomor_reff'      => $produksi->nomor_produksi,
-                'id_header_trans' => $produksi->id_produksi,
-                'id_detail_trans' => $produksi->id_produksi,
-                'jenis'           => 'Produksi Hasil',
-                'nominal'         => $produksi->total_hpp_avarage_produksi
+                'id_warehouse'    => $repacking->id_warehouse,
+                'qty'             => $repacking->qty_repacking, 
+                'nomor_reff'      => $repacking->nomor_repacking,
+                'id_header_trans' => $repacking->id_repacking,
+                'id_detail_trans' => $repacking->id_repacking,
+                'jenis'           => 'repacking Hasil',
+                'nominal'         => $repacking->total_hpp_avarage_repacking
             ]);
-            if(!$inventoryPenambahan[0]){
-                throw new \Exception($inventoryPenambahan[1]);
+            if(!$inventoryPengurangan[0]){
+                throw new \Exception($inventoryPengurangan[1]);
             }
             //=== update stok
-            foreach($produksi->detail as $detail){
-                $inventoryPengurangan = InventoryStokHelper::pengurangan((object)[
+            foreach($repacking->detail as $detail){
+                $inventoryPenambahan = InventoryStokHelper::penambahan((object)[
                     'id_barang'       => $detail->id_barang,
                     'nama_barang'     => '',
-                    'id_warehouse'    => $produksi->id_warehouse,
+                    'id_warehouse'    => $repacking->id_warehouse,
                     'qty'             => $detail->qty,
-                    'nomor_reff'      => $produksi->nomor_produksi,
-                    'id_header_trans' => $produksi->id_produksi,
-                    'id_detail_trans' => $detail->id_produksi_detail,
-                    'jenis'           => 'Produksi Bahan',
+                    'nomor_reff'      => $repacking->nomor_repacking,
+                    'id_header_trans' => $repacking->id_repacking,
+                    'id_detail_trans' => $detail->id_repacking_detail,
+                    'jenis'           => 'repacking Bahan',
                     'nominal'         => $detail->sub_total
                 ]);
-                if(!$inventoryPengurangan[0]){
-                    throw new \Exception($inventoryPengurangan[1]);
+                if(!$inventoryPenambahan[0]){
+                    throw new \Exception($inventoryPenambahan[1]);
                 }
             }
             DB::commit();
-            return response()->json(['success'=>true,'data'=>$produksi]);
+            return response()->json(['success'=>true,'data'=>$repacking]);
         } catch (\Exception $ex) {
             DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);

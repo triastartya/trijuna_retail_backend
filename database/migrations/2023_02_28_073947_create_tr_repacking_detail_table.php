@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tr_repacking_detail', function (Blueprint $table) {
             $table->id('id_repacking_detail');
             $table->integer('id_repacking')->constrained('ms_repacking');
+            $table->integer('urut');
             $table->integer('id_barang')->constrained('ms_barang');
             $table->double('qty',12,2);
             $table->string('kode_satuan');

@@ -20,21 +20,25 @@ return new class extends Migration
             $table->date('tanggal_penjualan');
             $table->string('nota_penjualan',50);
             $table->integer('id_member');
-            $table->double('diskon_dalam',12,2);
+            $table->double('total_diskon_dalam',12,2);
             $table->double('total_transaksi',12,2);
             $table->double('diskon_luar_persen',12,2);
             $table->double('diskon_luar_nominal',12,2);
             $table->double('ongkos_kirim',12,2);
+            $table->double('pembulatan',12,2);
             $table->double('total_transaksi2',12,2);
             $table->double('total_bayar',12,2);
-            $table->double('kembalian',12,2);
+            $table->double('kembali',12,2);
+            $table->double('biaya_bank');
+            $table->boolean('is_using_voucher');
+            $table->string('id_pos_kasir');
+            $table->integer('id_tutup_kasir')->nullable();
             $table->boolean('is_deleted');
             $table->integer('deleted_by')->nullable();
             $table->date('deleted_at')->nullable();
             $table->text('deleted_reason')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');
-            $table->integer('id_tutup_kasir')->nullable();
             $table->timestamps();
         });
     }

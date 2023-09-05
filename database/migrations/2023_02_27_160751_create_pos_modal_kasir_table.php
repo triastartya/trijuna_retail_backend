@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('id_user_kasir')->constrained('users');
             $table->date('tanggal_modal_kasir');
             $table->double('modal_kasir',12,2);
-            $table->boolean('is_deleted');
+            $table->boolean('is_deleted')->default(false);
             $table->integer('deleted_by')->nullable();
             $table->date('deleted_at')->nullable();
             $table->text('deleted_reason')->nullable();

@@ -20,11 +20,9 @@ return new class extends Migration
             $table->integer('id_barang')->constrained('ms_barang');
             $table->double('qty_jual',12,2);
             $table->string('kode_satuan');
-            $table->double('harga_satuan',12,2);
+            $table->double('harga_jual',12,2);
             $table->double('diskon1',12,2);
             $table->double('diskon2',12,2);
-            $table->double('total_diskon',12,2);
-            $table->double('harga_jual',12,2);
             $table->double('sub_total',12,2);
             $table->string('display_diskon1',10);
             $table->string('display_diskon2',10);

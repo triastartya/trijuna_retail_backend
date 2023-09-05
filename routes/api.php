@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Inventory\mutasiController;
 use App\Http\Controllers\Inventory\mutasiLokasiController;
+use App\Http\Controllers\Inventory\pemusnahanController;
 use App\Http\Controllers\Inventory\produksiController;
+use App\Http\Controllers\Inventory\repackingController;
 use App\Http\Controllers\Master\barangController;
 use App\Http\Controllers\Master\barangKomponenController;
 use App\Http\Controllers\Master\barangRakController;
@@ -24,6 +26,9 @@ use App\Http\Controllers\Pembelian\penerimaanKonsinyasiController;
 use App\Http\Controllers\Pembelian\penerimaanTanpaPOController;
 use App\Http\Controllers\Pembelian\returKonsinyasiController;
 use App\Http\Controllers\Pembelian\returPembelianController;
+use App\Http\Controllers\Penjualan\bankController;
+use App\Http\Controllers\Penjualan\edcController;
+use App\Http\Controllers\Penjualan\modalKasirController;
 use App\Http\Controllers\userController;
 use App\Http\Middleware\ModifRequest;
 use Illuminate\Support\Facades\Route;
@@ -150,4 +155,24 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('get_by_param',[produksiController::class,'get_by_param']);
         Route::post('validasi',[produksiController::class,'validasi']);
     });
+    
+    Route::prefix('repacking')->group(function(){
+        Route::get('lookup_barang/{id_barang}',[repackingController::class,'lookup_barang']);
+        Route::post('insert',[repackingController::class,'insert']);
+        Route::get('get_by_id/{id_repacking}',[repackingController::class,'get_by_id']);
+        Route::post('get_by_param',[repackingController::class,'get_by_param']);
+        Route::post('validasi',[repackingController::class,'validasi']);
+    });
+    
+    Route::prefix('pemusnahan')->group(function(){
+        Route::get('lookup_barang/{id_barang}',[pemusnahanController::class,'lookup_barang']);
+        Route::post('insert',[pemusnahanController::class,'insert']);
+        Route::get('get_by_id/{id_pemusnahan}',[pemusnahanController::class,'get_by_id']);
+        Route::post('get_by_param',[pemusnahanController::class,'get_by_param']);
+        Route::post('validasi',[pemusnahanController::class,'validasi']);
+    });
+    
+    Route::pointResource('bank',bankController::class);
+    Route::pointResource('edc',edcController::class);
+    Route::pointResource('modal_kasir',modalKasirController::class);
 });

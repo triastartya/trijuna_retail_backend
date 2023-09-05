@@ -106,7 +106,7 @@ class mutasiController extends VierController
                     'nominal'         => $detail->sub_total
                 ]);
                 if(!$inventoryPenambahan[0]){
-                    throw($inventoryPenambahan[1]);
+                    throw new \Exception($inventoryPenambahan[1]);
                 }
             }
             DB::commit();
