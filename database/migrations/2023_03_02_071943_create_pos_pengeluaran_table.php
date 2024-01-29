@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('pos_pengeluaran', function (Blueprint $table) {
             $table->id('id_pengeluaran');
             $table->string('nama_pengeluaran',100);
-            $table->string('keterangan',200);
+            $table->string('keterangan',200)->nullable();
+            $table->double('nominal',12,2);
+            $table->integer('id_tutup_kasir')->nullable();
             $table->timestamps();
         });
     }

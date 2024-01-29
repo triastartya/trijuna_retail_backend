@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pos_tutup_kasir_detail');
+        Schema::dropIfExists('pos_tutup_kasir_detail_pendapatan');
     }
 };

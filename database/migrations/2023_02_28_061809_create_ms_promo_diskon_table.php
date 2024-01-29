@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('kuota');
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
+            $table->string('gambar');
             $table->boolean('is_active');
             $table->integer('created_by');
             $table->integer('updated_by');

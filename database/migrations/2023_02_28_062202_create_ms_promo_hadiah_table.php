@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('hadiah');
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
+            $table->string('gambar');
             $table->boolean('is_active');
             $table->integer('created_by');
             $table->integer('updated_by');

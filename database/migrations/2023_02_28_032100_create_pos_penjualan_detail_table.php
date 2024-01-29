@@ -21,11 +21,11 @@ return new class extends Migration
             $table->double('qty_jual',12,2);
             $table->string('kode_satuan');
             $table->double('harga_jual',12,2);
-            $table->double('diskon1',12,2);
-            $table->double('diskon2',12,2);
+            $table->double('diskon1',12,2)->default(0);
+            $table->double('diskon2',12,2)->default(0);
             $table->double('sub_total',12,2);
-            $table->string('display_diskon1',10);
-            $table->string('display_diskon2',10);
+            $table->string('display_diskon1',10)->default('0');
+            $table->string('display_diskon2',10)->default('0');
             $table->timestamps();
         });
     }

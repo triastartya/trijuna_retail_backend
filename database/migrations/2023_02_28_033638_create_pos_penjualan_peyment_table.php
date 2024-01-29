@@ -19,16 +19,16 @@ return new class extends Migration
             $table->integer('urut');
             $table->string('jenis_pembayar');
             $table->double('jumlah_bayar');
-            $table->text('keterangan');
-            $table->integer('id_voucher');
+            $table->text('keterangan')->nullable();
+            $table->integer('id_voucher')->nullable();
             $table->integer('id_payment_method');
-            $table->integer('id_bank');
-            $table->integer('id_edc');
-            $table->string('trace_number',50);
-            $table->string('jenis_kartu',50);
-            $table->string('card_holder',50);
-            $table->date('tanggal_jatuh_tempo_piutang');
-            $table->text('keterangan_piutang');
+            $table->integer('id_bank')->nullable();
+            $table->integer('id_edc')->nullable();
+            $table->string('trace_number',50)->nullable();
+            $table->string('jenis_kartu',50)->nullable();
+            $table->string('card_holder',50)->nullable();
+            $table->date('tanggal_jatuh_tempo_piutang')->nullable();
+            $table->text('keterangan_piutang')->nullable();
             $table->timestamps();
         });
     }

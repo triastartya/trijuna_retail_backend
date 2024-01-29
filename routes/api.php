@@ -29,6 +29,9 @@ use App\Http\Controllers\Pembelian\returPembelianController;
 use App\Http\Controllers\Penjualan\bankController;
 use App\Http\Controllers\Penjualan\edcController;
 use App\Http\Controllers\Penjualan\modalKasirController;
+use App\Http\Controllers\Penjualan\msPromoDiskonController;
+use App\Http\Controllers\Penjualan\msPromoHadianController;
+use App\Http\Controllers\Penjualan\penjualanController;
 use App\Http\Controllers\userController;
 use App\Http\Middleware\ModifRequest;
 use Illuminate\Support\Facades\Route;
@@ -144,7 +147,6 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('insert',[mutasiLokasiController::class,'insert']);
         Route::get('get_by_id/{id_mutasi_lokasi}',[mutasiLokasiController::class,'get_by_id']);
         Route::post('get_by_param',[mutasiLokasiController::class,'get_by_param']);
-        
         // Route::post('validasi',[mutasiLokasiController::class,'validasi']);
     });
     
@@ -175,4 +177,13 @@ Route::group(['middleware' => ModifRequest::class], function () {
     Route::pointResource('bank',bankController::class);
     Route::pointResource('edc',edcController::class);
     Route::pointResource('modal_kasir',modalKasirController::class);
+    Route::pointResource('ms_promo_diskon',msPromoDiskonController::class);
+    Route::pointResource('ms_promo_hadiah',msPromoHadianController::class);
+
+    Route::prefix('penjualan')->group(function(){
+        Route::post('insert',[penjualanController::class,'insert']);
+        Route::post('get_by_param',[penjualanController::class,'get_by_param']);
+        Route::get('get_by_id/{id_penjualan}',[penjualanController::class,'get_by_id']);
+    });
+    
 });
