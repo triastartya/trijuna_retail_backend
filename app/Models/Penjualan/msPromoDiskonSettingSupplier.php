@@ -10,9 +10,9 @@ use App\Traits\CreatedUpdatedBy;
 
 class msPromoDiskonSettingSupplier extends Model
 {
-    use HasFactory,VierModel,CreatedUpdatedBy;
+    use HasFactory,VierModel;
     protected $table = 'ms_promo_diskon_setting_supplier';
-    protected $fillable = ['id_promo_diskon_setting_supplier','id_promo_diskon','id_merk'];
+    protected $fillable = ['id_promo_diskon_setting_supplier','id_promo_diskon','id_supplier'];
     protected $primaryKey = 'id_promo_diskon_setting_supplier';
     protected $modelFields = [
         ['name'=>'id_promo_diskon_setting_supplier', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],

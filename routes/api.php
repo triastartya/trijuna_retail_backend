@@ -30,9 +30,16 @@ use App\Http\Controllers\Penjualan\bankController;
 use App\Http\Controllers\Penjualan\edcController;
 use App\Http\Controllers\Penjualan\modalKasirController;
 use App\Http\Controllers\Penjualan\msPromoDiskonController;
+use App\Http\Controllers\Penjualan\msPromoDiskonSettingBarangController;
+use App\Http\Controllers\Penjualan\msPromoDiskonSettingMerkController;
+use App\Http\Controllers\Penjualan\msPromoDiskonSettingSupplierController;
+use App\Http\Controllers\Penjualan\msPromoHadiahSettingBarangController;
+use App\Http\Controllers\Penjualan\msPromoHadiahSettingMerkController;
+use App\Http\Controllers\Penjualan\msPromoHadiahSettingSupplierController;
 use App\Http\Controllers\Penjualan\msPromoHadianController;
 use App\Http\Controllers\Penjualan\penjualanController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\userGroupController;
 use App\Http\Middleware\ModifRequest;
 use Illuminate\Support\Facades\Route;
 /*
@@ -177,9 +184,27 @@ Route::group(['middleware' => ModifRequest::class], function () {
     Route::pointResource('bank',bankController::class);
     Route::pointResource('edc',edcController::class);
     Route::pointResource('modal_kasir',modalKasirController::class);
+    
     Route::pointResource('ms_promo_diskon',msPromoDiskonController::class);
-    Route::pointResource('ms_promo_hadiah',msPromoHadianController::class);
+    Route::get('ms_promo_diskon_detail/{id_promo_diskon}',[msPromoDiskonController::class,'get_detail']);
 
+    Route::pointResource('ms_promo_diskon_setting_barang',msPromoDiskonSettingBarangController::class);
+    Route::get('ms_promo_diskon_setting_barang_by_id_promo_diskon/{id_promo_diskon}',[msPromoDiskonSettingBarangController::class,'by_id_promo_diskon']);
+    Route::pointResource('ms_promo_diskon_setting_merk',msPromoDiskonSettingMerkController::class);
+    Route::get('ms_promo_diskon_setting_merk_by_id_promo_diskon/{id_promo_diskon}',[msPromoDiskonSettingMerkController::class,'by_id_promo_diskon']);
+    Route::pointResource('ms_promo_diskon_setting_supplier',msPromoDiskonSettingSupplierController::class);
+    Route::get('ms_promo_diskon_setting_supplier_by_id_promo_diskon/{id_promo_diskon}',[msPromoDiskonSettingSupplierController::class,'by_id_promo_diskon']);
+    
+    Route::pointResource('ms_promo_hadiah',msPromoHadianController::class);
+    Route::get('ms_promo_hadiah_detail/{id_promo_hadiah}',[msPromoHadianController::class,'get_detail']);
+    
+    Route::pointResource('ms_promo_hadiah_setting_barang',msPromoHadiahSettingBarangController::class);
+    Route::get('ms_promo_hadiah_setting_barang_by_id_promo_hadiah/{id_promo_hadiah}',[msPromoHadiahSettingBarangController::class,'by_id_promo_hadiah']);
+    Route::pointResource('ms_promo_hadiah_setting_merk',msPromoHadiahSettingMerkController::class);
+    Route::get('ms_promo_diskon_setting_merk_by_id_promo_hadiah/{id_promo_hadiah}',[msPromoHadiahSettingMerkController::class,'by_id_promo_hadiah']);
+    Route::pointResource('ms_promo_hadiah_setting_supplier',msPromoHadiahSettingSupplierController::class);
+    Route::get('ms_promo_diskon_setting_supplier_by_id_promo_hadiah/{id_promo_hadiah}',[msPromoHadiahSettingSupplierController::class,'by_id_promo_hadiah']);
+    
     Route::prefix('penjualan')->group(function(){
         Route::post('insert',[penjualanController::class,'insert']);
         Route::post('get_by_param',[penjualanController::class,'get_by_param']);

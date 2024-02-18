@@ -11,4 +11,5 @@ class msPromoDiskonRepository extends VierRepository
     {
         parent::__construct(new msPromoDiskon());
     }
+    
 }

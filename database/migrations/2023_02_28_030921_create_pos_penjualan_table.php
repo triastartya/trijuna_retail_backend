@@ -27,7 +27,7 @@ return new class extends Migration
             $table->double('ongkos_kirim',12,2)->default(0);
             $table->double('pembulatan',12,2)->default(0);
             $table->double('total_transaksi2',12,2);
-            $table->double('total_bayar',12,2);
+            $table->double('total_bayar',12,2)->default(0);
             $table->double('kembali',12,2)->default(0);
             $table->double('biaya_bank')->default(0);
             $table->boolean('is_using_voucher')->default(false);
@@ -39,6 +39,7 @@ return new class extends Migration
             $table->text('deleted_reason')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');
+            $table->integer('id_bayar_piutang')->nullable();
             $table->timestamps();
         });
     }

@@ -34,12 +34,16 @@ return new class extends Migration
             $table->double('pembulatan',12,2);
             $table->double('total_transaksi',12,2);
             $table->double('total_biaya_barcode',12,2);
+            $table->boolean('is_lunas')->default(false);
+            $table->integer('id_billing')->nullable();
             $table->boolean('is_deleted')->default(false);
             $table->integer('deleted_by')->nullable();
             $table->date('deleted_at')->nullable();
             $table->text('deleted_reason')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');
+            $table->datetime('validasi_at')->nullable();
+            $table->integer('validasi_by')->nullable();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('ms_promo_hadiah', function (Blueprint $table) {
             $table->id('id_promo_hadiah');
             $table->string('kode_promo_hadiah');
-            $table->string('nama_promo_hadian');
+            $table->string('nama_promo_hadiah');
             $table->double('nilai_promo_hadiah');
             $table->boolean('is_kelipatan');
             $table->string('keterangan',200);

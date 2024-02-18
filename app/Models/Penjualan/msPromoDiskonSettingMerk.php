@@ -10,7 +10,7 @@ use App\Traits\CreatedUpdatedBy;
 
 class msPromoDiskonSettingMerk extends Model
 {
-    use HasFactory,VierModel,CreatedUpdatedBy;
+    use HasFactory,VierModel;
     protected $table = 'ms_promo_diskon_setting_merk';
     protected $fillable = ['id_promo_diskon_setting_merk','id_promo_diskon','id_merk'];
     protected $primaryKey = 'id_promo_diskon_setting_merk';
@@ -24,7 +24,7 @@ class msPromoDiskonSettingMerk extends Model
     public function rules()
     {
         return [
-            'id_promo_diskon_setting_merk'=>'required',
+            'id_promo_diskon_setting_merk'=>'',
             'id_promo_diskon'=>'required',
             'id_merk'=>'required'
         ];

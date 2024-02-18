@@ -33,3 +33,4 @@ $table->timestamps();
 pengurangan penjualan
 
 1. per barang
+

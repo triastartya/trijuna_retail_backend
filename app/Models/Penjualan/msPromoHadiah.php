@@ -13,13 +13,13 @@ class msPromoHadiah extends Model
     use HasFactory,VierModel,CreatedUpdatedBy;
     
     protected $table = 'ms_promo_hadiah';
-    protected $fillable = ['id_promo_diskon','is_kelipatan','kode_promo_hadian','nama_promo_hadian','nilai_promo_hadiah','keterangan','kuota','jumlah','hadiah','tanggal_mulai','tanggal_berakhir','gambar','is_active'];
-    protected $primaryKey = 'id_promo_diskon';
+    protected $fillable = ['id_promo_hadiah','is_kelipatan','kode_promo_hadiah','nama_promo_hadiah','nilai_promo_hadiah','keterangan','kuota','jumlah','hadiah','tanggal_mulai','tanggal_berakhir','gambar','is_active'];
+    protected $primaryKey = 'id_promo_hadiah';
     protected $modelFields = [
         ['name'=>'id_promo_hadiah', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name'=>'is_kelipatan', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
         ['name'=>'kode_promo_hadiah', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
-        ['name'=>'nama_promo_hadian','type'=>ModelDictionary::COLUMN_TYPE_STRING],
+        ['name'=>'nama_promo_hadiah','type'=>ModelDictionary::COLUMN_TYPE_STRING],
         ['name'=>'nilai_promo_hadiah','type'=>ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name'=>'keterangan','type'=>ModelDictionary::COLUMN_TYPE_STRING],
         ['name'=>'jumlah','type'=>ModelDictionary::COLUMN_TYPE_INTEGER],
@@ -37,7 +37,7 @@ class msPromoHadiah extends Model
             'id_promo_hadiah'=>'',
             'is_kelipatan'=>'required',
             'kode_promo_hadiah'=>'required',
-            'nama_promo_hadian'=>'required',
+            'nama_promo_hadiah'=>'required',
             'nilai_promo_hadiah'=>'required',
             'keterangan'=>'required',
             'jumlah'=>'required',
