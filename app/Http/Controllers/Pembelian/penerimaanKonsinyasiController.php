@@ -18,8 +18,7 @@ class penerimaanKonsinyasiController extends VierController
     public $repository;
     public $repository_pemesanan;
     
-    public function __construct()
-    {
+    public function __construct(){
         $this->repository = new penerimaanKonsinyasiRepository();
         $this->repository_pemesanan = new pemesananRepository();
         parent::__construct($this->repository);
@@ -31,14 +30,13 @@ class penerimaanKonsinyasiController extends VierController
             $data = $request->all();
             $data['status_penerimaan'] = 'OPEN';
             $data['jenis_penerimaan'] = 3;
-            $data['nomor_penerimaan'] = GeneradeNomorHelper::long('penerimaan tanpa po');
+            $data['nomor_penerimaan'] = GeneradeNomorHelper::long('konsinyasi');
             unset($data['detail']);
             $penerimaan = trPenerimaanKonsinyasi::create($data);
             foreach($request->detail as $detail){
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
                 $penerimaanDetail= trPenerimaanKonsinyasiDetail::create($detail);
             }
-            
             DB::commit();
             return response()->json(['success'=>true,'data'=>$penerimaan->id_penerimaan]);
         }

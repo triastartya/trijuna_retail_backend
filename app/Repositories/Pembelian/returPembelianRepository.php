@@ -108,4 +108,38 @@ class returPembelianRepository extends VierRepository
         order by trpd.urut
         ",[request()->id_retur_pembelian]);            
     }
+
+    public function belum_lunas_by_param()
+    {
+        return QueryHelper::queryParam('
+            select trp.id_retur_pembelian,
+            trp.jenis_retur,
+            trp.nomor_retur_pembelian,
+            trp.tanggal_retur_pembelian,
+            trp.id_warehouse,
+            mw.warehouse,
+            trp.id_supplier,
+            ms.kode_supplier,
+            ms.nama_supplier,
+            trp.mekanisme,
+            trp.total_harga,
+            trp.qty,
+            trp.status_retur,
+            trp.is_deleted,
+            ud.nama as deleted_by,
+            trp.deleted_at,
+            trp.deleted_reason,
+            uc.nama as created_by,
+            uu.nama as updated_by,
+            trp.created_at,
+            trp.updated_at
+         from tr_retur_pembelian trp
+         inner join ms_supplier ms on trp.id_supplier = ms.id_supplier
+         inner join ms_warehouse mw on trp.id_warehouse = mw.id_warehouse
+         inner join users uc on uc.id_user = trp.created_by
+         inner join users uu on uu.id_user = trp.updated_by
+         left join users ud on ud.id_user = trp.deleted_by 
+         where trp.is_lunas = false
+        ',request());
+    }
 }

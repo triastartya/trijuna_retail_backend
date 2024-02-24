@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('tr_bayar_hutang', function (Blueprint $table) {
             $table->id('id_bayar_hutang');
+            $table->integer('id_supplier');
             $table->string('nomor_titip_tagihan');
             $table->date('tanggal_titip_tagihan');
             $table->date('tanggal_rencana_bayar');
@@ -22,6 +23,8 @@ return new class extends Migration
             $table->double('total_titip_tagihan',12,2);
             $table->double('total_potongan',12,2);
             $table->double('total_bayar',12,2);
+            $table->boolean('is_lunas')->default(false);
+            $table->datetime('tanggal_lunas')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
@@ -35,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tr_titip_tagihan_supplier');
+        Schema::dropIfExists('tr_bayar_hutang');
     }
 };

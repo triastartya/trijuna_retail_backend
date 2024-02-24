@@ -1,0 +1,3 @@
+1. penerimaan konsinyasi , dengan po dan tanpa po di jadikan 1 tabel 
+2. function helper add filler request 
+3. QueryHelper kasih kondisi jika ada wherenya

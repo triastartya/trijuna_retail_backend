@@ -24,6 +24,8 @@ return new class extends Migration
             $table->double('total_harga');
             $table->double('qty');
             $table->string('status_retur');
+            $table->boolean('is_lunas')->default(false);
+            $table->integer('id_billing');
             $table->boolean('is_deleted')->default(false);
             $table->integer('deleted_by')->nullable();
             $table->date('deleted_at')->nullable();

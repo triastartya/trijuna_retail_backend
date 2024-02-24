@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tr_bayar_hutang_potongan', function (Blueprint $table) {
             $table->id('id_bayar_hutang_potongan');
             $table->integer('id_bayar_hutang');
-            $table->integer('id_penerimaan');
+            $table->integer('id_retur_pembelian');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tr_titip_tagihan_potongan');
+        Schema::dropIfExists('tr_bayar_hutang_potongan');
     }
 };

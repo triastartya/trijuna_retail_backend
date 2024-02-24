@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Finance\bayarHutangController;
 use App\Http\Controllers\Inventory\mutasiController;
 use App\Http\Controllers\Inventory\mutasiLokasiController;
 use App\Http\Controllers\Inventory\pemusnahanController;
@@ -41,6 +42,7 @@ use App\Http\Controllers\Penjualan\penjualanController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\userGroupController;
 use App\Http\Middleware\ModifRequest;
+use App\Models\Finance\trBayarHutang;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -205,6 +207,19 @@ Route::group(['middleware' => ModifRequest::class], function () {
     Route::pointResource('ms_promo_hadiah_setting_supplier',msPromoHadiahSettingSupplierController::class);
     Route::get('ms_promo_diskon_setting_supplier_by_id_promo_hadiah/{id_promo_hadiah}',[msPromoHadiahSettingSupplierController::class,'by_id_promo_hadiah']);
     
+    Route::prefix('bayar_hutang_supplier')->group(function(){
+        Route::post('insert',[bayarHutangController::class,'insert']);
+        Route::post('get_by_param',[bayarHutangController::class,'get_by_param']);
+        Route::get('get_by_id/{id_bayar_hutang}',[bayarHutangController::class,'get_by_id']);
+        Route::post('lookup_supplier_by_param',[bayarHutangController::class,'lookup_supplier']);
+        Route::post('lookup_penerimaan_belum_lunas_by_param',[bayarHutangController::class,'lookup_penerimaan_belum_lunas']);
+        Route::post('lookup_retur_potong_tagihan_by_param',[bayarHutangController::class,'lookup_retur_potong_tagihan']);
+    });
+
+    Route::prefix('bayar_piutang_member')->group(function(){
+        
+    });
+
     Route::prefix('penjualan')->group(function(){
         Route::post('insert',[penjualanController::class,'insert']);
         Route::post('get_by_param',[penjualanController::class,'get_by_param']);
