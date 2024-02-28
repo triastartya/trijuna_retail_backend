@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "65dd99a4f37e000009016527"
+  },
+  "idBank": 1,
+  "keterangan": "BCA",
+  "kodeBank": "001",
+  "namaBank": "BCA",
+  "biaya": 0.975,
+  "debit": 4,
+  "kredit": 8,
+  "updated_at": {
+    "$date": "2024-02-27T08:13:24.000Z"
+  },
+  "created_at": {
+    "$date": "2024-02-27T08:13:24.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dd99a4f37e000009016528"
+  },
+  "idBank": 2,
+  "keterangan": "BRI",
+  "kodeBank": "002",
+  "namaBank": "BRI",
+  "biaya": 0.975,
+  "debit": 5,
+  "kredit": 9,
+  "updated_at": {
+    "$date": "2024-02-27T08:13:24.000Z"
+  },
+  "created_at": {
+    "$date": "2024-02-27T08:13:24.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dd99a4f37e000009016529"
+  },
+  "idBank": 3,
+  "keterangan": "MANDIRI",
+  "kodeBank": "003",
+  "namaBank": "MANDIRI",
+  "biaya": 0.975,
+  "debit": 6,
+  "kredit": 10,
+  "updated_at": {
+    "$date": "2024-02-27T08:13:24.000Z"
+  },
+  "created_at": {
+    "$date": "2024-02-27T08:13:24.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65dd99a4f37e00000901652a"
+  },
+  "idBank": 4,
+  "keterangan": "OTHERS",
+  "kodeBank": "004",
+  "namaBank": "OTHERS",
+  "biaya": 0.975,
+  "debit": 7,
+  "kredit": 11,
+  "updated_at": {
+    "$date": "2024-02-27T08:13:24.000Z"
+  },
+  "created_at": {
+    "$date": "2024-02-27T08:13:24.000Z"
+  }
+}]

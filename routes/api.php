@@ -192,7 +192,9 @@ Route::group(['middleware' => ModifRequest::class], function () {
     });
     
     Route::pointResource('bank',bankController::class);
+    Route::get('bank/data/import',[bankController::class,'import']);
     Route::pointResource('edc',edcController::class);
+    Route::get('edc/data/import',[edcController::class,'import']);
     Route::pointResource('modal_kasir',modalKasirController::class);
     
     Route::pointResource('ms_promo_diskon',msPromoDiskonController::class);

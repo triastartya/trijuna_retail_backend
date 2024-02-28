@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "65dd99a4f37e00000901652b"
+  },
+  "idEdc": 1,
+  "kodeEdc": "01",
+  "namaEdc": "BCA",
+  "keterangan": "Bank Central Asia"
+},
+{
+  "_id": {
+    "$oid": "65dd99a4f37e00000901652c"
+  },
+  "idEdc": 2,
+  "kodeEdc": "02",
+  "namaEdc": "BRI",
+  "keterangan": "Bank Rakyat Indonesia"
+},
+{
+  "_id": {
+    "$oid": "65dd99a4f37e00000901652d"
+  },
+  "idEdc": 3,
+  "kodeEdc": "03",
+  "namaEdc": "MANDIRI",
+  "keterangan": "Bank Mandiri"
+}]
