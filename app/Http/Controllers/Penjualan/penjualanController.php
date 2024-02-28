@@ -11,8 +11,6 @@ use App\Repositories\Penjualan\penjualanRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierController;
-use Illuminate\Support\Facades\Auth;
-
 
 class penjualanController extends VierController
 {
