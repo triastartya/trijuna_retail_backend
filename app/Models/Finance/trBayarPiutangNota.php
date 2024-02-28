@@ -15,7 +15,9 @@ class trBayarPiutangNota extends Model
     protected $fillable = [
         'id_bayar_piutang_nota',
         'id_bayar_piutang',
-        'id_penjualan'
+        'id_penjualan',
+        'deleted_by',
+        'deleted_at'
     ];
     
     public function rules()

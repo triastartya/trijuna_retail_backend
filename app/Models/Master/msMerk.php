@@ -14,6 +14,7 @@ class msMerk extends Model
     
     protected $table = 'ms_merk';
     protected $fillable = [
+        'id_merk',
         'merk',
         'is_active'
     ];

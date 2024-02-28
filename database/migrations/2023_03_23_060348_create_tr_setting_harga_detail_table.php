@@ -19,10 +19,10 @@ return new class extends Migration
             $table->integer('id_setting_harga')->constrained('tr_setting_harga');
             $table->integer('id_barang')->constrained('ms_barang');
             $table->double('harga_jual');
-            $table->double('qty_grosir1');
-            $table->double('harga_grosir1');
-            $table->double('qty_grosir2');
-            $table->double('harga_grosir2');
+            $table->double('qty_grosir1')->default(0);
+            $table->double('harga_grosir1')->default(0);
+            $table->double('qty_grosir2')->default(0);
+            $table->double('harga_grosir2')->default(0);
             $table->integer('prioritas')->default(1);
             $table->timestamps();
         });

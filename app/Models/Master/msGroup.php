@@ -13,7 +13,7 @@ class msGroup extends Model
     use HasFactory,VierModel,CreatedUpdatedBy;
     
     protected $table = 'ms_group';
-    protected $fillable = ['kode_group','group'];
+    protected $fillable = ['id_group','kode_group','group'];
     protected $primaryKey = 'id_group';
     protected $modelFields = [
         ['name' => 'id_group', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],

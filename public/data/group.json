@@ -1,0 +1,338 @@
+[
+        {
+            "idGrup": 1,
+            "noUrutGrup": null,
+            "kodeGrup": "01 ",
+            "grup": "ROKOK",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 2,
+            "noUrutGrup": null,
+            "kodeGrup": "02 ",
+            "grup": "MIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 3,
+            "noUrutGrup": null,
+            "kodeGrup": "03 ",
+            "grup": "SUSU",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 4,
+            "noUrutGrup": null,
+            "kodeGrup": "04 ",
+            "grup": "DETERGENT BUBUK",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 43,
+            "noUrutGrup": null,
+            "kodeGrup": "043",
+            "grup": "MAINAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 44,
+            "noUrutGrup": null,
+            "kodeGrup": "044",
+            "grup": "BUSANA",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 45,
+            "noUrutGrup": null,
+            "kodeGrup": "045",
+            "grup": "HOUSEWARE T.M",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 46,
+            "noUrutGrup": null,
+            "kodeGrup": "046",
+            "grup": "BAHAN KUE",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 5,
+            "noUrutGrup": null,
+            "kodeGrup": "05 ",
+            "grup": "DETERGENT CREAM & CAIR",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 6,
+            "noUrutGrup": null,
+            "kodeGrup": "06 ",
+            "grup": "SABUN MANDI",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 7,
+            "noUrutGrup": null,
+            "kodeGrup": "07 ",
+            "grup": "PEMBERSIH LANTAI",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 8,
+            "noUrutGrup": null,
+            "kodeGrup": "08 ",
+            "grup": "OBAT",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 9,
+            "noUrutGrup": null,
+            "kodeGrup": "09 ",
+            "grup": "SHAMPOO",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 10,
+            "noUrutGrup": null,
+            "kodeGrup": "10 ",
+            "grup": "KECAP",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 11,
+            "noUrutGrup": null,
+            "kodeGrup": "11 ",
+            "grup": "SIRUP",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 12,
+            "noUrutGrup": null,
+            "kodeGrup": "12 ",
+            "grup": "PRAMBOS",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 13,
+            "noUrutGrup": null,
+            "kodeGrup": "13 ",
+            "grup": "SARDINES",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 14,
+            "noUrutGrup": null,
+            "kodeGrup": "14 ",
+            "grup": "SAOS",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 15,
+            "noUrutGrup": null,
+            "kodeGrup": "15 ",
+            "grup": "SNACK",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 16,
+            "noUrutGrup": null,
+            "kodeGrup": "16 ",
+            "grup": "PERMEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 17,
+            "noUrutGrup": null,
+            "kodeGrup": "17 ",
+            "grup": "BAHAN MAKANAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 18,
+            "noUrutGrup": null,
+            "kodeGrup": "18 ",
+            "grup": "BAHAN MINUMAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 19,
+            "noUrutGrup": null,
+            "kodeGrup": "19 ",
+            "grup": "KOSMETIK",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 20,
+            "noUrutGrup": null,
+            "kodeGrup": "20 ",
+            "grup": "PASTA GIGI-SIKAT GIGI",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 21,
+            "noUrutGrup": null,
+            "kodeGrup": "21 ",
+            "grup": "PEWANGI PAKAIAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 22,
+            "noUrutGrup": null,
+            "kodeGrup": "22 ",
+            "grup": "PARFUM BAJU & RUANGAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 23,
+            "noUrutGrup": null,
+            "kodeGrup": "23 ",
+            "grup": "ANTI NYAMUK-KOREK-ANTISEPTIK",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 24,
+            "noUrutGrup": null,
+            "kodeGrup": "24 ",
+            "grup": "PENYEDAP RASA",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 25,
+            "noUrutGrup": null,
+            "kodeGrup": "25 ",
+            "grup": "PLASTIK-KARET-BENANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 26,
+            "noUrutGrup": null,
+            "kodeGrup": "26 ",
+            "grup": "PEMBALUT-KAPAS-TISSUE",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 27,
+            "noUrutGrup": null,
+            "kodeGrup": "27 ",
+            "grup": "ALAT TULIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 28,
+            "noUrutGrup": null,
+            "kodeGrup": "28 ",
+            "grup": "GULA PASIR",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 29,
+            "noUrutGrup": null,
+            "kodeGrup": "29 ",
+            "grup": "TEPUNG",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 30,
+            "noUrutGrup": null,
+            "kodeGrup": "30 ",
+            "grup": "MINYAK GORENG",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 31,
+            "noUrutGrup": null,
+            "kodeGrup": "31 ",
+            "grup": "KEDELAI-BERAS-KETAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 32,
+            "noUrutGrup": null,
+            "kodeGrup": "32 ",
+            "grup": "KOPI BIJI",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 33,
+            "noUrutGrup": null,
+            "kodeGrup": "33 ",
+            "grup": "PAKU",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 34,
+            "noUrutGrup": null,
+            "kodeGrup": "34 ",
+            "grup": "ALAT LISTRIK",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 35,
+            "noUrutGrup": null,
+            "kodeGrup": "35 ",
+            "grup": "PERLENGKAPAN BAYI",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 36,
+            "noUrutGrup": null,
+            "kodeGrup": "36 ",
+            "grup": "FASHION",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 37,
+            "noUrutGrup": null,
+            "kodeGrup": "37 ",
+            "grup": "MINUMAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 38,
+            "noUrutGrup": null,
+            "kodeGrup": "38 ",
+            "grup": "HOUSEWARE",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 39,
+            "noUrutGrup": null,
+            "kodeGrup": "39 ",
+            "grup": "ALAT RUMAH TANGG",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 40,
+            "noUrutGrup": null,
+            "kodeGrup": "41 ",
+            "grup": "SANDAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 41,
+            "noUrutGrup": null,
+            "kodeGrup": "50 ",
+            "grup": "SEMBAKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 47,
+            "noUrutGrup": null,
+            "kodeGrup": "60 ",
+            "grup": "SEMBAKO NON PKP",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 48,
+            "noUrutGrup": null,
+            "kodeGrup": "88 ",
+            "grup": "grup baru",
+            "waktuEntryHO": null
+        },
+        {
+            "idGrup": 42,
+            "noUrutGrup": null,
+            "kodeGrup": "90 ",
+            "grup": "LAIN-LAIN",
+            "waktuEntryHO": null
+        }
+    ]

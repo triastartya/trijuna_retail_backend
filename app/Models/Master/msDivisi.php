@@ -14,6 +14,7 @@ class msDivisi extends Model
     
     protected $table = 'ms_divisi';
     protected $fillable = [
+        'id_divisi',
         'kode_divisi',
         'divisi',
         'is_active'

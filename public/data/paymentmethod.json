@@ -1,0 +1,26 @@
+[
+        {
+            "salesPaymentMethodID": 1,
+            "salesPaymentMethod": "CASH MONEY"
+        },
+        {
+            "salesPaymentMethodID": 2,
+            "salesPaymentMethod": "VOUCHER"
+        },
+        {
+            "salesPaymentMethodID": 3,
+            "salesPaymentMethod": "OTHER"
+        },
+        {
+            "salesPaymentMethodID": 4,
+            "salesPaymentMethod": "KARTU DEBIT"
+        },
+        {
+            "salesPaymentMethodID": 5,
+            "salesPaymentMethod": "KARTU KREDIT"
+        },
+        {
+            "salesPaymentMethodID": 6,
+            "salesPaymentMethod": "QR PAYMENT"
+        }
+    ]

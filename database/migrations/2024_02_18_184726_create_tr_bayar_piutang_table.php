@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tr_bayar_piutang', function (Blueprint $table) {
             $table->id('id_bayar_piutang');
             $table->date('tanggal_bayar');
+            $table->integer('id_member');
             $table->string('nomor_bayar_piutang');
             $table->string('total_bayar_piutang');
             $table->string('keterangan');

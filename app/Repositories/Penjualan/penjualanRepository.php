@@ -58,41 +58,52 @@ class penjualanRepository extends VierRepository
     
     public function by_param(){
         return QueryHelper::queryParam("
-        select pp.id_penjualan,
-        pp.id_user_kasir,
-        uk.nama as nama_kasir,
-        pp.is_bayar,
-        pp.tanggal_penjualan,
-        pp.nota_penjualan,
-        pp.id_member,
-        pp.total_diskon_dalam,
-        pp.total_transaksi,
-        pp.diskon_luar_persen,
-        pp.diskon_luar_nominal,
-        pp.ongkos_kirim,
-        pp.pembulatan,
-        pp.total_transaksi2,
-        pp.total_bayar,
-        pp.kembali,
-        pp.biaya_bank,
-        pp.is_using_voucher,
-        pp.id_pos_kasir,
-        pp.id_tutup_kasir,
-        pp.is_deleted,
-        pp.deleted_at,
-        pp.deleted_reason,
-        ud.nama as deleted_by,
-        pp.deleted_at,
-        pp.deleted_reason,
-        uc.nama as created_by,
-        pp.created_at,
-        uu.nama as updated_by,
-        pp.updated_at
-        from pos_penjualan pp
-        inner join users uk on uk.id_user = pp.id_user_kasir
-        inner join users uc on uc.id_user = pp.created_by
-        inner join users uu on uu.id_user = pp.updated_by
-        left join users ud on ud.id_user = pp.deleted_by
+            select pp.id_penjualan,
+            pp.id_user_kasir,
+            uk.nama as nama_kasir,
+            pp.is_bayar,
+            pp.tanggal_penjualan,
+            pp.nota_penjualan,
+            pp.id_member,
+            pp.total_diskon_dalam,
+            pp.total_transaksi,
+            pp.diskon_luar_persen,
+            pp.diskon_luar_nominal,
+            pp.ongkos_kirim,
+            pp.pembulatan,
+            pp.total_transaksi2,
+            pp.total_bayar,
+            pp.kembali,
+            pp.biaya_bank,
+            pp.is_using_voucher,
+            pp.id_pos_kasir,
+            pp.id_tutup_kasir,
+            pp.is_deleted,
+            pp.deleted_at,
+            pp.deleted_reason,
+            ud.nama as deleted_by,
+            pp.deleted_at,
+            pp.deleted_reason,
+            uc.nama as created_by,
+            pp.created_at,
+            uu.nama as updated_by,
+            pp.updated_at
+            from pos_penjualan pp
+            inner join users uk on uk.id_user = pp.id_user_kasir
+            inner join users uc on uc.id_user = pp.created_by
+            inner join users uu on uu.id_user = pp.updated_by
+            left join users ud on ud.id_user = pp.deleted_by
+        ",request());
+    }
+
+    public function belum_lunas(){
+        return QueryHelper::queryParam("
+            select
+            pp.nota_penjualan,
+            pp.tanggal_penjualan,
+            pp.total_transaksi2 as nominal
+            from public.pos_penjualan pp
+            where pp.id_member = ?
         ",request());
     }
     
