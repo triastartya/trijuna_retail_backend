@@ -17,15 +17,15 @@ class msPromoDiskonRepository extends VierRepository
     {
         $hj =  DB::select('
             select * from (
-            select distinct mpd.id_promo_diskon, mpd.is_nominal, mpd.minimal_qty, mpd.diskon, mpd.kuota, mpd.tanggal_mulai from ms_promo_diskon_setting_barang mpdsb
+            select distinct mpd.id_promo_diskon, mpd.is_nominal, mpd.minimal_qty, mpd.diskon as promo_diskon, mpd.kuota, mpd.tanggal_mulai from ms_promo_diskon_setting_barang mpdsb
             inner join ms_promo_diskon mpd on mpdsb.id_promo_diskon=mpd.id_promo_diskon
             where mpd.tanggal_mulai <= now() and mpd.tanggal_berakhir >= now() and mpdsb.id_barang = ? 
             union
-            select distinct mpd.id_promo_diskon, mpd.is_nominal, mpd.minimal_qty, mpd.diskon, mpd.kuota, mpd.tanggal_mulai from ms_promo_diskon_setting_merk mpdsm
+            select distinct mpd.id_promo_diskon, mpd.is_nominal, mpd.minimal_qty, mpd.diskon as promo_diskon, mpd.kuota, mpd.tanggal_mulai from ms_promo_diskon_setting_merk mpdsm
             inner join ms_promo_diskon mpd on mpdsm.id_promo_diskon=mpd.id_promo_diskon
             where mpd.tanggal_mulai <= now() and mpd.tanggal_berakhir >= now() and mpdsm.id_merk = ? 
             union
-            select distinct mpd.id_promo_diskon, mpd.is_nominal, mpd.minimal_qty, mpd.diskon, mpd.kuota, mpd.tanggal_mulai from ms_promo_diskon_setting_supplier mpdss
+            select distinct mpd.id_promo_diskon, mpd.is_nominal, mpd.minimal_qty, mpd.diskon as promo_diskon, mpd.kuota, mpd.tanggal_mulai from ms_promo_diskon_setting_supplier mpdss
             inner join ms_promo_diskon mpd on mpdss.id_promo_diskon=mpd.id_promo_diskon
             where mpd.tanggal_mulai <= now() and mpd.tanggal_berakhir >= now() and mpdss.id_supplier = ? 
             ) as tbl order by tanggal_mulai limit 1
@@ -38,8 +38,9 @@ class msPromoDiskonRepository extends VierRepository
                 "id_promo_diskon" => 0,
                 "is_nominal" => 0,
                 "minimal_qty"=>0,
-                "diskon" => 0,
-                "kuota" => 0
+                "promo_diskon" => 0,
+                "kuota" => 0,
+                "tanggal_mulai" => null
             ];
         }
     }

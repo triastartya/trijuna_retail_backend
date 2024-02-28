@@ -3,9 +3,11 @@
 namespace App\Repositories\Master;
 
 use App\Helpers\QueryHelper;
+use App\Http\Controllers\Penjualan\msPromoHadianController;
 use App\Models\Master\msBarang;
 use App\Models\Penjualan\msPromoDiskon;
 use App\Repositories\Penjualan\msPromoDiskonRepository;
+use App\Repositories\Penjualan\msPromoHadiahRepository;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierRepository;
 
@@ -15,12 +17,14 @@ class barangRepository extends VierRepository
     public $repository_setting_harga;
     public $repository_barang_satuan;
     public $repository_promo_diskon;
+    public $repository_promo_hadiah;
     
     public function __construct()
     {
         $this->repository_setting_harga =  new settingHargaRepository();
         $this->repository_barang_satuan = new barangSatuanRepository();
         $this->repository_promo_diskon = new msPromoDiskonRepository();
+        $this->repository_promo_hadiah = new msPromoHadiahRepository();
         parent::__construct(new msBarang());
     }
     
@@ -216,8 +220,10 @@ class barangRepository extends VierRepository
                     $row->diskon = 0;
                 }
             }
-            $data[$index] = (object) array_merge((array)$row,$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang));
-            $data[$index] = (object) array_merge((array)$row,$this->repository_promo_diskon->get_from_pos($row->id_barang,$row->id_merk,$row->id_supplier));
+            $data[$index] = (object) array_merge((array)$data[$index],$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang),);
+            $data[$index] = (object) array_merge((array)$data[$index],$this->repository_promo_diskon->get_from_pos($row->id_barang,$row->id_merk,$row->id_supplier));
+            $data[$index] = (object) array_merge((array)$data[$index],$this->repository_promo_hadiah->get_from_pos($row->id_barang,$row->id_merk,$row->id_supplier));
+        
         }
         
         return $data;        
