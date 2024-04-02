@@ -7,7 +7,7 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-    network:
+    networks:
       - dbretail-network
       - dbreport-network
   networks:
