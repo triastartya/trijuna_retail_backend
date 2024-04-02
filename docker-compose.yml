@@ -11,7 +11,7 @@ services:
       - dbretail-network
       - dbreport-network
   networks:
-  dbretail-network:
-    external: true
-  dbreport-network:
-    external: true
+    dbretail-network:
+      external: true
+    dbreport-network:
+      external: true
