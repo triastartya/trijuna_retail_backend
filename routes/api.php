@@ -30,6 +30,11 @@ use App\Http\Controllers\Pembelian\returPembelianController;
 use App\Http\Controllers\Penjualan\bankController;
 use App\Http\Controllers\Penjualan\edcController;
 use App\Http\Controllers\Penjualan\modalKasirController;
+use App\Http\Controllers\Penjualan\msPromoBonusController;
+use App\Http\Controllers\Penjualan\msPromoBonusSettingBarangController;
+use App\Http\Controllers\Penjualan\msPromoBonusSettingItemController;
+use App\Http\Controllers\Penjualan\msPromoBonusSettingMerkController;
+use App\Http\Controllers\Penjualan\msPromoBonusSettingSupplierController;
 use App\Http\Controllers\Penjualan\msPromoDiskonController;
 use App\Http\Controllers\Penjualan\msPromoDiskonSettingBarangController;
 use App\Http\Controllers\Penjualan\msPromoDiskonSettingMerkController;
@@ -70,6 +75,7 @@ Route::post('register',[userController::class,'register']);
 Route::post('login',[userController::class,'login']);
 
 Route::group(['middleware' => ModifRequest::class], function () {
+    Route::post('raw/tes',[divisiController::class,'testing']);
     Route::pointResource('user_group', userGroupController::class);
     Route::pointResource('member',memberController::class);
     Route::post('member/by_param',[memberController::class,'member_by_param']);
@@ -217,6 +223,14 @@ Route::group(['middleware' => ModifRequest::class], function () {
     Route::pointResource('ms_promo_hadiah_setting_supplier',msPromoHadiahSettingSupplierController::class);
     Route::get('ms_promo_diskon_setting_supplier_by_id_promo_hadiah/{id_promo_hadiah}',[msPromoHadiahSettingSupplierController::class,'by_id_promo_hadiah']);
     
+    Route::pointResource('ms_promo_bonus',msPromoBonusController::class);
+    Route::get('ms_promo_bonus_detail/{id_promo_bonus}',[msPromoBonusController::class,'get_detail']);
+    Route::pointResource('ms_promo_hadiah_setting_barang',msPromoBonusSettingBarangController::class);
+    Route::pointResource('ms_promo_hadiah_setting_item',msPromoBonusSettingItemController::class);
+    Route::pointResource('ms_promo_hadiah_setting_merk',msPromoBonusSettingMerkController::class);
+    Route::pointResource('ms_promo_hadiah_setting_supplier',msPromoBonusSettingSupplierController::class);
+
+
     Route::prefix('bayar_hutang_supplier')->group(function(){
         Route::post('insert',[bayarHutangController::class,'insert']);
         Route::post('get_by_param',[bayarHutangController::class,'get_by_param']);

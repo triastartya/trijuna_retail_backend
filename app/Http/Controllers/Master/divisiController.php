@@ -22,6 +22,11 @@ class divisiController extends VierController
         parent::__construct($this->repository);
     }
 
+    public function testing(Request $request){
+        $data = (object)$request->all();
+        return response()->json($data->divisi);
+    }
+
     public function import_divisi(){
         DB::beginTransaction();
         try {

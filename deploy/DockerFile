@@ -1,0 +1,11 @@
+FROM dunglas/frankenphp
+
+RUN apt update -y
+RUN apt install curl -y
+
+RUN install-php-extensions \
+    pcntl
+ 
+COPY . /app
+ 
+ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
