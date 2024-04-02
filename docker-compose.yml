@@ -1,0 +1,14 @@
+services:
+  frankenphp:
+    build:
+      context: .
+    entrypoint: php artisan octane:frankenphp --max-requests=1
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+  networks:
+  dbretail-network:
+    external: true
+  dbreport-network:
+    external: true

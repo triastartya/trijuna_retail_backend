@@ -4,7 +4,11 @@ RUN apt update -y
 RUN apt install curl -y
 
 RUN install-php-extensions \
-    pcntl
+	pdo_mysql \
+	gd \
+	intl \
+	zip \
+	opcache
  
 COPY . /app
  
