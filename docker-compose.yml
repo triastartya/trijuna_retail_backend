@@ -7,11 +7,3 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-    network:
-      - dbretail-network
-      - dbreport-network
-  networks:
-    dbretail-network:
-      external: true
-    dbreport-network:
-      external: true
