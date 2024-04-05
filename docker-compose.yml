@@ -1,16 +1,10 @@
 services:
-  php:
-    image: dunglas/frankenphp
-    restart: always
+  web:
+    build:
+      context: .
+      dockerfile: infrastructure/web/Dockerfile
+    entrypoint: php artisan octane:frankenphp --max-requests=1
     ports:
-      - "80:80" # HTTP
-      - "443:443" # HTTPS
-      - "443:443/udp" # HTTP/3
+      - "8080:8000"
     volumes:
-      - caddy_data:/data
-      - caddy_config:/config
-
-# Volumes needed for Caddy certificates and configuration
-volumes:
-  caddy_data:
-  caddy_config:
+      - .:/app
