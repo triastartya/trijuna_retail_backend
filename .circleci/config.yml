@@ -4,10 +4,6 @@ jobs:
     docker:
       - image: docker:19.03.12
     steps:
-      - checkout:
-        - path: ~/aplikasi/trijuna_retail_backend/
-        - key: 'SHA256:hQ5CqSmDxYcA4Lnw5PxRF1d+IMIvioaMeObtbnzFaaw'
-      - setup_remote_docker:
       - run:
           name: Login to dockerhub
           command: |
