@@ -5,7 +5,7 @@ jobs:
       - image: docker:19.03.12
     steps:
       - checkout:
-          path: ~/project
+          path: ~/trijuna_retail_backend
       - run:
           name: Login to dockerhub
           command: |
