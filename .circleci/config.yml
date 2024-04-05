@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout:
         - path: ~/aplikasi/trijuna_retail_backend/
-        - key: ssh-rsa SHA256:hQ5CqSmDxYcA4Lnw5PxRF1d+IMIvioaMeObtbnzFaaw
+        - key: SHA256:hQ5CqSmDxYcA4Lnw5PxRF1d+IMIvioaMeObtbnzFaaw
       - setup_remote_docker:
       - run:
           name: Login to dockerhub
