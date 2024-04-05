@@ -1,18 +1,12 @@
 FROM dunglas/frankenphp
- 
-RUN install-php-extensions pcntl
-	pdo_pgsql \
-	gd \
-	intl \
-	zip \
-	opcache \
-	cli \
-	common \
-	mbstring \
-	curl \
-	xml \
-	bcmat
+
+RUN apt update -y
+RUN apt install curl -y
+
+RUN install-php-extensions \
+    pcntl
+    # Add other PHP extensions here...
 
 COPY . /app
- 
+
 ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
