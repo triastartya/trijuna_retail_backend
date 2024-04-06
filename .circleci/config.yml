@@ -14,7 +14,7 @@ jobs:
           name: install php-extention
           command: sudo apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath
       - run:
-          name: install composert
+          name: install composer
           command: |
             curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
             HASH=`curl -sS https://composer.github.io/installer.sig`
@@ -26,7 +26,7 @@ jobs:
           name: install install
           command: |
             composer install
-            php artisan octane:install | 2 | y | y
+            php artisan octane:install --server=frankenphp
       - run:
           name: Login to dockerhub
           command: |
