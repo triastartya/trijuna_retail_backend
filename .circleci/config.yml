@@ -4,9 +4,7 @@ jobs:
     docker:
       - image: docker:19.03.12
     steps:
-      - run:
-          name: checkout
-          command: git clone -b "$CIRCLE_BRANCH" "$CIRCLE_REPOSITORY_URL" .
+      - checkout
       - run:
           name: install php
           command: sudo apt install --no-install-recommends php8.1
