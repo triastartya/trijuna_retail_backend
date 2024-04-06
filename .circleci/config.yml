@@ -18,8 +18,8 @@ jobs:
           name: Push Docker Image
           command: |
             docker push triastartya/api-retail:$CIRCLE_SHA1
-            docker tag triastartya/api-retail:$CIRCLE_SHA1 triastartya/api-retail:dev-latest
-            docker push triastartya/api-retail:dev-latest
+            docker tag triastartya/api-retail:$CIRCLE_SHA1 triastartya/api-retail:latest
+            docker push triastartya/api-retail:latest
       - add_ssh_keys:
           fingerprints:
             - 'SHA256:hQ5CqSmDxYcA4Lnw5PxRF1d+IMIvioaMeObtbnzFaaw'

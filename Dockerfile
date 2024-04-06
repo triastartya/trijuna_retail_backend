@@ -17,7 +17,6 @@ RUN install-php-extensions \
     zip \
     opcache \
     mbstring
-    # Add other PHP extensions here...
 
 COPY . /app
 
