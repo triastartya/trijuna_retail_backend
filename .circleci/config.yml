@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Deploy app to server development
           command: |
-            ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd /aplikasi/trijuna_retail_backend && ./deploy.sh"
+            ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd aplikasi/trijuna_retail_backend && ./deploy.sh"
 workflows :
   basic-workflow:
     jobs:
