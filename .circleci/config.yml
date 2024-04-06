@@ -4,8 +4,15 @@ jobs:
     docker:
       - image: docker:19.03.12
     steps:
-      - checkout:
-          path: ~/trijuna_retail_backend
+      - run:
+          name: checkout
+          command: git clone -b "$CIRCLE_BRANCH" "$CIRCLE_REPOSITORY_URL" .
+      - run:
+          name: install php
+          command: sudo apt install --no-install-recommends php8.1
+      - run:
+          name: install php-extention
+          command: sudo apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath
       - run:
           name: Login to dockerhub
           command: |
