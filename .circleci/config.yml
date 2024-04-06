@@ -6,11 +6,11 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - '6f:b2:e2:7c:b0:25:2d:98:7a:30:e2:8e:21:7b:b6:f2'
+            - 'SHA256:hQ5CqSmDxYcA4Lnw5PxRF1d+IMIvioaMeObtbnzFaaw'
       - run:
           name: Deploy app to server development
           command: |
-            ssh -o StrictHostKeyChecking=no root@203.175.10.195 "cd /var/www/html/trijuna_retail_backend && ./build.sh"
+            ssh -o StrictHostKeyChecking=no trias@203.175.10.195 "cd aplikasi/trijuna_retail_backend && ./build.sh"
 workflows :
   basic-workflow:
     jobs:
