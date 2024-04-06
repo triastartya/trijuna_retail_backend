@@ -31,8 +31,7 @@ jobs:
     docker:
       - image: docker:19.03.12
     steps:
-      - checkout:
-          path: ~/trijuna_retail_backend
+      - checkout
       - run:
           name: Login to dockerhub
           command: |
