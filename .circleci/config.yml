@@ -29,7 +29,7 @@ jobs:
             ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd /home/his-admin/pis-api/ && ./deploy.sh"
   build-dev:
     docker:
-      - image: docker:19.03.12
+      - image: circleci/python:3.8
     steps:
       - checkout
       - run:
