@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: install php
+          name: install php8.1
           command: sudo apt install --no-install-recommends php8.1
       - run:
           name: install php-extention
@@ -26,10 +26,7 @@ jobs:
           name: install install
           command: |
             composer install
-            php artisan octane:install
-            -2
-            -y
-            -y
+            php artisan octane:install | 2 | y | y
       - run:
           name: Login to dockerhub
           command: |
