@@ -34,16 +34,16 @@ jobs:
           name: Login to dockerhub
           command: |
             echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
-      # - run:
-      #     name: Build dockerfile
-      #     command: |
-      #       docker build --no-cache -t triastartya/api-retail:$CIRCLE_SHA1 .
-      # - run:
-      #     name: Push Docker Image
-      #     command: |
-      #       docker push triastartya/api-retail:$CIRCLE_SHA1
-      #       docker tag triastartya/api-retail:$CIRCLE_SHA1 triastartya/api-retail:latest
-      #       docker push triastartya/api-retail:latest
+      - run:
+          name: Build dockerfile
+          command: |
+            docker build --no-cache -t triastartya/api-retail:$CIRCLE_SHA1 .
+      - run:
+          name: Push Docker Image
+          command: |
+            docker push triastartya/api-retail:$CIRCLE_SHA1
+            docker tag triastartya/api-retail:$CIRCLE_SHA1 triastartya/api-retail:latest
+            docker push triastartya/api-retail:latest
       - add_ssh_keys:
           fingerprints:
             - 'SHA256:hQ5CqSmDxYcA4Lnw5PxRF1d+IMIvioaMeObtbnzFaaw'
