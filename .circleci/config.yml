@@ -29,8 +29,7 @@ jobs:
             php artisan octane:install --server=frankenphp
       run:
           name: install octane
-          command: |
-            php artisan octane:frankenphp
+          command: php artisan octane:frankenphp
       - run:
           name: Login to dockerhub
           command: |
