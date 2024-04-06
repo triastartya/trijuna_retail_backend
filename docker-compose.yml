@@ -5,13 +5,5 @@ services:
       dockerfile: DockerFile
     ports:
       - "8000:8000"
-    networks:
-      - dbretail-network
-      - dbreport_network
     volumes:
       - .:/app
-networks:
-  dbretail-network:
-    external: true
-  dbreport-network:
-    external: true
