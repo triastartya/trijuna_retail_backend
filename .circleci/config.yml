@@ -23,12 +23,14 @@ jobs:
             sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
             composer
       - run:
-          name: install install
+          name: install octane
           command: |
             composer install
             php artisan octane:install --server=frankenphp
-            echo "y"
-            echo "y"
+      run:
+          name: install octane
+          command: |
+            php artisan octane:frankenphp
       - run:
           name: Login to dockerhub
           command: |
