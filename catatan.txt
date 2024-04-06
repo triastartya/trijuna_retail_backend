@@ -6,4 +6,4 @@ docker network create --opt encrypted --driver overlay dbreport-network
 
 docker stack deploy -c database.yml db
 
-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
+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
