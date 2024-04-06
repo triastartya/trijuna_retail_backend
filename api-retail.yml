@@ -2,8 +2,7 @@ services:
   api-retail:
     image: triastartya/api-retail:latest
     environment:
-      - "DB_CONNECTION=pgsql"
-      - "DB_HOST=dbretail"
+      - "DB_HOST=10.0.6.12"
       - "DB_PORT=5432"
       - "DB_DATABASE=retail"
       - "DB_USERNAME=trias"
