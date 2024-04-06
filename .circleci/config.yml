@@ -27,6 +27,9 @@ jobs:
           command: |
             composer install
             php artisan octane:install --server=frankenphp
+      - run :
+          name: test run
+          command: php artisan octane:frankenphp
       - run:
           name: Login to dockerhub
           command: |
