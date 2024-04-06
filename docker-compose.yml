@@ -1,16 +1,17 @@
 services:
-  php:
-    image: dunglas/frankenphp
-    restart: always
+  frankenphp:
+    build:
+      context: .
+      dockerfile: DockerFile
     ports:
-      - "80:80" # HTTP
-      - "443:443" # HTTPS
-      - "443:443/udp" # HTTP/3
+      - "8000:8000"
+    networks:
+      - dbretail-network
+      - dbreport_network
     volumes:
-      - caddy_data:/data
-      - caddy_config:/config
-
-# Volumes needed for Caddy certificates and configuration
-volumes:
-  caddy_data:
-  caddy_config:
+      - .:/app
+networks:
+  dbretail-network:
+    external: true
+  dbreport-network:
+    external: true
