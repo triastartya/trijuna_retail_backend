@@ -5,3 +5,5 @@ docker network create --opt encrypted --driver overlay dbretail-network
 docker network create --opt encrypted --driver overlay dbreport-network
 
 docker stack deploy -c database.yml db
+
+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
