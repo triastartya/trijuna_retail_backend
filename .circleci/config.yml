@@ -1,8 +1,10 @@
 version: 2.1
 jobs:
   build-development:
-    docker:
-      - image: docker:19.03.12
+    machine:
+      image: ubuntu-2204:2024.01.2
+    # If running ARM, the resource class needs to be added. Omitting this defaults to amd64
+    resource_class: arm.medium
     steps:
       - checkout
       - run:
