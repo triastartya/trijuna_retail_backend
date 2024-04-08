@@ -47,7 +47,7 @@ jobs:
       - run:
           name: Deploy app to server demo
           command: |
-            ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd /home/his-admin/pi && ./deploy.sh"
+            ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd /aplikasi && ./deployer-api-retail.sh"
 workflows :
   basic-workflow:
     jobs:
