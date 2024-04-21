@@ -11,13 +11,13 @@ RUN apt-get update && apt-get install -y \
     unzip
 
 RUN install-php-extensions \
+    pcntl \
     pdo_pgsql \
     gd \
     intl \
     zip \
     opcache \
     mbstring
-    # Add other PHP extensions here...
 
 COPY . /app
 

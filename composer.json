@@ -70,15 +70,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": {
-        "att/workit": {
-            "type": "vcs",
-            "url": "https://gitlab.att.id/sofamh/workit.git"
-        },
-        "att/responisme": {
-            "type": "vcs",
-            "url": "https://gitlab.att.id/sofamh/responisme.git"             
-        }
-    }
+    "prefer-stable": true
 }
