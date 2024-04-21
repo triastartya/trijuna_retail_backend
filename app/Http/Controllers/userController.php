@@ -72,7 +72,8 @@ class userController extends VierController
             auth('web')->login($user);
             request()->session()->regenerate();
             $hasil =  array_merge($user->toArray(), [
-                'token' => $user->createToken(config('app.name'))->plainTextToken
+                'token' => $user->createToken(config('app.name'))->plainTextToken,
+                'version' => 'development'
             ]);
             return response()->json(['success'=>true,'data'=>$hasil]);
         } catch (\Exception $ex) {
