@@ -45,7 +45,7 @@ jobs:
           fingerprints:
             - 'SHA256:hQ5CqSmDxYcA4Lnw5PxRF1d+IMIvioaMeObtbnzFaaw'
       - run:
-          name: Deploy app to server demo
+          name: Deploy app to server
           command: |
             ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd aplikasi && ./deployer-api-retail.sh"
 workflows :
