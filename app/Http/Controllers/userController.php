@@ -73,7 +73,7 @@ class userController extends VierController
             request()->session()->regenerate();
             $hasil =  array_merge($user->toArray(), [
                 'token' => $user->createToken(config('app.name'))->plainTextToken,
-                'version' => 'development'
+                'version' => '_development'
             ]);
             return response()->json(['success'=>true,'data'=>$hasil]);
         } catch (\Exception $ex) {
