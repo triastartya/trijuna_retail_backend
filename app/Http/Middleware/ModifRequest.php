@@ -62,7 +62,18 @@ class ModifRequest
                 'kode_lokasi'=>$this->GeneradeNomorSort('lokasi'),
             ]);
         }
-        
+
+        if($request->method()=="POST" & $this->parse($request)=="ms_promo_diskon"){
+            $request->merge([
+                'kode_promo_diskon'=>$this->GeneradeNomorSort('promo diskon'),
+            ]);
+        }
+
+        if($request->method()=="POST" & $this->parse($request)=="ms_promo_hadiah"){
+            $request->merge([
+                'kode_promo_hadiah'=>$this->GeneradeNomorSort('promo hadiah'),
+            ]);
+        }
         
         return $next($request);
     }
