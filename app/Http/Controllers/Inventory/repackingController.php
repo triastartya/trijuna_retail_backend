@@ -99,6 +99,7 @@ class repackingController extends VierController
                 'nominal'         => $repacking->total_hpp_avarage_repacking
             ]);
             if(!$inventoryPengurangan[0]){
+                DB::rollBack();
                 throw new \Exception($inventoryPengurangan[1]);
             }
             //=== update stok
@@ -115,6 +116,7 @@ class repackingController extends VierController
                     'nominal'         => $detail->sub_total
                 ]);
                 if(!$inventoryPenambahan[0]){
+                    DB::rollBack();
                     throw new \Exception($inventoryPenambahan[1]);
                 }
             }

@@ -17,7 +17,7 @@ class penjualanController extends VierController
     public $repository;
     
     public function __construct()
-    {+
+    {
         $this->repository = new penjualanRepository();
         parent::__construct($this->repository);
     }

@@ -92,6 +92,7 @@ class mutasiController extends VierController
                     'nominal'         => $detail->sub_total
                 ]);
                 if(!$inventoryPengurangan[0]){
+                    DB::rollBack();
                     throw new \Exception($inventoryPengurangan[1]);
                 }
                 $inventoryPenambahan = InventoryStokHelper::penambahan((object)[
@@ -106,6 +107,7 @@ class mutasiController extends VierController
                     'nominal'         => $detail->sub_total
                 ]);
                 if(!$inventoryPenambahan[0]){
+                    DB::rollBack();
                     throw new \Exception($inventoryPenambahan[1]);
                 }
             }

@@ -88,6 +88,7 @@ class returPembelianController extends VierController
                     'nominal'         => $detail->sub_total
                 ]);
                 if(!$inventory[0]){
+                    DB::rollBack();
                     throw($inventory[1]);
                 }
             }

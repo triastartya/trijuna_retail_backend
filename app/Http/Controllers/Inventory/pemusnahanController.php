@@ -89,6 +89,7 @@ class pemusnahanController extends VierController
                     'nominal'         => $detail->sub_total
                 ]);
                 if(!$inventoryPengurangan[0]){
+                    DB::rollBack();
                     throw new \Exception($inventoryPengurangan[1]);
                 }
             }

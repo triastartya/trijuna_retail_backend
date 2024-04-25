@@ -99,6 +99,7 @@ class produksiController extends VierController
                 'nominal'         => $produksi->total_hpp_avarage_produksi
             ]);
             if(!$inventoryPenambahan[0]){
+                DB::rollBack();
                 throw new \Exception($inventoryPenambahan[1]);
             }
             //=== update stok
@@ -115,6 +116,7 @@ class produksiController extends VierController
                     'nominal'         => $detail->sub_total
                 ]);
                 if(!$inventoryPengurangan[0]){
+                    DB::rollBack();
                     throw new \Exception($inventoryPengurangan[1]);
                 }
             }
