@@ -52,7 +52,7 @@ class penerimaanKonsinyasiRepository extends VierRepository
             inner join ms_lokasi ml on ml.id_lokasi=tp.id_lokasi
             inner join ms_warehouse mw on mw.id_warehouse=tp.id_warehouse
             inner join ms_supplier ms on tp.id_supplier = ms.id_supplier
-            where tp.jenis_penerimaan = 2 
+            where tp.jenis_penerimaan = 3 
         ',request());
     }
     
