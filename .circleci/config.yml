@@ -15,7 +15,7 @@ jobs:
             ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd aplikasi/backend && ./deployer.sh"
   build-main:
     machine:
-      image: ubuntu-2204:2024.01.2
+      image: ubuntu-2004:current
     # If running ARM, the resource class needs to be added. Omitting this defaults to amd64
     resource_class: arm.medium
     steps:
