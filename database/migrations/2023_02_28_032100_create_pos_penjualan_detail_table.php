@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pos_penjualan_detail', function (Blueprint $table) {
-            $table->id('id_pos_penjualan_detail');
-            $table->integer('id_pos_penjualan')->constrained('pos_penjualan');
+            $table->id('id_penjualan_detail');
+            $table->integer('id_penjualan')->constrained('pos_penjualan');
             $table->integer('urut');
             $table->integer('id_barang')->constrained('ms_barang');
             $table->double('qty_jual',12,2);

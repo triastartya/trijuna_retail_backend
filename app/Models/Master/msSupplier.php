@@ -58,7 +58,7 @@ class msSupplier extends Model
             'kota'=>'required',
             'kecamatan'=>'required',
             'kelurahan'=>'required',
-            'keterangan'=>'required',
+            'keterangan'=>'',
             'is_pkp'=>'required',
             'is_tanpa_po'=>'required',
             'limit_hutang'=>'',

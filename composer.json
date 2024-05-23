@@ -30,7 +30,8 @@
         },
         "files":[
             "app/Helpers/QueryHelper.php",
-            "app/Helpers/GeneradeNomorHelper.php"
+            "app/Helpers/GeneradeNomorHelper.php",
+            "app/Helpers/LokasiHelper.php"
         ]
     },
     "autoload-dev": {

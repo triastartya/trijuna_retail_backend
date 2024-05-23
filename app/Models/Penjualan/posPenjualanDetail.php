@@ -11,9 +11,9 @@ class posPenjualanDetail extends Model
 {
     use HasFactory;
     protected $table = 'pos_penjualan_detail';
-    protected $primaryKey = 'id_pos_penjualan_detail';
+    protected $primaryKey = 'id_penjualan_detail';
     protected $fillable = [
-        'id_pos_penjualan_detail',
+        'id_penjualan_detail',
         'id_penjualan',
         'urut',
         'id_barang',
@@ -30,7 +30,7 @@ class posPenjualanDetail extends Model
     public function rules()
     {
         return [
-            'id_pos_penjualan_detail'=>'',
+            'id_penjualan_detail'=>'',
             'id_penjualan'  =>'required',
             'urut'              =>'required',
             'id_barang'         =>'required',

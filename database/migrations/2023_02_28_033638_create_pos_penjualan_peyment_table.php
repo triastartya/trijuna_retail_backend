@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('pos_penjualan_peyment', function (Blueprint $table) {
             $table->id('id_penjualan_peyment');
-            $table->integer('id_pos_penjualan')->constrained('pos_penjualan');
+            $table->integer('id_penjualan')->constrained('pos_penjualan');
             $table->integer('urut');
             $table->string('jenis_pembayar');
             $table->double('jumlah_bayar');

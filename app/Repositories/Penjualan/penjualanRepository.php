@@ -111,7 +111,7 @@ class penjualanRepository extends VierRepository
         return DB::select("
             select
             trd.id_penjualan,
-            trd.id_pos_penjualan_detail,
+            trd.id_penjualan_detail,
             trd.urut,
             trd.id_barang,
             mb.barcode,

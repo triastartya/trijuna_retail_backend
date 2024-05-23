@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Master;
 
+use App\Helpers\GeneradeNomorHelper;
+use App\Helpers\LokasiHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Master\msBarang;
 use App\Models\Master\trSettingHarga;
@@ -21,6 +23,55 @@ class barangController extends VierController
     {
         $this->repository = new barangRepository();
         parent::__construct($this->repository);
+    }
+
+    public function tambah(Request $request){
+        DB::beginTransaction();
+        try {
+            $data = $request->all();
+            $data['kode_barang'] = GeneradeNomorHelper::sort('barang');
+            unset($data['harga_jual']);
+            unset($data['grosir1']);
+            unset($data['harga_grosir1']);
+            unset($data['grosir2']);
+            unset($data['harga_grosir2']);
+            $barang = msBarang::create($data);
+
+            $lokasi = LokasiHelper::use();
+            //=== insert setting harga
+            $setting_harga = trSettingHarga::create([
+                'id_lokasi'=>$lokasi->id_lokasi,
+                'tanggal_mulai_berlaku'=> date('Y-m-d H:i:s')
+            ]);
+
+            // $setting_harga_detail = trSettingHargaDetail::create([
+            //     [
+                    
+            //         'tanggal_mulai_berlaku',
+            //         'id_setting_harga',
+            //         'id_barang',
+            //         'harga_jual',
+            //         'qty_grosir1',
+            //         'harga_grosir1',
+            //         'qty_grosir2',
+            //         'harga_grosir2',
+            //         'priority',
+            //     ]
+            // ]);
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$barang->kode_barang]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'message'=>$barang->getMessage()]);
+        }
+    }
+
+    public function ubah(){
+        try {
+            
+        } catch (\Exception $th) {
+            
+        }
     }
     
     public function barang_by_param(){

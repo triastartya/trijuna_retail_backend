@@ -43,7 +43,7 @@ return new class extends Migration
             $table->date('diskon_selesai')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');
-            $table->index('kode_satuan');
+            $table->string('kode_satuan');
             $table->timestamps();
         });
     }
