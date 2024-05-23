@@ -2,7 +2,13 @@ services:
   frankenphp:
     build:
       context: .
-      dockerfile: DockerFile
+      dockerfile: Dockerfile
+    environment:
+      - "DB_HOST=203.194.112.71"
+      - "DB_PORT=5431"
+      - "DB_DATABASE=retail"
+      - "DB_USERNAME=trias"
+      - "DB_PASSOWRD=bismillah"
     ports:
       - "8000:8000"
     volumes:

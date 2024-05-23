@@ -17,7 +17,7 @@ jobs:
     machine:
       image: ubuntu-2004:current
     # If running ARM, the resource class needs to be added. Omitting this defaults to amd64
-    resource_class: arm.medium
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -40,7 +40,7 @@ jobs:
             sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
             composer
       - run:
-          name: install install
+          name: composer install
           command: |
             composer install
             php artisan octane:install --server=frankenphp
