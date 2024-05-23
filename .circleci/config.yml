@@ -17,7 +17,7 @@ jobs:
     machine:
       image: ubuntu-2004:current
     # If running ARM, the resource class needs to be added. Omitting this defaults to amd64
-    resource_class: xlarge
+    resource_class: medium
     steps:
       - checkout
       - run:
