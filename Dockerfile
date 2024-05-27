@@ -21,9 +21,9 @@ RUN install-php-extensions \
     pear \
     dev
 
-RUN sudo pecl install mongodb
+RUN pecl install mongodb
 
-RUN echo "extension=mongodb.so" | sudo tee -a /etc/php/8.1/cli/php.ini
+RUN echo "extension=mongodb.so" | tee -a /etc/php/8.1/cli/php.ini
 
 COPY . /app
 
