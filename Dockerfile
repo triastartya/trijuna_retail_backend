@@ -21,9 +21,20 @@ RUN install-php-extensions \
     pear \
     dev
 
-RUN pecl install mongodb
+RUN apt-get update && apt-get install -y \
+    libssl-dev \
+    pkg-config \
+    libcurl4-openssl-dev \
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb
 
-RUN echo "extension=mongodb.so" | tee -a /etc/php/8.1/cli/php.ini
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN php -m | grep mongodb
+
+# RUN pecl install mongodb
+
+# RUN echo "extension=mongodb.so" | tee -a /etc/php/8.1/cli/php.ini
 
 COPY . /app
 
