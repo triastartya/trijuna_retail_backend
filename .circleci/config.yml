@@ -33,7 +33,6 @@ jobs:
       - run:
           name: install composer
           command: |
-            yes '' | sudo pecl install mongodb
             curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
             HASH=`curl -sS https://composer.github.io/installer.sig`
             echo $HASH
