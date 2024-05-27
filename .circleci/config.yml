@@ -29,10 +29,11 @@ jobs:
             sudo apt-get install php8.1 php8.1-cli
       - run:
           name: install php-extention
-          command: sudo apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath
+          command: sudo apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath php8.1-pear php8.1-dev
       - run:
           name: install composer
           command: |
+            yes '' | sudo pecl install mongodb
             curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
             HASH=`curl -sS https://composer.github.io/installer.sig`
             echo $HASH

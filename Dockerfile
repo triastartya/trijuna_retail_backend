@@ -17,7 +17,11 @@ RUN install-php-extensions \
     intl \
     zip \
     opcache \
-    mbstring
+    mbstring \
+    pear \
+    dev
+
+RUN sudo pecl install mongodb
 
 COPY . /app
 

@@ -78,6 +78,19 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_MONGODB_URI', 'mongodb://203.194.112.71:27017/'),
+            'database' => 'report_retail',
+            // 'options' => [
+            //     'maxPoolSize' => 20,
+            //     'w' => 'majority',
+            // ],
+            // 'driverOptions' => [
+            //     'serverApi' => 1,
+            // ],
+        ],
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),

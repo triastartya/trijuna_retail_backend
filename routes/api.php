@@ -44,6 +44,7 @@ use App\Http\Controllers\Penjualan\msPromoHadiahSettingMerkController;
 use App\Http\Controllers\Penjualan\msPromoHadiahSettingSupplierController;
 use App\Http\Controllers\Penjualan\msPromoHadianController;
 use App\Http\Controllers\Penjualan\penjualanController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\userGroupController;
 use App\Http\Middleware\ModifRequest;
@@ -66,6 +67,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth:sanctum'], function () {
 
 });
+
+Route::get('add',[ReportController::class,'addtes']);
+Route::get('get',[ReportController::class,'gettes']);
+
 
 Route::get('health',function(){
     return response()->json(['success'=>true,'data'=>'health']);
