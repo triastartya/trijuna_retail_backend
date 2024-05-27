@@ -23,6 +23,8 @@ RUN install-php-extensions \
 
 RUN sudo pecl install mongodb
 
+RUN echo "extension=mongodb.so" | sudo tee -a /etc/php/8.1/cli/php.ini
+
 COPY . /app
 
 ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
