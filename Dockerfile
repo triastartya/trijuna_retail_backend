@@ -18,7 +18,6 @@ RUN install-php-extensions \
     zip \
     opcache \
     mbstring \
-    pear \
     dev
 
 RUN apt-get update && apt-get install -y \
