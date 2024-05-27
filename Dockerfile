@@ -17,8 +17,7 @@ RUN install-php-extensions \
     intl \
     zip \
     opcache \
-    mbstring \
-    dev
+    mbstring
 
 RUN apt-get update && apt-get install -y \
     libssl-dev \
