@@ -71,8 +71,7 @@ class InventoryStokHelper
         return [true,'berhasil'];      
     }
     
-    public static function pengurangan($data)
-    {
+    public static function pengurangan($data){
         $barang_stok = msBarangStok::where('id_barang',$data->id_barang)
                         ->where('id_warehouse',$data->id_warehouse)
                         ->lockForUpdate()->first();
@@ -125,4 +124,6 @@ class InventoryStokHelper
         
         return [true,'berhasil'];
     }
+
+    
 }

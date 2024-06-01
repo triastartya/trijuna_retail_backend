@@ -6,6 +6,7 @@ use App\Http\Controllers\Inventory\mutasiLokasiController;
 use App\Http\Controllers\Inventory\pemusnahanController;
 use App\Http\Controllers\Inventory\produksiController;
 use App\Http\Controllers\Inventory\repackingController;
+use App\Http\Controllers\Inventory\stokOpnameController;
 use App\Http\Controllers\Master\barangController;
 use App\Http\Controllers\Master\barangKomponenController;
 use App\Http\Controllers\Master\barangRakController;
@@ -236,6 +237,13 @@ Route::group(['middleware' => ModifRequest::class], function () {
     // Route::pointResource('ms_promo_bonus_setting_item',msPromoBonusSettingItemController::class);
     // Route::pointResource('ms_promo_bonus_setting_merk',msPromoBonusSettingMerkController::class);
     // Route::pointResource('ms_promo_bonus_setting_supplier',msPromoBonusSettingSupplierController::class);
+    Route::prefix('stok_opname')->group(function(){
+        Route::post('insert',[stokOpnameController::class,'insert']);
+        Route::post('insert_detail',[stokOpnameController::class,'insert_detail']);
+        Route::post('get_by_param',[stokOpnameController::class,'get_by_param']);
+        Route::get('get_by_id/{id_audit_stok_opname}',[stokOpnameController::class,'get_by_id']);
+        Route::post('lookup_barang',[stokOpnameController::class,'lookup_barang']);
+    });
 
     Route::prefix('bayar_hutang_supplier')->group(function(){
         Route::post('insert',[bayarHutangController::class,'insert']);
