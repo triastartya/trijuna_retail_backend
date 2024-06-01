@@ -23,12 +23,12 @@ return new class extends Migration
             $table->double('isi',12,2);
             $table->double('qty',12,2);
             $table->double('harga_order',12,2);
-            $table->double('diskon_persen_1',12,2);
-            $table->double('diskon_nominal_1',12,2);
-            $table->double('diskon_persen_2',12,2);
-            $table->double('diskon_nominal_2',12,2);
-            $table->double('diskon_persen_3',12,2);
-            $table->double('diskon_nominal_3',12,2);
+            $table->double('diskon_persen_1',12,2)->default(0);
+            $table->double('diskon_nominal_1',12,2)->default(0);
+            $table->double('diskon_persen_2',12,2)->default(0);
+            $table->double('diskon_nominal_2',12,2)->default(0);
+            $table->double('diskon_persen_3',12,2)->default(0);
+            $table->double('diskon_nominal_3',12,2)->default(0);
             $table->double('sub_total',12,2);
             $table->double('biaya_barcode',12,2)->default(0);
             $table->double('qty_bonus',12,2)->default(0);

@@ -18,7 +18,7 @@ class msBarangSatuan extends Model
         'id_satuan',
         'isi'
     ];
-    protected $primaryKey = 'id_brang_satuan';
+    protected $primaryKey = 'id_barang_satuan';
     protected $modelFields = [
         ['name' => 'id_barang', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'id_rak', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
@@ -29,7 +29,7 @@ class msBarangSatuan extends Model
     public function rules()
     {
         return [
-        'id_brang_satuan'=>'',
+        'id_barang_satuan'=>'',
         'id_barang'=>'required',
         'id_satuan'=>'required',
         'isi' => 'required',

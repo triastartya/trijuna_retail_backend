@@ -6,6 +6,7 @@ use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\LokasiHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Master\msBarang;
+use App\Models\Master\msBarangSatuan;
 use App\Models\Master\trSettingHarga;
 use App\Models\Master\trSettingHargaDetail;
 use App\Repositories\Master\barangRepository;
@@ -30,7 +31,10 @@ class barangController extends VierController
         try {
             $data = $request->all();
             $data['kode_barang'] = GeneradeNomorHelper::sort('barang');
-            unset($data['harga_jual']);
+            unset($data['id_satuan2']);
+            unset($data['isi_satuan2']);
+            unset($data['id_satuan3']);
+            unset($data['isi_satuan3']);
             unset($data['grosir1']);
             unset($data['harga_grosir1']);
             unset($data['grosir2']);
@@ -44,25 +48,35 @@ class barangController extends VierController
                 'tanggal_mulai_berlaku'=> date('Y-m-d H:i:s')
             ]);
 
-            // $setting_harga_detail = trSettingHargaDetail::create([
-            //     [
-                    
-            //         'tanggal_mulai_berlaku',
-            //         'id_setting_harga',
-            //         'id_barang',
-            //         'harga_jual',
-            //         'qty_grosir1',
-            //         'harga_grosir1',
-            //         'qty_grosir2',
-            //         'harga_grosir2',
-            //         'priority',
-            //     ]
-            // ]);
+            $setting_harga_detail = trSettingHargaDetail::create([
+                'tanggal_mulai_berlaku'=>date('Y-m-d H:i:s'),
+                'id_setting_harga'=>$setting_harga->id_setting_harga,
+                'id_barang'=>$barang->id_barang,
+                'harga_jual'=>$request->harga_jual,
+                'qty_grosir1'=>$request->qty_grosir1,
+                'harga_grosir1'=>$request->harga_grosir1,
+                'qty_grosir2'=>$request->qty_grosir2,
+                'harga_grosir2'=>$request->harga_grosir2,
+                'priority'=>1,
+            ]);
+
+            $satuan= msBarangSatuan::create([
+                'id_barang'=>$barang->id_barang,
+                'id_satuan'=>$request->id_satuan2,
+                'isi'       =>$request->isi_satuan2,
+            ]);
+
+            $satuan= msBarangSatuan::create([
+                'id_barang'=>$barang->id_barang,
+                'id_satuan'=>$request->id_satuan3,
+                'isi'       =>$request->isi_satuan3,
+            ]);
+
             DB::commit();
             return response()->json(['success'=>true,'data'=>$barang->kode_barang]);
         } catch (\Exception $ex) {
             DB::rollBack();
-            return response()->json(['success'=>false,'message'=>$barang->getMessage()]);
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
         }
     }
 

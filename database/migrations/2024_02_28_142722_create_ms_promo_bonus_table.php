@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('kode_promo_bonus');
             $table->string('nama_promo_bonus');
             $table->boolean('is_kelipatan');
+            $table->integer('id_barang_bonus')->constrained('ms_barang');
+            $table->integer('kuota')->default(0);
             $table->string('keterangan',200);
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');

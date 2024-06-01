@@ -18,9 +18,9 @@ return new class extends Migration
             $table->boolean('is_nominal');
             $table->string('kode_promo_diskon');
             $table->string('nama_promo_diskon');
-            $table->double('minimal_qty');
-            $table->double('diskon');
-            $table->integer('kuota');
+            $table->double('minimal_qty')->default(0);
+            $table->double('diskon')->default(0);
+            $table->integer('kuota')->default(0);
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
             $table->string('gambar');
