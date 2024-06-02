@@ -49,7 +49,6 @@ class posTutupKasirController extends VierController
     {
         try{
             $data = $this->repository->history();
-            dd($data);
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage(), 'code' => $ex->getCode()]);
