@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('id_input_stok_opname');
             $table->integer('id_setting_stok_opname');
             $table->integer('id_barang');
+            $table->datetime('tanggal_setting_stok_opname');
             $table->double('qty_fisik',12,2);
             $table->double('qty_capture',12,2);
             $table->double('qty_selisih',12,2);

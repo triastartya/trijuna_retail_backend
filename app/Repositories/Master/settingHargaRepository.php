@@ -105,7 +105,7 @@ class settingHargaRepository extends VierRepository
             from tr_setting_harga_detail_lokasi tshdl
             inner join tr_setting_harga_detail tshd on tshdl.id_setting_harga_detail = tshd.id_setting_harga_detail
             inner join tr_setting_harga tsh on tshd.id_setting_harga = tsh.id_setting_harga
-            where tsh.tanggal_mulai_berlaku <= now()::timestamp and tshdl.id_lokasi = ? and tshd.id_barang = ? order by tsh.created_at DESC limit 1
+            where tsh.tanggal_mulai_berlaku <= now()::timestamp and tshdl.id_lokasi = ? and tshd.id_barang = ? order by tsh.tanggal_mulai_berlaku DESC limit 1
         ',[1,$id_barang]);
         
         if(count($hj)){

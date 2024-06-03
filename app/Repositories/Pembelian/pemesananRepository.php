@@ -11,15 +11,13 @@ use Illuminate\Support\Facades\DB;
 class pemesananRepository extends VierRepository
 {
     public $repository_barang_satuan;
-    public function __construct()
-    {
+    public function __construct(){
         $this->repository_barang_satuan = new barangSatuanRepository;
     
         parent::__construct(new trPenerimaan());    
     }
     
-    public function get_pemesanan_by_id_pemesanan()
-    {
+    public function get_pemesanan_by_id_pemesanan(){
         return DB::select("
                 select
                 tp.id_pemesanan,

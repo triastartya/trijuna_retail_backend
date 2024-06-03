@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('keterangan',200);
             $table->integer('jumlah');
             $table->string('hadiah');
+            $table->integer('kuota')->default(0);
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
             $table->string('gambar');

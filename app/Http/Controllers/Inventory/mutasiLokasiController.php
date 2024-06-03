@@ -87,4 +87,14 @@ class mutasiLokasiController extends VierController
             return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+
+    public function validasi(){
+        try{
+            $data = "";
+            return response()->json(['status'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+    
 }

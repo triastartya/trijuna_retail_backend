@@ -35,10 +35,10 @@ class msPromoBonusController extends VierController
     {
         try{
             $data = $this->repository->find(request()->id_promo_bonus);
-            $data->item = $this->repository_bonus_item->by_id_promo_bonus();
+            // $data->item = $this->repository_bonus_item->by_id_promo_bonus();
             $data->barang = $this->repository_bonus_barang->by_id_promo_bonus();
-            $data->merk = $this->repository_bonus_merk->by_id_promo_bonus();
-            $data->supplier = $this->repository_bonus_supplier->by_id_promo_bonus();
+            // $data->merk = $this->repository_bonus_merk->by_id_promo_bonus();
+            // $data->supplier = $this->repository_bonus_supplier->by_id_promo_bonus();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {  
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
