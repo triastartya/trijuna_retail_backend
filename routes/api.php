@@ -50,6 +50,9 @@ use App\Http\Controllers\userController;
 use App\Http\Controllers\userGroupController;
 use App\Http\Middleware\ModifRequest;
 use App\Models\Finance\trBayarHutang;
+use App\Http\Controllers\Finance\kasirController;
+use App\Http\Controllers\Finance\posTutupKasirController;
+use App\Http\Controllers\Finance\posPaymentMethodController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -263,5 +266,12 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('get_by_param',[penjualanController::class,'get_by_param']);
         Route::get('get_by_id/{id_penjualan}',[penjualanController::class,'get_by_id']);
     });
-    
+
+    Route::prefix('kasir')->group(function(){
+        Route::get('get_modal_kasir/{id_user_kasir}',[kasirController::class,'get_modal_kasir']);
+        Route::post('tutup_kasir',[posTutupKasirController::class,'tutup_kasir']);
+        Route::post('history_tutup_kasir',[posTutupKasirController::class,'history']);
+    });
+
+    Route::pointResource('paymentMethod', posPaymentMethodController::class);
 });
