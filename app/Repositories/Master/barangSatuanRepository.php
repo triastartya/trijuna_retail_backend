@@ -16,7 +16,7 @@ class barangSatuanRepository extends VierRepository
     public function by_id_barang()
     {
         return DB::select('
-            select mbs.id_brang_satuan,
+            select mbs.id_barang_satuan,
             mbs.id_barang,
             mbs.id_satuan,
             ms.kode_satuan,
