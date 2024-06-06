@@ -34,7 +34,7 @@ class GeneradeNomorHelper
         $prefix = str_replace('.', '', $prefix);
         $prefix = str_replace(' ', '', $prefix);
         $prefix = strtoupper($prefix);
-        $prefix = substr($prefix, 0, 3);
+        $prefix = substr($prefix, 0, 4);
         $master_counter_forupdate = nomorCounter::where('keterangan',$keterangan)->lockForUpdate()->first();
         $master_counter_forupdate->counter = $master_counter_forupdate->counter + 1;
         $master_counter_forupdate->save();
