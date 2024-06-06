@@ -33,7 +33,7 @@ class trSettingHarga extends Model
     {
         return [
             'id_setting_harga'=>'',
-            'id_lokasi'=>'required',
+            'id_lokasi'=>'',
             'tanggal_mulai_berlaku'=>'required',
             'created_by'=>'',
             'updated_by'=>''
