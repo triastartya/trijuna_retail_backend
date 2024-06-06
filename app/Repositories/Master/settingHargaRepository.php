@@ -27,7 +27,7 @@ class settingHargaRepository extends VierRepository
             tsh.created_at,
             tsh.updated_at
             from tr_setting_harga tsh
-            left join ms_lokasi ml on ml.id_lokasi = tsh.id_lokasi
+            left join ms_lokasi ml on ml.id_lokasi = tsh.id_lokasi 
             inner join users uc on uc.id_user = tsh.created_by
             inner join users uu on uu.id_user = tsh.updated_by
         ',request());
