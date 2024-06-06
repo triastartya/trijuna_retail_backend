@@ -28,4 +28,16 @@ class GeneradeNomorHelper
         $nomor = $master_counter_forupdate->prefix . substr($pecah[0], -2) .$pecah[1] .$pecah[2] .sprintf('%04s', $master_counter_forupdate->counter);
         return $nomor;
     }
+
+    public static function prefix_sort($keterangan,$prefix="KODE")
+    {
+        $prefix = str_replace('.', '', $prefix);
+        $prefix = str_replace(' ', '', $prefix);
+        $prefix = strtoupper($prefix);
+        $prefix = substr($prefix, 0, 3);
+        $master_counter_forupdate = nomorCounter::where('keterangan',$keterangan)->lockForUpdate()->first();
+        $master_counter_forupdate->counter = $master_counter_forupdate->counter + 1;
+        $master_counter_forupdate->save();
+        return $prefix.sprintf('%04s', $master_counter_forupdate->counter);
+    }
 }

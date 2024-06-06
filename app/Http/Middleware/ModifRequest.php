@@ -28,7 +28,7 @@ class ModifRequest
         
         if($request->method()=="POST" & $this->parse($request)=="supplier"){
             $request->merge([
-                'kode_supplier'=>GeneradeNomorHelper::long('supplier'),
+                'kode_supplier'=>GeneradeNomorHelper::prefix_sort('supplier',$request->nama_supplier),
                 'sisa_hutang' =>0
             ]);
         }
