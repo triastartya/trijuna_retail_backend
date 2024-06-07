@@ -115,25 +115,7 @@ class barangController extends VierController
         try {
             $data = msLokasi::all();
             foreach($data as $index=>$lokasi){
-                $response = Http::get($lokasi->server.'/api/barang/lihat_stok/'.$request->id_barang);
-                if($response->successful()){
-                    $data[$index]->stok = [
-                        'succsess' => true,
-                        'data'=> $response->object(),
-                        'message'=>""
-                    ];
-                }else{
-                    $data[$index]->stok = [
-                        'succsess' => false,
-                        'data'=> null,
-                        'message'=>$response->status().", ".$response->body()
-                    ];
-                }
-                // $data[$index]->stok = [
-                //     'succsess' => false,
-                //     'data'=> null,
-                //     'message'=>$ex
-                // ];
+                
             }
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
