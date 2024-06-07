@@ -80,6 +80,17 @@ class barangController extends VierController
         }
     }
 
+    public function update_status_active(Request $request){
+        try {
+            $update = msBarang::where('id_barang',$request->id_barang)->first();
+            $update->is_active = !$update->is_active;
+            $update->save();
+            return response()->json(['success'=>true,'data'=>$update->id_barang]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
     public function ubah(){
         try {
             

@@ -102,6 +102,7 @@ Route::group(['middleware' => ModifRequest::class], function () {
     Route::pointResource('barang',barangController::class);
 
     Route::post('tambahbarang',[barangController::class,'tambah']);
+    Route::get('barang/update_status_active/{id_barang}',[barangController::class,'update_status_active']);
     Route::get('getbarangpos',[barangController::class,'barang_pos']);
     Route::get('barang/data/import',[barangController::class,'import']);
     Route::post('barang/by_param',[barangController::class,'barang_by_param']);
