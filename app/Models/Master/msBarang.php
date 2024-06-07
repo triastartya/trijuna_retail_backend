@@ -94,4 +94,14 @@ class msBarang extends Model
         'updated_by'=>''
         ];
     }
+
+    protected $casts = [
+        'harga_order' => 'float',
+        'harga_beli_terakhir' => 'float',
+        'hpp_average' => 'float',
+    ];
+
+    public function stok(){
+        return $this->hasMany(msBarangStok::class,'id_barang','id_barang');
+    }
 }

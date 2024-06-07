@@ -7,6 +7,7 @@ use App\Helpers\LokasiHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Master\msBarang;
 use App\Models\Master\msBarangSatuan;
+use App\Models\Master\msLokasi;
 use App\Models\Master\trSettingHarga;
 use App\Models\Master\trSettingHargaDetail;
 use App\Repositories\Master\barangRepository;
@@ -15,6 +16,7 @@ use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 class barangController extends VierController
 {
@@ -60,17 +62,21 @@ class barangController extends VierController
                 'priority'=>1,
             ]);
 
-            $satuan= msBarangSatuan::create([
-                'id_barang'=>$barang->id_barang,
-                'id_satuan'=>$request->id_satuan2,
-                'isi'       =>$request->isi_satuan2,
-            ]);
-
-            $satuan= msBarangSatuan::create([
-                'id_barang'=>$barang->id_barang,
-                'id_satuan'=>$request->id_satuan3,
-                'isi'       =>$request->isi_satuan3,
-            ]);
+            if($request->isi_satuan2!=0 ||$request->isi_satuan2!=null){
+                $satuan= msBarangSatuan::create([
+                    'id_barang'=>$barang->id_barang,
+                    'id_satuan'=>$request->id_satuan2,
+                    'isi'       =>$request->isi_satuan2,
+                ]);
+            }
+            
+            if($request->isi_satuan3!=0 ||$request->isi_satuan3!=null){
+                $satuan= msBarangSatuan::create([
+                    'id_barang'=>$barang->id_barang,
+                    'id_satuan'=>$request->id_satuan3,
+                    'isi'       =>$request->isi_satuan3,
+                ]);
+            }
 
             DB::commit();
             return response()->json(['success'=>true,'data'=>$barang->kode_barang]);
@@ -86,6 +92,50 @@ class barangController extends VierController
             $update->is_active = !$update->is_active;
             $update->save();
             return response()->json(['success'=>true,'data'=>$update->id_barang]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function lihat_stok(Request $request){
+        try {
+            $barang = msBarang::with('stok.warehouse')->where('id_barang',$request->id_barang)->first();
+            if(count($barang->stok)!=0){
+                $barang->jumlah_stok = collect($barang->stok)->sum('qty');
+            }else{
+                $barang->jumlah_stok = 0;
+            }
+            return response()->json(['success'=>true,'data'=>$barang]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function lihat_stok_cabang(Request $request){
+        try {
+            $data = msLokasi::all();
+            foreach($data as $index=>$lokasi){
+                $response = Http::get($lokasi->server.'/api/barang/lihat_stok/'.$request->id_barang);
+                if($response->successful()){
+                    $data[$index]->stok = [
+                        'succsess' => true,
+                        'data'=> $response->object(),
+                        'message'=>""
+                    ];
+                }else{
+                    $data[$index]->stok = [
+                        'succsess' => false,
+                        'data'=> null,
+                        'message'=>$response->status().", ".$response->body()
+                    ];
+                }
+                // $data[$index]->stok = [
+                //     'succsess' => false,
+                //     'data'=> null,
+                //     'message'=>$ex
+                // ];
+            }
+            return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
         }

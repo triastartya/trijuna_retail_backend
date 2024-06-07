@@ -82,6 +82,8 @@ Route::get('health',function(){
 Route::post('register',[userController::class,'register']);
 Route::post('login',[userController::class,'login']);
 
+Route::get('barang/lihat_stok/{id_barang}',[barangController::class,'lihat_stok']);
+Route::get('barang/lihat_stok_cabang/{id_barang}',[barangController::class,'lihat_stok_cabang']);
 Route::group(['middleware' => ModifRequest::class], function () {
     Route::post('raw/tes',[divisiController::class,'testing']);
     Route::pointResource('user_group', userGroupController::class);
