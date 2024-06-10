@@ -129,6 +129,20 @@ class penjualanRepository extends VierRepository
             order by urut
         ",[request()->id_penjualan]);            
     }
+
+    public function get_omzet_barang_by_month(){
+        $month=date('m');
+        $year=date('Y');
+        return DB::select("
+            select
+            SUM(trd.qty_jual) as qty_jual
+            from pos_penjualan_detail trd
+            inner join pos_penjualan pp on trd.id_penjualan=pp.id_penjualan
+            where trd.id_barang = ? 
+            and EXTRACT(MONTH from tanggal_penjualan)=?
+            and EXTRACT(YEAR from tanggal_penjualan)=?;
+        ",[request()->id_barang,$month,$year]);            
+    }
     
     public function get_payment(){
         return DB::select("
