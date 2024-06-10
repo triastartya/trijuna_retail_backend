@@ -137,20 +137,26 @@ class barangController extends VierController
         try {
             $data = msLokasi::all();
             foreach($data as $index=>$lokasi){
-                $response = Http::withOptions(['verify' => false])->get($lokasi->server."/api/barang/lihat_stok/".$request->id_barang);
-                if($response->successful()){
-                    $res = $response->object();
-                   $data[$index]->jumlah_stok = $res->data->jumlah_stok;
-                   $data[$index]->status_stok = true;
-                   $data[$index]->stok = $res->data->stok;
-                   $data[$index]->message = 'berhasil';
-                }else{
+                try {
+                    $response = Http::withOptions(['verify' => false])->get($lokasi->server."/api/barang/lihat_stok/".$request->id_barang);
+                    if($response->successful()){
+                        $res = $response->object();
+                    $data[$index]->jumlah_stok = $res->data->jumlah_stok;
+                    $data[$index]->status_stok = true;
+                    $data[$index]->stok = $res->data->stok;
+                    $data[$index]->message = 'berhasil';
+                    }else{
+                        $data[$index]->jumlah_stok = 0;
+                        $data[$index]->status_stok = false;
+                        $data[$index]->stok = [];
+                        $data[$index]->message = $response->status().', ';
+                    }
+                }catch (\Exception $ex) {
                     $data[$index]->jumlah_stok = 0;
                     $data[$index]->status_stok = false;
                     $data[$index]->stok = [];
-                    $data[$index]->message = $response->status().', ';
+                    $data[$index]->message = $ex->getMessage();
                 }
-                // dd($response->object());
             }
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
@@ -162,20 +168,28 @@ class barangController extends VierController
         try {
             $data = msLokasi::all();
             foreach($data as $index=>$lokasi){
-                $response = Http::withOptions(['verify' => false])->get($lokasi->server."/api/barang/lihat_stok_omzet/".$request->id_barang);
-                if($response->successful()){
-                    $res = $response->object();
-                   $data[$index]->jumlah_stok = $res->data->jumlah_stok;
-                   $data[$index]->last_omzet = $res->data->omzet;
-                   $data[$index]->status_stok = true;
-                   $data[$index]->stok = $res->data->stok;
-                   $data[$index]->message = 'berhasil';
-                }else{
+                try {
+                    $response = Http::withOptions(['verify' => false])->get($lokasi->server."/api/barang/lihat_stok_omzet/".$request->id_barang);
+                    if($response->successful()){
+                        $res = $response->object();
+                        $data[$index]->jumlah_stok = $res->data->jumlah_stok;
+                        $data[$index]->last_omzet = $res->data->omzet;
+                        $data[$index]->status_stok = true;
+                        $data[$index]->stok = $res->data->stok;
+                        $data[$index]->message = 'berhasil';
+                    }else{
+                        $data[$index]->jumlah_stok = 0;
+                        $data[$index]->last_omzet = 0 ;
+                        $data[$index]->status_stok = false;
+                        $data[$index]->stok = [];
+                        $data[$index]->message = $response->status().', err';
+                    }
+                }catch (\Exception $ex) {
                     $data[$index]->jumlah_stok = 0;
                     $data[$index]->last_omzet = 0 ;
                     $data[$index]->status_stok = false;
                     $data[$index]->stok = [];
-                    $data[$index]->message = $response->status().', ';
+                    $data[$index]->message = $ex->getMessage();
                 }
             }
             return response()->json(['success'=>true,'data'=>$data]);
