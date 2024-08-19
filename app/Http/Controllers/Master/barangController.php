@@ -7,22 +7,26 @@ use App\Helpers\LokasiHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Master\msBarang;
 use App\Models\Master\msBarangSatuan;
+use App\Models\Master\msLokasi;
 use App\Models\Master\trSettingHarga;
 use App\Models\Master\trSettingHargaDetail;
 use App\Repositories\Master\barangRepository;
+use App\Repositories\Penjualan\penjualanRepository;
 use DateTime;
 use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 class barangController extends VierController
 {
     public $repository;
-    
+    public $repository_penjualan;
     public function __construct()
     {
         $this->repository = new barangRepository();
+        $this->repository_penjualan =  new penjualanRepository();
         parent::__construct($this->repository);
     }
 
@@ -60,22 +64,136 @@ class barangController extends VierController
                 'priority'=>1,
             ]);
 
-            $satuan= msBarangSatuan::create([
-                'id_barang'=>$barang->id_barang,
-                'id_satuan'=>$request->id_satuan2,
-                'isi'       =>$request->isi_satuan2,
-            ]);
-
-            $satuan= msBarangSatuan::create([
-                'id_barang'=>$barang->id_barang,
-                'id_satuan'=>$request->id_satuan3,
-                'isi'       =>$request->isi_satuan3,
-            ]);
+            if($request->isi_satuan2!=0 ||$request->isi_satuan2!=null){
+                $satuan= msBarangSatuan::create([
+                    'id_barang'=>$barang->id_barang,
+                    'id_satuan'=>$request->id_satuan2,
+                    'isi'       =>$request->isi_satuan2,
+                ]);
+            }
+            
+            if($request->isi_satuan3!=0 ||$request->isi_satuan3!=null){
+                $satuan= msBarangSatuan::create([
+                    'id_barang'=>$barang->id_barang,
+                    'id_satuan'=>$request->id_satuan3,
+                    'isi'       =>$request->isi_satuan3,
+                ]);
+            }
 
             DB::commit();
             return response()->json(['success'=>true,'data'=>$barang->kode_barang]);
         } catch (\Exception $ex) {
             DB::rollBack();
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function update_status_active(Request $request){
+        try {
+            $update = msBarang::where('id_barang',$request->id_barang)->first();
+            $update->is_active = !$update->is_active;
+            $update->save();
+            return response()->json(['success'=>true,'data'=>$update->id_barang]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function lihat_stok(Request $request){
+        try {
+            $barang = msBarang::with('stok.warehouse')->where('id_barang',$request->id_barang)->first();
+            if(count($barang->stok)!=0){
+                $barang->jumlah_stok = collect($barang->stok)->sum('qty');
+            }else{
+                $barang->jumlah_stok = 0;
+            }
+            return response()->json(['success'=>true,'data'=>$barang]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function lihat_stok_omzet(Request $request){
+        try {
+            $barang = msBarang::with('stok.warehouse')->where('id_barang',$request->id_barang)->first();
+            $omzet = $this->repository_penjualan->get_omzet_barang_by_month();
+            if($omzet[0]->qty_jual){
+                $barang->omzet = (float)$omzet[0]->qty_jual;
+            }else{
+                $barang->omzet = 0;
+            }
+            if(count($barang->stok)!=0){
+                $barang->jumlah_stok = collect($barang->stok)->sum('qty');
+            }else{
+                $barang->jumlah_stok = 0;
+            }
+            return response()->json(['success'=>true,'data'=>$barang]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function lihat_stok_cabang(Request $request){
+        try {
+            $data = msLokasi::all();
+            foreach($data as $index=>$lokasi){
+                try {
+                    $response = Http::withOptions(['verify' => false])->get($lokasi->server."/api/barang/lihat_stok/".$request->id_barang);
+                    if($response->successful()){
+                        $res = $response->object();
+                    $data[$index]->jumlah_stok = $res->data->jumlah_stok;
+                    $data[$index]->status_stok = true;
+                    $data[$index]->stok = $res->data->stok;
+                    $data[$index]->message = 'berhasil';
+                    }else{
+                        $data[$index]->jumlah_stok = 0;
+                        $data[$index]->status_stok = false;
+                        $data[$index]->stok = [];
+                        $data[$index]->message = $response->status().', ';
+                    }
+                }catch (\Exception $ex) {
+                    $data[$index]->jumlah_stok = 0;
+                    $data[$index]->status_stok = false;
+                    $data[$index]->stok = [];
+                    $data[$index]->message = $ex->getMessage();
+                }
+            }
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function lihat_stok_omzet_cabang(Request $request){
+        try {
+            $data = msLokasi::all();
+            foreach($data as $index=>$lokasi){
+                try {
+                    $response = Http::withOptions(['verify' => false])->get($lokasi->server."/api/barang/lihat_stok_omzet/".$request->id_barang);
+                    if($response->successful()){
+                        $res = $response->object();
+                        $data[$index]->jumlah_stok = $res->data->jumlah_stok;
+                        $data[$index]->last_omzet = $res->data->omzet;
+                        $data[$index]->status_stok = true;
+                        $data[$index]->stok = $res->data->stok;
+                        $data[$index]->message = 'berhasil';
+                    }else{
+                        $data[$index]->jumlah_stok = 0;
+                        $data[$index]->last_omzet = 0 ;
+                        $data[$index]->status_stok = false;
+                        $data[$index]->stok = [];
+                        $data[$index]->message = $response->status().', err';
+                    }
+                }catch (\Exception $ex) {
+                    $data[$index]->jumlah_stok = 0;
+                    $data[$index]->last_omzet = 0 ;
+                    $data[$index]->status_stok = false;
+                    $data[$index]->stok = [];
+                    $data[$index]->message = $ex->getMessage();
+                }
+            }
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
             return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
         }
     }
@@ -173,4 +291,6 @@ class barangController extends VierController
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
     }
+
+
 }

@@ -72,11 +72,11 @@ class msBarang extends Model
         'id_group'=>'',
         'kode_barang'=>'required',
         'barcode'=>'required',
-        'image'=>'required',
-        'persediaan'=>'required',
+        'image'=>'',
+        'persediaan'=>'',
         'nama_barang'=>'required',
         'id_merk'=>'',
-        'ukuran'=>'required',
+        'ukuran'=>'',
         'warna'=>'required',
         'berat'=>'required',
         'id_supplier'=>'',
@@ -93,5 +93,15 @@ class msBarang extends Model
         'created_by'=>'',
         'updated_by'=>''
         ];
+    }
+
+    protected $casts = [
+        'harga_order' => 'float',
+        'harga_beli_terakhir' => 'float',
+        'hpp_average' => 'float',
+    ];
+
+    public function stok(){
+        return $this->hasMany(msBarangStok::class,'id_barang','id_barang');
     }
 }

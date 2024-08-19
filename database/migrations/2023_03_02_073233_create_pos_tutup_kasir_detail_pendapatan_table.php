@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('id_payment_method')->constrained('pos_payment_method');
             $table->string('payment_method',100);
             $table->double('nominal',12,2);
+            $table->double('nominal_sistem',12,2);
+            $table->double('selisih',12,2);
             $table->timestamps();
         });
     }

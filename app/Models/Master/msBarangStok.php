@@ -7,6 +7,7 @@ use Viershaka\Vier\Interfaces\ModelDictionary;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedUpdatedBy;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class msBarangStok extends Model
 {
@@ -47,5 +48,14 @@ class msBarangStok extends Model
         'created_by'=>'',
         'updated_by'=>''
         ];
+    }
+    protected $casts = [
+        'qty' => 'float',
+        'stok_max' => 'float',
+        'stok_min' => 'float',
+    ];
+
+    public function warehouse(){
+        return $this->HasOne(msWarehouse::class,'id_warehouse','id_warehouse');
     }
 }

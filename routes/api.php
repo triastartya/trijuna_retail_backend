@@ -82,6 +82,10 @@ Route::get('health',function(){
 Route::post('register',[userController::class,'register']);
 Route::post('login',[userController::class,'login']);
 
+Route::get('barang/lihat_stok/{id_barang}',[barangController::class,'lihat_stok']);
+Route::get('barang/lihat_stok_omzet/{id_barang}',[barangController::class,'lihat_stok_omzet']);
+Route::get('barang/lihat_stok_omzet_cabang/{id_barang}',[barangController::class,'lihat_stok_omzet_cabang']);
+Route::get('barang/lihat_stok_cabang/{id_barang}',[barangController::class,'lihat_stok_cabang']);
 Route::group(['middleware' => ModifRequest::class], function () {
     Route::post('raw/tes',[divisiController::class,'testing']);
     Route::pointResource('user_group', userGroupController::class);
@@ -102,6 +106,7 @@ Route::group(['middleware' => ModifRequest::class], function () {
     Route::pointResource('barang',barangController::class);
 
     Route::post('tambahbarang',[barangController::class,'tambah']);
+    Route::get('barang/update_status_active/{id_barang}',[barangController::class,'update_status_active']);
     Route::get('getbarangpos',[barangController::class,'barang_pos']);
     Route::get('barang/data/import',[barangController::class,'import']);
     Route::post('barang/by_param',[barangController::class,'barang_by_param']);
@@ -265,11 +270,13 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('insert',[penjualanController::class,'insert']);
         Route::post('get_by_param',[penjualanController::class,'get_by_param']);
         Route::get('get_by_id/{id_penjualan}',[penjualanController::class,'get_by_id']);
+        Route::post('sell_out_item',[penjualanController::class,'sell_out_item']);
     });
 
     Route::prefix('kasir')->group(function(){
         Route::get('get_modal_kasir/{id_user_kasir}',[kasirController::class,'get_modal_kasir']);
         Route::post('tutup_kasir',[posTutupKasirController::class,'tutup_kasir']);
+        Route::get('kasir_belum_tutup_kasir',[posTutupKasirController::class,'kasir_belum_closing']);
         Route::post('history_tutup_kasir',[posTutupKasirController::class,'history']);
     });
 
