@@ -270,11 +270,13 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('insert',[penjualanController::class,'insert']);
         Route::post('get_by_param',[penjualanController::class,'get_by_param']);
         Route::get('get_by_id/{id_penjualan}',[penjualanController::class,'get_by_id']);
+        Route::post('sell_out_item',[penjualanController::class,'sell_out_item']);
     });
 
     Route::prefix('kasir')->group(function(){
         Route::get('get_modal_kasir/{id_user_kasir}',[kasirController::class,'get_modal_kasir']);
         Route::post('tutup_kasir',[posTutupKasirController::class,'tutup_kasir']);
+        Route::get('kasir_belum_tutup_kasir',[posTutupKasirController::class,'kasir_belum_closing']);
         Route::post('history_tutup_kasir',[posTutupKasirController::class,'history']);
     });
 

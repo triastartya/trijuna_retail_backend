@@ -23,6 +23,11 @@ class penjualanRepository extends VierRepository
         pp.tanggal_penjualan,
         pp.nota_penjualan,
         pp.id_member,
+        mm.nomor_identitas,
+        mm.nama_member,
+        mm.kode_member,
+        mm.alamat,
+        mm.no_handphone,
         pp.total_diskon_dalam,
         pp.total_transaksi,
         pp.diskon_luar_persen,
@@ -50,6 +55,7 @@ class penjualanRepository extends VierRepository
         inner join users uk on uk.id_user = pp.id_user_kasir
         inner join users uc on uc.id_user = pp.created_by
         inner join users uu on uu.id_user = pp.updated_by
+        left join ms_member mm on pp.id_member = mm.id_member
         left join users ud on ud.id_user = pp.deleted_by
         where pp.id_penjualan = ?
         ",[request()->id_penjualan]);
@@ -65,6 +71,11 @@ class penjualanRepository extends VierRepository
             pp.tanggal_penjualan,
             pp.nota_penjualan,
             pp.id_member,
+            mm.nomor_identitas,
+            mm.nama_member,
+            mm.kode_member,
+            mm.alamat,
+            mm.no_handphone,
             pp.total_diskon_dalam,
             pp.total_transaksi,
             pp.diskon_luar_persen,
@@ -92,7 +103,9 @@ class penjualanRepository extends VierRepository
             inner join users uk on uk.id_user = pp.id_user_kasir
             inner join users uc on uc.id_user = pp.created_by
             inner join users uu on uu.id_user = pp.updated_by
+            left join ms_member mm on pp.id_member = mm.id_member
             left join users ud on ud.id_user = pp.deleted_by
+            where is_deleted = false 
         ",request());
     }
 
@@ -173,5 +186,42 @@ class penjualanRepository extends VierRepository
             where ppp.id_penjualan = ?
             order by ppp.urut
         ",[request()->id_penjualan]);            
+    }
+
+    public function sell_out_item(){
+        return QueryHelper::queryParam('
+        select
+        mb.kode_barang,
+        mb.barcode,
+        mb.nama_barang,
+        mb.id_barang,
+        mb.id_divisi,
+        md.divisi,
+        mb.id_group,
+        mg.group,
+        mb.kode_satuan,
+        mb.id_merk,
+        mm.merk,
+        sum(ppd.qty_jual)  qty_jual,
+        sum(ppd.harga_jual) as harga_jual
+        from pos_penjualan pp
+        inner join pos_penjualan_detail ppd on pp.id_penjualan=ppd.id_penjualan
+        inner join ms_barang mb on mb.id_barang = ppd.id_barang
+        left join ms_group mg on mg.id_group = mb.id_group
+        left join ms_divisi md on md.id_divisi=mb.id_satuan
+        left join  ms_merk mm on mm.id_merk=mb.id_merk
+        group by
+        mb.kode_barang,
+        mb.barcode,
+        mb.nama_barang,
+        mb.id_barang,
+        mb.id_divisi,
+        md.divisi,
+        mb.id_group,
+        mg.group,
+        mb.kode_satuan,
+        mb.id_merk,
+        mm.merk
+        ',request());
     }
 }

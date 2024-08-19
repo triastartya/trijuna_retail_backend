@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Master\msLokasi;
 use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -26,30 +27,11 @@ class userController extends VierController
             $user = User::create($data);
             auth('web')->login($user);
             request()->session()->regenerate();
+            $lokasi = msLokasi::where('is_use',true)->first();
             $hasil =  array_merge($user->toArray(), [
-                'token' => $user->createToken(config('app.name'))->plainTextToken
+                'token' => $user->createToken(config('app.name'))->plainTextToken,
+                'lokasi' => $lokasi
             ]);
-            
-            //================== Verifikasi Email
-
-            $email = [
-                'email'=> $data['email'],
-                'data' => $data,
-                
-                // 'path' => "app{$ds}{$filepath}"
-            ];
-
-            // $data_email = array(
-            //     'nama' => $data['nama'],
-            //     'token' => $token_email,
-            //     'url' => url('/').'/verifikasi/'.$token_email,
-            // );
-
-            // $send = Mail::send('email.verifikasi-email',$data_email, function($mail) use($email){
-            //     $mail->from('admin@simbok-ku.online','Admin SIMBOK-KU');
-            //     $mail->to($email['email'])->subject("Email Verifikasi Akun");
-            //     // $mail->attach(storage_path($email['path']));
-            // });
             
             //==================
             
@@ -71,9 +53,11 @@ class userController extends VierController
             }
             auth('web')->login($user);
             request()->session()->regenerate();
+            $lokasi = msLokasi::where('is_use',true)->first();
             $hasil =  array_merge($user->toArray(), [
                 'token' => $user->createToken(config('app.name'))->plainTextToken,
-                'version' => '_development'
+                'version' => '_development',
+                'lokasi' => $lokasi
             ]);
             return response()->json(['success'=>true,'data'=>$hasil]);
         } catch (\Exception $ex) {

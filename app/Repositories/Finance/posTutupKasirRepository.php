@@ -41,4 +41,25 @@ class posTutupKasirRepository extends VierRepository
         inner join users uc on uc.id_user = ptk.created_by
         ",request());
     }
+
+    public function kasir_belum_closing()
+    {
+        return DB::select('
+            select uk.id_user,uk.nama,uk.email,sum(pmk.modal_kasir) as modal_kasir from pos_modal_kasir pmk
+            inner join users uk on pmk.id_user_kasir=uk.id_user
+            where pmk.id_tutup_kasir is null and is_deleted = false
+            group by uk.nama,uk.email,uk.id_user
+        ',[]);
+    }
+
+    public function nominal_sistem($id_payment_method)
+    {
+        $data = DB::select('
+            select sum(ppp.jumlah_bayar) as jumlah_bayar
+            from pos_penjualan_peyment ppp
+            inner join pos_penjualan pp on pp.id_penjualan = ppp.id_penjualan
+            where pp.id_tutup_kasir is null and pp.id_user_kasir=? and ppp.id_payment_method=?;
+        ',[request()->id_user_kasir,$id_payment_method]);
+        return ($data)?$data[0]->jumlah_bayar:0;
+    }
 }
