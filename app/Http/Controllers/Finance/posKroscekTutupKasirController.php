@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Finance;
 
 use App\Http\Controllers\Controller;
+use App\Models\Finance\posTutupKasir;
+use App\Models\Finance\posTutupKasirDetailPendapatan;
 use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 use App\Repositories\Finance\posKroscekTutupKasirRepository;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class posKroscekTutupKasirController extends VierController
 {
@@ -17,12 +22,29 @@ class posKroscekTutupKasirController extends VierController
         parent::__construct($this->repository);
     }
 
+    public function tutup_kasir_belum_croscek(){
+        try{
+            $data = $this->repository->tutup_kasir_belum_kroscek();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage(), 'code' => $ex->getCode()]);
+        }
+    }
+
+    public function tutup_kasir_by_id(){
+        try{
+            $data = $this->repository->tutup_kasir_belum_kroscek();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage(), 'code' => $ex->getCode()]);
+        }
+    }
+
     public function kroscek_tutup_kasir(Request $request)
     {
         DB::beginTransaction();
         try {
             $data = $request->all();;
-            $data['id_user_kasir'] = Auth::id();
             $data['status_tutup_kasir'] = 'OPEN';
             $data['tanggal_tutup_kasir'] = Carbon::now()->format('Y-m-d H:i:s');
             unset($data['detail']);

@@ -51,6 +51,7 @@ use App\Http\Controllers\userGroupController;
 use App\Http\Middleware\ModifRequest;
 use App\Models\Finance\trBayarHutang;
 use App\Http\Controllers\Finance\kasirController;
+use App\Http\Controllers\Finance\posKroscekTutupKasirController;
 use App\Http\Controllers\Finance\posTutupKasirController;
 use App\Http\Controllers\Finance\posPaymentMethodController;
 use Illuminate\Support\Facades\Route;
@@ -278,6 +279,12 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('tutup_kasir',[posTutupKasirController::class,'tutup_kasir']);
         Route::get('kasir_belum_tutup_kasir',[posTutupKasirController::class,'kasir_belum_closing']);
         Route::post('history_tutup_kasir',[posTutupKasirController::class,'history']);
+        Route::get('detail_tutup_kasir/{id_tutup_kasir}',[posTutupKasirController::class,'detail_tutup_kasir']);
+    });
+
+    Route::prefix('kroscek_tutup_kasir')->group(function(){
+        Route::get('tutup_kasir_belum_croscek',[posKroscekTutupKasirController::class,'tutup_kasir_belum_croscek']);
+        Route::get('detail_tutup_kasir/{id_tutup_kasir}',[posTutupKasirController::class,'detail_tutup_kasir']);
     });
 
     Route::pointResource('paymentMethod', posPaymentMethodController::class);

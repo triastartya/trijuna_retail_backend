@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('keterangan');
             $table->string('status_tutup_kasir',10);
             $table->integer('id_kroscek_tutup_kasir');
-            $table->boolean('is_deleted');
+            $table->boolean('is_deleted')->default(false);
             $table->integer('deleted_by')->nullable();
             $table->date('deleted_at')->nullable();
             $table->text('deleted_reason')->nullable();

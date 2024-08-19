@@ -40,6 +40,9 @@ class posTutupKasirController extends VierController
             foreach($request->detail as $detail){
                 $detail['id_tutup_kasir'] = $tutup_kasir->id_tutup_kasir;
                 $nominal_sistem = $this->repository->nominal_sistem($detail['id_payment_method']);
+                if($detail['id_payment_method']==1){
+                    $nominal_sistem = $nominal_sistem + $data['modal_kasir'];
+                }
                 $detail['nominal_sistem'] = $nominal_sistem;
                 $detail['selisih'] = $nominal_sistem - $detail['nominal'];
                 posTutupKasirDetailPendapatan::create($detail);
@@ -79,6 +82,17 @@ class posTutupKasirController extends VierController
     {
         try{
             $data = $this->repository->history();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage(), 'code' => $ex->getCode()]);
+        }
+    }
+
+    public function detail_tutup_kasir()
+    {
+        try{
+            $data = $this->repository->get_by_id();
+            $data->pendapatan = $this->repository->get_detail_penerimaan();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage(), 'code' => $ex->getCode()]);
