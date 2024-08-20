@@ -285,6 +285,8 @@ Route::group(['middleware' => ModifRequest::class], function () {
     Route::prefix('kroscek_tutup_kasir')->group(function(){
         Route::get('tutup_kasir_belum_croscek',[posKroscekTutupKasirController::class,'tutup_kasir_belum_croscek']);
         Route::get('detail_tutup_kasir/{id_tutup_kasir}',[posTutupKasirController::class,'detail_tutup_kasir']);
+        Route::post('by_param',[posKroscekTutupKasirController::class,'by_param']);
+        Route::get('by_id/{id_kroscek_tutup_kasir}',[posKroscekTutupKasirController::class,'by_id']);
     });
 
     Route::pointResource('paymentMethod', posPaymentMethodController::class);

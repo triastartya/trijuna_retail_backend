@@ -9,6 +9,7 @@ use App\Repositories\Finance\posTutupKasirRepository;
 use Illuminate\Http\Request;
 use App\Models\Finance\posTutupKasir;
 use App\Models\Finance\posTutupKasirDetailPendapatan;
+use App\Models\Finance\posTutupKasirDetailPendapatanCash;
 use App\Models\Penjualan\posPenjualan;
 use App\Models\Penjualan\posPenjualanDetail;
 use App\Models\Penjualan\posPenjualanPayment;
@@ -30,30 +31,56 @@ class posTutupKasirController extends VierController
 
     public function tutup_kasir(Request $request)
     {
+        // insert data tutup kasir
+        // get nominal sistem
+        // jika cash get kembalian sistem
+        // jika cash get nominal sistem di kurangi kembalian
+        // hitung selisih
+        // insert detail pendapatan tutup kasir
+        // jika cash insert detail pendapatan cash
+        // update id_tutup_kasir di modal kasir
+        // update id_tutup_kasir di pos penjualan
         DB::beginTransaction();
         try {
             $data = $request->all();
             $data['status_tutup_kasir'] = 'OPEN';
             $data['tanggal_tutup_kasir'] = Carbon::now()->format('Y-m-d H:i:s');
             unset($data['detail']);
+            // insert data tutup kasir
             $tutup_kasir = posTutupKasir::create($data);
             foreach($request->detail as $detail){
                 $detail['id_tutup_kasir'] = $tutup_kasir->id_tutup_kasir;
+                // get nominal sistem
                 $nominal_sistem = $this->repository->nominal_sistem($detail['id_payment_method']);
+                $kembalian_sistem = 0;
                 if($detail['id_payment_method']==1){
-                    $nominal_sistem = $nominal_sistem + $data['modal_kasir'];
+                    // jika cash get kembalian sistem
+                    $kembalian_sistem = $this->repository->kembalian_sistem();
+                    // jika cash get nominal sistem di kurangi kembalian
+                    $nominal_sistem = $nominal_sistem - $kembalian_sistem;
                 }
                 $detail['nominal_sistem'] = $nominal_sistem;
+                // hitung selisih 
                 $detail['selisih'] = $nominal_sistem - $detail['nominal'];
-                posTutupKasirDetailPendapatan::create($detail);
+                // insert detail pendapatan tutup kasir
+                $detail_pendapatan = posTutupKasirDetailPendapatan::create($detail);
+                if($detail['id_payment_method']==1){
+                    // jika cash insert detail pendapatan cash
+                    posTutupKasirDetailPendapatanCash::create([
+                        'id_tutup_kasir_detail_pendapatan' => $detail_pendapatan->id_tutup_kasir_detail_pendapatan,
+                        'bayar' => $kembalian_sistem + $nominal_sistem,
+                        'kembalian' =>$kembalian_sistem,
+                        'nominal' => $nominal_sistem,
+                    ]);
+                }
             }
-            //update modal kasir;
+            //update id_tutup_kasir di modal kasir ;
             posModalKasir::where('id_user_kasir',$data['id_user_kasir'])
                 ->whereNull('id_tutup_kasir')
                 ->update([
                     'id_tutup_kasir'=>$tutup_kasir->id_tutup_kasir
                 ]);
-            //update penjualan;
+            //update id_tutup_kasir di pos penjualan;
             posPenjualan::where('id_user_kasir',$data['id_user_kasir'])
             ->whereNull('id_tutup_kasir')
             ->update([

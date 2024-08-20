@@ -66,6 +66,16 @@ class posTutupKasirRepository extends VierRepository
         return ($data)?$data[0]->jumlah_bayar:0;
     }
 
+    public function kembalian_sistem()
+    {
+        $data = DB::select('
+            select sum(pp.kembali) as kembalian
+            from pos_penjualan pp
+            where pp.id_tutup_kasir is null and pp.id_user_kasir=?;
+        ',[request()->id_user_kasir]);
+        return ($data)?$data[0]->kembalian:0;
+    }
+
     public function get_by_id()
     {
         $data =  DB::select("

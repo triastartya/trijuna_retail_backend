@@ -18,6 +18,7 @@ class posKroscekTutupKasir extends Model
     protected $fillable = [
         'id_kroscek_tutup_kasir',
         'id_tutup_kasir',
+        'tanggal_kroscek_tutup_kasir',
         'pendapatan_versi_user',
         'pendapatan_versi_system',
         'selisih',
@@ -30,6 +31,7 @@ class posKroscekTutupKasir extends Model
     {
         return [
             'id_kroscek_tutup_kasir'=>'',
+            'tanggal_kroscek_tutup_kasir'=>'required',
             'id_tutup_kasir'=>'required',
             'pendapatan_versi_user'=>'required',
             'pendapatan_versi_system'=>'required',

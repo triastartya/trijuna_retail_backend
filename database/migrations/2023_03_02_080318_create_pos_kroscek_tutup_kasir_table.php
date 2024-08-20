@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pos_kroscek_tutup_kasir', function (Blueprint $table) {
             $table->id('id_kroscek_tutup_kasir');
             $table->integer('id_tutup_kasir')->constrained('pos_tutup_kasir');
+            $table->date('tanggal_kroscek_tutup_kasir');
             $table->double('pendapatan_versi_user',12,2);
             $table->double('pendapatan_versi_system',12,2);
             $table->double('selisih',12,2);

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pos_tutup_kasir_detail_pengeluaran', function (Blueprint $table) {
             $table->id('id_tutup_kasir_detail_pengeluaran');
             $table->integer('id_tutup_kasir')->constrained('pos_tutup_kasir');
-            $table->integer('id_pengeluaran')->constrained('pos_pengeluaran');;
+            $table->integer('id_pengeluaran')->constrained('pos_pengeluaran');
             $table->string('nama_pengeluaran',100);
             $table->double('nominal',12,2);
             $table->text('keterangan');
