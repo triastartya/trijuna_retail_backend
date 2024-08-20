@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Penjualan;
 
 use App\Helpers\GeneradeNomorHelper;
+use App\Helpers\InventoryStokHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Penjualan\posPenjualan;
 use App\Models\Penjualan\posPenjualanDetail;
@@ -24,7 +25,6 @@ class penjualanController extends VierController
     
     public function insert(Request $request){
         DB::beginTransaction();
-        
         try {
             $data = $request->all();
             $data['nota_penjualan'] = GeneradeNomorHelper::long('penjualan');
@@ -33,7 +33,18 @@ class penjualanController extends VierController
             $penjualan = posPenjualan::create($data);
             foreach($request->detail as $detail){
                 $detail['id_penjualan'] = $penjualan->id_penjualan;
-                posPenjualanDetail::create($detail);
+                $penjualan_detail =posPenjualanDetail::create($detail);
+                InventoryStokHelper::pengurangan((object)[
+                    'id_barang'       => $detail['id_barang'],
+                    'nama_barang'     => '',
+                    'id_warehouse'    => 2,
+                    'qty'             => $detail['qty'],
+                    'nomor_reff'      => $data['nota_penjualan'],
+                    'id_header_trans' => $penjualan->id_penjualan,
+                    'id_detail_trans' => $penjualan_detail->id_penjualan_detail,
+                    'jenis'           => 'Penjualan Kasir',
+                    'nominal'         => $detail['sub_total'] // hpp avarage * qty
+                ]);
             }
             foreach($request->payment as $payment){
                 $payment['id_penjualan'] = $penjualan->id_penjualan;
