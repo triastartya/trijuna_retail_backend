@@ -46,10 +46,10 @@ class userController extends VierController
         try {
             $user = User::where('email', $validated['email'])->first();
             if (!$user || !Hash::check($validated['password'], $user->password)){
-                throw new ('email and password not mach.');
+                throw new \Exception('email and password not mach.');
             }
             if (!$user->is_active){
-                throw new ('User is not active.');
+                throw new \Exception('User is not active.');
             }
             auth('web')->login($user);
             request()->session()->regenerate();
