@@ -24,6 +24,7 @@ class penjualanController extends VierController
     
     public function insert(Request $request){
         DB::beginTransaction();
+        
         try {
             $data = $request->all();
             $data['nota_penjualan'] = GeneradeNomorHelper::long('penjualan');

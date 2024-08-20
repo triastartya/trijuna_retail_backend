@@ -189,7 +189,7 @@ class penjualanRepository extends VierRepository
     }
 
     public function sell_out_item(){
-        return QueryHelper::queryParam('
+        return QueryHelper::queryParam("
         select
         mb.kode_barang,
         mb.barcode,
@@ -210,6 +210,9 @@ class penjualanRepository extends VierRepository
         left join ms_group mg on mg.id_group = mb.id_group
         left join ms_divisi md on md.id_divisi=mb.id_satuan
         left join  ms_merk mm on mm.id_merk=mb.id_merk
+        where (pp.tanggal_penjualan BETWEEN '".request()->start."' and '".request()->end."')",
+        request(),
+        '
         group by
         mb.kode_barang,
         mb.barcode,
@@ -222,6 +225,6 @@ class penjualanRepository extends VierRepository
         mb.kode_satuan,
         mb.id_merk,
         mm.merk
-        ',request());
+        ');
     }
 }
