@@ -38,7 +38,7 @@ class penjualanController extends VierController
                     'id_barang'       => $detail['id_barang'],
                     'nama_barang'     => '',
                     'id_warehouse'    => 2,
-                    'qty'             => $detail['qty'],
+                    'qty'             => $detail['qty_jual'],
                     'nomor_reff'      => $data['nota_penjualan'],
                     'id_header_trans' => $penjualan->id_penjualan,
                     'id_detail_trans' => $penjualan_detail->id_penjualan_detail,
