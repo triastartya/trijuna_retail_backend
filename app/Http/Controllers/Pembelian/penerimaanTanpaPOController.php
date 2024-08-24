@@ -31,10 +31,12 @@ class penerimaanTanpaPOController extends VierController
             $data['status_penerimaan'] = 'OPEN';
             $data['jenis_penerimaan'] = 2;
             $data['nomor_penerimaan'] = GeneradeNomorHelper::long('penerimaan tanpa po');
+            $data['total_biaya_barcode'] = 0;
             unset($data['detail']);
             $penerimaan = trPenerimaanTanpaPo::create($data);
             foreach($request->detail as $detail){
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
+                $detail['biaya_barcode'] = 0;
                 $penerimaanDetail= trPenerimaanTanpaPoDetail::create($detail);
             }
             

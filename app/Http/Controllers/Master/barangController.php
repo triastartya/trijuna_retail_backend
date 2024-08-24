@@ -227,6 +227,7 @@ class barangController extends VierController
     public function import(){
         DB::beginTransaction();
         try {
+            ini_set('memory_limit','256M');
             $response = File::json(base_path().'/public/data/baru/barang.json');
             msBarang::truncate(); 
             trSettingHarga::truncate();
