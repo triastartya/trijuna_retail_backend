@@ -283,11 +283,11 @@ class barangController extends VierController
             // dd($data_setting_harga);
             msBarang::insert($data_barang);
             trSettingHargaDetail::insert($data_setting_harga);
-            DB::select('
-                INSERT INTO tr_setting_harga_detail_lokasi (id_setting_harga_detail,id_lokasi)
-                SELECT id_setting_harga_detail,1
-                FROM tr_setting_harga_detail
-            ');
+            // DB::select('
+            //     INSERT INTO tr_setting_harga_detail_lokasi (id_setting_harga_detail,id_lokasi)
+            //     SELECT id_setting_harga_detail,1
+            //     FROM tr_setting_harga_detail
+            // ');
             DB::commit();
             return response()->json(['success'=>true,'data'=>$data_barang]);
         }
