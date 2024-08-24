@@ -9,7 +9,7 @@ use Viershaka\Vier\VierModel;
 
 class posKroscekTutupKasirDetailPendapatan extends Model
 {
-    use HasFactory, VierModel, CreatedUpdatedBy;
+    use HasFactory, VierModel;
 
     protected $table = 'pos_kroscek_tutup_kasir_detail_pendapatan';
     

@@ -48,13 +48,14 @@ class posKroscekTutupKasirRepository extends VierRepository
             pktk.pendapatan_versi_user,
             pktk.pendapatan_versi_system,
             pktk.selisih,
-            pktk.keterangan,
+            pktk.keterangan as keterangan_kroscek,
+            ptk.keterangan as keterangan_tutup_kasir,
             uc.nama as created_by,
             pktk.created_at
             from pos_kroscek_tutup_kasir pktk
             inner join pos_tutup_kasir ptk on pktk.id_kroscek_tutup_kasir=ptk.id_kroscek_tutup_kasir
             inner join users uk on uk.id_user = ptk.id_user_kasir
-            inner join users uc on uc.id_user = pktk.created_by
+            inner join users uc on uc.id_user = pktk.created_by 
         ",request());
     }
 
@@ -70,7 +71,8 @@ class posKroscekTutupKasirRepository extends VierRepository
             pktk.pendapatan_versi_user,
             pktk.pendapatan_versi_system,
             pktk.selisih,
-            pktk.keterangan,
+            pktk.keterangan as keterangan_kroscek,
+            ptk.keterangan as keterangan_tutup_kasir,
             uc.nama as created_by,
             pktk.created_at
             from pos_kroscek_tutup_kasir pktk

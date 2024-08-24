@@ -292,6 +292,7 @@ Route::group(['middleware' => ModifRequest::class], function () {
         Route::get('detail_tutup_kasir/{id_tutup_kasir}',[posTutupKasirController::class,'detail_tutup_kasir']);
         Route::post('by_param',[posKroscekTutupKasirController::class,'by_param']);
         Route::get('by_id/{id_kroscek_tutup_kasir}',[posKroscekTutupKasirController::class,'by_id']);
+        Route::post('validasi',[posKroscekTutupKasirController::class,'kroscek_tutup_kasir']);
     });
 
     Route::pointResource('paymentMethod', posPaymentMethodController::class);

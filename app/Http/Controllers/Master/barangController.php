@@ -229,6 +229,8 @@ class barangController extends VierController
         try {
             ini_set('memory_limit','256M');
             $response = File::json(base_path().'/public/data/baru/barang.json');
+            $response = array_map('str_getcsv', file(base_path().'/public/data/baru/barang.csv'));
+            dd($response);
             msBarang::truncate(); 
             trSettingHarga::truncate();
             trSettingHargaDetail::truncate();

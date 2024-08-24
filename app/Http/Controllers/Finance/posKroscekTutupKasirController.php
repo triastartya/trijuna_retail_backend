@@ -59,10 +59,11 @@ class posKroscekTutupKasirController extends VierController
                 throw new \Exception('data tutup kasir tidak di temukan');
             }
             // Get Data Detail Pendapatan Tutupan Kasir
-            $tutup_kasir_detail = posTutupKasirDetailPendapatan::where('id_tutup_kasir',$request->id_tutup_kasir)->first();
+            $tutup_kasir_detail = posTutupKasirDetailPendapatan::where('id_tutup_kasir',$request->id_tutup_kasir)->get();
             $versi_sistem = 0;
             $versi_kasir = 0;
             foreach ($tutup_kasir_detail as $item){
+                // dd($item);
                 $versi_sistem += $item->nominal_sistem;
                 $versi_kasir += $item->nominal;
             }
