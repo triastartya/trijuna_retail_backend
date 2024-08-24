@@ -23,10 +23,10 @@ class merkController extends VierController
     public function import(){
         // DB::beginTransaction();
         try {
-            $response = File::json(base_path().'/public/data/merk.json');
+            $response = File::json(base_path().'/public/data/baru/merk.json');
             $delete =msMerk::truncate(); 
             $data = [];
-            foreach($response as $item){
+            foreach($response['data'] as $item){
                 $data[] = [
                     'id_merk' =>$item['idMerk'],
                     'merk'=>$item['merk'],

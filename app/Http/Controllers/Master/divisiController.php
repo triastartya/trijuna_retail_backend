@@ -30,9 +30,9 @@ class divisiController extends VierController
     public function import_divisi(){
         DB::beginTransaction();
         try {
-            $response = File::json(base_path().'/public/data/divisi.json');
+            $response = File::json(base_path().'/public/data/baru/divisi.json');
             $delete =msDivisi::truncate(); 
-            foreach($response as $item){
+            foreach($response['data'] as $item){
                 msDivisi::create([
                     'id_divisi' =>$item['idDivisi'],
                     'kode_divisi'=>$item['kodeDivisi'],

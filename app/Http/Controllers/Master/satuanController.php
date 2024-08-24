@@ -22,10 +22,10 @@ class satuanController extends VierController
     public function import(){
         // DB::beginTransaction();
         try {
-            $response = File::json(base_path().'/public/data/satuan.json');
+            $response = File::json(base_path().'/public/data/baru/satuan.json');
             $delete =msSatuan::truncate(); 
             $data = [];
-            foreach($response as $item){
+            foreach($response['data'] as $item){
                 $data[] = [
                     'kode_satuan'=>$item['kodeSatuan'],
                     'nama_satuan'=>$item['satuan'],

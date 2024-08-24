@@ -1,0 +1,14 @@
+{
+    "statusCode": "200",
+    "message": "data berhasil diambil",
+    "data": [
+        {
+            "idTipeCustomer": 1,
+            "kodeTipeCustomer": "STD",
+            "tipeCustomer": "Standard",
+            "point": 1,
+            "hargaPoint": 50000,
+            "kursPakaiPoint": null
+        }
+    ]
+}

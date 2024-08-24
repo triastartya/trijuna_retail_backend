@@ -1,0 +1,62 @@
+{
+    "statusCode": "200",
+    "message": "data berhasil diambil",
+    "data": [
+        {
+            "idDivisi": 1,
+            "noUrutDivisi": null,
+            "kodeDivisi": "01",
+            "divisi": "FOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idDivisi": 2,
+            "noUrutDivisi": null,
+            "kodeDivisi": "02",
+            "divisi": "FRESH FOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idDivisi": 3,
+            "noUrutDivisi": null,
+            "kodeDivisi": "03",
+            "divisi": "NON FOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idDivisi": 4,
+            "noUrutDivisi": null,
+            "kodeDivisi": "04",
+            "divisi": "FASHION",
+            "waktuEntryHO": null
+        },
+        {
+            "idDivisi": 5,
+            "noUrutDivisi": null,
+            "kodeDivisi": "05",
+            "divisi": "HOUSEWARE",
+            "waktuEntryHO": null
+        },
+        {
+            "idDivisi": 6,
+            "noUrutDivisi": null,
+            "kodeDivisi": "06",
+            "divisi": "MAINAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idDivisi": 7,
+            "noUrutDivisi": null,
+            "kodeDivisi": "07",
+            "divisi": "LAIN-LAIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idDivisi": 8,
+            "noUrutDivisi": null,
+            "kodeDivisi": "08",
+            "divisi": "POTONGAN",
+            "waktuEntryHO": null
+        }
+    ]
+}

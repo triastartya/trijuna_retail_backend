@@ -24,9 +24,9 @@ class groupController extends VierController
     public function import(){
         DB::beginTransaction();
         try {
-            $response = File::json(base_path().'/public/data/group.json');
+            $response = File::json(base_path().'/public/data/baru/group.json');
             $delete =msGroup::truncate(); 
-            foreach($response as $item){
+            foreach($response['data'] as $item){
                 msGroup::create([
                     'id_group' =>$item['idGrup'],
                     'kode_group'=>$item['kodeGrup'],

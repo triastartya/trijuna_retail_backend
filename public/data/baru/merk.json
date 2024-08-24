@@ -1,0 +1,6971 @@
+{
+    "statusCode": "200",
+    "message": "data berhasil diambil",
+    "data": [
+        {
+            "idMerk": 1,
+            "merk": "'",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 2,
+            "merk": ".",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 3,
+            "merk": "]",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 4,
+            "merk": "0",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 5,
+            "merk": "06",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 6,
+            "merk": "0USSONS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 7,
+            "merk": "10105",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 8,
+            "merk": "1090",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 9,
+            "merk": "11300",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 10,
+            "merk": "12400\/12100",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 11,
+            "merk": "12800\/12620",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 12,
+            "merk": "13\/04-31\/04",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 13,
+            "merk": "13460",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 14,
+            "merk": "13625\/13480",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 15,
+            "merk": "14000\/13750(5)",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 16,
+            "merk": "16465 6",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 17,
+            "merk": "16900",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 18,
+            "merk": "17100",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 19,
+            "merk": "19900",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 20,
+            "merk": "2 MACAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 21,
+            "merk": "2 TANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 22,
+            "merk": "21.017",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 23,
+            "merk": "21000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 24,
+            "merk": "21100\/20800",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 25,
+            "merk": "23450 3",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 26,
+            "merk": "24690",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 27,
+            "merk": "25800\/25600",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 28,
+            "merk": "27.500",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 29,
+            "merk": "27\/03-07\/04",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 30,
+            "merk": "27\/3-07\/04",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 31,
+            "merk": "2B",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 32,
+            "merk": "3 AYAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 33,
+            "merk": "3 TEBU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 34,
+            "merk": "3700",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 35,
+            "merk": "3WITSAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 36,
+            "merk": "4",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 37,
+            "merk": "53800 5",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 38,
+            "merk": "62450",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 39,
+            "merk": "65515",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 40,
+            "merk": "723669",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 41,
+            "merk": "77200\/76955",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 42,
+            "merk": "7975\/7850(10)",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 43,
+            "merk": "7UP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 44,
+            "merk": "8640",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 45,
+            "merk": "888",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 46,
+            "merk": "8992753720903",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 47,
+            "merk": "9450",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 48,
+            "merk": "A1",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 49,
+            "merk": "ABC",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 50,
+            "merk": "ABC HEINZ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 51,
+            "merk": "ACETON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 52,
+            "merk": "ACNOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 53,
+            "merk": "ACTIFED",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 54,
+            "merk": "ADEM SARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 55,
+            "merk": "ADIJUSS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 56,
+            "merk": "AGUARIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 57,
+            "merk": "AINIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 58,
+            "merk": "AIR MADU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 59,
+            "merk": "AIR MAIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 60,
+            "merk": "AIR MANCUR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 61,
+            "merk": "AIR WICK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 62,
+            "merk": "AIRLUX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 63,
+            "merk": "AJINOMOTO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 64,
+            "merk": "ALIBABA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 65,
+            "merk": "ALPENLIEBE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 66,
+            "merk": "ALTECO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 67,
+            "merk": "ALUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 68,
+            "merk": "AMANDA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 69,
+            "merk": "AMANDINE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 70,
+            "merk": "AMANPLAST",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 71,
+            "merk": "AMBI PUR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 72,
+            "merk": "AMBIPUR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 73,
+            "merk": "ANAIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 74,
+            "merk": "ANAKONIDIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 75,
+            "merk": "AND A++",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 76,
+            "merk": "ANDA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 77,
+            "merk": "ANEKA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 78,
+            "merk": "ANITA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 79,
+            "merk": "ANKER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 80,
+            "merk": "ANMUM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 81,
+            "merk": "ANODA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 82,
+            "merk": "ANSINA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 83,
+            "merk": "ANTANGIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 84,
+            "merk": "ANTIMO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 85,
+            "merk": "ANTIPLAQUE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 86,
+            "merk": "ANTIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 87,
+            "merk": "APILO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 88,
+            "merk": "APOLLO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 89,
+            "merk": "APRIL 17",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 90,
+            "merk": "AQUA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 91,
+            "merk": "ARNOTTS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 92,
+            "merk": "ARNOTT'S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 93,
+            "merk": "ASENA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 94,
+            "merk": "ASOKA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 95,
+            "merk": "ASS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 96,
+            "merk": "ASW",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 97,
+            "merk": "ATHIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 98,
+            "merk": "ATHILA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 99,
+            "merk": "ATOM BULAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 100,
+            "merk": "ATTACK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 101,
+            "merk": "ATUM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 102,
+            "merk": "AUTAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 103,
+            "merk": "AVENA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 104,
+            "merk": "AVON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 105,
+            "merk": "AXI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 106,
+            "merk": "AXL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 107,
+            "merk": "AYAM 2 TELOR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 108,
+            "merk": "AYAM 2 TELUR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 109,
+            "merk": "AYU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 110,
+            "merk": "B 29",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 111,
+            "merk": "B&B",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 112,
+            "merk": "B&B KIDS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 113,
+            "merk": "BABY DOLL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 114,
+            "merk": "BACTIDOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 115,
+            "merk": "BAGUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 116,
+            "merk": "BALIKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 117,
+            "merk": "BALPIRIK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 118,
+            "merk": "BAMBOE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 119,
+            "merk": "BANDULAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 120,
+            "merk": "BANGAU BRAND",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 121,
+            "merk": "BARBARA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 122,
+            "merk": "BARILLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 123,
+            "merk": "BARONG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 124,
+            "merk": "BASK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 125,
+            "merk": "BATU KOREK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 126,
+            "merk": "BAWANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 127,
+            "merk": "BAWANG PUTIH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 128,
+            "merk": "BAYCLIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 129,
+            "merk": "BAYFRESH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 130,
+            "merk": "BAYGON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 131,
+            "merk": "BEBEK KLOSET",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 132,
+            "merk": "BEBEK SEMERBAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 133,
+            "merk": "BECOMBION",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 134,
+            "merk": "BEE&FLOWER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 135,
+            "merk": "BELIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 136,
+            "merk": "BENG BENG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 137,
+            "merk": "BENIK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 138,
+            "merk": "BENTOEL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 139,
+            "merk": "BERAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 140,
+            "merk": "BERGAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 141,
+            "merk": "BERLIAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 142,
+            "merk": "BEROCCA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 143,
+            "merk": "BETADIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 144,
+            "merk": "BETADINE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 145,
+            "merk": "BETTER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 146,
+            "merk": "BIG M",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 147,
+            "merk": "BIHUNKU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 148,
+            "merk": "BIMOLI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 149,
+            "merk": "BINARY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 150,
+            "merk": "BINGGO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 151,
+            "merk": "BINTANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 152,
+            "merk": "BIORE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 153,
+            "merk": "BIR BINTANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 154,
+            "merk": "BIRDY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 155,
+            "merk": "BISKUAT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 156,
+            "merk": "BLACK PLUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 157,
+            "merk": "BMT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 158,
+            "merk": "BOBON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 159,
+            "merk": "BODREX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 160,
+            "merk": "BODREXIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 161,
+            "merk": "BODY WASH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 162,
+            "merk": "BON BON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 163,
+            "merk": "BONUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 164,
+            "merk": "BOROBUDUR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 165,
+            "merk": "BOSS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 166,
+            "merk": "BOTAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 167,
+            "merk": "BQ4",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 168,
+            "merk": "BRANDS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 169,
+            "merk": "BRASSO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 170,
+            "merk": "BREM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 171,
+            "merk": "BREO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 172,
+            "merk": "BRIKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 173,
+            "merk": "BRILIANT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 174,
+            "merk": "BRISK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 175,
+            "merk": "BROCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 176,
+            "merk": "BROWNLY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 177,
+            "merk": "BRUSH UP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 178,
+            "merk": "BRYCREEM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 179,
+            "merk": "BRYLCREEM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 180,
+            "merk": "BUAH PISANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 181,
+            "merk": "BUAVITA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 182,
+            "merk": "BUBBLE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 183,
+            "merk": "BUBBLE POP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 184,
+            "merk": "BUDI BJNGR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 185,
+            "merk": "BUKRIM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 186,
+            "merk": "BUNAKEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 187,
+            "merk": "BUYUNG UPIK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 188,
+            "merk": "BYEBYE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 189,
+            "merk": "C2",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 190,
+            "merk": "CACING",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 191,
+            "merk": "CADBURY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 192,
+            "merk": "CALADINE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 193,
+            "merk": "CALPICO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 194,
+            "merk": "CAMAY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 195,
+            "merk": "CAMERA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 196,
+            "merk": "CAMPINA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 197,
+            "merk": "CAMPINAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 198,
+            "merk": "CAMPURSARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 199,
+            "merk": "CANDY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 200,
+            "merk": "CANESTEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 201,
+            "merk": "CANTIQUE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 202,
+            "merk": "CAP BADAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 203,
+            "merk": "CAP BOTOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 204,
+            "merk": "CAP DJAGO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 205,
+            "merk": "CAP ENAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 206,
+            "merk": "CAP LANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 207,
+            "merk": "CAP MOBIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 208,
+            "merk": "CAPILANO'S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 209,
+            "merk": "CAPLANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 210,
+            "merk": "CAPRI  SONNE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 211,
+            "merk": "CAPRI SONNE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 212,
+            "merk": "CAPUCINI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 213,
+            "merk": "CAREFREE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 214,
+            "merk": "CARING",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 215,
+            "merk": "CARRERA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 216,
+            "merk": "CARVIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 217,
+            "merk": "CASABLANCA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 218,
+            "merk": "CASHMERE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 219,
+            "merk": "CASTOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 220,
+            "merk": "CBA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 221,
+            "merk": "CD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 222,
+            "merk": "CDR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 223,
+            "merk": "CEBA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 224,
+            "merk": "CEMPAKA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 225,
+            "merk": "CERES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 226,
+            "merk": "CHACA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 227,
+            "merk": "CHARLIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 228,
+            "merk": "CHARM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 229,
+            "merk": "CHEETOS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 230,
+            "merk": "CHICCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 231,
+            "merk": "CHIKI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 232,
+            "merk": "CHIKORY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 233,
+            "merk": "CHIL KID",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 234,
+            "merk": "CHIL MIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 235,
+            "merk": "CHIL SCHOOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 236,
+            "merk": "CHILKID",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 237,
+            "merk": "CHINA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 238,
+            "merk": "CHITATO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 239,
+            "merk": "CHIYODA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 240,
+            "merk": "CHOCOKU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 241,
+            "merk": "CHOKI-CHOKI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 242,
+            "merk": "CHOX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 243,
+            "merk": "CHUP CHUP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 244,
+            "merk": "CHUPA CHUPS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 245,
+            "merk": "CICAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 246,
+            "merk": "CICI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 247,
+            "merk": "CIDERELLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 248,
+            "merk": "CIKS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 249,
+            "merk": "CIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 250,
+            "merk": "CINDERELLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 251,
+            "merk": "CIP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 252,
+            "merk": "CIRCUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 253,
+            "merk": "CITRA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 254,
+            "merk": "CLASMILD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 255,
+            "merk": "CLASS MILD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 256,
+            "merk": "CLAUDIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 257,
+            "merk": "CLEAN &CLEAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 258,
+            "merk": "CLEAN BALL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 259,
+            "merk": "CLEAN&CLEAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 260,
+            "merk": "CLEAN&CLEAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 261,
+            "merk": "CLEAN&CLEAR60ML",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 262,
+            "merk": "CLEAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 263,
+            "merk": "CLEO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 264,
+            "merk": "CLEOPATRA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 265,
+            "merk": "CLING",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 266,
+            "merk": "CLOUD 9",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 267,
+            "merk": "CLOUD9",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 268,
+            "merk": "CLUB",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 269,
+            "merk": "COCA COLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 270,
+            "merk": "COCONE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 271,
+            "merk": "COFFEE BREAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 272,
+            "merk": "COKRO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 273,
+            "merk": "COLLINS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 274,
+            "merk": "COLLIN'S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 275,
+            "merk": "COMBANTRIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 276,
+            "merk": "COMBICITRIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 277,
+            "merk": "CONTREX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 278,
+            "merk": "CONTREXYN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 279,
+            "merk": "COOL AIR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 280,
+            "merk": "COTTON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 281,
+            "merk": "COTTON BUDS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 282,
+            "merk": "COUNTERPAIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 283,
+            "merk": "COUNTRY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 284,
+            "merk": "CREAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 285,
+            "merk": "CREME NUTRICIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 286,
+            "merk": "CS KIDS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 287,
+            "merk": "CSABLANCA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 288,
+            "merk": "CURCUMA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 289,
+            "merk": "CURCUMA PLUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 290,
+            "merk": "CUSSON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 291,
+            "merk": "CUSSONA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 292,
+            "merk": "CUSSONS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 293,
+            "merk": "CUT PRICE 3RB",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 294,
+            "merk": "CUTTER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 295,
+            "merk": "DAI CHI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 296,
+            "merk": "DAI-ICHI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 297,
+            "merk": "DAKTARIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 298,
+            "merk": "DANDANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 299,
+            "merk": "DARIAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 300,
+            "merk": "DARLIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 301,
+            "merk": "DAUN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 302,
+            "merk": "DAVIDOFF",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 303,
+            "merk": "DAVOS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 304,
+            "merk": "DE DEE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 305,
+            "merk": "DECOLGEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 306,
+            "merk": "DEE DEE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 307,
+            "merk": "DEL MONTE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 308,
+            "merk": "DELFI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 309,
+            "merk": "DELTOMED",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 310,
+            "merk": "DEO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 311,
+            "merk": "DETTOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 312,
+            "merk": "DEWI BULAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 313,
+            "merk": "DIABETAMIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 314,
+            "merk": "DIABETASOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 315,
+            "merk": "DIALOGUE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 316,
+            "merk": "DIALOUE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 317,
+            "merk": "DIAMOND",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 318,
+            "merk": "DIANA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 319,
+            "merk": "DIAPERS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 320,
+            "merk": "DIAPET",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 321,
+            "merk": "DIARY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 322,
+            "merk": "DIENG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 323,
+            "merk": "DIGITAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 324,
+            "merk": "DIN DIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 325,
+            "merk": "DIORA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 326,
+            "merk": "DIRECT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 327,
+            "merk": "DIYET",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 328,
+            "merk": "DJARUM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 329,
+            "merk": "DJARUM 76",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 330,
+            "merk": "DJARUM BLACK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 331,
+            "merk": "DJARUM SUPER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 332,
+            "merk": "DJENGGOT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 333,
+            "merk": "DJI SAM SOE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 334,
+            "merk": "DK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 335,
+            "merk": "DK GARLIG NUT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 336,
+            "merk": "DK HOT NUT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 337,
+            "merk": "DOLCE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 338,
+            "merk": "DONNA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 339,
+            "merk": "DORA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 340,
+            "merk": "DOREMI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 341,
+            "merk": "DOS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 342,
+            "merk": "DOUBLE DECKER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 343,
+            "merk": "DOUBLE DEKER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 344,
+            "merk": "DOUBLEMINT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 345,
+            "merk": "DOVE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 346,
+            "merk": "DR. P",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 347,
+            "merk": "DR.P",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 348,
+            "merk": "DRAGON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 349,
+            "merk": "DREAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 350,
+            "merk": "DRUM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 351,
+            "merk": "DUA KELINCI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 352,
+            "merk": "DUA SAUDARA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 353,
+            "merk": "DUA WALET",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 354,
+            "merk": "DUETO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 355,
+            "merk": "DUREX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 356,
+            "merk": "DYNAMITE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 357,
+            "merk": "ECLAIR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 358,
+            "merk": "ECLAIRS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 359,
+            "merk": "EGG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 360,
+            "merk": "EKONO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 361,
+            "merk": "ELECTRA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 362,
+            "merk": "ELEPHANT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 363,
+            "merk": "ELLO PANDA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 364,
+            "merk": "EM KAPSUL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 365,
+            "merk": "ENA'O",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 366,
+            "merk": "ENA'O 150 ML",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 367,
+            "merk": "ENCHANTEUR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 368,
+            "merk": "ENERGEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 369,
+            "merk": "ENERGIZER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 370,
+            "merk": "ENERJOS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 371,
+            "merk": "ENFAGROW",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 372,
+            "merk": "ENFAKID",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 373,
+            "merk": "ENFALAC",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 374,
+            "merk": "ENFAMIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 375,
+            "merk": "ENFAPRO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 376,
+            "merk": "ENKASARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 377,
+            "merk": "ENSURE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 378,
+            "merk": "ENTRASOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 379,
+            "merk": "ENTROSTOP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 380,
+            "merk": "ENZIM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 381,
+            "merk": "EQ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 382,
+            "merk": "EQUAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 383,
+            "merk": "ES MONY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 384,
+            "merk": "ESEPULUH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 385,
+            "merk": "ESKULIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 386,
+            "merk": "ESPRESSO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 387,
+            "merk": "ESQUIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 388,
+            "merk": "ETERNA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 389,
+            "merk": "ETONA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 390,
+            "merk": "EXTRA JOSS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 391,
+            "merk": "EXTRADERM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 392,
+            "merk": "EXTREME",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 393,
+            "merk": "F&N",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 394,
+            "merk": "FA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 395,
+            "merk": "FANBO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 396,
+            "merk": "FANTA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 397,
+            "merk": "FARLEY'S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 398,
+            "merk": "FATIGON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 399,
+            "merk": "FAVOURIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 400,
+            "merk": "FCMP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 401,
+            "merk": "FEB APRIL 17",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 402,
+            "merk": "FEMINAX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 403,
+            "merk": "FEMIREX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 404,
+            "merk": "FERMIPAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 405,
+            "merk": "FIESTA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 406,
+            "merk": "FILMA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 407,
+            "merk": "FINNA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 408,
+            "merk": "FISHERMAN'S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 409,
+            "merk": "FITKOM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 410,
+            "merk": "FLORIDINA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 411,
+            "merk": "FOGO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 412,
+            "merk": "FOLIO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 413,
+            "merk": "FONNUT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 414,
+            "merk": "FONTERRA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 415,
+            "merk": "FORA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 416,
+            "merk": "FRAIS WELL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 417,
+            "merk": "FRENCH FRIES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 418,
+            "merk": "FRES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 419,
+            "merk": "FRES & NATURAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 420,
+            "merk": "FRESCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 421,
+            "merk": "FRESH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 422,
+            "merk": "FRESH 177087",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 423,
+            "merk": "FRESH CLUB",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 424,
+            "merk": "FRESH LEMON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 425,
+            "merk": "FREZIJEL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 426,
+            "merk": "FRISIAN FLAG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 427,
+            "merk": "FROZZ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 428,
+            "merk": "FRUIT TEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 429,
+            "merk": "FRUIT TELLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 430,
+            "merk": "FRUITTELLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 431,
+            "merk": "FRUTANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 432,
+            "merk": "FRUTY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 433,
+            "merk": "FUNTIME",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 434,
+            "merk": "GABIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 435,
+            "merk": "GABIN MANIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 436,
+            "merk": "GADING",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 437,
+            "merk": "GAGA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 438,
+            "merk": "GAIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 439,
+            "merk": "GAIN PLUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 440,
+            "merk": "GAINERS F 1000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 441,
+            "merk": "GAINT PLUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 442,
+            "merk": "GAJAH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 443,
+            "merk": "GALENCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 444,
+            "merk": "GARAM GURIH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 445,
+            "merk": "GARNIER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 446,
+            "merk": "GARUDA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 447,
+            "merk": "GARUDA FOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 448,
+            "merk": "GATSBAY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 449,
+            "merk": "GATSBY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 450,
+            "merk": "GAYSBY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 451,
+            "merk": "GELIGA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 452,
+            "merk": "GERY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 453,
+            "merk": "GG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 454,
+            "merk": "GG INTER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 455,
+            "merk": "GG KRETEK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 456,
+            "merk": "GG SURYA 12",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 457,
+            "merk": "GG SURYA 16",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 458,
+            "merk": "GILLETTE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 459,
+            "merk": "GISELLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 460,
+            "merk": "GITA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 461,
+            "merk": "GIZI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 462,
+            "merk": "GIZO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 463,
+            "merk": "GLADE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 464,
+            "merk": "GLUKOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 465,
+            "merk": "GOALPARA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 466,
+            "merk": "GOLD TAPE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 467,
+            "merk": "GOLDEN FARM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 468,
+            "merk": "GOLD'N",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 469,
+            "merk": "GOLIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 470,
+            "merk": "GONDOPURO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 471,
+            "merk": "GOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 472,
+            "merk": "GOOD DAY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 473,
+            "merk": "GOOD TIME",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 474,
+            "merk": "GOPEK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 475,
+            "merk": "GREAT WALL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 476,
+            "merk": "GREEN SANDS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 477,
+            "merk": "GREEN TEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 478,
+            "merk": "GROW",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 479,
+            "merk": "GULA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 480,
+            "merk": "GULA BATU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 481,
+            "merk": "GULAKU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 482,
+            "merk": "GULAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 483,
+            "merk": "GUNTING",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 484,
+            "merk": "H&S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 485,
+            "merk": "HAIR MIST",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 486,
+            "merk": "HANDUK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 487,
+            "merk": "HANIMON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 488,
+            "merk": "HANSAPLAST",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 489,
+            "merk": "HAPPY CHOC COIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 490,
+            "merk": "HARMONY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 491,
+            "merk": "HARMOY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 492,
+            "merk": "HARUM SARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 493,
+            "merk": "HELLO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 494,
+            "merk": "HELLO PANDA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 495,
+            "merk": "HELMIG'S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 496,
+            "merk": "HEMAVITON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 497,
+            "merk": "HEPATOSOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 498,
+            "merk": "HERBAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 499,
+            "merk": "HERO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 500,
+            "merk": "HEXAGONAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 501,
+            "merk": "HEXOS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 502,
+            "merk": "HI TOP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 503,
+            "merk": "HIDROFIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 504,
+            "merk": "HILO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 505,
+            "merk": "HIPS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 506,
+            "merk": "HIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 507,
+            "merk": "HJ 24775\/24400",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 508,
+            "merk": "HJ 32.225\/31950",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 509,
+            "merk": "HJ 36650\/36300",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 510,
+            "merk": "HJ 41.350",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 511,
+            "merk": "HJ 42100",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 512,
+            "merk": "HJ 45550\/45100",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 513,
+            "merk": "HJ LAMA 20.000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 514,
+            "merk": "HJ MD 41350",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 515,
+            "merk": "HJ MD 48.480\/",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 516,
+            "merk": "HJ MD22.200",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 517,
+            "merk": "HK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 518,
+            "merk": "HOCK GUAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 519,
+            "merk": "HOLISTICARE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 520,
+            "merk": "HOLLANDA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 521,
+            "merk": "HOLLY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 522,
+            "merk": "HOME SNOW",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 523,
+            "merk": "HONIG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 524,
+            "merk": "HORE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 525,
+            "merk": "HORMOVITON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 526,
+            "merk": "HOT NUT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 527,
+            "merk": "HRG 52300\/51770",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 528,
+            "merk": "HRG MD 24600\/",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 529,
+            "merk": "HRG MD 26600",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 530,
+            "merk": "HRG MD 32700",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 531,
+            "merk": "HRGA MD22.200",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 532,
+            "merk": "HRGMD 32350",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 533,
+            "merk": "HRGMD 6995\/6795",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 534,
+            "merk": "HRGMD 7175\/7000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 535,
+            "merk": "HRGMD 7200\/7080",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 536,
+            "merk": "HUFAGRIPP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 537,
+            "merk": "HUFALYSIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 538,
+            "merk": "HUGGIES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 539,
+            "merk": "HUKI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 540,
+            "merk": "HYPER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 541,
+            "merk": "HZL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 542,
+            "merk": "ICE COFFEE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 543,
+            "merk": "ICE MINT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 544,
+            "merk": "IDEAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 545,
+            "merk": "IINDOMIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 546,
+            "merk": "IKAN DORANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 547,
+            "merk": "IKAN MAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 548,
+            "merk": "IMPERAIAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 549,
+            "merk": "IMPERIAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 550,
+            "merk": "INACO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 551,
+            "merk": "INAFOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 552,
+            "merk": "INDO RASA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 553,
+            "merk": "INDOCAFE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 554,
+            "merk": "INDOFOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 555,
+            "merk": "INDOMARCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 556,
+            "merk": "INDOMIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 557,
+            "merk": "INDOMILK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 558,
+            "merk": "INDOPRIMA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 559,
+            "merk": "INDORASA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 560,
+            "merk": "INDRI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 561,
+            "merk": "INEZ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 562,
+            "merk": "INGGRIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 563,
+            "merk": "INNI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 564,
+            "merk": "INSTO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 565,
+            "merk": "INUOI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 566,
+            "merk": "INZA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 567,
+            "merk": "INZANA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 568,
+            "merk": "IPI CPL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 569,
+            "merk": "IREX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 570,
+            "merk": "ISOLASI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 571,
+            "merk": "ISOMIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 572,
+            "merk": "IYES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 573,
+            "merk": "IZZI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 574,
+            "merk": "JA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 575,
+            "merk": "JACKSON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 576,
+            "merk": "JAGO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 577,
+            "merk": "JAHE ASLI WANGI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 578,
+            "merk": "JAMUR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 579,
+            "merk": "JARUM KASUR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 580,
+            "merk": "JAS HUJAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 581,
+            "merk": "JAS JUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 582,
+            "merk": "JASJUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 583,
+            "merk": "JELLY JOY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 584,
+            "merk": "JEMCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 585,
+            "merk": "JENANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 586,
+            "merk": "JENANG KUDUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 587,
+            "merk": "JENNY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 588,
+            "merk": "JESSCOOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 589,
+            "merk": "JET Z",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 590,
+            "merk": "JETZ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 591,
+            "merk": "JF SULFUR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 592,
+            "merk": "JHONNY ANDREAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 593,
+            "merk": "JHONSONS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 594,
+            "merk": "JOHNNY ANDREAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 595,
+            "merk": "JOHNSON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 596,
+            "merk": "JOHNSONS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 597,
+            "merk": "JOHNSON'S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 598,
+            "merk": "JORDAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 599,
+            "merk": "JOSIKI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 600,
+            "merk": "JOSS KID",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 601,
+            "merk": "JOVAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 602,
+            "merk": "JUICYFRUIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 603,
+            "merk": "JUSINI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 604,
+            "merk": "KACANG ENTIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 605,
+            "merk": "KAIN PELL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 606,
+            "merk": "KAKI TIGA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 607,
+            "merk": "KAKI3",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 608,
+            "merk": "KALPANAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 609,
+            "merk": "KAO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 610,
+            "merk": "KAPAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 611,
+            "merk": "KAPAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 612,
+            "merk": "KAPAL API",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 613,
+            "merk": "KAPAL TERBANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 614,
+            "merk": "KAPAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 615,
+            "merk": "KARA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 616,
+            "merk": "KASOGI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 617,
+            "merk": "KAWISTA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 618,
+            "merk": "KAYAKING",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 619,
+            "merk": "KECAP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 620,
+            "merk": "KELINCI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 621,
+            "merk": "KELINCI MAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 622,
+            "merk": "KELLY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 623,
+            "merk": "KEMBANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 624,
+            "merk": "KENJI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 625,
+            "merk": "KENKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 626,
+            "merk": "KENZO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 627,
+            "merk": "KEPALA DJENGGOT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 628,
+            "merk": "KERANJANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 629,
+            "merk": "KERETA KENCANA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 630,
+            "merk": "KESET",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 631,
+            "merk": "KHONG GUAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 632,
+            "merk": "KIFF",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 633,
+            "merk": "KIKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 634,
+            "merk": "KILAP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 635,
+            "merk": "KING COCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 636,
+            "merk": "KINO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 637,
+            "merk": "KINO BEAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 638,
+            "merk": "KINO KREZZ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 639,
+            "merk": "KIRIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 640,
+            "merk": "KIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 641,
+            "merk": "KISPRAY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 642,
+            "merk": "KIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 643,
+            "merk": "KIWI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 644,
+            "merk": "KLEENEX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 645,
+            "merk": "KLENNEX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 646,
+            "merk": "KLIN PAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 647,
+            "merk": "KOBE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 648,
+            "merk": "KOBOI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 649,
+            "merk": "KODOMO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 650,
+            "merk": "KOKITA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 651,
+            "merk": "KOKOLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 652,
+            "merk": "KOMIX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 653,
+            "merk": "KONICARE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 654,
+            "merk": "KONIDIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 655,
+            "merk": "KOPI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 656,
+            "merk": "KOPI LUWAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 657,
+            "merk": "KOPI SINGA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 658,
+            "merk": "KOPI TANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 659,
+            "merk": "KOPIKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 660,
+            "merk": "KOTEX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 661,
+            "merk": "KOYO CABE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 662,
+            "merk": "KR SARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 663,
+            "merk": "KRAFT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 664,
+            "merk": "KRAT KSG 15000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 665,
+            "merk": "KRAT KSG 5000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 666,
+            "merk": "KRESEK BERGAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 667,
+            "merk": "KRG NAIK 1000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 668,
+            "merk": "KUDA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 669,
+            "merk": "KUDA TERBANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 670,
+            "merk": "KUKU BIMA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 671,
+            "merk": "KUNCI MAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 672,
+            "merk": "KUNYIT ASAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 673,
+            "merk": "KUPU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 674,
+            "merk": "KUSUMA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 675,
+            "merk": "L.A.",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 676,
+            "merk": "LA FONTE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 677,
+            "merk": "LA TLP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 678,
+            "merk": "LA TULIPE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 679,
+            "merk": "LACTOGEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 680,
+            "merk": "LACTONA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 681,
+            "merk": "LADY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 682,
+            "merk": "LAPIS LEGIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 683,
+            "merk": "LASEGAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 684,
+            "merk": "LASERIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 685,
+            "merk": "LAUKKAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 686,
+            "merk": "LAURIER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 687,
+            "merk": "LAVENDA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 688,
+            "merk": "LAYS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 689,
+            "merk": "LAZIO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 690,
+            "merk": "LEGIAN NUT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 691,
+            "merk": "LELAP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 692,
+            "merk": "LELE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 693,
+            "merk": "LEM LALAT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 694,
+            "merk": "LEO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 695,
+            "merk": "LEOUKOPLAST",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 696,
+            "merk": "LERVIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 697,
+            "merk": "LESTARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 698,
+            "merk": "LIA INDAH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 699,
+            "merk": "LIDAH BUAYA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 700,
+            "merk": "LIFEBUOY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 701,
+            "merk": "LIGHTENING C.RD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 702,
+            "merk": "LIGO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 703,
+            "merk": "LILI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 704,
+            "merk": "LILY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 705,
+            "merk": "LIMA SAUDARA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 706,
+            "merk": "LION HEAD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 707,
+            "merk": "LION STAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 708,
+            "merk": "LIP ICE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 709,
+            "merk": "LIPICE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 710,
+            "merk": "LIPICE ROHTO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 711,
+            "merk": "LIPOVITAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 712,
+            "merk": "LIPTON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 713,
+            "merk": "LIST 01\/02\/18",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 714,
+            "merk": "LIST 13\/12\/17",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 715,
+            "merk": "LISTERINE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 716,
+            "merk": "LISTING 05\/06",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 717,
+            "merk": "LISTING 12\/02",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 718,
+            "merk": "LISTING 12\/03",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 719,
+            "merk": "LISTING 17\/05",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 720,
+            "merk": "LISTING 18\/7\/17",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 721,
+            "merk": "LISTING 22\/01",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 722,
+            "merk": "LISTING 22\/08",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 723,
+            "merk": "LISTING 22\/8",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 724,
+            "merk": "LISTING 28\/12",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 725,
+            "merk": "LISTING 28\/5",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 726,
+            "merk": "LISTING 28\/6",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 727,
+            "merk": "LISTING 30\/03",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 728,
+            "merk": "LISTING 30\/12",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 729,
+            "merk": "LOHAN KUO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 730,
+            "merk": "LOREAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 731,
+            "merk": "LOTTE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 732,
+            "merk": "LOVILLEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 733,
+            "merk": "LOVY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 734,
+            "merk": "LUOLAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 735,
+            "merk": "LUWAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 736,
+            "merk": "LYCHEE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 737,
+            "merk": "LYDIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 738,
+            "merk": "LYSOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 739,
+            "merk": "M&M",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 740,
+            "merk": "MADINA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 741,
+            "merk": "MADONA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 742,
+            "merk": "MADONNA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 743,
+            "merk": "MADU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 744,
+            "merk": "MADU AM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 745,
+            "merk": "MADU RASA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 746,
+            "merk": "MAESTRO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 747,
+            "merk": "MAFU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 748,
+            "merk": "MAGGI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 749,
+            "merk": "MAGIC",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 750,
+            "merk": "MAJESTIC",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 751,
+            "merk": "MAKARIZO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 752,
+            "merk": "MALING",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 753,
+            "merk": "MALLO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 754,
+            "merk": "MAMA SUKA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 755,
+            "merk": "MAMAMIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 756,
+            "merk": "MAMY POKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 757,
+            "merk": "MAMYPOKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 758,
+            "merk": "MANDOM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 759,
+            "merk": "MANFUL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 760,
+            "merk": "MANISE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 761,
+            "merk": "MANUSE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 762,
+            "merk": "MARBELS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 763,
+            "merk": "MARCKS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 764,
+            "merk": "MARCKS'",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 765,
+            "merk": "MARI TEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 766,
+            "merk": "MARIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 767,
+            "merk": "MARIE SUSU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 768,
+            "merk": "MARIMAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 769,
+            "merk": "MARIMAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 770,
+            "merk": "MARINA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 771,
+            "merk": "MARJAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 772,
+            "merk": "MARLBORO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 773,
+            "merk": "MASAKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 774,
+            "merk": "MASPION",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 775,
+            "merk": "MASTER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 776,
+            "merk": "MATAHARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 777,
+            "merk": "MAWAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 778,
+            "merk": "MAX CREAMER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 779,
+            "merk": "MAX LEMON TEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 780,
+            "merk": "MAX TEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 781,
+            "merk": "MAXAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 782,
+            "merk": "MAXIM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 783,
+            "merk": "MAYASI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 784,
+            "merk": "MBK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 785,
+            "merk": "MC CORMICK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 786,
+            "merk": "MEADOW LEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 787,
+            "merk": "MECO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 788,
+            "merk": "MEDICARE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 789,
+            "merk": "MEI 17",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 790,
+            "merk": "MEIJI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 791,
+            "merk": "MENARA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 792,
+            "merk": "MENTOS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 793,
+            "merk": "MERCK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 794,
+            "merk": "MERCUSUAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 795,
+            "merk": "MERPATI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 796,
+            "merk": "METAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 797,
+            "merk": "MEXTRIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 798,
+            "merk": "MI GELAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 799,
+            "merk": "MIC MAC",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 800,
+            "merk": "MIDUO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 801,
+            "merk": "MIE BOLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 802,
+            "merk": "MIE FAJAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 803,
+            "merk": "MIE KARE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 804,
+            "merk": "MIE PARKIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 805,
+            "merk": "MIE PITA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 806,
+            "merk": "MIE SEALION",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 807,
+            "merk": "MIE TAPEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 808,
+            "merk": "MILKMAID",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 809,
+            "merk": "MILKUAT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 810,
+            "merk": "MILNA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 811,
+            "merk": "MILTON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 812,
+            "merk": "MINICO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 813,
+            "merk": "MIRABELLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 814,
+            "merk": "MIRACO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 815,
+            "merk": "MIRINDA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 816,
+            "merk": "MISTER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 817,
+            "merk": "MISTER POTATO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 818,
+            "merk": "MITRA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 819,
+            "merk": "MITU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 820,
+            "merk": "MIWON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 821,
+            "merk": "MIXAGRIP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 822,
+            "merk": "MOBIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 823,
+            "merk": "MOGU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 824,
+            "merk": "MOGU MOGU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 825,
+            "merk": "MONA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 826,
+            "merk": "MONDE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 827,
+            "merk": "MONTISS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 828,
+            "merk": "MONY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 829,
+            "merk": "MOONSHIP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 830,
+            "merk": "MORIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 831,
+            "merk": "MORNING FRESH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 832,
+            "merk": "MOTO MOBIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 833,
+            "merk": "MOUTHWASH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 834,
+            "merk": "MR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 835,
+            "merk": "MR JUSSIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 836,
+            "merk": "MR. BOEM-BOE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 837,
+            "merk": "MR. JUSSIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 838,
+            "merk": "MR.P",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 839,
+            "merk": "MULTI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 840,
+            "merk": "MUSK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 841,
+            "merk": "MUSTIKA AYU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 842,
+            "merk": "MUSTIKA RATU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 843,
+            "merk": "MUTZ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 844,
+            "merk": "MY BABY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 845,
+            "merk": "MY SHALDAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 846,
+            "merk": "MYLANTA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 847,
+            "merk": "MYLEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 848,
+            "merk": "MYLEA INTENS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 849,
+            "merk": "NABATI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 850,
+            "merk": "NABISCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 851,
+            "merk": "NAGATA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 852,
+            "merk": "NANAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 853,
+            "merk": "NANO NANO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 854,
+            "merk": "NAPACIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 855,
+            "merk": "NARITA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 856,
+            "merk": "NASE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 857,
+            "merk": "NASIONAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 858,
+            "merk": "NATUR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 859,
+            "merk": "NATUR SLIM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 860,
+            "merk": "NATURADE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 861,
+            "merk": "NATURAL HONEY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 862,
+            "merk": "NATURALLY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 863,
+            "merk": "NATURE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 864,
+            "merk": "NATUR-E",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 865,
+            "merk": "NATUTAL HONEY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 866,
+            "merk": "NEO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 867,
+            "merk": "NEO RHEUMACYL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 868,
+            "merk": "NEO SANMAG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 869,
+            "merk": "NEOZEP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 870,
+            "merk": "NEPHRISOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 871,
+            "merk": "NERIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 872,
+            "merk": "NESCAFE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 873,
+            "merk": "NESTLE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 874,
+            "merk": "NEURALGIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 875,
+            "merk": "NEW CELL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 876,
+            "merk": "NEW SYBARIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 877,
+            "merk": "NICE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 878,
+            "merk": "NIKI SARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 879,
+            "merk": "NIMMS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 880,
+            "merk": "NINIO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 881,
+            "merk": "NISSIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 882,
+            "merk": "NIVEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 883,
+            "merk": "NL-33",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 884,
+            "merk": "NORMAL 22.200",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 885,
+            "merk": "NORMAL 22.225",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 886,
+            "merk": "NOVINA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 887,
+            "merk": "NR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 888,
+            "merk": "NRML 51900",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 889,
+            "merk": "NUR KHOLIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 890,
+            "merk": "NUTRICIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 891,
+            "merk": "NUTRIFOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 892,
+            "merk": "NUTRIJEL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 893,
+            "merk": "NUTRIJELL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 894,
+            "merk": "NUTRIMA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 895,
+            "merk": "NUTRISARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 896,
+            "merk": "NUTRITEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 897,
+            "merk": "NUVO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 898,
+            "merk": "NYAM NYAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 899,
+            "merk": "NYAMNYAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 900,
+            "merk": "NYONYA MENEER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 901,
+            "merk": "OAVALTINE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 902,
+            "merk": "OBAT ANTINYAMUK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 903,
+            "merk": "OBAT NYAMUK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 904,
+            "merk": "OBH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 905,
+            "merk": "OBOR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 906,
+            "merk": "OILUM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 907,
+            "merk": "OISI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 908,
+            "merk": "OKANA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 909,
+            "merk": "OKKY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 910,
+            "merk": "OKKY JELLY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 911,
+            "merk": "OKT17",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 912,
+            "merk": "OKY JELLY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 913,
+            "merk": "OLAY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 914,
+            "merk": "OLIEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 915,
+            "merk": "ONE MAN SHOW",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 916,
+            "merk": "OOPS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 917,
+            "merk": "ORAL-B",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 918,
+            "merk": "ORANG TUA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 919,
+            "merk": "OREO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 920,
+            "merk": "ORODIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 921,
+            "merk": "ORSON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 922,
+            "merk": "OSCARIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 923,
+            "merk": "OSKADON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 924,
+            "merk": "OSKADRYL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 925,
+            "merk": "OSKAMO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 926,
+            "merk": "OSRAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 927,
+            "merk": "OSTE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 928,
+            "merk": "OTO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 929,
+            "merk": "OVALE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 930,
+            "merk": "OVALEVAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 931,
+            "merk": "OVALTINE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 932,
+            "merk": "P&N",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 933,
+            "merk": "PABANOX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 934,
+            "merk": "PADI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 935,
+            "merk": "PAGODA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 936,
+            "merk": "PAKMAYA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 937,
+            "merk": "PAKPUNGSON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 938,
+            "merk": "PALM SUGAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 939,
+            "merk": "PALMBOOM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 940,
+            "merk": "PAMPERS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 941,
+            "merk": "PANADOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 942,
+            "merk": "PANDANSARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 943,
+            "merk": "PANDAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 944,
+            "merk": "PANTENE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 945,
+            "merk": "PANTHER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 946,
+            "merk": "PAPAYA RDL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 947,
+            "merk": "PAPERLINE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 948,
+            "merk": "PAQUITO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 949,
+            "merk": "PARAMEX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 950,
+            "merk": "PARCHOPIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 951,
+            "merk": "PASEO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 952,
+            "merk": "PAYUNG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 953,
+            "merk": "PEDIASURE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 954,
+            "merk": "PEDITOX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 955,
+            "merk": "PENYEGAR MULUT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 956,
+            "merk": "PEPSI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 957,
+            "merk": "PEPSI BLUE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 958,
+            "merk": "PEPSODENT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 959,
+            "merk": "PEPTISOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 960,
+            "merk": "PERBAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 961,
+            "merk": "PETPET",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 962,
+            "merk": "PG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 963,
+            "merk": "PHARCOVIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 964,
+            "merk": "PHILIPS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 965,
+            "merk": "PHOENIX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 966,
+            "merk": "PIATTOS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 967,
+            "merk": "PIERRE CARDIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 968,
+            "merk": "PIGEON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 969,
+            "merk": "PIL TUNTAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 970,
+            "merk": "PILKITA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 971,
+            "merk": "PILOT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 972,
+            "merk": "PINSET",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 973,
+            "merk": "PIO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 974,
+            "merk": "PIRING LOMBOK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 975,
+            "merk": "PISAU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 976,
+            "merk": "PIXY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 977,
+            "merk": "PLACENTA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 978,
+            "merk": "PLAKBAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 979,
+            "merk": "PLASTIK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 980,
+            "merk": "PLEDGE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 981,
+            "merk": "PLONK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 982,
+            "merk": "POCARI SWEAT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 983,
+            "merk": "POCI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 984,
+            "merk": "POLO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 985,
+            "merk": "POLOS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 986,
+            "merk": "POLYTEX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 987,
+            "merk": "PONDAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 988,
+            "merk": "PONDS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 989,
+            "merk": "POND'S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 990,
+            "merk": "POP CORN VITA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 991,
+            "merk": "POP ICE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 992,
+            "merk": "POP JELLY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 993,
+            "merk": "POP MIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 994,
+            "merk": "PORSTEX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 995,
+            "merk": "POT 1000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 996,
+            "merk": "POT1000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 997,
+            "merk": "POTATO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 998,
+            "merk": "POTATO STICK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 999,
+            "merk": "POWERFIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1000,
+            "merk": "PRADASARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1001,
+            "merk": "PREDA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1002,
+            "merk": "PRENAGEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1003,
+            "merk": "PRIMADONA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1004,
+            "merk": "PRINGLES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1005,
+            "merk": "PRITHO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1006,
+            "merk": "PRITI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1007,
+            "merk": "PRITY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1008,
+            "merk": "PRL1128",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1009,
+            "merk": "PRL1205",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1010,
+            "merk": "PRL1254",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1011,
+            "merk": "PRL1255",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1012,
+            "merk": "PRL1505",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1013,
+            "merk": "PRO CARE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1014,
+            "merk": "PRO DENTAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1015,
+            "merk": "PROCAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1016,
+            "merk": "PROCOLD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1017,
+            "merk": "PRO-DE'EM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1018,
+            "merk": "PRODUGEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1019,
+            "merk": "PROLENE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1020,
+            "merk": "PROMAG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1021,
+            "merk": "PROMIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1022,
+            "merk": "PROMIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1023,
+            "merk": "PROMINA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1024,
+            "merk": "PROMISE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1025,
+            "merk": "PROMO PUASA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1026,
+            "merk": "PRONAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1027,
+            "merk": "PROTECAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1028,
+            "merk": "PUCELL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1029,
+            "merk": "PUCELLE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1030,
+            "merk": "PURBASARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1031,
+            "merk": "PURITY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1032,
+            "merk": "PUROL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1033,
+            "merk": "PUTERI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1034,
+            "merk": "PUTRI AYU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1035,
+            "merk": "PUYER 19",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1036,
+            "merk": "PUYER 38",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1037,
+            "merk": "QF",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1038,
+            "merk": "QIANYAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1039,
+            "merk": "QIANYAN MALAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1040,
+            "merk": "QIANYAN SOAP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1041,
+            "merk": "QL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1042,
+            "merk": "QUAKER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1043,
+            "merk": "RAFIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1044,
+            "merk": "RAFRAKSI 8500",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1045,
+            "merk": "RAJALELE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1046,
+            "merk": "RALAXA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1047,
+            "merk": "RDL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1048,
+            "merk": "RDL TWC",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1049,
+            "merk": "REAL GOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1050,
+            "merk": "RED  BELL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1051,
+            "merk": "RED A",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1052,
+            "merk": "RED BELL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1053,
+            "merk": "REDOXON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1054,
+            "merk": "REFINA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1055,
+            "merk": "REFIPEL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1056,
+            "merk": "REFISOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1057,
+            "merk": "REGAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1058,
+            "merk": "REJOICE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1059,
+            "merk": "RELAXA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1060,
+            "merk": "RESIK-V",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1061,
+            "merk": "REVLON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1062,
+            "merk": "REXONA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1063,
+            "merk": "RHEUMAPILL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1064,
+            "merk": "RHEUMASON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1065,
+            "merk": "RIBENA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1066,
+            "merk": "RICOLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1067,
+            "merk": "RITA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1068,
+            "merk": "RITZ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1069,
+            "merk": "RIVANOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1070,
+            "merk": "ROBERTS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1071,
+            "merk": "RODA BIRU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1072,
+            "merk": "ROLLER COASTER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1073,
+            "merk": "ROMA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1074,
+            "merk": "ROSE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1075,
+            "merk": "ROSE BRAND",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1076,
+            "merk": "ROUNDIES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1077,
+            "merk": "RRC",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1078,
+            "merk": "RUDI HDS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1079,
+            "merk": "RUDY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1080,
+            "merk": "RUDY H",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1081,
+            "merk": "RUDY HADISUWARN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1082,
+            "merk": "RUDY HDS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1083,
+            "merk": "RUKITEX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1084,
+            "merk": "RX 3 RDL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1085,
+            "merk": "S 26",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1086,
+            "merk": "S TO S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1087,
+            "merk": "SA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1088,
+            "merk": "SABUN SIRIH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1089,
+            "merk": "SABUN TAWON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1090,
+            "merk": "SAFARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1091,
+            "merk": "SAGAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1092,
+            "merk": "SAJIKU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1093,
+            "merk": "SAKATONIK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1094,
+            "merk": "SAKURA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1095,
+            "merk": "SALAM MIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1096,
+            "merk": "SALEP KULIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1097,
+            "merk": "SALICYL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1098,
+            "merk": "SALONPAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1099,
+            "merk": "SALSA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1100,
+            "merk": "SAMPOERNA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1101,
+            "merk": "SAN REMO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1102,
+            "merk": "SANBE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1103,
+            "merk": "SANDOZ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1104,
+            "merk": "SANEX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1105,
+            "merk": "SANIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1106,
+            "merk": "SANSUI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1107,
+            "merk": "SARI AYU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1108,
+            "merk": "SARI HUSADA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1109,
+            "merk": "SARI MURNI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1110,
+            "merk": "SARI PUSPA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1111,
+            "merk": "SARIAYU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1112,
+            "merk": "SARIMI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1113,
+            "merk": "SASA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1114,
+            "merk": "SATELIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1115,
+            "merk": "SATELITE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1116,
+            "merk": "SCOTCH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1117,
+            "merk": "SCOTCHBRITE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1118,
+            "merk": "SCOTT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1119,
+            "merk": "SCOTT'S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1120,
+            "merk": "SEA CRUNCH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1121,
+            "merk": "SEA GULL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1122,
+            "merk": "SEBAMED",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1123,
+            "merk": "SEDAP MERAKYAT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1124,
+            "merk": "SEDOTAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1125,
+            "merk": "SEGA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1126,
+            "merk": "SEGAR DINGIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1127,
+            "merk": "SEGAR SARI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1128,
+            "merk": "SEGI TIGA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1129,
+            "merk": "SEGITIGA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1130,
+            "merk": "SEHAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1131,
+            "merk": "SEHAT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1132,
+            "merk": "SEKALOR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1133,
+            "merk": "SELAMAT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1134,
+            "merk": "SELAMET",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1135,
+            "merk": "SELECTION",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1136,
+            "merk": "SELSUN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1137,
+            "merk": "SEMAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1138,
+            "merk": "SEMIR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1139,
+            "merk": "SEMIR PEACOCK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1140,
+            "merk": "SENDOK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1141,
+            "merk": "SENSODYNE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1142,
+            "merk": "SENTER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1143,
+            "merk": "SEPT 17-OKT 17",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1144,
+            "merk": "SERENA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1145,
+            "merk": "SERUNI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1146,
+            "merk": "SG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1147,
+            "merk": "SGM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1148,
+            "merk": "SHARP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1149,
+            "merk": "SHE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1150,
+            "merk": "SHINZUI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1151,
+            "merk": "SHINZU'I",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1152,
+            "merk": "SHOWER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1153,
+            "merk": "SHOWER TO S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1154,
+            "merk": "SHUNTON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1155,
+            "merk": "SI MUNGIL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1156,
+            "merk": "SIDO MUNCUL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1157,
+            "merk": "SIL&BAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1158,
+            "merk": "SILVER QUEEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1159,
+            "merk": "SIMAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1160,
+            "merk": "SIMBA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1161,
+            "merk": "SINAR DUNIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1162,
+            "merk": "SINGA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1163,
+            "merk": "SKIN WHITE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1164,
+            "merk": "SLEEK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1165,
+            "merk": "SMART",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1166,
+            "merk": "SMAX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1167,
+            "merk": "SMAXDOUBLE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1168,
+            "merk": "SMILE UP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1169,
+            "merk": "SNACKIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1170,
+            "merk": "SNOWMAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1171,
+            "merk": "SNOWMEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1172,
+            "merk": "SNOWY LAND",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1173,
+            "merk": "SO GOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1174,
+            "merk": "SOBEE PLUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1175,
+            "merk": "SOFFEL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1176,
+            "merk": "SOFT & FRESH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1177,
+            "merk": "SOFTEX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1178,
+            "merk": "SOFTIES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1179,
+            "merk": "SOFTLOVE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1180,
+            "merk": "SOKLIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1181,
+            "merk": "SONAX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1182,
+            "merk": "SOON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1183,
+            "merk": "SOSRO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1184,
+            "merk": "SOZZIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1185,
+            "merk": "SP525-382401",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1186,
+            "merk": "SPALDING",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1187,
+            "merk": "SPEARMINT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1188,
+            "merk": "SPIDOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1189,
+            "merk": "SPRITE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1190,
+            "merk": "SRIMPI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1191,
+            "merk": "SRITI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1192,
+            "merk": "SRONG PAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1193,
+            "merk": "ST.IVES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1194,
+            "merk": "STAPLES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1195,
+            "merk": "STAR MILD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1196,
+            "merk": "STARBURST",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1197,
+            "merk": "STARBUST",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1198,
+            "merk": "STEFIT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1199,
+            "merk": "STELLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1200,
+            "merk": "STIKISS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1201,
+            "merk": "STIKKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1202,
+            "merk": "STOK 16\/6:443",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1203,
+            "merk": "STOK 16\/6:628",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1204,
+            "merk": "STOP COLD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1205,
+            "merk": "STOP MAP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1206,
+            "merk": "SUGUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1207,
+            "merk": "SUKUN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1208,
+            "merk": "SUKUN 12",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1209,
+            "merk": "SUKUN 16",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1210,
+            "merk": "SUKUN 2000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1211,
+            "merk": "SUKUN EXECUTIVE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1212,
+            "merk": "SUKUN KRETEK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1213,
+            "merk": "SULAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1214,
+            "merk": "SUMBAWA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1215,
+            "merk": "SUMBER AYU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1216,
+            "merk": "SUN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1217,
+            "merk": "SUN KARA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1218,
+            "merk": "SUNBLOCK C.RDL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1219,
+            "merk": "SUNKIST",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1220,
+            "merk": "SUNLIGHT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1221,
+            "merk": "SUNRISE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1222,
+            "merk": "SUNSILK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1223,
+            "merk": "SUPER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1224,
+            "merk": "SUPER BIHUN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1225,
+            "merk": "SUPER MIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1226,
+            "merk": "SUPERIOR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1227,
+            "merk": "SUPER-MAX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1228,
+            "merk": "SUPERMI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1229,
+            "merk": "SUPRADYN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1230,
+            "merk": "SURYA MAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1231,
+            "merk": "SUSTAGEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1232,
+            "merk": "SWALLOW",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1233,
+            "merk": "SWALLOW GLOBE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1234,
+            "merk": "SWALLOW LILI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1235,
+            "merk": "SWALLOW SUN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1236,
+            "merk": "SWALOW",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1237,
+            "merk": "SWAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1238,
+            "merk": "SWEETY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1239,
+            "merk": "T.DROPS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1240,
+            "merk": "TAKE OFF",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1241,
+            "merk": "TAMARIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1242,
+            "merk": "TANCHO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1243,
+            "merk": "TARO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1244,
+            "merk": "TATRA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1245,
+            "merk": "TAWON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1246,
+            "merk": "TDK LAKU BISA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1247,
+            "merk": "TEBS TEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1248,
+            "merk": "TEH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1249,
+            "merk": "TEH CAP BOTOL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1250,
+            "merk": "TEH POCI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1251,
+            "merk": "TEH TONG TJI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1252,
+            "merk": "TEMPO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1253,
+            "merk": "TEMPRA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1254,
+            "merk": "TERMOREX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1255,
+            "merk": "TESSA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1256,
+            "merk": "TIGA ANAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1257,
+            "merk": "TIGER HEAD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1258,
+            "merk": "TIM TAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1259,
+            "merk": "TIMTAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1260,
+            "merk": "TIMUN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1261,
+            "merk": "TIP TOP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1262,
+            "merk": "TISSUE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1263,
+            "merk": "TJE FUK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1264,
+            "merk": "TJING TJAU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1265,
+            "merk": "TOBLERON",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1266,
+            "merk": "TOBLERONE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1267,
+            "merk": "TOKAI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1268,
+            "merk": "TOLAK ANGIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1269,
+            "merk": "TOMATO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1270,
+            "merk": "TONG TJI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1271,
+            "merk": "TONIKUM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1272,
+            "merk": "TOP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1273,
+            "merk": "TOP STAR",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1274,
+            "merk": "TOP SUPER JUMBO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1275,
+            "merk": "TOPLY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1276,
+            "merk": "TORA BIKA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1277,
+            "merk": "TORPEDO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1278,
+            "merk": "TOTAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1279,
+            "merk": "TOTALCARE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1280,
+            "merk": "TREND",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1281,
+            "merk": "TRENDY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1282,
+            "merk": "TRENTIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1283,
+            "merk": "TRENZ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1284,
+            "merk": "TRESNO JOYO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1285,
+            "merk": "TRIKA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1286,
+            "merk": "TRIM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1287,
+            "merk": "TRISIA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1288,
+            "merk": "TRISNO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1289,
+            "merk": "TRIX",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1290,
+            "merk": "TROPICAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1291,
+            "merk": "TROPICANA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1292,
+            "merk": "TROPICARE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1293,
+            "merk": "TRUST",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1294,
+            "merk": "TULIP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1295,
+            "merk": "TULL JYE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1296,
+            "merk": "TURBO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1297,
+            "merk": "TURUN PANAS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1298,
+            "merk": "TWIN TOP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1299,
+            "merk": "TWIST",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1300,
+            "merk": "TWISTBALL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1301,
+            "merk": "TWISTER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1302,
+            "merk": "TWISTKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1303,
+            "merk": "UB",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1304,
+            "merk": "UBM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1305,
+            "merk": "UCARE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1306,
+            "merk": "UDANG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1307,
+            "merk": "UDANG ISTIMEWA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1308,
+            "merk": "UDANG SUPER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1309,
+            "merk": "UDB",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1310,
+            "merk": "UHU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1311,
+            "merk": "ULRACAP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1312,
+            "merk": "ULTRA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1313,
+            "merk": "ULTRA JAYA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1314,
+            "merk": "ULTRA MILK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1315,
+            "merk": "ULTRA MLIK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1316,
+            "merk": "ULTRAFLU",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1317,
+            "merk": "ULTRAMAAG",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1318,
+            "merk": "ULTRASILIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1319,
+            "merk": "UNIELVER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1320,
+            "merk": "UNIFOOD",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1321,
+            "merk": "UNIK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1322,
+            "merk": "UNILEVER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1323,
+            "merk": "UNILIVER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1324,
+            "merk": "UPIXOM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1325,
+            "merk": "USUS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1326,
+            "merk": "VALAENTINE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1327,
+            "merk": "VALENTINE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1328,
+            "merk": "VAN HOUTEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1329,
+            "merk": "VAPE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1330,
+            "merk": "VEGETA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1331,
+            "merk": "VERTIKAL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1332,
+            "merk": "VIBVELLE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1333,
+            "merk": "VICK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1334,
+            "merk": "VICKS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1335,
+            "merk": "VICKS FORMULA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1336,
+            "merk": "VICKS VAPORUB",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1337,
+            "merk": "VICTORY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1338,
+            "merk": "VIDORAN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1339,
+            "merk": "VIIVELL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1340,
+            "merk": "VISINE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1341,
+            "merk": "VITACIMIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1342,
+            "merk": "VITALIS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1343,
+            "merk": "VITEA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1344,
+            "merk": "VITRI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1345,
+            "merk": "VIVA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1346,
+            "merk": "VIVELLE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1347,
+            "merk": "V-MILK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1348,
+            "merk": "VOLCANO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1349,
+            "merk": "VSL",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1350,
+            "merk": "WAFER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1351,
+            "merk": "WAFRET",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1352,
+            "merk": "WALLS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1353,
+            "merk": "WAM",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1354,
+            "merk": "WARDAH",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1355,
+            "merk": "WEIGHT GAIN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1356,
+            "merk": "WELLA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1357,
+            "merk": "WELLNES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1358,
+            "merk": "WELLNESS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1359,
+            "merk": "WESLEY",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1360,
+            "merk": "WETTIES",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1361,
+            "merk": "WHISPER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1362,
+            "merk": "WIGUNA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1363,
+            "merk": "WIJAYA KUSUMA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1364,
+            "merk": "WINDMOLEN",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1365,
+            "merk": "WING'S",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1366,
+            "merk": "WING'Z",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1367,
+            "merk": "WISMILAK",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1368,
+            "merk": "WONDER",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1369,
+            "merk": "WONG COCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1370,
+            "merk": "WOODS",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1371,
+            "merk": "WOW",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1372,
+            "merk": "WRP",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1373,
+            "merk": "WUZZ",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1374,
+            "merk": "XIAO MI MI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1375,
+            "merk": "XON-CE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1376,
+            "merk": "YAHUII",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1377,
+            "merk": "YAKI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1378,
+            "merk": "YAKI\/BROCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1379,
+            "merk": "YAKULT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1380,
+            "merk": "YESCO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1381,
+            "merk": "YOKO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1382,
+            "merk": "YOU C1000",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1383,
+            "merk": "YUKI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1384,
+            "merk": "YULIE",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1385,
+            "merk": "YULIE J",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1386,
+            "merk": "YUPI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1387,
+            "merk": "YURI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1388,
+            "merk": "ZACT",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1389,
+            "merk": "ZAKI",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1390,
+            "merk": "ZELA",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1391,
+            "merk": "ZEST",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1392,
+            "merk": "ZIPPO",
+            "waktuEntryHO": null
+        },
+        {
+            "idMerk": 1393,
+            "merk": "ZWITSAL",
+            "waktuEntryHO": null
+        }
+    ]
+}

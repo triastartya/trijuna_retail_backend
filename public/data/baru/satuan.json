@@ -1,0 +1,588 @@
+{
+    "statusCode": "200",
+    "message": "data berhasil diambil",
+    "data": [
+        {
+            "kodeSatuan": "'",
+            "satuan": "'",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": ".",
+            "satuan": ".",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "0",
+            "satuan": "0",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "000",
+            "satuan": "000",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "0KR",
+            "satuan": "0KR",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "0PC",
+            "satuan": "0PC",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "0RT",
+            "satuan": "0RT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "129",
+            "satuan": "129",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "138",
+            "satuan": "138",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "145",
+            "satuan": "145",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "206",
+            "satuan": "206",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "297",
+            "satuan": "297",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "2KR",
+            "satuan": "2KR",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "380",
+            "satuan": "380",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "387",
+            "satuan": "387",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "3RT",
+            "satuan": "3RT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "497",
+            "satuan": "497",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "4RT",
+            "satuan": "4RT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "567",
+            "satuan": "567",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "595",
+            "satuan": "595",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "BAG",
+            "satuan": "BAG",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "BAL",
+            "satuan": "BAL",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "BDT",
+            "satuan": "BDT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "BKS",
+            "satuan": "BKS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "BND",
+            "satuan": "BND",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "BOS",
+            "satuan": "BOS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "BOX",
+            "satuan": "BOX",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "BTL",
+            "satuan": "BTL",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "CRT",
+            "satuan": "CRT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "CTN",
+            "satuan": "CTN",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "CUP",
+            "satuan": "CUP",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "DOS",
+            "satuan": "DOS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "DRM",
+            "satuan": "DRM",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "DUS",
+            "satuan": "DUS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "GDL",
+            "satuan": "GDL",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "GLN",
+            "satuan": "GLN",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "GLS",
+            "satuan": "GLS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "GRS",
+            "satuan": "GROSS",
+            "isiDefault": 144,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "HGR",
+            "satuan": "HGR",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "IKT",
+            "satuan": "IKT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "JAR",
+            "satuan": "JAR",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "JRG",
+            "satuan": "JRG",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KDI",
+            "satuan": "KDI",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KER",
+            "satuan": "KER",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KG",
+            "satuan": "KILOGRAM",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KLG",
+            "satuan": "KLG",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KRM",
+            "satuan": "KRM",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KRP",
+            "satuan": "KRP",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KRT",
+            "satuan": "KRT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KTK",
+            "satuan": "KTK",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KTN",
+            "satuan": "KTN",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KTR",
+            "satuan": "KTR",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KTS",
+            "satuan": "KTS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "KTT",
+            "satuan": "KTT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "LBR",
+            "satuan": "LBR",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "LOS",
+            "satuan": "LOS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "LS",
+            "satuan": "LUSIN",
+            "isiDefault": 12,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "LSN",
+            "satuan": "LSN",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "LT",
+            "satuan": "LT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "MTR",
+            "satuan": "METER",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "ONS",
+            "satuan": "ONS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PAK",
+            "satuan": "PAK",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PC",
+            "satuan": "PC",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PCA",
+            "satuan": "PCA",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PCC",
+            "satuan": "PCC",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PCD",
+            "satuan": "PCD",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PCR",
+            "satuan": "PCR",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PCS",
+            "satuan": "PCS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PES",
+            "satuan": "PES",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PKT",
+            "satuan": "PKT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PLA",
+            "satuan": "PLA",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PLT",
+            "satuan": "PLT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "POT",
+            "satuan": "POT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PRE",
+            "satuan": "PRE",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PRS",
+            "satuan": "PRS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PSC",
+            "satuan": "PSC",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "PTG",
+            "satuan": "PTG",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "RCS",
+            "satuan": "RCS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "REF",
+            "satuan": "REF",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "ROL",
+            "satuan": "ROL",
+            "isiDefault": 0,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "RT",
+            "satuan": "RT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "RTG",
+            "satuan": "RTG",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "SAK",
+            "satuan": "SAK",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "SCH",
+            "satuan": "SCH",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "SET",
+            "satuan": "SET",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "SLP",
+            "satuan": "SLP",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "STP",
+            "satuan": "STP",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "STR",
+            "satuan": "STR",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "TBL",
+            "satuan": "TBL",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "TIM",
+            "satuan": "TIM",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "TKT",
+            "satuan": "TKT",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "TMB",
+            "satuan": "TMB",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "TOP",
+            "satuan": "TOP",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "TPL",
+            "satuan": "TPL",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "TPS",
+            "satuan": "TPS",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "WSK",
+            "satuan": "WSK",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        },
+        {
+            "kodeSatuan": "ZAK",
+            "satuan": "ZAK",
+            "isiDefault": 1,
+            "waktuEntryHO": null
+        }
+    ]
+}

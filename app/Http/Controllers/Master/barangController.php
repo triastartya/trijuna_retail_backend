@@ -227,7 +227,7 @@ class barangController extends VierController
     public function import(){
         DB::beginTransaction();
         try {
-            $response = File::json(base_path().'/public/data/barang.json');
+            $response = File::json(base_path().'/public/data/baru/barang.json');
             msBarang::truncate(); 
             trSettingHarga::truncate();
             trSettingHargaDetail::truncate();
@@ -237,7 +237,7 @@ class barangController extends VierController
                  'id_lokasi' => 1,
                  'tanggal_mulai_berlaku' => new DateTime()
             ]);
-            foreach($response as $item){
+            foreach($response['data'] as $item){
                 $data_barang[] = [
                     'id_barang'=>$item['idBarang'],
                     'id_divisi'=>$item['idDivisi'],

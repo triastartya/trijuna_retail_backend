@@ -32,10 +32,10 @@ class supplierController extends VierController
     public function import(){
         // DB::beginTransaction();
         try {
-            $response = File::json(base_path().'/public/data/supplier.json');
+            $response = File::json(base_path().'/public/data/baru/supplier.json');
             $delete =msSupplier::truncate(); 
             $data = [];
-            foreach($response as $item){
+            foreach($response['data'] as $item){
                 $data[] = [
                     'id_supplier'=>$item['idSupplier'],
                     'kode_supplier'=>$item['kodeSupplier'],
