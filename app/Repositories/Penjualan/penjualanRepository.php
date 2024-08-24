@@ -69,7 +69,7 @@ class penjualanRepository extends VierRepository
             uk.nama as nama_kasir,
             pp.is_bayar,
             pp.tanggal_penjualan,
-            pp.nota_penjualan,
+            pp.no_faktur as nota_penjualan,
             pp.id_member,
             mm.nomor_identitas,
             mm.nama_member,
