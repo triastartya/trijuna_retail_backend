@@ -84,8 +84,51 @@ class userController extends VierController
             $update->email = request()->email;
             $update->is_active = request()->is_active;
             $update->save();
-        } catch (\Throwable $th) {
-            //throw $th;
+            return response()->json(['success'=>true,'data'=>$update]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function getkasir(){
+        try {
+            $data = User::where('id_group',3)->get();
+            $lokasi = msLokasi::where('is_use',true)->first();
+            foreach($data as $key=>$item){
+                $data[$key]->token = '';
+                $data[$key]->version = '_development';
+                $data[$key]->lokasi = $lokasi;
+            }
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function login_kasir(){
+        $validated = _validate(request()->all(), ['email' => 'required','password'=>'required']);
+        try {
+            $user = User::where('email', $validated['email'])->first();
+            if (!$user || !Hash::check($validated['password'], $user->password)){
+                throw new \Exception('email and password not mach.');
+            }
+            if (!$user->is_active){
+                throw new \Exception('User is not active.');
+            }
+            if($user->id_group != 3){
+                throw new \Exception('User anda bukan Kasir.');
+            }
+            auth('web')->login($user);
+            request()->session()->regenerate();
+            $lokasi = msLokasi::where('is_use',true)->first();
+            $hasil =  array_merge($user->toArray(), [
+                'token' => $user->createToken(config('app.name'))->plainTextToken,
+                'version' => '_development',
+                'lokasi' => $lokasi
+            ]);
+            return response()->json(['success'=>true,'data'=>$hasil]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
 }

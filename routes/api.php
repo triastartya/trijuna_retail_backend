@@ -82,6 +82,9 @@ Route::get('health',function(){
 
 Route::post('register',[userController::class,'register']);
 Route::post('login',[userController::class,'login']);
+Route::post('login/kasir',[userController::class,'login_kasir']);
+Route::get('list/kasir',[userController::class,'getkasir']);
+
 Route::get('user_list',[userController::class,'list']);
 Route::put('user_update/{id_user}',[userController::class,'edit']);
 
