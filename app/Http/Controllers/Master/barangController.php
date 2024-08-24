@@ -229,8 +229,7 @@ class barangController extends VierController
         try {
             ini_set('memory_limit','256M');
             $response = File::json(base_path().'/public/data/baru/barang.json');
-            $response = array_map('str_getcsv', file(base_path().'/public/data/baru/barang.csv'));
-            dd($response);
+            // dd($response);
             msBarang::truncate(); 
             trSettingHarga::truncate();
             trSettingHargaDetail::truncate();
@@ -240,40 +239,42 @@ class barangController extends VierController
                  'id_lokasi' => 1,
                  'tanggal_mulai_berlaku' => new DateTime()
             ]);
-            foreach($response['data'] as $item){
+            foreach($response as $item){
+                $item = (array)$item;
+                // dd($item);
                 $data_barang[] = [
-                    'id_barang'=>$item['idBarang'],
-                    'id_divisi'=>$item['idDivisi'],
-                    'id_group'=>$item['idGrup'],
-                    'kode_barang'=>$item['kodeBarang'],
-                    'barcode'=>$item['barcode'],
-                    'nama_barang'=>$item['namaBarang'],
-                    'kode_satuan'=>$item['kodeSatuanKecil'],
-                    'id_merk'=>$item['idMerk'],
-                    'ukuran'=>$item['ukuran'],
-                    'warna'=>$item['warna'],
+                    'id_barang'=>$item['IdBarang'],
+                    'id_divisi'=>$item['IdDivisi'],
+                    'id_group'=>$item['IdGrup'],
+                    'kode_barang'=>$item['KodeBarang'],
+                    'barcode'=>$item['Barcode'],
+                    'nama_barang'=>$item['NamaBarang'],
+                    'kode_satuan'=>$item['KodeSatuanKecil'],
+                    'id_merk'=>$item['IdMerk'],
+                    'ukuran'=>$item['Ukuran'],
+                    'warna'=>$item['Warna'],
                     'berat'=>0,
-                    'id_supplier'=>$item['idSupplier'],
-                    'harga_order'=>$item['hargaOrder'],
-                    'harga_beli_terakhir'=>$item['hargaBeliTerakhir'],
-                    'hpp_average'=>$item['hppAverage'],
-                    'is_ppn'=>$item['isPPn'],
-                    'nama_label'=>$item['namaBarangDiLabel'],
-                    'margin'=>$item['marginHarga'],
+                    'id_supplier'=>$item['IdSupplier'],
+                    'harga_order'=>$item['HargaOrder'],
+                    'harga_beli_terakhir'=>$item['HargaBeliTerakhir'],
+                    'hpp_average'=>$item['HppAverage'],
+                    'is_ppn'=>$item['IsPPn'],
+                    'nama_label'=>$item['NamaBarangDiLabel'],
+                    'margin'=>$item['MarginHarga'],
                     'created_by'=>1,
                     'updated_by'=>1
                 ];
 
-                if($item['hargaJual'] != null OR $item['hargaJual'] !=0){
+                if($item['HargaJual'] != null OR $item['HargaJual'] !=0){
                     $data_setting_harga[] =[
                         'id_setting_harga' => $setting->id_setting_harga,
                         'tanggal_mulai_berlaku' =>$setting->tanggal_mulai_berlaku,
-                        'id_barang' => $item['idBarang'],
-                        'harga_jual' => $item['hargaJual'],
-                        'qty_grosir1'=> ($item['jumlahGrosir1']==null)?0:$item['jumlahGrosir1'],
-                        'harga_grosir1'=> ($item['hargaGrosir1']==null)?0:$item['hargaGrosir1'],
-                        'qty_grosir2'=> ($item['jumlahGrosir2']==null)?0:$item['jumlahGrosir2'],
-                        'harga_grosir2'=> ($item['hargaGrosir2']==null)?0:$item['hargaGrosir2'],
+                        'id_barang' => $item['IdBarang'],
+                        'harga_jual' => $item['HargaJual'],
+                        'qty_grosir1'=> ($item['JumlahGrosir1']==null)?0:$item['JumlahGrosir1'],
+                        'harga_grosir1'=> ($item['HargaGrosir1']==null)?0:$item['HargaGrosir1'],
+                        'qty_grosir2'=> ($item['JumlahGrosir2']==null)?0:$item['JumlahGrosir2'],
+                        'harga_grosir2'=> ($item['HargaGrosir2']==null)?0:$item['HargaGrosir2'],
                     ];
                 }
                 
