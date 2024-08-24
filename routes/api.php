@@ -223,6 +223,7 @@ Route::group(['middleware' => ModifRequest::class], function () {
     Route::pointResource('edc',edcController::class);
     Route::get('edc/data/import',[edcController::class,'import']);
     Route::pointResource('modal_kasir',modalKasirController::class);
+    Route::get('modal_kasir_get',[modalKasirController::class,'getall']);
     
     Route::pointResource('ms_promo_diskon',msPromoDiskonController::class);
     Route::get('ms_promo_diskon_detail/{id_promo_diskon}',[msPromoDiskonController::class,'get_detail']);
