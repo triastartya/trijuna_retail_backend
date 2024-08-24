@@ -16,6 +16,7 @@ jobs:
   build-development:
     machine:
       image: ubuntu-2004:current
+      docker_layer_caching: true
     # If running ARM, the resource class needs to be added. Omitting this defaults to amd64
     resource_class: medium
     steps:
@@ -53,7 +54,7 @@ jobs:
       - run:
           name: Build dockerfile
           command: |
-            docker build --no-cache -t triastartya/api-retail:$CIRCLE_SHA1 .
+            docker build -t triastartya/api-retail:$CIRCLE_SHA1 .
       - run:
           name: Push Docker Image
           command: |
