@@ -217,6 +217,8 @@ class barangController extends VierController
 
     public function barang_pos(){
         try{
+            ini_set('memory_limit','1000M');
+            ini_set('max_execution_time', 0);
             $data = $this->repository->barang_pos();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
@@ -231,9 +233,9 @@ class barangController extends VierController
             ini_set('max_execution_time', 0);
             $response = File::json(base_path().'/public/data/baru/barang.json');
             // dd($response);
-            msBarang::truncate(); 
-            trSettingHarga::truncate();
-            trSettingHargaDetail::truncate();
+            // msBarang::truncate(); 
+            // trSettingHarga::truncate();
+            // trSettingHargaDetail::truncate();
             $data_barang = [];
             $data_setting_harga = [];
             $setting= trSettingHarga::create([

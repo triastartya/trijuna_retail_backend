@@ -203,13 +203,13 @@ class barangRepository extends VierRepository
             mb.nama_barang,
             mb.warna,
             m.kode_satuan,
-            mb.diskon
+            mb.diskon,
+            mb.harga_jual
             from ms_barang mb
             left join ms_satuan m on mb.kode_satuan = m.kode_satuan
             inner join users uc on uc.id_user = mb.created_by
             inner join users uu on uu.id_user = mb.updated_by
-            where mb.is_active = true
-            limit 100 
+            where mb.is_active = true 
         ');
         
         foreach($data as $index => $row){
@@ -221,10 +221,34 @@ class barangRepository extends VierRepository
                     $row->diskon = 0;
                 }
             }
-            $data[$index] = (object) array_merge((array)$data[$index],$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang),);
-            $data[$index] = (object) array_merge((array)$data[$index],$this->repository_promo_diskon->get_from_pos($row->id_barang,$row->id_merk,$row->id_supplier));
-            $data[$index] = (object) array_merge((array)$data[$index],$this->repository_promo_hadiah->get_from_pos($row->id_barang,$row->id_merk,$row->id_supplier));
-        
+            // $data[$index] = (object) array_merge((array)$data[$index],$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang),);
+            $data[$index] = (object) array_merge((array)$data[$index],[
+                "qty_grosir1" => 0,
+                "harga_grosir1" => 0,
+                "qty_grosir2" => 0,
+                "harga_grosir2" => 0,
+            ]);
+            // $data[$index] = (object) array_merge((array)$data[$index],$this->repository_promo_diskon->get_from_pos($row->id_barang,$row->id_merk,$row->id_supplier));
+            $data[$index] = (object) array_merge((array)$data[$index],
+            [
+                "id_promo_diskon" => 0,
+                "is_nominal" => 0,
+                "minimal_qty"=>0,
+                "promo_diskon" => 0,
+                "kuota" => 0,
+                "tanggal_mulai" => null
+            ]
+            );
+            $data[$index] = (object) array_merge((array)$data[$index],
+                [
+                    "id_promo_hadiah" => 0,
+                    "is_kelipatan_hadiah" => false,
+                    "minimal_qty_hadiah"=>0,
+                    "hadiah" => "",
+                    "tgl" => 0
+                ]
+            );
+            // $data[$index] = (object) array_merge((array)$data[$index],$this->repository_promo_hadiah->get_from_pos($row->id_barang,$row->id_merk,$row->id_supplier));
         }
         
         return $data;        
