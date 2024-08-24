@@ -208,7 +208,8 @@ class barangRepository extends VierRepository
             left join ms_satuan m on mb.kode_satuan = m.kode_satuan
             inner join users uc on uc.id_user = mb.created_by
             inner join users uu on uu.id_user = mb.updated_by
-            where mb.is_active = true 
+            where mb.is_active = true
+            limit 100 
         ');
         
         foreach($data as $index => $row){
