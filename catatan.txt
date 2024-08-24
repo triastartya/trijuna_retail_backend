@@ -1,10 +1,11 @@
+docker volume create --name portainer_data --opt type=none --opt device=$PWD/vol/portainer_data --opt o=bind
+docker network create --opt encrypted --driver overlay seq-network
+docker stack deploy -c portainer.yml monitoring
+
 docker volume create --name dbretail_data --opt type=none --opt device=$PWD/dbretail_data --opt o=bind
 docker volume create --name dbreport_data --opt type=none --opt device=$PWD/dbreport_data --opt o=bind
-
 docker network create --opt encrypted --driver overlay dbretail-network
 docker network create --opt encrypted --driver overlay dbreport-network
-
 docker stack deploy -c database.yml db
 
 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
-

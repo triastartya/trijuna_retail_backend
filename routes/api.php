@@ -82,6 +82,8 @@ Route::get('health',function(){
 
 Route::post('register',[userController::class,'register']);
 Route::post('login',[userController::class,'login']);
+Route::get('user_list',[userController::class,'list']);
+Route::put('user_update/{id_user}',[userController::class,'edit']);
 
 Route::get('barang/lihat_stok/{id_barang}',[barangController::class,'lihat_stok']);
 Route::get('barang/lihat_stok_omzet/{id_barang}',[barangController::class,'lihat_stok_omzet']);

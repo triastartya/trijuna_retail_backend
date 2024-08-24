@@ -64,4 +64,28 @@ class userController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+
+    public function list(){
+        try {
+            $data = User::all();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+
+        }
+    }
+
+    public function edit(){
+        try {
+            $update = User::where('id_user',request()->id_user)->first();
+            $update->nama = request()->nama;
+            $update->id_group = request()->id_group;
+            $update->id_level = request()->id_level;
+            $update->email = request()->email;
+            $update->is_active = request()->is_active;
+            $update->save();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
 }
