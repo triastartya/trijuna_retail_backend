@@ -5,6 +5,8 @@ namespace App\Repositories\Master;
 use App\Helpers\QueryHelper;
 use App\Http\Controllers\Penjualan\msPromoHadianController;
 use App\Models\Master\msBarang;
+use App\Models\Master\msBarangStok;
+use App\Models\Master\msWarehouse;
 use App\Models\Penjualan\msPromoDiskon;
 use App\Repositories\Penjualan\msPromoDiskonRepository;
 use App\Repositories\Penjualan\msPromoHadiahRepository;
@@ -62,7 +64,8 @@ class barangRepository extends VierRepository
             uc.nama as created_by,
             mb.created_at,
             uu.nama as updated_by,
-            mb.updated_at
+            mb.updated_at,
+            mb.harga_jual
             from ms_barang mb
             left join ms_divisi md on mb.id_divisi = md.id_divisi
             left join ms_group mg on mb.id_group = mg.id_group
@@ -74,8 +77,24 @@ class barangRepository extends VierRepository
         ',request(),'limit 200');
         
         foreach($data as $index => $row){
-            $data[$index] = (object) array_merge((array)$row,$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang));
+            // $data[$index] = (object) array_merge((array)$row,$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang));
+            $data[$index] = (object) array_merge((array)$row,
+            [
+                "qty_grosir1" => 0,
+                "harga_grosir1" => 0,
+                "qty_grosir2" => 0,
+                "harga_grosir2" => 0,
+            ]
+            );
             $data[$index]->satuan = $this->repository_barang_satuan->to_barang_by_param($row->id_barang);
+            $stok_toko = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',1)->first();
+            $stok_gudang = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',2)->first();
+            $data[$index] = (object) array_merge((array)$row,
+            [
+                "stok_toko" => ($stok_toko)?$stok_toko->qty:0,
+                "stok_gudang" => ($stok_gudang)?$stok_gudang->qty:0,
+            ]
+            );
         }
         
         return $data;

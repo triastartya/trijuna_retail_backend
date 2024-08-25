@@ -52,6 +52,7 @@ class posTutupKasirController extends VierController
                 $detail['id_tutup_kasir'] = $tutup_kasir->id_tutup_kasir;
                 // get nominal sistem
                 $nominal_sistem = $this->repository->nominal_sistem($detail['id_payment_method']);
+                
                 $kembalian_sistem = 0;
                 if($detail['id_payment_method']==1){
                     // jika cash get kembalian sistem
@@ -61,8 +62,11 @@ class posTutupKasirController extends VierController
                 }
                 $detail['nominal_sistem'] = $nominal_sistem;
                 // hitung selisih 
-                $detail['selisih'] = $nominal_sistem - $detail['nominal'];
+                $detail['selisih'] =  $detail['nominal'] - $nominal_sistem;
                 // insert detail pendapatan tutup kasir
+                // if($detail['nominal_sistem']==null){
+                //     dd($detail);
+                // }
                 $detail_pendapatan = posTutupKasirDetailPendapatan::create($detail);
                 if($detail['id_payment_method']==1){
                     // jika cash insert detail pendapatan cash

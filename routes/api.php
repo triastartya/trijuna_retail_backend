@@ -87,7 +87,7 @@ Route::get('list/kasir',[userController::class,'getkasir']);
 
 Route::get('user_list',[userController::class,'list']);
 Route::put('user_update/{id_user}',[userController::class,'edit']);
-
+Route::post('barang/kartu_stok',[barangController::class,'kartu_stok']);
 Route::get('barang/lihat_stok/{id_barang}',[barangController::class,'lihat_stok']);
 Route::get('barang/lihat_stok_omzet/{id_barang}',[barangController::class,'lihat_stok_omzet']);
 Route::get('barang/lihat_stok_omzet_cabang/{id_barang}',[barangController::class,'lihat_stok_omzet_cabang']);

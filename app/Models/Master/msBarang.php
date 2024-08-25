@@ -35,6 +35,7 @@ class msBarang extends Model
         'tahun produksi',
         'stok_min',
         'is_active',
+        'harga_jual'
     ];
     protected $primaryKey = 'id_barang';
     protected $modelFields = [
@@ -60,7 +61,8 @@ class msBarang extends Model
         ['name' => 'margin', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'tahun_produksi', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'stok_min', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
-        ['name' => 'is_active', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN]
+        ['name' => 'is_active', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
+        ['name' => 'harga_jual', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER]
     ];
     protected $guarded = [];  
     protected $appends = [];
@@ -91,7 +93,8 @@ class msBarang extends Model
         'stok_min'=>'required',
         'is_active'=>'',
         'created_by'=>'',
-        'updated_by'=>''
+        'updated_by'=>'',
+        'harga_jual'=>'required'
         ];
     }
 
@@ -99,6 +102,7 @@ class msBarang extends Model
         'harga_order' => 'float',
         'harga_beli_terakhir' => 'float',
         'hpp_average' => 'float',
+        'harga_jual' => 'float',
     ];
 
     public function stok(){

@@ -6,7 +6,9 @@ use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\LokasiHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Master\msBarang;
+use App\Models\Master\msBarangKartuStok;
 use App\Models\Master\msBarangSatuan;
+use App\Models\Master\msBarangStok;
 use App\Models\Master\msLokasi;
 use App\Models\Master\trSettingHarga;
 use App\Models\Master\trSettingHargaDetail;
@@ -18,6 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 class barangController extends VierController
 {
@@ -98,6 +101,14 @@ class barangController extends VierController
             return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
         }
     }
+
+    // public function lihat_kartu_stok(Request $request){
+    //     try {
+    //         $barang = msBarangKartuStok::where('id_barang',$request->id_barang)
+    //         return response()->json(['success'=>true,'data'=>$barang]);
+    //     } catch (\Exception $ex) {
+    //         return response()->json(['success'=>false,'message'=>$ex->getMessage()]);        }
+//    }
 
     public function lihat_stok(Request $request){
         try {
@@ -299,5 +310,15 @@ class barangController extends VierController
         }
     }
 
-
+    public function kartu_stok(){
+        try {
+            $kartu_stok = msBarangKartuStok::where('id_barang',request()->id_barang)
+            ->where('id_warehouse',request()->id_warehouse)
+            ->whereBetween('tanggal', [request()->start, request()->end])
+            ->get();
+            return response()->json(['success'=>true,'data'=>$kartu_stok]);
+        } catch(\Exception $err) {
+            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+        }
+    }
 }
