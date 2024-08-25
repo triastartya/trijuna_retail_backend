@@ -86,7 +86,6 @@ class barangRepository extends VierRepository
                 "harga_grosir2" => 0,
             ]
             );
-            $data[$index]->satuan = $this->repository_barang_satuan->to_barang_by_param($row->id_barang);
             $stok_toko = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',1)->first();
             $stok_gudang = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',2)->first();
             $data[$index] = (object) array_merge((array)$row,
@@ -95,6 +94,7 @@ class barangRepository extends VierRepository
                 "stok_gudang" => ($stok_gudang)?$stok_gudang->qty:0,
             ]
             );
+            $data[$index]->satuan = $this->repository_barang_satuan->to_barang_by_param($row->id_barang);
         }
         
         return $data;

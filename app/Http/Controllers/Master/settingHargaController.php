@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\Master\msBarang;
 use App\Models\Master\trSettingHarga;
 use App\Models\Master\trSettingHargaDetail;
 use App\Models\Master\trSettingHargaDetailLokasi;
@@ -33,6 +34,9 @@ class settingHargaController extends VierController
                 unset($data_detail['lokasi']);
                 $data_detail['tanggal_mulai_berlaku'] = $data['tanggal_mulai_berlaku'];
                 $data_detail['id_setting_harga'] = $settingHarga->id_setting_harga;
+                $update_master = msBarang::where('id_barang',$data_detail['id_barang'])->update([
+                    'harga_jual' => $data_detail['harga_jual']
+                ]);
                 $trSettingHargaDetail = trSettingHargaDetail::create($data_detail);
                 foreach($detail['lokasi'] as $lokasi){
                     trSettingHargaDetailLokasi::create([
