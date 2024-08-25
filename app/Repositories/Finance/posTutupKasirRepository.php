@@ -63,7 +63,10 @@ class posTutupKasirRepository extends VierRepository
             inner join pos_penjualan pp on pp.id_penjualan = ppp.id_penjualan
             where pp.id_tutup_kasir is null and pp.id_user_kasir=? and ppp.id_payment_method=?;
         ',[request()->id_user_kasir,$id_payment_method]);
-        return ($data)?$data[0]->jumlah_bayar:0;
+        // if($id_payment_method==2){
+        //      dd($data);
+        // }
+        return ($data[0]->jumlah_bayar)?$data[0]->jumlah_bayar:0;
     }
 
     public function kembalian_sistem()
@@ -73,7 +76,7 @@ class posTutupKasirRepository extends VierRepository
             from pos_penjualan pp
             where pp.id_tutup_kasir is null and pp.id_user_kasir=?;
         ',[request()->id_user_kasir]);
-        return ($data)?$data[0]->kembalian:0;
+        return ($data[0]->kembalian)?$data[0]->kembalian:0;
     }
 
     public function get_by_id()
