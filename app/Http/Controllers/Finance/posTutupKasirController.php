@@ -66,12 +66,12 @@ class posTutupKasirController extends VierController
                 $detail_pendapatan = posTutupKasirDetailPendapatan::create($detail);
                 if($detail['id_payment_method']==1){
                     // jika cash insert detail pendapatan cash
-                    posTutupKasirDetailPendapatanCash::create([
-                        'id_tutup_kasir_detail_pendapatan' => $detail_pendapatan->id_tutup_kasir_detail_pendapatan,
-                        'bayar' => $kembalian_sistem + $nominal_sistem,
-                        'kembalian' =>$kembalian_sistem,
-                        'nominal' => $nominal_sistem,
-                    ]);
+                    // posTutupKasirDetailPendapatanCash::create([
+                    //     'id_tutup_kasir_detail_pendapatan' => $detail_pendapatan->id_tutup_kasir_detail_pendapatan,
+                    //     'bayar' => $kembalian_sistem + $nominal_sistem,
+                    //     'kembalian' =>$kembalian_sistem,
+                    //     'nominal' => $nominal_sistem,
+                    // ]);
                 }
             }
             //update id_tutup_kasir di modal kasir ;
