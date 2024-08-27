@@ -36,7 +36,10 @@ class trPenerimaan extends Model
         'total_biaya_barcode',
         'is_deleted',
         'deleted_by',
-        'deleted_at'
+        'deleted_at',
+        'is_ppn',
+        'is_item_include_ppn',
+        'is_update_harga_order'
     ];
     
     public function rules()
@@ -65,6 +68,9 @@ class trPenerimaan extends Model
             'is_deleted'=>'',
             'deleted_by'=>'',
             'deleted_at'=>'',
+            'is_ppn'=>'required',
+            'is_item_include_ppn'=>'required',
+            'is_update_harga_order'=>'required'
         ];
     }
 }

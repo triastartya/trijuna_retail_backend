@@ -33,7 +33,10 @@ class trPemesanan extends Model
         'total_transaksi',
         'is_deleted',
         'deleted_by',
-        'deleted_at'
+        'deleted_at',
+        'is_ppn',
+        'is_item_include_ppn',
+        'is_update_harga_order'
     ];
     
     public function rules()
@@ -59,6 +62,9 @@ class trPemesanan extends Model
             'is_deleted'=>'',
             'deleted_by'=>'',
             'deleted_at'=>'',
+            'is_ppn'=>'required',
+            'is_item_include_ppn'=>'required',
+            'is_update_harga_order'=>'required'
         ];
     }
 }
