@@ -86,8 +86,8 @@ class barangRepository extends VierRepository
                 "harga_grosir2" => 0,
             ]
             );
-            $stok_toko = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',1)->first();
-            $stok_gudang = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',2)->first();
+            $stok_toko = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',2)->first();
+            $stok_gudang = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',1)->first();
             $data[$index] = (object) array_merge((array)$row,
             [
                 "stok_toko" => ($stok_toko)?$stok_toko->qty:0,
@@ -144,7 +144,7 @@ class barangRepository extends VierRepository
             left join ms_satuan m on mb.kode_satuan = m.kode_satuan
             inner join users uc on uc.id_user = mb.created_by
             inner join users uu on uu.id_user = mb.updated_by 
-            where mb.is_active = true 
+            where mb.is_active = true
         ',request(),'limit 200');
         
         foreach($data as $index => $row){
@@ -189,7 +189,7 @@ class barangRepository extends VierRepository
             mb.created_at,
             uu.nama as updated_by,
             mb.updated_at,
-            mbs.qty,
+            mbs.qty as stok,
             mbs.id_warehouse
             from ms_barang mb
             left join ms_divisi md on mb.id_divisi = md.id_divisi
@@ -315,11 +315,19 @@ class barangRepository extends VierRepository
             left join ms_supplier ms on mb.id_supplier = ms.id_supplier
             left join ms_satuan m on mb.kode_satuan = m.kode_satuan
             inner join users uc on uc.id_user = mb.created_by
-            inner join users uu on uu.id_user = mb.updated_by
+            inner join users uu on uu.id_user = mb.updated_by 
             where mb.is_active = true and mb.id_supplier = ".$id_supplier."
         ",request(),'limit 200');
         
         foreach($data as $index => $row){
+            $stok_toko = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',2)->first();
+            $stok_gudang = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',1)->first();
+            $data[$index] = (object) array_merge((array)$row,
+            [
+                "stok_toko" => ($stok_toko)?$stok_toko->qty:0,
+                "stok_gudang" => ($stok_gudang)?$stok_gudang->qty:0,
+            ]
+            );
             $data[$index]->satuan = $this->repository_barang_satuan->to_barang_by_param($row->id_barang);
         }
         

@@ -35,7 +35,11 @@ class settingHargaController extends VierController
                 $data_detail['tanggal_mulai_berlaku'] = $data['tanggal_mulai_berlaku'];
                 $data_detail['id_setting_harga'] = $settingHarga->id_setting_harga;
                 $update_master = msBarang::where('id_barang',$data_detail['id_barang'])->update([
-                    'harga_jual' => $data_detail['harga_jual']
+                    'harga_jual' => $data_detail['harga_jual'],
+                    'qty_grosir1' => $data_detail['qty_grosir1'],
+                    'harga_grosir1' => $data_detail['harga_grosir1'],
+                    'qty_grosir2' => $data_detail['qty_grosir2'],
+                    'harga_grosir2' => $data_detail['harga_grosir2'],
                 ]);
                 $trSettingHargaDetail = trSettingHargaDetail::create($data_detail);
                 foreach($detail['lokasi'] as $lokasi){

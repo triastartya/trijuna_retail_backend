@@ -67,7 +67,10 @@ class pemesananController extends VierController
     
     public function lookup_barang(){
         try{
-            $data = $this->repository_barang->by_param_active();
+            if(!request()->id_supplier){
+                throw new \Exception('id supplier belum di isi');
+            }
+            $data = $this->repository_barang->by_id_supplier(request()->id_supplier);
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
