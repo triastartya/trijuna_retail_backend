@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pembelian;
 
 use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\InventoryStokHelper;
+use App\Models\Master\msBarang;
 use App\Models\Pembelian\trPenerimaanTanpaPo;
 use App\Models\Pembelian\trPenerimaanTanpaPoDetail;
 use App\Repositories\Pembelian\pemesananRepository;
@@ -93,6 +94,13 @@ class penerimaanTanpaPOController extends VierController
                     'jenis'           => 'Penerimaan Tanpa PO',
                     'nominal'         => $detail->sub_total
                 ]);
+                if(request()->is_update_harga_order){
+                    msBarang::where('id_barang',$detail['id_barang'])
+                    ->update([
+                        'harga_order' => $detail['harga_order'],
+                        'harga_beli_terakhir' => $detail['harga_beli_terakhir']
+                    ]);
+                }
             }
             DB::commit();
             return response()->json(['success'=>true,'data'=>$penerimaan]);
