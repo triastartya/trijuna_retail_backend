@@ -13,17 +13,17 @@ trait CreatedUpdatedBy
         // updating created_by and updated_by when model is created
         static::creating(function ($model) {
             if (!$model->isDirty('created_by')) {
-                $model->created_by = Auth::user()->id_user;
+                $model->created_by = 1;//Auth::user()->id_user;
             }
             if (!$model->isDirty('updated_by')) {
-                $model->updated_by = Auth::user()->id_user;
+                $model->updated_by = 1;//Auth::user()->id_user;
             }
         });
 
         // updating updated_by when model is updated
         static::updating(function ($model) {
             if (!$model->isDirty('updated_by')) {
-                $model->updated_by = Auth::user()->id_user;
+                $model->updated_by = 1;//Auth::user()->id_user;
             }
         });
     }
