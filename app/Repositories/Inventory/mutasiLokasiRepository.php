@@ -88,6 +88,80 @@ class mutasiLokasiRepository extends VierRepository
             left join users ud on ud.id_user = tml.deleted_by
         ",request());
     }
+
+    public function by_param_masuk(){
+        return QueryHelper::queryParam("
+            select
+            tml.id_mutasi_lokasi,
+            tml.nomor_mutasi_lokasi,
+            tml.tanggal_mutasi_lokasi,
+            tml.id_lokasi_asal,
+            mla.nama_lokasi as lokasi_asal,
+            tml.warehouse_asal,
+            mwa.warehouse as nama_warehouse_asal,
+            tml.id_lokasi_tujuan,
+            mlt.nama_lokasi as lokasi_tujuan,
+            tml.warehouse_tujuan,
+            mwt.warehouse as nama_warehouse_tujuan,
+            tml.qty,
+            tml.total_harga,
+            tml.status_mutasi_lokasi,
+            tml.is_deleted,
+            ud.nama as deleted_by,
+            tml.deleted_at,
+            tml.deleted_reason,
+            uc.nama as created_by,
+            tml.created_at,
+            uu.nama as updated_by,
+            tml.updated_at
+            from tr_mutasi_lokasi tml
+            inner join ms_lokasi mla on tml.id_lokasi_asal =mla.id_lokasi
+            inner join ms_warehouse mwa on tml.warehouse_asal=mwa.id_warehouse
+            inner join ms_lokasi mlt on tml.id_lokasi_tujuan =mlt.id_lokasi
+            inner join ms_warehouse mwt on tml.warehouse_tujuan=mwt.id_warehouse
+            inner join users uc on uc.id_user = tml.created_by
+            inner join users uu on uu.id_user = tml.updated_by
+            left join users ud on ud.id_user = tml.deleted_by
+            where tml.jenis_mutasi = 1
+        ",request());
+    }
+
+    public function by_param_keluar(){
+        return QueryHelper::queryParam("
+            select
+            tml.id_mutasi_lokasi,
+            tml.nomor_mutasi_lokasi,
+            tml.tanggal_mutasi_lokasi,
+            tml.id_lokasi_asal,
+            mla.nama_lokasi as lokasi_asal,
+            tml.warehouse_asal,
+            mwa.warehouse as nama_warehouse_asal,
+            tml.id_lokasi_tujuan,
+            mlt.nama_lokasi as lokasi_tujuan,
+            tml.warehouse_tujuan,
+            mwt.warehouse as nama_warehouse_tujuan,
+            tml.qty,
+            tml.total_harga,
+            tml.status_mutasi_lokasi,
+            tml.is_deleted,
+            ud.nama as deleted_by,
+            tml.deleted_at,
+            tml.deleted_reason,
+            uc.nama as created_by,
+            tml.created_at,
+            uu.nama as updated_by,
+            tml.updated_at
+            from tr_mutasi_lokasi tml
+            inner join ms_lokasi mla on tml.id_lokasi_asal =mla.id_lokasi
+            inner join ms_warehouse mwa on tml.warehouse_asal=mwa.id_warehouse
+            inner join ms_lokasi mlt on tml.id_lokasi_tujuan =mlt.id_lokasi
+            inner join ms_warehouse mwt on tml.warehouse_tujuan=mwt.id_warehouse
+            inner join users uc on uc.id_user = tml.created_by
+            inner join users uu on uu.id_user = tml.updated_by
+            left join users ud on ud.id_user = tml.deleted_by
+            where tml.jenis_mutasi = 2
+        ",request());
+    }
     
     public function get_detail(){
         return DB::select("

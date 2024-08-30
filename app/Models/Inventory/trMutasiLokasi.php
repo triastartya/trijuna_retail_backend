@@ -28,7 +28,8 @@ class trMutasiLokasi extends Model
         'deleted_at',
         'deleted_reason',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'jenis_mutasi'
     ];
     public function rules(){
         return[
@@ -47,7 +48,8 @@ class trMutasiLokasi extends Model
             'deleted_at'=>'',
             'deleted_reason'=>'',
             'created_by'=>'',
-            'updated_by'=>''
+            'updated_by'=>'',
+            'jenis_mutasi'=>''
         ];
     }
 }

@@ -1,0 +1,46 @@
+FROM dunglas/frankenphp
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip
+
+RUN install-php-extensions \
+    pcntl \
+    pdo_pgsql \
+    gd \
+    intl \
+    zip \
+    opcache \
+    mbstring
+
+RUN apt-get update && apt-get install -y \
+    libssl-dev \
+    pkg-config \
+    libcurl4-openssl-dev \
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN php -m | grep mongodb
+
+# RUN pecl install mongodb
+
+# RUN echo "extension=mongodb.so" | tee -a /etc/php/8.1/cli/php.ini
+
+COPY . /app
+
+# Copy Supervisor configuration file
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Expose port 8000 (adjust according to your setup)
+EXPOSE 8000
+
+# Start Supervisor to manage Octane and Scheduler
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
