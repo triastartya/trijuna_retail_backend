@@ -156,6 +156,21 @@ class penjualanRepository extends VierRepository
             and EXTRACT(YEAR from tanggal_penjualan)=?;
         ",[request()->id_barang,$month,$year]);            
     }
+
+    public function get_mozet_last_3_month(){
+        return DB::select("
+            select substr(month_year::varchar,0,8) as tanggal,qty_jual as qty,harga_jual as nominal from (
+            select DATE_TRUNC('month', pp.tanggal_penjualan) AS month_year,
+            SUM(trd.qty_jual)                         as qty_jual,
+            sum(trd.harga_jual)                       as harga_jual
+            from pos_penjualan_detail trd
+            inner join pos_penjualan pp on trd.id_penjualan = pp.id_penjualan
+            where id_barang = ?
+            AND pp.tanggal_penjualan BETWEEN (CURRENT_DATE - INTERVAL '3 months') AND CURRENT_DATE
+            GROUP BY month_year, trd.id_barang
+            ORDER BY
+            month_year desc) as tbl;",[request()->id_barang]);
+    }
     
     public function get_payment(){
         return DB::select("

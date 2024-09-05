@@ -90,6 +90,7 @@ Route::get('list/kasir',[userController::class,'getkasir']);
 
 Route::get('user_list',[userController::class,'list']);
 Route::put('user_update/{id_user}',[userController::class,'edit']);
+Route::get('barang/lihat_omzet/{id_barang}',[barangController::class,'lihat_omzet']);
 Route::post('barang/kartu_stok',[barangController::class,'kartu_stok']);
 Route::get('barang/lihat_stok/{id_barang}',[barangController::class,'lihat_stok']);
 Route::get('barang/lihat_stok_omzet/{id_barang}',[barangController::class,'lihat_stok_omzet']);
@@ -118,6 +119,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::pointResource('barang',barangController::class);
 
         Route::post('tambahbarang',[barangController::class,'tambah']);
+        Route::put('updatebarang/{id_barang}',[barangController::class,'edit']);
         Route::get('barang/update_status_active/{id_barang}',[barangController::class,'update_status_active']);
         Route::get('getbarangpos',[barangController::class,'barang_pos']);
         Route::get('barang/data/import',[barangController::class,'import']);

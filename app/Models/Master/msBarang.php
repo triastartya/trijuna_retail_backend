@@ -35,7 +35,9 @@ class msBarang extends Model
         'tahun produksi',
         'stok_min',
         'is_active',
-        'harga_jual'
+        'harga_jual',
+        'biaya_barcode',
+        'biaya_listing'
     ];
     protected $primaryKey = 'id_barang';
     protected $modelFields = [
@@ -62,7 +64,9 @@ class msBarang extends Model
         ['name' => 'tahun_produksi', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'stok_min', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'is_active', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
-        ['name' => 'harga_jual', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER]
+        ['name' => 'harga_jual', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'biaya_barcode', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
+        ['name' => 'biaya_listing', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
     ];
     protected $guarded = [];  
     protected $appends = [];
@@ -94,7 +98,9 @@ class msBarang extends Model
         'is_active'=>'',
         'created_by'=>'',
         'updated_by'=>'',
-        'harga_jual'=>'required'
+        'harga_jual'=>'required',
+        'biaya_barcode'=>'required',
+        'biaya_listing'=>'required'
         ];
     }
 

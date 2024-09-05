@@ -7,6 +7,7 @@ use App\Helpers\LokasiHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Master\msBarang;
 use App\Models\Master\msBarangKartuStok;
+use App\Models\Master\msBarangRak;
 use App\Models\Master\msBarangSatuan;
 use App\Models\Master\msBarangStok;
 use App\Models\Master\msLokasi;
@@ -42,10 +43,6 @@ class barangController extends VierController
             unset($data['isi_satuan2']);
             unset($data['id_satuan3']);
             unset($data['isi_satuan3']);
-            unset($data['grosir1']);
-            unset($data['harga_grosir1']);
-            unset($data['grosir2']);
-            unset($data['harga_grosir2']);
             $barang = msBarang::create($data);
 
             $lokasi = LokasiHelper::use();
@@ -85,6 +82,68 @@ class barangController extends VierController
 
             DB::commit();
             return response()->json(['success'=>true,'data'=>$barang->kode_barang]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function edit(Request $request){
+        DB::beginTransaction();
+        try {
+            $data = $request->all();
+            unset($data['id_satuan2']);
+            unset($data['isi_satuan2']);
+            unset($data['id_satuan3']);
+            unset($data['isi_satuan3']);
+            $update = msBarang::where('id_barang',$request->id_barang)
+            ->update($data);
+            $barang = msBarang::where('id_barang',$request->id_barang)->first();
+            $lokasi = LokasiHelper::use();
+            //=== insert setting harga
+            $setting_harga = trSettingHarga::create([
+                'id_lokasi'=>$lokasi->id_lokasi,
+                'tanggal_mulai_berlaku'=> date('Y-m-d H:i:s')
+            ]);
+
+            $setting_harga_detail = trSettingHargaDetail::create([
+                'tanggal_mulai_berlaku'=>date('Y-m-d H:i:s'),
+                'id_setting_harga'=>$setting_harga->id_setting_harga,
+                'id_barang'=>$barang->id_barang,
+                'harga_jual'=>$request->harga_jual,
+                'qty_grosir1'=>$request->qty_grosir1,
+                'harga_grosir1'=>$request->harga_grosir1,
+                'qty_grosir2'=>$request->qty_grosir2,
+                'harga_grosir2'=>$request->harga_grosir2,
+                'priority'=>1,
+            ]);
+
+            if($request->isi_satuan2!=0 ||$request->isi_satuan2!=null){
+                $satuan= msBarangSatuan::create([
+                    'id_barang'=>$barang->id_barang,
+                    'id_satuan'=>$request->id_satuan2,
+                    'isi'       =>$request->isi_satuan2,
+                ]);
+            }
+            
+            if($request->isi_satuan3!=0 ||$request->isi_satuan3!=null){
+                $satuan= msBarangSatuan::create([
+                    'id_barang'=>$barang->id_barang,
+                    'id_satuan'=>$request->id_satuan3,
+                    'isi'       =>$request->isi_satuan3,
+                ]);
+            }
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$update]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function detail(Request $request){
+        try {
+            $barang = msBarang::where('id_barang',$request->id_barang)->first();
         } catch (\Exception $ex) {
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
@@ -139,6 +198,15 @@ class barangController extends VierController
                 $barang->jumlah_stok = 0;
             }
             return response()->json(['success'=>true,'data'=>$barang]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function lihat_omzet(){
+        try {
+            $data = $this->repository_penjualan->get_mozet_last_3_month(); 
+            return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
         }
