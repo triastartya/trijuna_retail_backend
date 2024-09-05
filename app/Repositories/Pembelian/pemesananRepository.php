@@ -25,6 +25,7 @@ class pemesananRepository extends VierRepository
                 ms.kode_supplier,
                 ms.nama_supplier,
                 ms.alamat,
+                ms.no_handphone,
                 tp.nomor_pemesanan,
                 tp.tanggal_pemesanan,
                 tp.tangal_expired_pemesanan,
