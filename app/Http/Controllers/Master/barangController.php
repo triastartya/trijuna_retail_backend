@@ -141,9 +141,33 @@ class barangController extends VierController
         }
     }
 
-    public function detail(Request $request){
+    public function by_id(Request $request){
         try {
             $barang = msBarang::where('id_barang',$request->id_barang)->first();
+            $satuan = DB::select("select *,ms.kode_satuan from ms_barang_satuan mbs inner join ms_satuan ms on mbs.id_satuan=ms.id_satuan where mbs.id_barang=".$request->id_barang);
+            $ttlsatuan = count($satuan);
+            if($ttlsatuan>=1){
+                $barang->id_satuan2 = $satuan[0]->id_satuan;
+                $barang->isi_satuan2 = $satuan[0]->isi;
+                $barang->kode_satuan2 = $satuan[0]->kode_satuan;
+            }else{
+                $barang->id_satuan2 = null;
+                $barang->isi_satuan2 = null;
+                $barang->kode_satuan2 = null;
+            }
+
+            if($ttlsatuan>=2){
+                $barang->id_satuan3 = $satuan[1]->id_satuan;
+                $barang->isi_satuan3 = $satuan[1]->isi;
+                $barang->kode_satuan3 = $satuan[1]->kode_satuan;
+            }else{
+                $barang->id_satuan3 = null;
+                $barang->isi_satuan3 = null;
+                $barang->kode_satuan3 = null;
+            }
+
+            dd($barang);
+
         } catch (\Exception $ex) {
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$ex->getMessage()]);

@@ -124,6 +124,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('getbarangpos',[barangController::class,'barang_pos']);
         Route::get('barang/data/import',[barangController::class,'import']);
         Route::post('barang/by_param',[barangController::class,'barang_by_param']);
+        Route::get('barang/by_id/{id_barang}',[barangController::class,'by_id']);
         Route::get('barang/history_penerimaan/{id_barang}',[barangController::class,'history_penerimaan']);
         Route::pointResource('barang_rak',barangRakController::class);
         Route::get('barang_rak/by_id_barang/{id_barang}',[barangRakController::class,'by_id_barang']);
