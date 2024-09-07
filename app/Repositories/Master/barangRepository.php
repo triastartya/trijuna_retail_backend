@@ -223,12 +223,16 @@ class barangRepository extends VierRepository
             mb.warna,
             m.kode_satuan,
             mb.diskon,
-            mb.harga_jual
+            mb.harga_jual,
+            mb.qty_grosir1,
+            mb.harga_grosir1,
+            mb.qty_grosir2,
+            mb.harga_grosir2
             from ms_barang mb
             left join ms_satuan m on mb.kode_satuan = m.kode_satuan
             inner join users uc on uc.id_user = mb.created_by
             inner join users uu on uu.id_user = mb.updated_by
-            where mb.is_active = true 
+            where mb.is_active = true
         ');
         
         foreach($data as $index => $row){
@@ -241,12 +245,12 @@ class barangRepository extends VierRepository
                 }
             }
             // $data[$index] = (object) array_merge((array)$data[$index],$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang),);
-            $data[$index] = (object) array_merge((array)$data[$index],[
-                "qty_grosir1" => 0,
-                "harga_grosir1" => 0,
-                "qty_grosir2" => 0,
-                "harga_grosir2" => 0,
-            ]);
+            // $data[$index] = (object) array_merge((array)$data[$index],[
+            //     "qty_grosir1" => 0,
+            //     "harga_grosir1" => 0,
+            //     "qty_grosir2" => 0,
+            //     "harga_grosir2" => 0,
+            // ]);
             // $data[$index] = (object) array_merge((array)$data[$index],$this->repository_promo_diskon->get_from_pos($row->id_barang,$row->id_merk,$row->id_supplier));
             $data[$index] = (object) array_merge((array)$data[$index],
             [
