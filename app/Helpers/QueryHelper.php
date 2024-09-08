@@ -15,27 +15,29 @@ class QueryHelper
             $value = '';
             
             if($filter['filter']=='equel'){
+                $column = "UPPER(".$filter['column'].")";
                 $opration = '=';
-                $value = "'".$filter['value']."'";
+                $value = "'".strtoupper($filter['value'])."'";
             }
             
             if($filter['filter']=='contain'){
+                $column = "UPPER(".$filter['column'].")";
                 $opration = 'like';
-                $value = "'%".$filter['value']."%'";
+                $value = "'%".strtoupper($filter['value'])."%'";
             }
             
             if($filter['filter']=='between'){
+                $column = $filter['column'];
                 $opration = 'between';
                 $value = "'".$filter['value']."'"." and "."'".$filter['value2']."'";
             }
             
             if($i==0){
                 $iswhere = (str_contains($query,'where'))?" and ":" where ";
-                $query .= $iswhere.$filter['column']." ".$opration." ".$value;
+                $query .= $iswhere.$column." ".$opration." ".$value;
             }else{
-                $query .= " and ".$filter['column']." ".$opration." ".$value;
+                $query .= " and ".$column." ".$opration." ".$value;
             }
-            
             $i++;
         }
         

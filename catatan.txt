@@ -9,3 +9,5 @@ docker network create --opt encrypted --driver overlay dbreport-network
 docker stack deploy -c database.yml db
 
 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
+
+SELECT setval('ms_barang_id_barang_seq', (SELECT MAX(id_barang) FROM ms_barang) + 1);
