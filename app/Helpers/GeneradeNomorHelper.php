@@ -6,6 +6,15 @@ use App\Models\nomorCounter;
 
 class GeneradeNomorHelper
 {
+
+    public static function very_sort($keterangan)
+    {
+        $master_counter_forupdate = nomorCounter::where('keterangan',$keterangan)->lockForUpdate()->first();
+        $master_counter_forupdate->counter = $master_counter_forupdate->counter + 1;
+        $master_counter_forupdate->save();
+        return sprintf('%02s', $master_counter_forupdate->counter);
+    }
+
     public static function sort($keterangan)
     {
         $master_counter_forupdate = nomorCounter::where('keterangan',$keterangan)->lockForUpdate()->first();

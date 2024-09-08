@@ -35,13 +35,13 @@ class ModifRequest
         
         if($request->method()=="POST" & $this->parse($request)=="divisi"){
             $request->merge([
-                'kode_divisi'=>GeneradeNomorHelper::sort('divisi'),
+                'kode_divisi'=>GeneradeNomorHelper::very_sort('divisi'),
             ]);
         }
         
         if($request->method()=="POST" & $this->parse($request)=="group"){
             $request->merge([
-                'kode_group'=>$this->GeneradeNomorSort('group'),
+                'kode_group'=>GeneradeNomorHelper::very_sort('group'),
             ]);
         }
         
@@ -88,6 +88,13 @@ class ModifRequest
         $master_counter_forupdate->counter = $master_counter_forupdate->counter + 1;
         $master_counter_forupdate->save();
         return sprintf('%04s', $master_counter_forupdate->counter);
+    }
+
+    public function GeneradeNomorVerySort($keterangan){
+        $master_counter_forupdate = nomorCounter::where('keterangan',$keterangan)->lockForUpdate()->first();
+        $master_counter_forupdate->counter = $master_counter_forupdate->counter + 1;
+        $master_counter_forupdate->save();
+        return sprintf('%02s', $master_counter_forupdate->counter);
     }
     
 }
