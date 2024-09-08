@@ -10,6 +10,8 @@ use App\Models\Master\msBarangKartuStok;
 use App\Models\Master\msBarangRak;
 use App\Models\Master\msBarangSatuan;
 use App\Models\Master\msBarangStok;
+use App\Models\Master\msDivisi;
+use App\Models\Master\msGroup;
 use App\Models\Master\msLokasi;
 use App\Models\Master\trSettingHarga;
 use App\Models\Master\trSettingHargaDetail;
@@ -21,6 +23,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use PhpOffice\PhpSpreadsheet\Calculation\TextData\Trim;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 class barangController extends VierController
@@ -39,6 +42,15 @@ class barangController extends VierController
         try {
             $data = $request->all();
             $data['kode_barang'] = GeneradeNomorHelper::sort('barang');
+            //generade kode barang
+            if($data['kode_barang']==''){
+                $divisi = msDivisi::where('id_divisi',$data['id_divisi'])->first();
+                $group = msGroup::where('id_group',$data['id_group'])->first();
+                $prefix = str_replace(" ","",$group->kode_group.$divisi->kode_divisi);
+                $last_ = msBarang::where(DB::raw('LEFT(kode_barang, 4)'),$prefix)->orderBy('kode_barang','desc')->first();
+                // $last = right();
+                // dd($last);
+            }
             unset($data['id_satuan2']);
             unset($data['isi_satuan2']);
             unset($data['id_satuan3']);
@@ -165,9 +177,7 @@ class barangController extends VierController
                 $barang->isi_satuan3 = null;
                 $barang->kode_satuan3 = null;
             }
-
-            dd($barang);
-
+            return response()->json(['success'=>true,'data'=>$barang]);
         } catch (\Exception $ex) {
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
