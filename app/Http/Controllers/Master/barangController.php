@@ -41,15 +41,27 @@ class barangController extends VierController
         DB::beginTransaction();
         try {
             $data = $request->all();
-            $data['kode_barang'] = GeneradeNomorHelper::sort('barang');
-            //generade kode barang
             if($data['kode_barang']==''){
                 $divisi = msDivisi::where('id_divisi',$data['id_divisi'])->first();
                 $group = msGroup::where('id_group',$data['id_group'])->first();
                 $prefix = str_replace(" ","",$group->kode_group.$divisi->kode_divisi);
-                $last_ = msBarang::where(DB::raw('LEFT(kode_barang, 4)'),$prefix)->orderBy('kode_barang','desc')->first();
-                // $last = right();
-                // dd($last);
+                $last_data = msBarang::where(DB::raw('LEFT(kode_barang, 4)'),$prefix)->orderBy('id_barang','desc')->first();
+                if($last_data){
+                    $last_kode_barang = $last_data->kode_barang;
+                    $lengt = strlen($last_kode_barang);
+                    $last_urut = substr($last_kode_barang,4-$lengt);
+                    $no_urut = (int)$last_urut + 1;
+                    $digit = strlen($no_urut)-4;
+                    if($digit<3){
+                        $urut = sprintf('%02s',(string)$no_urut);
+                    }else{
+                        $urut = sprintf('%03s',(string)$no_urut);
+                    }
+                    $kode_barang = $prefix.$urut;
+                }else{
+                    $kode_barang = $prefix.'01';
+                }
+                $data['kode_barang']=$kode_barang;
             }
             unset($data['id_satuan2']);
             unset($data['isi_satuan2']);
