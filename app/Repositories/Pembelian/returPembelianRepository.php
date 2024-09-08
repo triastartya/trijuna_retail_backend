@@ -16,9 +16,13 @@ class returPembelianRepository extends VierRepository
     
     public function by_param()
     {
-        return QueryHelper::queryParam('
+        return QueryHelper::queryParam("
             select trp.id_retur_pembelian,
             trp.jenis_retur,
+            CASE 
+            WHEN trp.jenis_retur=1 THEN 'potong tagihan'
+            ELSE 'tukar barang'
+            END as jenis_retur_keterangan,
             trp.nomor_retur_pembelian,
             trp.tanggal_retur_pembelian,
             trp.id_warehouse,
@@ -44,7 +48,7 @@ class returPembelianRepository extends VierRepository
          inner join users uc on uc.id_user = trp.created_by
          inner join users uu on uu.id_user = trp.updated_by
          left join users ud on ud.id_user = trp.deleted_by 
-        ',request());
+        ",request());
     }
     
     public function get_by_id(){
