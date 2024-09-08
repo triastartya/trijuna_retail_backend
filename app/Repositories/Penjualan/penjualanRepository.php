@@ -61,6 +61,54 @@ class penjualanRepository extends VierRepository
         ",[request()->id_penjualan]);
         return $data[0];
     }
+
+    public function get_by_nota(){
+        $data =  DB::select("
+        select pp.id_penjualan,
+        pp.id_user_kasir,
+        uk.nama as nama_kasir,
+        pp.is_bayar,
+        pp.tanggal_penjualan,
+        pp.nota_penjualan,
+        pp.id_member,
+        mm.nomor_identitas,
+        mm.nama_member,
+        mm.kode_member,
+        mm.alamat,
+        mm.no_handphone,
+        pp.total_diskon_dalam,
+        pp.total_transaksi,
+        pp.diskon_luar_persen,
+        pp.diskon_luar_nominal,
+        pp.ongkos_kirim,
+        pp.pembulatan,
+        pp.total_transaksi2,
+        pp.total_bayar,
+        pp.kembali,
+        pp.biaya_bank,
+        pp.is_using_voucher,
+        pp.id_pos_kasir,
+        pp.id_tutup_kasir,
+        pp.is_deleted,
+        pp.deleted_at,
+        pp.deleted_reason,
+        ud.nama as deleted_by,
+        pp.deleted_at,
+        pp.deleted_reason,
+        uc.nama as created_by,
+        pp.created_at,
+        uu.nama as updated_by,
+        pp.updated_at
+        from pos_penjualan pp
+        inner join users uk on uk.id_user = pp.id_user_kasir
+        inner join users uc on uc.id_user = pp.created_by
+        inner join users uu on uu.id_user = pp.updated_by
+        left join ms_member mm on pp.id_member = mm.id_member
+        left join users ud on ud.id_user = pp.deleted_by
+        where pp.nota_penjualan = ?
+        ",[request()->nota_penjualan]);
+        return $data[0];
+    }
     
     public function by_param(){
         return QueryHelper::queryParam("
@@ -120,7 +168,8 @@ class penjualanRepository extends VierRepository
         ",request());
     }
     
-    public function get_detail(){
+    public function get_detail($id_penjualan=''){
+        $id_penjualan = ($id_penjualan=='')?request()->id_penjualan:$id_penjualan;
         return DB::select("
             select
             trd.id_penjualan,
@@ -140,7 +189,7 @@ class penjualanRepository extends VierRepository
             inner join ms_barang mb on trd.id_barang = mb.id_barang
             where trd.id_penjualan = ?
             order by urut
-        ",[request()->id_penjualan]);            
+        ",[$id_penjualan]);            
     }
 
     public function get_omzet_barang_by_month(){

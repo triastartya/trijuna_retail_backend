@@ -57,6 +57,7 @@ use App\Http\Controllers\Finance\posTutupKasirController;
 use App\Http\Controllers\Finance\posPaymentMethodController;
 use App\Http\Controllers\Inventory\mutasiKeluarController;
 use App\Http\Controllers\Inventory\mutasiMasukController;
+use App\Http\Controllers\Penjualan\refundController;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Row;
 
@@ -287,7 +288,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('insert',[penjualanController::class,'insert']);
             Route::post('get_by_param',[penjualanController::class,'get_by_param']);
             Route::get('get_by_id/{id_penjualan}',[penjualanController::class,'get_by_id']);
+            Route::get('get_by_no_nota/{nota_penjualan}',[penjualanController::class,'get_by_no_nota']);
             Route::post('sell_out_item',[penjualanController::class,'sell_out_item']);
+        });
+
+        Route::prefix('refund')->group(function(){
+            Route::post('insert',[refundController::class,'insert']);
+            Route::post('get_by_param',[refundController::class,'get_by_param']);
+            Route::get('get_by_id/{id_refund}',[refundController::class,'get_by_id']);
         });
 
         Route::prefix('kasir')->group(function(){

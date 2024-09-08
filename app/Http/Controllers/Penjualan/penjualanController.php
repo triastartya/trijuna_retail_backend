@@ -69,6 +69,16 @@ class penjualanController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+
+    public function get_by_no_nota(){
+        try{
+            $data = $this->repository->get_by_nota();
+            $data->detail = $this->repository->get_detail($data->id_penjualan);
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {  
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
     
     public function get_by_param(){
         try{
