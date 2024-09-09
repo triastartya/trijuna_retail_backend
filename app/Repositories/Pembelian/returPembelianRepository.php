@@ -18,11 +18,11 @@ class returPembelianRepository extends VierRepository
     {
         return QueryHelper::queryParam("
             select trp.id_retur_pembelian,
-            trp.jenis_retur,
+            trp.mekanisme,
             CASE 
-            WHEN trp.jenis_retur=1 THEN 'potong tagihan'
+            WHEN trp.mekanisme=1 THEN 'potong tagihan'
             ELSE 'tukar barang'
-            END as jenis_retur_keterangan,
+            END as mekanisme_keterangan,
             trp.nomor_retur_pembelian,
             trp.tanggal_retur_pembelian,
             trp.id_warehouse,
@@ -55,7 +55,11 @@ class returPembelianRepository extends VierRepository
         $data = DB::select("
         select 
         trp.id_retur_pembelian,
-        trp.jenis_retur,
+        trp.mekanisme,
+        CASE 
+        WHEN trp.mekanisme=1 THEN 'potong tagihan'
+        ELSE 'tukar barang'
+        END as mekanisme_keterangan,
         trp.nomor_retur_pembelian,
         trp.tanggal_retur_pembelian,
         trp.id_warehouse,
