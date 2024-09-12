@@ -90,7 +90,7 @@ class msBarang extends Model
         'harga_beli_terakhir'=>'required',
         'hpp_average'=>'required',
         'is_ppn'=>'required',
-        'nama_label'=>'required',
+        'nama_label'=>'',
         'id_satuan'=>'',
         'margin'=>'required',
         'tahun produksi'=>'',
@@ -99,8 +99,8 @@ class msBarang extends Model
         'created_by'=>'',
         'updated_by'=>'',
         'harga_jual'=>'required',
-        'biaya_barcode'=>'required',
-        'biaya_listing'=>'required'
+        'biaya_barcode'=>'',
+        'biaya_listing'=>''
         ];
     }
 
