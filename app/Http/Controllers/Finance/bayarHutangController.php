@@ -38,6 +38,7 @@ class bayarHutangController extends VierController
         DB::beginTransaction();
         try {
             $data = $request->all();
+            // dd($data);
             $data['nomor_titip_tagihan'] = GeneradeNomorHelper::long('bayar hutang');
             unset($data['detail_faktur']);
             unset($data['detail_retur']);
@@ -46,10 +47,20 @@ class bayarHutangController extends VierController
             foreach($request->detail_faktur as $detail){
                 $detail['id_bayar_hutang'] = $bayar_hutang->id_bayar_hutang;
                 trBayarHutangFaktur::create($detail);
+                trPenerimaan::where('id_penerimaan',$detail['id_penerimaan'])
+                ->update([
+                    'is_lunas'=>true,
+                    'id_billing'=>$bayar_hutang->id_bayar_hutang
+                ]);
             }
             foreach($request->detail_retur as $detail){
                 $detail['id_bayar_hutang'] = $bayar_hutang->id_bayar_hutang;
                 trBayarHutangPotongan::create($detail);
+                trReturPembelian::where('id_retur_pembelian',$detail['id_retur_pembelian'])
+                ->update([
+                    'is_lunas'=>true,
+                    'id_billing'=>$bayar_hutang->id_bayar_hutang
+                ]);
             }
             foreach($request->detail_potongan as $detail){
                 $detail['id_bayar_hutang'] = $bayar_hutang->id_bayar_hutang;
@@ -59,7 +70,6 @@ class bayarHutangController extends VierController
             return response()->json(['success'=>true,'data'=>$bayar_hutang->id_bayar_hutang]);
         }
         catch(\Exception $err) {
-            throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
@@ -71,7 +81,6 @@ class bayarHutangController extends VierController
             $data->faktur = $this->repository->detail_faktur_by_id();
             $data->retur = $this->repository->detail_potongan_by_id();
             $data->potongan = trBayarHutangPotonganLain::where('id_bayar_hutang',request()->id_bayar_hutang)->get();
-            $data->payment = $this->repository->detail_payment_by_id();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {  
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
@@ -125,6 +134,16 @@ class bayarHutangController extends VierController
                 'retur_pembelian' => $retur
             ]]);
         } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    // BAYAR TT
+    public function tt_belum_terbayar(){
+        try{
+            $data = $this->repository->get_tt_belum_by_param();
+            return response()->json(['success'=>true,'data'=>$data]);
+        }catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }

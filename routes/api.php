@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Finance\bayarHutangController;
+use App\Http\Controllers\Finance\bayarHutangPelunasanController;
 use App\Http\Controllers\Inventory\mutasiController;
 use App\Http\Controllers\Inventory\mutasiLokasiController;
 use App\Http\Controllers\Inventory\pemusnahanController;
@@ -58,7 +59,9 @@ use App\Http\Controllers\Finance\posPaymentMethodController;
 use App\Http\Controllers\Inventory\mutasiKeluarController;
 use App\Http\Controllers\Inventory\mutasiMasukController;
 use App\Http\Controllers\Master\PotonganPembelianController;
+use App\Http\Controllers\Master\rekeningOwnerController;
 use App\Http\Controllers\Penjualan\refundController;
+use App\Models\Master\msRekeningOwner;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Row;
 
@@ -282,6 +285,15 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('lookup_supplier_by_param',[bayarHutangController::class,'lookup_supplier']);
             Route::post('lookup_penerimaan_belum_lunas_by_param',[bayarHutangController::class,'lookup_penerimaan_belum_lunas']);
             Route::post('lookup_retur_potong_tagihan_by_param',[bayarHutangController::class,'lookup_retur_potong_tagihan']);
+        });
+
+        Route::pointResource('ms_rekening_owner',rekeningOwnerController::class);
+        
+        Route::prefix('pelunasan_titip_tagihan')->group(function(){
+            Route::post('get_tt_belum_terbayar',[bayarHutangController::class,'tt_belum_terbayar']);
+            Route::post('insert',[bayarHutangPelunasanController::class,'insert']);
+            Route::post('get_by_param',[bayarHutangPelunasanController::class,'get_by_param']);
+            Route::get('get_by_id/{id_bayar_hutang_pelunasan}',[bayarHutangPelunasanController::class,'get_by_id']);
         });
 
         Route::prefix('bayar_piutang_member')->group(function(){

@@ -25,6 +25,7 @@ class trBayarHutang extends Model
         'total_retur',
         'total_bayar',
         'is_lunas',
+        'id_bayar_hutang_pelunasan',
         'tanggal_lunas',
         'deleted_by',
         'deleted_at'
@@ -43,6 +44,7 @@ class trBayarHutang extends Model
             'total_potongan'=>'required',
             'total_retur'=>'required',
             'total_bayar'=>'required',
+            'id_bayar_hutang_pelunasan'=>'',
             'is_lunas'=>'',
             'tanggal_lunas'=>'',
             'deleted_by'=>'',

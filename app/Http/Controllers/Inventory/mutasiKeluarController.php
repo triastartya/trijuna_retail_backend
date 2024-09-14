@@ -125,6 +125,7 @@ class mutasiKeluarController extends VierController
             return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+
     public function download(){
         try{
             $data = DB::select("select * from tr_mutasi_lokasi where id_mutasi_lokasi=".request()->id_mutasi_lokasi);

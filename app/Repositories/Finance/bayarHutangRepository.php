@@ -88,6 +88,36 @@ class bayarHutangRepository extends VierRepository
         ',request());
     }
 
+    public function get_tt_belum_by_param()
+    {
+        return QueryHelper::queryParam('
+            select tbh.id_bayar_hutang,
+            tbh.id_supplier,
+            ms.kode_supplier,
+            ms.nama_supplier,
+            tbh.nomor_titip_tagihan,
+            tbh.tanggal_titip_tagihan,
+            tbh.tanggal_rencana_bayar,
+            tbh.keterangan,
+            tbh.total_titip_tagihan,
+            tbh.total_potongan,
+            tbh.total_bayar,
+            tbh.is_lunas,
+            tbh.tanggal_lunas,
+            tbh.created_by,
+            tbh.updated_by,
+            tbh.created_at,
+            uc.nama as created_by,
+            tbh.updated_at,
+            uu.nama as updated_by
+            from tr_bayar_hutang tbh
+            inner join ms_supplier ms on tbh.id_supplier = ms.id_supplier
+            inner join users uc on uc.id_user = tbh.created_by
+            inner join users uu on uu.id_user = tbh.updated_by
+            where tbh.is_lunas = false 
+        ',request());
+    }
+
     public function get_by_id(){
         $data = DB::select("
             select tbh.id_bayar_hutang,
