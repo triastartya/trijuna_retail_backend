@@ -329,7 +329,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::prefix('mutasi_lokasi_keluar')->group(function(){
             Route::post('insert',[mutasiKeluarController::class,'insert']);
             Route::post('by_param',[mutasiKeluarController::class,'by_param']);
-            Route::get('by_id/{id_mutasi_lokasi}',[mutasiKeluarController::class,'by_id']);
+            Route::get('by_id/{id_mutasi_lokasi}',[mutasiLokasiController::class,'get_by_id']);
             Route::post('validasi',[mutasiKeluarController::class,'validasi']);
             // Route::get('download/{id_mutasi_lokasi}',[mutasiKeluarController::class,'download']);
         });
