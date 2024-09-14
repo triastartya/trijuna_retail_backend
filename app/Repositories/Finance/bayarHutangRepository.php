@@ -120,54 +120,20 @@ class bayarHutangRepository extends VierRepository
     
     public function detail_faktur_by_id(){
         return DB::select("
-            select
-            tp.id_pemesanan,
-            tp.id_supplier,
-            tp.nomor_pemesanan,
-            tp.tanggal_pemesanan,
-            tp.tangal_expired_pemesanan,
-            tp.tanggal_kirim,
-            tp.id_lokasi,
-            ml.nama_lokasi,
-            tp.id_warehouse,
-            mw.warehouse,
-            tp.keterangan,
-            tp.status_pemesanan,
-            tp.qty,
-            tp.sub_total1,
-            tp.diskon_persen,
-            tp.diskon_nominal,
-            tp.sub_total2,
-            tp.ppn_nominal,
-            tp.total_transaksi,
-            tp.created_at,
-            tp.updated_by
-            from tr_pemesanan tp
-            inner join ms_lokasi ml on tp.id_lokasi = ml.id_lokasi
-            inner join ms_warehouse mw on tp.id_warehouse = mw.id_warehouse
-            inner join tr_bayar_hutang_faktur tbhf on tbhf.id_penerimaan = tp.id_pemesanan
+            select tp.nomor_penerimaan,tp.tanggal_nota,tp.created_at,tp.total_transaksi
+            from tr_bayar_hutang_faktur tbhf
+            inner join tr_penerimaan tp on tbhf.id_penerimaan=tp.id_penerimaan
             where tbhf.id_bayar_hutang = ?
-        ",[request()->id_bayar_hutang]);            
+        ",[request()->id_bayar_hutang]);
     }
 
     public function detail_potongan_by_id(){
         return DB::select("
-            select trp.id_retur_pembelian,
-            trp.jenis_retur,
+            select 
             trp.nomor_retur_pembelian,
             trp.tanggal_retur_pembelian,
-            trp.id_warehouse,
-            mw.warehouse,
-            trp.id_supplier,
-            trp.mekanisme,
-            trp.total_harga,
-            trp.qty,
-            trp.status_retur,
-            trp.is_deleted,
-            trp.deleted_at,
-            trp.deleted_reason,
             trp.created_at,
-            trp.updated_at
+            trp.total_harga
             from tr_retur_pembelian trp
             inner join ms_warehouse mw on trp.id_warehouse = mw.id_warehouse
             inner join tr_bayar_hutang_potongan tbhp on tbhp.id_retur_pembelian=trp.id_retur_pembelian

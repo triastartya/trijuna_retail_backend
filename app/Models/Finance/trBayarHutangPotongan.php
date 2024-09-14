@@ -15,7 +15,7 @@ class trBayarHutangPotongan extends Model
     protected $fillable = [
         'id_bayar_hutang_potongan',
         'id_bayar_hutang',
-        'id_penerimaan'
+        'id_retur_pembelian'
     ];
     
     public function rules()
@@ -23,7 +23,7 @@ class trBayarHutangPotongan extends Model
         return [
             'id_bayar_hutang_potongan'=>'',
             'id_bayar_hutang'=>'required',
-            'id_penerimaan'=>'required'
+            'id_retur_pembelian'=>'required'
         ];
     }
 }

@@ -38,12 +38,12 @@ class returKonsinyasiRepository extends VierRepository
             uu.nama as updated_by,
             trp.created_at,
             trp.updated_at
-         from tr_retur_konsinyasi trp
-         inner join ms_supplier ms on trp.id_supplier = ms.id_supplier
-         inner join ms_warehouse mw on trp.id_warehouse = mw.id_warehouse
-         inner join users uc on uc.id_user = trp.created_by
-         inner join users uu on uu.id_user = trp.updated_by
-         left join users ud on ud.id_user = trp.deleted_by 
+        from tr_retur_konsinyasi trp
+        inner join ms_supplier ms on trp.id_supplier = ms.id_supplier
+        inner join ms_warehouse mw on trp.id_warehouse = mw.id_warehouse
+        inner join users uc on uc.id_user = trp.created_by
+        inner join users uu on uu.id_user = trp.updated_by
+        left join users ud on ud.id_user = trp.deleted_by 
         ',request());
     }
     
@@ -71,13 +71,13 @@ class returKonsinyasiRepository extends VierRepository
         uu.nama as updated_by,
         trp.created_at,
         trp.updated_at
-         from tr_retur_konsinyasi trp
-         inner join ms_supplier ms on trp.id_supplier = ms.id_supplier
-         inner join ms_warehouse mw on trp.id_warehouse = mw.id_warehouse
-         inner join users uc on uc.id_user = trp.created_by
-         inner join users uu on uu.id_user = trp.updated_by
-         left join users ud on ud.id_user = trp.deleted_by
-            where trp.id_retur_pembelian = ?
+        from tr_retur_konsinyasi trp
+        inner join ms_supplier ms on trp.id_supplier = ms.id_supplier
+        inner join ms_warehouse mw on trp.id_warehouse = mw.id_warehouse
+        inner join users uc on uc.id_user = trp.created_by
+        inner join users uu on uu.id_user = trp.updated_by
+        left join users ud on ud.id_user = trp.deleted_by
+        where trp.id_retur_pembelian = ?
         ",[request()->id_retur_pembelian]);
         return $data[0];
     }
@@ -106,6 +106,6 @@ class returKonsinyasiRepository extends VierRepository
         inner join ms_satuan ms on trpd.kode_satuan = ms.kode_satuan
         where trpd.id_retur_pembelian = ?
         order by trpd.urut
-        ",[request()->id_retur_pembelian]);            
+        ",[request()->id_retur_pembelian]);
     }
 }

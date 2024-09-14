@@ -57,6 +57,7 @@ use App\Http\Controllers\Finance\posTutupKasirController;
 use App\Http\Controllers\Finance\posPaymentMethodController;
 use App\Http\Controllers\Inventory\mutasiKeluarController;
 use App\Http\Controllers\Inventory\mutasiMasukController;
+use App\Http\Controllers\Master\PotonganPembelianController;
 use App\Http\Controllers\Penjualan\refundController;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Row;
@@ -271,7 +272,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('lookup_barang',[stokOpnameController::class,'lookup_barang']);
         });
 
+        Route::pointResource('ms_potongan_pembelian',PotonganPembelianController::class);
+
         Route::prefix('bayar_hutang_supplier')->group(function(){
+            Route::get('get_belum_lunas_by_id_supplier/{id_supplier}',[bayarHutangController::class,'get_data_belum_lunas']);
             Route::post('insert',[bayarHutangController::class,'insert']);
             Route::post('get_by_param',[bayarHutangController::class,'get_by_param']);
             Route::get('get_by_id/{id_bayar_hutang}',[bayarHutangController::class,'get_by_id']);
