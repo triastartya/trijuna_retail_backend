@@ -268,7 +268,7 @@ class penjualanRepository extends VierRepository
         mm.merk,
         sum(ppd.qty_jual)  qty_jual,
         sum(ppd.harga_jual) as harga_jual,
-        sum(ppd.qty_jual) * sum(ppd.harga_jual) as subtotal
+        sum(ppd.sub_total) as subtotal
         from pos_penjualan pp
         inner join pos_penjualan_detail ppd on pp.id_penjualan=ppd.id_penjualan
         inner join ms_barang mb on mb.id_barang = ppd.id_barang

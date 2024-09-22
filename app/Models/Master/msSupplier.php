@@ -27,6 +27,7 @@ class msSupplier extends Model
     'email',
     'sisa_hutang',
     'is_active',
+    'npwp'
     ];
     protected $primaryKey = 'id_supplier';
     protected $modelFields = [
@@ -45,6 +46,8 @@ class msSupplier extends Model
         ['name' => 'email', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
         ['name' => 'sisa_hutang', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'is_active', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
+        ['name' => 'npwp', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
+
     ];
     protected $guarded = [];  
     protected $appends = [];
@@ -68,6 +71,7 @@ class msSupplier extends Model
             'is_active'=>'',
             'created_by'=>'',
             'updated_by'=>'',
+            'npwp'=>'',
         ];
     }
 }

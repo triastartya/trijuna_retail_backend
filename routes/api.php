@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Finance\bayarHutangController;
 use App\Http\Controllers\Finance\bayarHutangPelunasanController;
+use App\Http\Controllers\Finance\fakturPajakController;
 use App\Http\Controllers\Inventory\mutasiController;
 use App\Http\Controllers\Inventory\mutasiLokasiController;
 use App\Http\Controllers\Inventory\pemusnahanController;
@@ -162,6 +163,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('get_by_param',[penerimaanDenganPOController::class,'get_by_param']);
             Route::get('get_by_id/{id_penerimaan}',[penerimaanDenganPOController::class,'get_by_id']);
             Route::post('validasi',[penerimaanDenganPOController::class,'validasi']);
+        });
+
+        Route::prefix('faktur_pajak')->group(function(){
+            Route::post('get_penerimaan_belum_faktur_pajak_by_pharam',[fakturPajakController::class,'get_penerimaan_belum_faktur_pajak_by_param']);
+            Route::post('insert',[fakturPajakController::class,'insert']);
+            Route::post('get_by_param',[fakturPajakController::class,'get_by_param']);
+            Route::get('get_by_id/{id_faktur_pajak}',[fakturPajakController::class,'get_by_id']);
         });
         
         Route::prefix('penerimaan_tanpa_po')->group(function(){
