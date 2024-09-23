@@ -25,6 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         ['name' => 'verifikasi_email_at', 'type' => ModelDictionary::COLUMN_TYPE_DATE],
         ['name' => 'password', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
         ['name' => 'is_active', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
+        ['name' => 'password_kasir', 'type' => ModelDictionary::COLUMN_TYPE_STRING],
     ];
     
     protected $guarded = [];  
@@ -42,6 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'verifikasi_email_at'=>'',
             'password' => 'required',
             'is_active' => '',
+            'password_kasir' => 'required'
         ];
     }
 
@@ -56,6 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'id_level',
         'email',
         'password',
+        'password_kasir',
         'is_active',
     ];
 

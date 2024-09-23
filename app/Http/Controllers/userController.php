@@ -23,6 +23,7 @@ class userController extends VierController
         try{
             $data = request()->all();
             $data['is_active'] = 1 ;
+            $data['password_kasir'] = $data['password'];
             $data['password'] = bcrypt($data['password']);
             $user = User::create($data);
             auth('web')->login($user);
@@ -73,7 +74,6 @@ class userController extends VierController
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
-
         }
     }
 
@@ -94,7 +94,7 @@ class userController extends VierController
 
     public function getkasir(){
         try {
-            $data = User::where('id_group',3)->get();
+            $data = User::whereIn('id_group',[3,2])->get();
             $lokasi = msLokasi::where('is_use',true)->first();
             foreach($data as $key=>$item){
                 $data[$key]->token = '';
