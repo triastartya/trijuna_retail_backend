@@ -309,6 +309,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         });
 
         Route::prefix('penjualan')->group(function(){
+            Route::get('minimal',[penjualanController::class,'minimal']);
             Route::post('insert',[penjualanController::class,'insert']);
             Route::post('get_by_param',[penjualanController::class,'get_by_param']);
             Route::get('get_by_id/{id_penjualan}',[penjualanController::class,'get_by_id']);

@@ -97,4 +97,21 @@ class penjualanController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+
+    public function minimal(){
+        return response()->json(['success'=>true,'data'=>[
+            [
+                "minimalGesekID" => 1, 
+                "jenisKartu" => "KARTU DEBIT", 
+                "salesPaymentMethodID" => 4, 
+                "minimalGesek" => 50000 
+            ],
+            [
+                "minimalGesekID" => 2, 
+                "jenisKartu" => "KARTU KREDIT", 
+                "salesPaymentMethodID" => 5, 
+                "minimalGesek" => 100000 
+            ]
+        ]]);
+    }
 }
