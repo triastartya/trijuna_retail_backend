@@ -26,6 +26,10 @@ class penjualanController extends VierController
     public function insert(Request $request){
         DB::beginTransaction();
         try {
+            $cek = posPenjualan::where('no_faktur',$request->no_faktur)->first();
+            if($cek){
+                throw new \Exception('duplikat no faktur');
+            }
             $data = $request->all();
             $data['nota_penjualan'] = GeneradeNomorHelper::long('penjualan');
             unset($data['detail']);
