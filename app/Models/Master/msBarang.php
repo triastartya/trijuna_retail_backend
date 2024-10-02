@@ -76,7 +76,7 @@ class msBarang extends Model
         'id_barang'=>'',
         'id_divisi'=>'',
         'id_group'=>'',
-        'kode_barang'=>'required',
+        'kode_barang'=>'',
         'barcode'=>'required',
         'image'=>'',
         'persediaan'=>'',
