@@ -62,6 +62,13 @@ class penerimaanDenganPOController extends VierController
                             ]);
             foreach($request->detail as $detail){
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
+                $detail['diskon_persen_1'] = ($detail['diskon_persen_1'])?$detail['diskon_persen_1']:0;
+                $detail['diskon_nominal_1'] = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
+                $detail['diskon_persen_2'] = ($detail['diskon_persen_2'])?$detail['diskon_persen_2']:0;
+                $detail['diskon_nominal_2'] = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
+                $detail['diskon_persen_3'] = ($detail['diskon_persen_3'])?$detail['diskon_persen_3']:0;
+                $detail['diskon_nominal_3'] = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
+                $detail['qty_bonus'] = ($detail['qty_bonus'])?$detail['qty_bonus']:0;
                 $penerimaanDetail= trPenerimaanDetail::create($detail);
                 $pemesananDetail = trPemesananDetail::where('id_pemesanan_detail',$detail['id_pemesanan_detail'])->first();
                 $pemesananDetail->qty_terima = $pemesananDetail->qty_terima + $data['qty'];
