@@ -26,6 +26,7 @@ class returPembelianController extends VierController
         try {
             $data = $request->all();
             $data['status_retur'] = 'OPEN';
+            $data['jenis_retur'] = 1;
             $data['nomor_retur_pembelian'] = GeneradeNomorHelper::long('retur pembelian');
             unset($data['detail']);
             $retur_pembelian = trReturPembelian::create($data);
