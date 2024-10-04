@@ -50,7 +50,9 @@ class penerimaanDenganPOController extends VierController
     public function insert(Request $request){
         DB::beginTransaction();
         try {
+            $pemesanan = trPemesanan::where('id_pemesanan',$request->id_pemesanan)->first();
             $data = $request->all();
+            $data['id_supplier'] = $pemesanan->id_supplier;
             $data['status_penerimaan'] = 'OPEN';
             $data['jenis_penerimaan'] = 1;
             $data['nomor_penerimaan'] = GeneradeNomorHelper::long('penerimaan dengan po');

@@ -1,5 +1,15 @@
 <?php
 
+use App\Http\Controllers\migrasiController;
+use App\Models\Master\msBarang;
+use App\Models\Master\msDivisi;
+use App\Models\Master\msGroup;
+use App\Models\Master\msMember;
+use App\Models\Master\msMerk;
+use App\Models\Master\msRak;
+use App\Models\Master\msSatuan;
+use App\Models\Master\msSupplier;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +23,133 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/',function(){
+    
     return view('layout.layout');
+});
+//====
+Route::get('/migrasi',function(){
+    $data = msMerk::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.migrasi',['items'=>$data]);
+});
+
+Route::post('migrasi/merk',[migrasiController::class,'merk']);
+Route::get('migrasi/merk/truncate',function(){
+    DB::select('truncate ms_merk restart identity;');
+    return true;
+});
+//=======
+Route::get('/migrasi_bank',function(){
+    return view('migrasi.bank');
+});
+
+Route::post('migrasi/bank',[migrasiController::class,'bank']);
+Route::get('migrasi/bank/truncate',function(){
+    DB::select('truncate ms_bank restart identity;');
+    return true;
+});
+//=======
+Route::get('/migrasi_divisi',function(){
+    $data = msDivisi::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.divisi',['items'=>$data]);
+});
+
+Route::post('migrasi/divisi',[migrasiController::class,'divisi']);
+Route::get('migrasi/divisi/truncate',function(){
+    DB::select('truncate ms_divisi restart identity;');
+    return true;
+});
+//=======
+Route::get('/migrasi_group',function(){
+    $data = msGroup::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.group',['items'=>$data]);
+});
+
+Route::post('migrasi/group',[migrasiController::class,'group']);
+Route::get('migrasi/group/truncate',function(){
+    DB::select('truncate ms_group restart identity;');
+    return true;
+});
+//=======
+Route::get('/migrasi_edc',function(){
+    return view('migrasi.edc');
+});
+
+Route::post('migrasi/edc',[migrasiController::class,'edc']);
+Route::get('migrasi/edc/truncate',function(){
+    DB::select('truncate ms_edc restart identity;');
+    return true;
+});
+//=======
+Route::get('/migrasi_rak',function(){
+    $data = msRak::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.rak',['items'=>$data]);
+});
+
+Route::post('migrasi/rak',[migrasiController::class,'rak']);
+Route::get('migrasi/rak/truncate',function(){
+    DB::select('truncate ms_rak restart identity;');
+    return true;
+});
+//=======
+Route::get('/migrasi_satuan',function(){
+    $data = msSatuan::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.satuan',['items'=>$data]);
+});
+
+Route::post('migrasi/satuan',[migrasiController::class,'satuan']);
+Route::get('migrasi/satuan/truncate',function(){
+    DB::select('truncate ms_satuan restart identity;');
+    return true;
+});
+//=======
+Route::get('/migrasi_supplier',function(){
+    $data = msSupplier::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.supplier',['items'=>$data]);
+});
+
+Route::post('migrasi/supplier',[migrasiController::class,'supplier']);
+Route::get('migrasi/supplier/truncate',function(){
+    DB::select('truncate ms_supplier restart identity;');
+    return true;
+});
+//=======
+Route::get('/migrasi_customer',function(){
+    $data = msMember::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.customer',['items'=>$data]);
+});
+
+Route::post('migrasi/customer',[migrasiController::class,'customer']);
+Route::get('migrasi/customer/truncate',function(){
+    DB::select('truncate ms_customer restart identity;');
+    return true;
+});
+//=======
+Route::get('/migrasi_barang',function(){
+    ini_set('memory_limit','2000M');
+    $data = msBarang::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.barang',['items'=>$data]);
+});
+
+Route::post('migrasi/barang',[migrasiController::class,'barang']);
+Route::get('migrasi/barang/truncate',function(){
+    DB::select('truncate ms_barang restart identity;');
+    return true;
 });
 
 Route::post('login', function () {

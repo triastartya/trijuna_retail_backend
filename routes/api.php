@@ -61,6 +61,7 @@ use App\Http\Controllers\Inventory\mutasiKeluarController;
 use App\Http\Controllers\Inventory\mutasiMasukController;
 use App\Http\Controllers\Master\PotonganPembelianController;
 use App\Http\Controllers\Master\rekeningOwnerController;
+use App\Http\Controllers\migrasiController;
 use App\Http\Controllers\Penjualan\refundController;
 use App\Models\Master\msRekeningOwner;
 use Illuminate\Support\Facades\Route;
