@@ -44,7 +44,7 @@ class barangController extends VierController
             if($data['kode_barang']==''){
                 $divisi = msDivisi::where('id_divisi',$data['id_divisi'])->first();
                 $group = msGroup::where('id_group',$data['id_group'])->first();
-                $prefix = str_replace(" ","",$group->kode_group.$divisi->kode_divisi);
+                $prefix = str_replace(" ","",$divisi->kode_divisi.$group->kode_group);
                 $last_data = msBarang::where(DB::raw('LEFT(kode_barang, 4)'),$prefix)->orderBy('id_barang','desc')->first();
                 if($last_data){
                     $last_kode_barang = $last_data->kode_barang;
