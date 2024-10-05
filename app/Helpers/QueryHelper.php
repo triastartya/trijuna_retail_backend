@@ -15,9 +15,9 @@ class QueryHelper
             $value = '';
             
             if($filter['filter']=='equel'){
-                $column = "UPPER(".$filter['column'].")";
+                $column = $filter['column'];
                 $opration = '=';
-                $value = "'".strtoupper($filter['value'])."'";
+                $value = $filter['value'];
             }
             
             if($filter['filter']=='contain'){

@@ -273,7 +273,7 @@ class penjualanRepository extends VierRepository
         inner join pos_penjualan_detail ppd on pp.id_penjualan=ppd.id_penjualan
         inner join ms_barang mb on mb.id_barang = ppd.id_barang
         left join ms_group mg on mg.id_group = mb.id_group
-        left join ms_divisi md on md.id_divisi=mb.id_satuan
+        left join ms_divisi md on md.id_divisi=mb.id_divisi
         left join  ms_merk mm on mm.id_merk=mb.id_merk
         where (pp.tanggal_penjualan BETWEEN '".request()->start."' and '".request()->end."')",
         request(),

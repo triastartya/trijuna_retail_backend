@@ -80,7 +80,7 @@ class bayarHutangPelunasanRepository extends VierRepository
             inner join public.ms_rekening_owner mro on tbhpt.id_rekening = mro.id_rekening
             where tbhpt.id_bayar_hutang_pelunasan = ?;
         ",[request()->id_bayar_hutang_pelunasan]);
-        return $data[0];
+        return $data;
     }
 
 }
