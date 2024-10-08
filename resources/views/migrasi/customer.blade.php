@@ -117,7 +117,9 @@
                     },
                     error: function (jqXHR, textStatus, errorThrown)
                     {
-                        Swal.fire({icon: 'error',title: 'Oops...',text: 'Something went wrong!',})
+                        var string= jqXHR.responseJSON;
+                        var json_object= JSON.parse(string);
+                        Swal.fire({icon: 'error',title: 'Oops...',text: json_object.message,})
                     },
                     beforeSend: function(){
                         Swal.fire({title: 'Loading..',onOpen: () => {Swal.showLoading()}})
