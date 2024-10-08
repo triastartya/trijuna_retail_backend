@@ -17,9 +17,15 @@
                             <input type="file" class="form-control-file" id="file" name="file">
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Memory Limit</label>
-                            <div class="col-sm-10">
+                            <label for="inputPassword" class="col-sm-3 col-form-label">Memory Limit</label>
+                            <div class="col-sm-9">
                             <input type="text" class="form-control" id="memory" name="memory" value="256M">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-3 col-form-label">Maximum Execution Time</label>
+                            <div class="col-sm-9">
+                            <input type="text" class="form-control" id="maximum_execution_time" name="maximum_execution_time" value="300">
                             </div>
                         </div>
                     </div>
@@ -102,7 +108,7 @@
                     success: function(data)
                     {
                         if(data.success){
-                            Swal.fire({icon: 'success',title: 'Merek Berhasil Di Simpan',text: '',}).then(function(){
+                            Swal.fire({icon: 'success',title: 'Supplier Berhasil Di Simpan',text: '',}).then(function(){
                                 {{-- window.location.reload(); --}}
                             })
                         }else{

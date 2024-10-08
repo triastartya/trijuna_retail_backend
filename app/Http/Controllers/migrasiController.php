@@ -7,6 +7,7 @@ use App\Models\Master\msGroup;
 use App\Models\Master\msMember;
 use App\Models\Master\msMerk;
 use App\Models\Master\msSatuan;
+use App\Models\Master\msSupplier;
 use App\Models\Penjualan\posBank;
 use App\Models\Penjualan\posEdc;
 use Illuminate\Http\Request;
@@ -296,25 +297,42 @@ class migrasiController extends VierController
         DB::beginTransaction();
         try {
             ini_set('memory_limit',request()->memory);
+            ini_set('max_execution_time', request()->maximum_execution_time);
             $file = request()->file;
             $content = file_get_contents($file);
             $json = json_decode($content, true);
-            $cek = msMerk::first();
+            $cek = msSupplier::first();
             if($cek){
-                return response()->json(['success'=>false,'data'=>[],'message'=>'data merek sudah ada silahkan di truncate terlebih dahulu']);
+                return response()->json(['success'=>false,'data'=>[],'message'=>'data supplier sudah ada silahkan di truncate terlebih dahulu']);
             }
             $merk=[];
             foreach($json as $item){
                 $merk[] = [
-                    'id_merk' => $item['IdMerk'],
-                    'merk' =>$item['Merk'],
+                    'id_supplier' => $item['IdSupplier'],
+                    'kode_supplier' =>$item['KodeSupplier'],
+                    'nama_supplier' =>$item['NamaSupplier'],
+                    'alamat' =>$item['Alamat'],
+                    'kota' =>'',
+                    'kecamatan' =>'',
+                    'kelurahan' =>'',
+                    'keterangan' =>$item['Keterangan'],
+                    'is_pkp' =>$item['IsPKP'],
+                    'is_tanpa_po' =>$item['IsTanpaPO'],
+                    'bank_rekening' =>$item['BankRekeningSupplier'],
+                    'nama_pemilik_rekening' =>$item['NamaPemilikRekeningSupplier'],
+                    'nomor_rekening' =>$item['NomorRekeningSupplier'],
+                    'limit_hutang' =>100000000,
+                    'no_handphone' =>'',
+                    'email' =>'',
+                    'sisa_hutang' =>0,
                     'is_active' => true,
                     'created_by' =>1,
-                    'updated_by' =>1
+                    'updated_by' =>1,
+                    'npwp'=>$item['Npwp']
                 ];
             }
-            msMerk::insert($merk);
-            DB::select("SELECT setval('ms_merk_id_merk_seq', (SELECT MAX(id_merk) FROM ms_merk))");
+            msSupplier::insert($merk);
+            DB::select("SELECT setval('ms_supplier_id_supplier_seq', (SELECT MAX(id_supplier) FROM ms_supplier))");
             DB::commit();
             return response()->json(['success'=>true,'data'=>$json]);
         } catch (\Exception $ex) {
