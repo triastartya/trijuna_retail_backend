@@ -9,6 +9,8 @@ use App\Models\Master\msMerk;
 use App\Models\Master\msRak;
 use App\Models\Master\msSatuan;
 use App\Models\Master\msSupplier;
+use App\Models\Penjualan\posBank;
+use App\Models\Penjualan\posEdc;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -41,12 +43,15 @@ Route::get('migrasi/merk/truncate',function(){
 });
 //=======
 Route::get('/migrasi_bank',function(){
-    return view('migrasi.bank');
+    $data = posBank::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.bank',['items'=>$data]);
 });
 
 Route::post('migrasi/bank',[migrasiController::class,'bank']);
 Route::get('migrasi/bank/truncate',function(){
-    DB::select('truncate ms_bank restart identity;');
+    DB::select('truncate pos_bank restart identity;');
     return true;
 });
 //=======
@@ -77,12 +82,15 @@ Route::get('migrasi/group/truncate',function(){
 });
 //=======
 Route::get('/migrasi_edc',function(){
-    return view('migrasi.edc');
+    $data = posEdc::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.edc',['items'=>$data]);
 });
 
 Route::post('migrasi/edc',[migrasiController::class,'edc']);
 Route::get('migrasi/edc/truncate',function(){
-    DB::select('truncate ms_edc restart identity;');
+    DB::select('truncate pos_edc restart identity;');
     return true;
 });
 //=======
@@ -134,7 +142,7 @@ Route::get('/migrasi_customer',function(){
 
 Route::post('migrasi/customer',[migrasiController::class,'customer']);
 Route::get('migrasi/customer/truncate',function(){
-    DB::select('truncate ms_customer restart identity;');
+    DB::select('truncate ms_member restart identity;');
     return true;
 });
 //=======

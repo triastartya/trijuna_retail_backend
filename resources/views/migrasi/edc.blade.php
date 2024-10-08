@@ -34,12 +34,34 @@
             </div>
         </div>
         <!-- /.card -->
+        <table class="table table-bordered mt-3" id='datatable'>
+            <thead>
+                <tr>
+                    @if(count($items) > 0)
+                        @foreach(array_keys((array) $items[0]) as $key)
+                            <th>{{ ucfirst($key) }}</th>
+                        @endforeach
+                    @endif
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($items as $item)
+                <tr>
+                    @foreach((array) $item as $value)
+                        <td>{{ is_string($value) ? $value : json_encode($value) }}</td>
+                    @endforeach
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </section>
 @endsection
 
 @section('ctrl')
     <script>
     app.controller("myCtrl", function($scope,$http) {
+                        $('#datatable').DataTable();
+
         $('#formEdc').validate({
             rules: {
                 file: {
