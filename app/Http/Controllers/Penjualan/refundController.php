@@ -45,7 +45,7 @@ class refundController extends VierController
                 ]);
             }
             DB::commit();
-            return response()->json(['success'=>true,'data'=>$data]);
+            return response()->json(['success'=>true,'data'=>$refund]);
         }
         catch(\Exception $err) {
             DB::rollBack();
