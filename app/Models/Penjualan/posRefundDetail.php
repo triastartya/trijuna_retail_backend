@@ -16,7 +16,6 @@ class posRefundDetail extends Model
         'id_refund',
         'urut',
         'id_barang',
-        'banyak',
         'qty_jual',
         'kode_satuan',
         'harga_jual',
