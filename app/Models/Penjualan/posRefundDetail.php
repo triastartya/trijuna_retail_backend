@@ -20,6 +20,10 @@ class posRefundDetail extends Model
         'qty_jual',
         'kode_satuan',
         'harga_jual',
+        'diskon1',
+        'diskon2',
+        'display_diskon1',
+        'display_diskon2',
         'sub_total'
     ];
     
@@ -33,6 +37,10 @@ class posRefundDetail extends Model
             'qty_jual'          =>'required',
             'kode_satuan'       =>'required',
             'harga_jual'        =>'required',
+            'diskon1'           =>'',
+            'diskon2'           =>'',
+            'display_diskon1'   =>'',
+            'display_diskon2'   =>'',
             'sub_total'        =>'required',
         ];
     }

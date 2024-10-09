@@ -26,6 +26,7 @@ class refundController extends VierController
         DB::beginTransaction();
         try {
             $data = $request->all();
+            $data['no_retur_penjualan'] = GeneradeNomorHelper::long('refund');
             unset($data['detail']);
             $refund = posRefund::create($data);
             foreach($request->detail as $detail){
