@@ -178,6 +178,7 @@ class penjualanRepository extends VierRepository
             trd.id_barang,
             mb.barcode,
             mb.nama_barang,
+            trd.qty_jual,
             trd.kode_satuan,
             trd.harga_jual,
             trd.diskon1,
