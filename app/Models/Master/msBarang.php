@@ -36,6 +36,10 @@ class msBarang extends Model
         'stok_min',
         'is_active',
         'harga_jual',
+        'qty_grosir1',
+        'harga_grosir1',
+        'qty_grosir2',
+        'harga_grosir2',
         'biaya_barcode',
         'biaya_listing'
     ];
@@ -65,6 +69,10 @@ class msBarang extends Model
         ['name' => 'stok_min', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'is_active', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
         ['name' => 'harga_jual', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'qty_grosir1', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'harga_grosir1', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'qty_grosir2', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
+        ['name' => 'harga_grosir2', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'biaya_barcode', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
         ['name' => 'biaya_listing', 'type' => ModelDictionary::COLUMN_TYPE_BOOLEAN],
     ];
@@ -99,6 +107,10 @@ class msBarang extends Model
         'created_by'=>'',
         'updated_by'=>'',
         'harga_jual'=>'required',
+        'qty_grosir1'=>'',
+        'harga_grosir1'=>'',
+        'qty_grosir2'=>'',
+        'harga_grosir2'=>'',
         'biaya_barcode'=>'',
         'biaya_listing'=>''
         ];

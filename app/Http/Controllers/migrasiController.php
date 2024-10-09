@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Master\msBarang;
 use App\Models\Master\msDivisi;
 use App\Models\Master\msGroup;
 use App\Models\Master\msMember;
 use App\Models\Master\msMerk;
 use App\Models\Master\msSatuan;
 use App\Models\Master\msSupplier;
+use App\Models\Master\trSettingHarga;
+use App\Models\Master\trSettingHargaDetail;
 use App\Models\Penjualan\posBank;
 use App\Models\Penjualan\posEdc;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierController;
@@ -345,25 +349,65 @@ class migrasiController extends VierController
         DB::beginTransaction();
         try {
             ini_set('memory_limit',request()->memory);
+            ini_set('max_execution_time', request()->maximum_execution_time);
             $file = request()->file;
             $content = file_get_contents($file);
             $json = json_decode($content, true);
-            $cek = msMerk::first();
-            if($cek){
-                return response()->json(['success'=>false,'data'=>[],'message'=>'data merek sudah ada silahkan di truncate terlebih dahulu']);
-            }
-            $merk=[];
+            $data_barang = [];
+            $data_setting_harga = [];
+            $setting= trSettingHarga::create([
+                 'id_lokasi' => 1,
+                 'tanggal_mulai_berlaku' => new DateTime()
+            ]);
             foreach($json as $item){
-                $merk[] = [
-                    'id_merk' => $item['IdMerk'],
-                    'merk' =>$item['Merk'],
-                    'is_active' => true,
-                    'created_by' =>1,
-                    'updated_by' =>1
+                $item = (array)$item;
+                $data_barang = [
+                    'id_barang'=>$item['IdBarang'],
+                    'id_divisi'=>$item['IdDivisi'],
+                    'id_group'=>$item['IdGrup'],
+                    'kode_barang'=>$item['KodeBarang'],
+                    'barcode'=>$item['Barcode'],
+                    'nama_barang'=>$item['NamaBarang'],
+                    'kode_satuan'=>$item['KodeSatuanKecil'],
+                    'id_merk'=>$item['IdMerk'],
+                    'ukuran'=>$item['Ukuran'],
+                    'warna'=>$item['Warna'],
+                    'berat'=>0,
+                    'id_supplier'=>$item['IdSupplier'],
+                    'harga_order'=>$item['HargaOrder'],
+                    'harga_beli_terakhir'=>$item['HargaBeliTerakhir'],
+                    'hpp_average'=>$item['HppAverage'],
+                    'is_ppn'=>$item['IsPPn'],
+                    'nama_label'=>$item['NamaBarangDiLabel'],
+                    'margin'=>$item['MarginHarga'],
+                    'harga_jual' => $item['HargaJual'],
+                    'qty_grosir1'=> ($item['JumlahGrosir1']==null)?0:$item['JumlahGrosir1'],
+                    'harga_grosir1'=> ($item['HargaGrosir1']==null)?0:$item['HargaGrosir1'],
+                    'qty_grosir2'=> ($item['JumlahGrosir2']==null)?0:$item['JumlahGrosir2'],
+                    'harga_grosir2'=> ($item['HargaGrosir2']==null)?0:$item['HargaGrosir2'],
+                    'created_by'=>1,
+                    'updated_by'=>1
                 ];
+                // dd($data_barang);
+                msBarang::create($data_barang);
+
+                if($item['HargaJual'] != null OR $item['HargaJual'] !=0){
+                    $data_setting_harga =[
+                        'id_setting_harga' => $setting->id_setting_harga,
+                        'tanggal_mulai_berlaku' =>$setting->tanggal_mulai_berlaku,
+                        'id_barang' => $item['IdBarang'],
+                        'harga_jual' => $item['HargaJual'],
+                        'qty_grosir1'=> ($item['JumlahGrosir1']==null)?0:$item['JumlahGrosir1'],
+                        'harga_grosir1'=> ($item['HargaGrosir1']==null)?0:$item['HargaGrosir1'],
+                        'qty_grosir2'=> ($item['JumlahGrosir2']==null)?0:$item['JumlahGrosir2'],
+                        'harga_grosir2'=> ($item['HargaGrosir2']==null)?0:$item['HargaGrosir2'],
+                    ];
+                    trSettingHargaDetail::create($data_setting_harga);
+                }
             }
-            msMerk::insert($merk);
-            DB::select("SELECT setval('ms_merk_id_merk_seq', (SELECT MAX(id_merk) FROM ms_merk))");
+            // msBarang::insert($data_barang);
+            // trSettingHargaDetail::insert($data_setting_harga);
+            DB::select("SELECT setval('ms_barang_id_barang_seq', (SELECT MAX(id_barang) FROM ms_barang))");
             DB::commit();
             return response()->json(['success'=>true,'data'=>$json]);
         } catch (\Exception $ex) {

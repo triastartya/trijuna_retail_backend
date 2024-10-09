@@ -60,7 +60,7 @@
 @section('ctrl')
     <script>
     app.controller("myCtrl", function($scope,$http) {
-                $('#datatable').DataTable();
+        $('#datatable').DataTable();
 
         $('#formBarang').validate({
             rules: {

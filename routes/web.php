@@ -147,16 +147,18 @@ Route::get('migrasi/customer/truncate',function(){
 });
 //=======
 Route::get('/migrasi_barang',function(){
-    ini_set('memory_limit','2000M');
-    $data = msBarang::get();
-    $data = $data->toArray();
-    $data = $data;
+    // ini_set('memory_limit','2000M');
+    // $data = msBarang::get();
+    // $data = $data->toArray();
+    $data = [];
     return view('migrasi.barang',['items'=>$data]);
 });
 
 Route::post('migrasi/barang',[migrasiController::class,'barang']);
 Route::get('migrasi/barang/truncate',function(){
     DB::select('truncate ms_barang restart identity;');
+    DB::select('truncate tr_setting_harga restart identity;');
+    DB::select('truncate tr_setting_harga_detail restart identity;');
     return true;
 });
 
