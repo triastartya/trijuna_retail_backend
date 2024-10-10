@@ -15,6 +15,7 @@ use App\Repositories\Master\barangRepository;
 use App\Repositories\Master\LokasiRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Response;
 use Viershaka\Vier\VierController;
 
@@ -103,6 +104,7 @@ class mutasiKeluarController extends VierController
                 throw new \Exception('data mutasi sudah di validasi');
             }
             $mutasi->status_mutasi_lokasi = 'VALIDATED';
+            $mutasi->online = false;
             $mutasi->save();
             $detail_mutasi = trMutasiLokasiDetail::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->get();
             foreach($detail_mutasi as $detail){
@@ -128,6 +130,9 @@ class mutasiKeluarController extends VierController
 
     public function download(){
         try{
+            $update = trMutasiLokasi::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->first();
+            $update->download =  ($update->download)?$update->download + 1 : 1;
+            $update->save();
             $data = DB::select("select * from tr_mutasi_lokasi where id_mutasi_lokasi=".request()->id_mutasi_lokasi);
             if(count($data)==0){
                 throw new \Exception('data mutasi tidak di temukan');
@@ -146,6 +151,59 @@ class mutasiKeluarController extends VierController
             ]);
             return response()->json(['status'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
+            return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function validasi_online(){
+        DB::beginTransaction();
+        try{
+            $mutasi = trMutasiLokasi::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->first();
+            if($mutasi->status_mutasi_lokasi == 'VALIDATED'){
+                throw new \Exception('data mutasi sudah di validasi');
+            }
+            $mutasi->status_mutasi_lokasi = 'VALIDATED';
+            $mutasi->online = true;
+            $mutasi->save();
+            $detail_mutasi = trMutasiLokasiDetail::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->get();
+            foreach($detail_mutasi as $detail){
+                InventoryStokHelper::pengurangan((object)[
+                    'id_barang'       => $detail['id_barang'],
+                    'nama_barang'     => '',
+                    'id_warehouse'    => $mutasi->warehouse_asal,
+                    'qty'             => $detail['qty'],
+                    'nomor_reff'      => $mutasi->nomor_mutasi_lokasi,
+                    'id_header_trans' => $mutasi->id_mutasi_lokasi,
+                    'id_detail_trans' => $detail['id_mutasi_lokasi_detail'],
+                    'jenis'           => 'Mutasi Keluar',
+                    'nominal'         => $detail['sub_total'] // hpp avarage * qty
+                ]);
+            }
+
+            // === kirim ==
+            $data = DB::select("select * from tr_mutasi_lokasi where id_mutasi_lokasi=".request()->id_mutasi_lokasi);
+            
+            $data[0]->detail = DB::select('select * from tr_mutasi_lokasi_detail where id_mutasi_lokasi = '.request()->id_mutasi_lokasi);
+            
+            $lokasi = msLokasi::where('id_lokasi',$mutasi->id_lokasi_tujuan)->first();
+            
+            $response = Http::post($lokasi+'/api/mutasi_lokasi_masuk/insertbyapi',$data[0]);
+
+            if ($response->successful()) {
+                $res = $response->object();
+                if($res->status){
+                    DB::commit();
+                    return response()->json(['status'=>true,'data'=>'oke']);
+                }else{
+                    DB::rollBack();
+                    return response()->json(['status'=>false,'data'=>[],'message'=>$res->message]);    
+                }
+            } else {
+                DB::rollBack();
+                return response()->json(['status'=>false,'data'=>[],'message'=>$response->status().', err']);
+            }
+        }catch (\Exception $ex) {
+            DB::rollBack();
             return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }

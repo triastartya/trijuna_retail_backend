@@ -95,12 +95,13 @@ class penerimaanTanpaPOController extends VierController
                     'nominal'         => $detail->sub_total
                 ]);
                 if(request()->is_update_harga_order){
-                    msBarang::where('id_barang',$detail['id_barang'])
+                    msBarang::where('id_barang',$detail->id_barang)
                     ->update([
-                        'harga_order' => $detail['harga_order'],
-                        'harga_beli_terakhir' => $detail['harga_beli_terakhir']
+                        'harga_order' => $detail->harga_order,
+                        'harga_beli_terakhir' => $detail->harga_beli_terakhir
                     ]);
                 }
+                InventoryStokHelper::hitung_hpp_avarage($detail->id_barang,$detail->qty,$detail->sub_total);
             }
             DB::commit();
             return response()->json(['success'=>true,'data'=>$penerimaan]);

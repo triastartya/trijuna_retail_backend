@@ -29,6 +29,42 @@ class mutasiMasukController extends VierController
         parent::__construct($this->repository);
     }
 
+    public function insertbyapi(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $lokasi = msLokasi::where('is_use',true)->first();
+            $data = (array)$request;
+            $data['is_deleted'] = 0;
+            $data['status_mutasi_lokasi'] = 'OPEN';
+            $data['nomor_mutasi_keluar'] =  $data['nomor_mutasi_lokasi'];
+            $data['nomor_mutasi_lokasi'] = GeneradeNomorHelper::long('mutasi masuk');
+            $data['jenis_mutasi'] = 1 ;
+            $data['id_lokasi_tujuan'] = $lokasi->id_lokasi;
+            unset($data['detail']);
+            unset($data['id_mutasi_lokasi']);
+            unset($data['created_by']);
+            unset($data['updated_by']);
+            unset($data['created_at']);
+            unset($data['updated_at']);
+            $mutasi = trMutasiLokasi::create($data);
+            foreach($request['detail'] as $detail){
+                $detail['id_mutasi_lokasi'] = $mutasi->id_mutasi_lokasi;
+                unset($detail['created_at']);
+                unset($detail['updated_at']);
+                unset($detail['id_mutasi_lokasi_detail']);
+                trMutasiLokasiDetail::create($detail);
+            }
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$mutasi->id_mutasi_lokasi]);
+        }
+        catch(\Exception $err) {
+            throw $err;
+            DB::rollBack();
+            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+        }
+    }
+
     public function insert(Request $request)
     {
         DB::beginTransaction();
@@ -38,13 +74,10 @@ class mutasiMasukController extends VierController
             $request->validate([
                 'json_file' => 'required|file|mimes:json|max:2048',
             ]);
-
             // Retrieve the uploaded file
             $file = $request->file('json_file');
-
             // Read the file contents
             $jsonContents = file_get_contents($file->getRealPath());
-
             // Decode JSON content
             $request = json_decode($jsonContents, true);
             // dd($request);
@@ -56,6 +89,7 @@ class mutasiMasukController extends VierController
             $data = (array)$request;
             $data['is_deleted'] = 0;
             $data['status_mutasi_lokasi'] = 'OPEN';
+            $data['nomor_mutasi_keluar'] =  $data['nomor_mutasi_lokasi'];
             $data['nomor_mutasi_lokasi'] = GeneradeNomorHelper::long('mutasi masuk');
             $data['jenis_mutasi'] = 1 ;
             $data['id_lokasi_tujuan'] = $lokasi->id_lokasi;
@@ -142,6 +176,7 @@ class mutasiMasukController extends VierController
                     'jenis'           => 'Mutasi Masuk',
                     'nominal'         => $detail['sub_total'] // hpp avarage * qty
                 ]);
+                InventoryStokHelper::hitung_hpp_avarage($detail['id_barang'],$detail['qty'],$detail['sub_total']);
             }
             DB::commit();
             return response()->json(['status'=>true,'data'=>$mutasi]);

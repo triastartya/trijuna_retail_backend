@@ -160,6 +160,7 @@ class penerimaanDenganPOController extends VierController
                         'harga_beli_terakhir' => $detail['harga_beli_terakhir']
                     ]);
                 }
+                InventoryStokHelper::hitung_hpp_avarage($detail['id_barang'],$detail['qty'],$detail['sub_total']);
             }
             DB::commit();
             return response()->json(['success'=>true,'data'=>$penerimaan]);

@@ -41,7 +41,7 @@ class barangSatuanRepository extends VierRepository
             m.nama_satuan,
             1 as isi
             from ms_barang mb
-            inner join ms_satuan m on mb.kode_satuan = m.kode_satuan
+            inner join ms_satuan m on mb.kode_satuan = m.kode_satuan or mb.id_satuan = m.id_satuan
             where mb.id_barang = ?
             union all
             select 

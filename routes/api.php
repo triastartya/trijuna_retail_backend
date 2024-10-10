@@ -105,6 +105,8 @@ Route::get('barang/lihat_stok_omzet_cabang/{id_barang}',[barangController::class
 Route::get('barang/lihat_stok_cabang/{id_barang}',[barangController::class,'lihat_stok_cabang']);
 Route::get('dashboard',[DashboardController::class,'pembelian']);
 
+Route::post('mutasi_lokasi_masuk/insertbyapi',[mutasiMasukController::class,'insertbyapi']);
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['middleware' => ModifRequest::class], function () {
         Route::post('raw/tes',[divisiController::class,'testing']);
@@ -353,6 +355,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('by_param',[mutasiKeluarController::class,'by_param']);
             Route::get('by_id/{id_mutasi_lokasi}',[mutasiLokasiController::class,'get_by_id']);
             Route::post('validasi',[mutasiKeluarController::class,'validasi']);
+            Route::post('validasi_online',[mutasiKeluarController::class,'validasi_online']);
             // Route::get('download/{id_mutasi_lokasi}',[mutasiKeluarController::class,'download']);
         });
 
