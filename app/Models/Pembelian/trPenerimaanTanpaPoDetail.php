@@ -29,7 +29,11 @@ class trPenerimaanTanpaPoDetail extends Model
         'sub_total',
         'biaya_barcode',
         'qty_bonus',
-        'nama_bonus'
+        'nama_bonus',
+        'selisih',
+        'netto',
+        'harga_jual',
+        'harga_beli_sebelumnya'
     ];
     
     public function rules()
@@ -54,6 +58,10 @@ class trPenerimaanTanpaPoDetail extends Model
             'biaya_barcode'=> '',
             'qty_bonus'=>'',
             'nama_bonus'=>'',
+            'selisih'=>'',
+            'netto'=>'',
+            'harga_jual'=>'',
+            'harga_beli_sebelumnya'=>''
         ];
     }
 }

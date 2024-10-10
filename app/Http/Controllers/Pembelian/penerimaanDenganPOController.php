@@ -63,6 +63,11 @@ class penerimaanDenganPOController extends VierController
                                 'status_pemesanan' => 'DITERIMA'
                             ]);
             foreach($request->detail as $detail){
+                $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
+                $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
+                $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['harga_order'];
+                $detail['netto'] = $detail['harga_order'] + ($detail['harga_order'] * 0.11);
+                $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
                 $detail['diskon_persen_1'] = ($detail['diskon_persen_1'])?$detail['diskon_persen_1']:0;
                 $detail['diskon_nominal_1'] = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
@@ -157,9 +162,14 @@ class penerimaanDenganPOController extends VierController
                     msBarang::where('id_barang',$detail['id_barang'])
                     ->update([
                         'harga_order' => $detail['harga_order'],
-                        'harga_beli_terakhir' => $detail['harga_beli_terakhir']
                     ]);
                 }
+
+                msBarang::where('id_barang',$detail['id_barang'])
+                ->update([
+                    'harga_beli_terakhir' => $detail['harga_order']
+                ]);
+
                 InventoryStokHelper::hitung_hpp_avarage($detail['id_barang'],$detail['qty'],$detail['sub_total']);
             }
             DB::commit();
