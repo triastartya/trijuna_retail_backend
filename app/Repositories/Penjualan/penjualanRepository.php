@@ -267,7 +267,7 @@ class penjualanRepository extends VierRepository
         mb.kode_satuan,
         mb.id_merk,
         mm.merk,
-        sum(ppd.qty_jual::float) as qty_jual,
+        CEIL(sum(ppd.qty_jual::float)) as qty_jual,
         CEIL((sum(ppd.sub_total::float) / sum(ppd.qty_jual::float))) as harga_jual,
         sum(ppd.diskon1) as diskon1,
         sum(ppd.diskon2) as diskon2,
