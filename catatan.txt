@@ -15,3 +15,11 @@ SELECT setval('ms_barang_id_barang_seq', (SELECT MAX(id_barang) FROM ms_barang) 
 portainer
 username : admin
 password : triastartya123
+
+mdmall
+akses vpn 
+vpn
+L2TP
+103.168.26.102
+USER : mdmadmin
+PASS : mdadmin123
