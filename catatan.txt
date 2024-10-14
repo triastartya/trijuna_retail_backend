@@ -23,3 +23,76 @@ L2TP
 103.168.26.102
 USER : mdmadmin
 PASS : mdadmin123
+
+
+Jepon   9.4
+Pasar   9.1
+Ngawen  9.27
+Kuwu    9.5
+Pwd     9.3
+Mall    9.8
+sion    9.67
+
+truncate ms_barang_kartu_stok restart identity;
+truncate ms_barang_stok restart identity;
+truncate pos_kroscek_tutup_kasir restart identity ;
+truncate pos_kroscek_tutup_kasir_detail_pendapatan restart identity;
+truncate pos_modal_kasir restart identity;
+truncate pos_penjualan restart identity;
+truncate pos_penjualan_detail  restart identity;
+truncate pos_penjualan_peyment restart identity;
+truncate pos_refund  restart identity;
+truncate pos_refund_detail  restart identity;
+truncate pos_saldo_kasir restart identity;
+truncate pos_tutup_kasir  restart identity;
+truncate pos_tutup_kasir_detail_pendapatan restart identity;
+truncate pos_tutup_kasir_detail_pendapatan_cash restart identity;
+truncate pos_tutup_kasir_detail_pengeluaran restart identity;
+truncate tr_audit_stok_opname restart identity;
+truncate tr_audit_stok_opname_detail restart identity;
+truncate tr_bayar_hutang restart identity;
+truncate tr_bayar_hutang_faktur  restart identity;
+truncate tr_bayar_hutang_payment  restart identity;
+truncate tr_bayar_hutang_pelunasan  restart identity;
+truncate tr_bayar_hutang_pelunasan_cash  restart identity;
+truncate tr_bayar_hutang_pelunasan_giro  restart identity;
+truncate tr_bayar_hutang_pelunasan_transfer  restart identity;
+truncate tr_bayar_hutang_potongan  restart identity;
+truncate tr_bayar_hutang_potongan_lain  restart identity;
+truncate tr_bayar_piutang  restart identity;
+truncate tr_bayar_piutang_nota  restart identity;
+truncate tr_bayar_piutang_payment  restart identity;
+truncate tr_faktur_pajak  restart identity;
+truncate tr_input_stok_opname  restart identity;
+truncate tr_mutasi_lokasi  restart identity;
+truncate tr_mutasi_lokasi_detail  restart identity;
+truncate tr_mutasi_warehouse  restart identity;
+truncate tr_mutasi_warehouse_detail  restart identity;
+truncate tr_pemesanan  restart identity;
+truncate tr_pemesanan_detail  restart identity;
+truncate tr_pemusnahan  restart identity;
+truncate tr_pemusnahan_detail  restart identity;
+truncate tr_penerimaan  restart identity;
+truncate tr_penerimaan_detail  restart identity;
+truncate tr_penerimaan_konsinyasi  restart identity;
+truncate tr_penerimaan_konsinyasi_detail  restart identity;
+truncate tr_penerimaan_tanpa_po  restart identity;
+truncate tr_penerimaan_tanpa_po_detail  restart identity;
+truncate tr_produksi  restart identity;
+truncate tr_produksi_detail  restart identity;
+truncate tr_repacking  restart identity;
+truncate tr_repacking_detail  restart identity;
+truncate tr_retur_konsinyasi  restart identity;
+truncate tr_retur_konsinyasi_detail restart identity;
+truncate tr_retur_pembelian  restart identity;
+truncate tr_retur_pembelian_detail  restart identity;
+truncate tr_setting_harga  restart identity;
+truncate tr_setting_harga_detail  restart identity;
+truncate tr_setting_harga_detail_lokasi  restart identity;
+truncate tr_setting_stok_opname restart identity;
+truncate tr_setting_stok_opname_barang  restart identity;
+truncate tr_setting_stok_opname_divisi  restart identity;
+truncate tr_setting_stok_opname_group  restart identity;
+truncate tr_setting_stok_opname_merk  restart identity;
+truncate tr_setting_stok_opname_rak  restart identity;
+truncate tr_setting_stok_opname_supplier  restart identity;

@@ -340,6 +340,15 @@ class barangController extends VierController
         }
     }
 
+    public function barang_no_limit_by_param(){
+        try{
+            $data = $this->repository->no_limit_by_param();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
     public function barang_pos(){
         try{
             ini_set('memory_limit','1000M');
