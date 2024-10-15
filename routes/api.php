@@ -62,10 +62,12 @@ use App\Http\Controllers\Hr\departemenController;
 use App\Http\Controllers\Hr\karyawanController;
 use App\Http\Controllers\Inventory\mutasiKeluarController;
 use App\Http\Controllers\Inventory\mutasiMasukController;
+use App\Http\Controllers\Inventory\trSettingStokOpnameController;
 use App\Http\Controllers\Master\PotonganPembelianController;
 use App\Http\Controllers\Master\rekeningOwnerController;
 use App\Http\Controllers\migrasiController;
 use App\Http\Controllers\Penjualan\refundController;
+use App\Models\Inventory\trSettingStokOpname;
 use App\Models\Master\msRekeningOwner;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Row;
@@ -368,6 +370,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('validasi',[mutasiKeluarController::class,'validasi']);
             Route::post('validasi_online',[mutasiKeluarController::class,'validasi_online']);
             // Route::get('download/{id_mutasi_lokasi}',[mutasiKeluarController::class,'download']);
+        });
+
+        Route::prefix('setting_stok_opname')->group(function(){
+            Route::post('insert',[trSettingStokOpnameController::class,'insert']);
+            Route::post('get_by_param',[trSettingStokOpnameController::class,'by_param']);
+            Route::get('get_by_id/{id_setting_stok_opname}',[trSettingStokOpnameController::class,'by_id']);
         });
 
         Route::pointResource('paymentMethod', posPaymentMethodController::class);
