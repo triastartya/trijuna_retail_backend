@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tr_input_stok_opname', function (Blueprint $table) {
-            $table->id('id_input_stok_opname');
+        Schema::create('tr_input_stok_opname_detail', function (Blueprint $table) {
+            $table->id('id_input_stok_opname_detail');
+            $table->integer('id_input_stok_opname');
             $table->integer('id_setting_stok_opname');
             $table->integer('id_barang');
             $table->datetime('tanggal_setting_stok_opname');

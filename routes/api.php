@@ -57,6 +57,9 @@ use App\Http\Controllers\Finance\kasirController;
 use App\Http\Controllers\Finance\posKroscekTutupKasirController;
 use App\Http\Controllers\Finance\posTutupKasirController;
 use App\Http\Controllers\Finance\posPaymentMethodController;
+use App\Http\Controllers\Hr\absenController;
+use App\Http\Controllers\Hr\departemenController;
+use App\Http\Controllers\Hr\karyawanController;
 use App\Http\Controllers\Inventory\mutasiKeluarController;
 use App\Http\Controllers\Inventory\mutasiMasukController;
 use App\Http\Controllers\Master\PotonganPembelianController;
@@ -109,7 +112,14 @@ Route::post('mutasi_lokasi_masuk/insertbyapi',[mutasiMasukController::class,'ins
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['middleware' => ModifRequest::class], function () {
+        Route::get('hr_karyawan',[karyawanController::class,'getall']);
+        Route::post('hr_karyawan',[karyawanController::class,'store']);
+        Route::put('hr_karyawan/{id}',[karyawanController::class,'update']);
+        Route::delete('hr_karyawan/{id}',[karyawanController::class,'destroy']);
+        Route::get('absen/{start}/{end}',[absenController::class,'byparam']);
+        Route::post('absen',[absenController::class,'absen']);
         Route::post('raw/tes',[divisiController::class,'testing']);
+        Route::pointResource('hr_departemen', departemenController::class);
         Route::pointResource('user_group', userGroupController::class);
         Route::pointResource('member',memberController::class);
         Route::post('member/by_param',[memberController::class,'member_by_param']);
