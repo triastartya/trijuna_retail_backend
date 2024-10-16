@@ -54,7 +54,7 @@ class trInputStokOpnameRepository extends VierRepository
                 from tr_input_stok_opname tiso
                 inner join users u on tiso.id_user = u.id_user
                 where tiso.id_input_stok_opname=?;
-            ",[request()->id_setting_stok_opname]);
+            ",[request()->id_input_stok_opname]);
             
         return $data[0];
     }
@@ -73,7 +73,7 @@ class trInputStokOpnameRepository extends VierRepository
                 from tr_input_stok_opname_detail tisod
                 inner join ms_barang mb on tisod.id_barang = mb.id_barang
                 where tisod.id_input_stok_opname=?;
-            ",[request()->id_setting_stok_opname]);
+            ",[request()->id_input_stok_opname]);
             
         return $data;
     }
@@ -88,7 +88,7 @@ class trInputStokOpnameRepository extends VierRepository
                 tiso.created_at,
                 tiso.updated_at
             from tr_input_stok_opname tiso
-            inner join users u on tiso.id_user = u.id_user;
+            inner join users u on tiso.id_user = u.id_user 
         ",request());
     }
 }

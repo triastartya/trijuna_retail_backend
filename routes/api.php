@@ -377,12 +377,16 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('insert',[trSettingStokOpnameController::class,'insert']);
             Route::post('get_by_param',[trSettingStokOpnameController::class,'by_param']);
             Route::get('get_by_id/{id_setting_stok_opname}',[trSettingStokOpnameController::class,'by_id']);
+            Route::get('kalkulasi/{id_setting_stok_opname}',[trSettingStokOpnameController::class,'kalkulasi']);
+            Route::post('finalisasi',[trSettingStokOpnameController::class,'finalisasi']);
         });
 
         Route::prefix('input_stok_opname')->group(function(){
             Route::post('insert',[trInputStokOpnameController::class,'insert']);
             Route::post('get_setting_OS_by_param',[trInputStokOpnameController::class,'get_setting_open']);
             Route::get('get_barang_by_setting_so/{id_setting_stok_opname}',[trInputStokOpnameController::class,'get_barang_by_setting_so']);
+            Route::post('get_by_param',[trInputStokOpnameController::class,'by_param']);
+            Route::get('get_by_id/{id_input_stok_opname}',[trInputStokOpnameController::class,'by_id']);
         });
 
         Route::pointResource('paymentMethod', posPaymentMethodController::class);

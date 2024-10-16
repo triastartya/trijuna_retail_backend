@@ -94,4 +94,33 @@ class trSettingStokOpnameRepository extends VierRepository
             from tr_setting_stok_opname
         ",request());
     }
+
+    public function get_barang_by_setting_so(){
+        return DB::select("
+            select tssoc.id_setting_stok_opname_capture,
+                tssoc.id_setting_stok_opname,
+                tssoc.id_barang,
+                mb.barcode,
+                mb.kode_barang,
+                mb.nama_barang,
+                tssoc.qty_fisik,
+                tssoc.qty_capture,
+                tssoc.qty_selisih,
+                tssoc.keterangan,
+                tssoc.hpp_average,
+                tssoc.harga_jual,
+                tssoc.sub_total_fisik_harga_jual,
+                tssoc.sub_total_capture_harga_jual,
+                tssoc.sub_total_selisih_harga_jual,
+                tssoc.sub_total_fisik_hpp_average,
+                tssoc.sub_total_capture_hpp_average,
+                tssoc.sub_total_selisih_hpp_average,
+                tssoc.created_at,
+                tssoc.updated_at
+            from tr_setting_stok_opname_capture tssoc
+            inner join ms_barang mb on tssoc.id_barang = mb.id_barang
+            where tssoc.id_setting_stok_opname = ?
+            order by mb.id_group,mb.id_divisi,mb.id_supplier;
+        ",[request()->id_setting_stok_opname]);
+    }
 }

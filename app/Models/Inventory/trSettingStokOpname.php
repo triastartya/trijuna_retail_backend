@@ -27,7 +27,10 @@ class trSettingStokOpname extends Model
         'total_selisih_hpp_average',
         'created_by',
         'updated_by',
-        'status'
+        'status',
+        'finalisasi_at',
+        'finalisasi_by',
+        'finalisasi_keterangan'
     ];
     public function rules(){
         return[
@@ -45,7 +48,10 @@ class trSettingStokOpname extends Model
             'total_selisih_hpp_average'=>'',
             'created_by'=>'',
             'updated_by'=>'',
-            'status'=>''
+            'status'=>'',
+            'finalisasi_at'=>'',
+            'finalisasi_by'=>'',
+            'finalisasi_keterangan'=>''
         ];
     }
 }
