@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('tr_input_stok_opname', function (Blueprint $table) {
             $table->id('id_input_stok_opname');
             $table->integer('id_setting_stok_opname');
-            $table->string('keterngan',200);
-            $table->double('hpp_average',12,2);
+            $table->text('keterangan');
             $table->integer('id_user');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->timestamps();
         });
     }

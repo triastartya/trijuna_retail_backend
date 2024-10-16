@@ -21,7 +21,7 @@ return new class extends Migration
             $table->double('qty_fisik',12,2);
             $table->double('qty_capture',12,2);
             $table->double('qty_selisih',12,2);
-            $table->string('keterngan',200);
+            $table->string('keterangan',200);
             $table->double('hpp_average',12,2);
             $table->double('harga_jual',12,2);
             $table->double('sub_total_fisik_harga_jual',12,2);

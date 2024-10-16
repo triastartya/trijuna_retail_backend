@@ -62,6 +62,7 @@ use App\Http\Controllers\Hr\departemenController;
 use App\Http\Controllers\Hr\karyawanController;
 use App\Http\Controllers\Inventory\mutasiKeluarController;
 use App\Http\Controllers\Inventory\mutasiMasukController;
+use App\Http\Controllers\Inventory\trInputStokOpnameController;
 use App\Http\Controllers\Inventory\trSettingStokOpnameController;
 use App\Http\Controllers\Master\PotonganPembelianController;
 use App\Http\Controllers\Master\rekeningOwnerController;
@@ -376,6 +377,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('insert',[trSettingStokOpnameController::class,'insert']);
             Route::post('get_by_param',[trSettingStokOpnameController::class,'by_param']);
             Route::get('get_by_id/{id_setting_stok_opname}',[trSettingStokOpnameController::class,'by_id']);
+        });
+
+        Route::prefix('input_stok_opname')->group(function(){
+            Route::post('insert',[trInputStokOpnameController::class,'insert']);
+            Route::post('get_setting_OS_by_param',[trInputStokOpnameController::class,'get_setting_open']);
+            Route::get('get_barang_by_setting_so/{id_setting_stok_opname}',[trInputStokOpnameController::class,'get_barang_by_setting_so']);
         });
 
         Route::pointResource('paymentMethod', posPaymentMethodController::class);

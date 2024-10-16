@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id('id_setting_stok_opname');
             $table->string('nomor_stok_opname',50);
             $table->datetime('tanggal_setting_stok_opname');
-            $table->string('jenis_stok_opname');
+            $table->string('jenis_stok_opname',10);
+            $table->integer('id_warehouse');
             $table->text('keterangan');
+            $table->string('status',10);
             $table->double('total_fisik_harga_jual',12,2);
             $table->double('total_capture_harga_jual',12,2);
             $table->double('total_selisih_harga_jual',12,2);
