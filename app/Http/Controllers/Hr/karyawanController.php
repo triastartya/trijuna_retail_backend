@@ -30,6 +30,6 @@ class karyawanController extends VierController
             from hr_karyawan k
             left join hr_departemen d on k.id_departemen = d.id_departemen;
         ",[]);
-        return response()->json(['success'=>true,'data'=>['data'=>$data]]);
+        return response()->json(['success'=>true,'data'=>$data]);
     }
 }

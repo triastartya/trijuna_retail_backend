@@ -122,7 +122,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('absen/{start}/{end}',[absenController::class,'byparam']);
         Route::post('absen',[absenController::class,'absen']);
         Route::post('raw/tes',[divisiController::class,'testing']);
-        Route::pointResource('hr_departemen', departemenController::class);
+        Route::get('hr_departemen',[departemenController::class,'getall']);
+        Route::post('hr_departemen',[departemenController::class,'store']);
+        Route::put('hr_departemen/{id}',[departemenController::class,'update']);
+        Route::delete('hr_departemen/{id}',[departemenController::class,'destroy']);
         Route::pointResource('user_group', userGroupController::class);
         Route::pointResource('member',memberController::class);
         Route::post('member/by_param',[memberController::class,'member_by_param']);

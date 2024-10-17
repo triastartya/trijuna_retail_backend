@@ -239,6 +239,21 @@ class trSettingStokOpnameController extends VierController
                         $stok_awal = $kartu->stok_akhir;
                     }
                 }
+                
+                //==== stok warehouse
+                $barang_stok = msBarangStok::where('id_barang',$barang->id_barang)
+                        ->where('id_warehouse',request()->id_warehouse)
+                        ->lockForUpdate()->first();
+                if(!$barang_stok){
+                    msBarangStok::create([
+                        'id_barang' => $barang->id_barang,
+                        'id_warehouse' => request()->id_warehouse,
+                        'qty' => $qty_fisik
+                    ]);
+                }else{
+                    $barang_stok->qty = $qty_fisik;
+                    $barang_stok->save();
+                }
             }
             DB::commit();
             return response()->json(['success'=>true,'data'=>$settingSO]);
