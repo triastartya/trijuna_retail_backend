@@ -39,7 +39,7 @@ class supplierRepository extends VierRepository
         from ms_supplier ms
         inner join users uc on uc.id_user = ms.created_by
         inner join users uu on uu.id_user = ms.updated_by
-        ',request(),' order by ms.kode_supplier DESC limit 300');
+        ',request(),' order by ms.kode_supplier DESC limit 1000');
     }
     
     public function by_param_active()

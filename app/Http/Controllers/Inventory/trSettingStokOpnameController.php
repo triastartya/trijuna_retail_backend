@@ -244,8 +244,8 @@ class trSettingStokOpnameController extends VierController
             return response()->json(['success'=>true,'data'=>$settingSO]);
         }catch(\Exception $err) {
             DB::rollBack();
-            return $err;
-            // return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+            // return $err;
+            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
     }
 }
