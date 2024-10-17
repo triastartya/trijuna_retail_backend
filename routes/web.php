@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\migrasiController;
 use App\Models\Master\msBarang;
+use App\Models\Master\msBarangStok;
 use App\Models\Master\msDivisi;
 use App\Models\Master\msGroup;
 use App\Models\Master\msMember;
@@ -9,6 +10,7 @@ use App\Models\Master\msMerk;
 use App\Models\Master\msRak;
 use App\Models\Master\msSatuan;
 use App\Models\Master\msSupplier;
+use App\Models\Master\msWarehouse;
 use App\Models\Penjualan\posBank;
 use App\Models\Penjualan\posEdc;
 use Illuminate\Support\Facades\DB;
@@ -159,6 +161,31 @@ Route::get('migrasi/barang/truncate',function(){
     DB::select('truncate ms_barang restart identity;');
     DB::select('truncate tr_setting_harga restart identity;');
     DB::select('truncate tr_setting_harga_detail restart identity;');
+    return true;
+});
+
+Route::get('/migrasi_warehouse',function(){
+    $data = msWarehouse::get();
+    $data = $data->toArray();
+    $data = $data;
+    return view('migrasi.warehouse',['items'=>$data]);
+});
+
+Route::post('migrasi/warehouse',[migrasiController::class,'warehouse']);
+Route::get('migrasi/warehouse/truncate',function(){
+    DB::select('truncate ms_warehouse restart identity;');
+    return true;
+});
+
+//MasterBarangOnWarehouse
+Route::get('/migrasi_barangstok',function(){
+    $data = [];
+    return view('migrasi.barangstok',['items'=>$data]);
+});
+Route::post('migrasi/barangstok',[migrasiController::class,'barangstok']);
+Route::get('migrasi/barangstok/truncate',function(){
+    DB::select('truncate ms_barang_stok restart identity;');
+    DB::select('truncate ms_barang_kartu_stok restart identity;');
     return true;
 });
 

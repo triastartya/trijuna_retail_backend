@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Master\msBarang;
+use App\Models\Master\msBarangKartuStok;
+use App\Models\Master\msBarangRak;
+use App\Models\Master\msBarangStok;
 use App\Models\Master\msDivisi;
 use App\Models\Master\msGroup;
 use App\Models\Master\msMember;
 use App\Models\Master\msMerk;
 use App\Models\Master\msSatuan;
 use App\Models\Master\msSupplier;
+use App\Models\Master\msWarehouse;
 use App\Models\Master\trSettingHarga;
 use App\Models\Master\trSettingHargaDetail;
 use App\Models\Penjualan\posBank;
@@ -148,6 +152,37 @@ class migrasiController extends VierController
             }
             msDivisi::insert($merk);
             DB::select("SELECT setval('ms_divisi_id_divisi_seq', (SELECT MAX(id_divisi) FROM ms_divisi))");
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$json]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function warehouse(){
+        DB::beginTransaction();
+        try {
+            ini_set('memory_limit',request()->memory);
+            $file = request()->file;
+            $content = file_get_contents($file);
+            $json = json_decode($content, true);
+            $cek = msWarehouse::first();
+            if($cek){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'data warehouse sudah ada silahkan di truncate terlebih dahulu']);
+            }
+            $merk=[];
+            foreach($json as $item){
+                $merk[] = [
+                    'id_warehouse' => $item['IdWarehouse'],
+                    'warehouse' => $item['NamaWarehouse'],
+                    'lokasi' => $item['KodeWarehouse'],
+                    'is_active' => true,
+                    'created_by' =>1,
+                    'updated_by' =>1
+                ];
+            }
+            msWarehouse::insert($merk);
             DB::commit();
             return response()->json(['success'=>true,'data'=>$json]);
         } catch (\Exception $ex) {
@@ -408,6 +443,53 @@ class migrasiController extends VierController
             // msBarang::insert($data_barang);
             // trSettingHargaDetail::insert($data_setting_harga);
             DB::select("SELECT setval('ms_barang_id_barang_seq', (SELECT MAX(id_barang) FROM ms_barang))");
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$json]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function barangstok(){
+        DB::beginTransaction();
+        try {
+            ini_set('memory_limit',request()->memory);
+            $file = request()->file;
+            $content = file_get_contents($file);
+            $json = json_decode($content, true);
+            $cek = msBarangStok::first();
+            if($cek){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'data stok sudah ada silahkan di truncate terlebih dahulu']);
+            }
+            $merk=[];
+            $kartu_stok=[];
+            foreach($json as $item){
+                $barang = msBarang::where('id_barang',$item['IdBarang'])->first();
+                $hpp_average = ($barang||$barang->hpp_average!=null)?$barang->hpp_average:0;
+                msBarangStok::create([
+                    'id_warehouse' => $item['IdWarehouse'],
+                    'id_barang' => $item['IdBarang'],
+                    'qty' =>$item['QtyOnHand']
+                ]);
+                msBarangKartuStok::create([
+                    'tanggal' => date('Y-m-d'),
+                    'id_warehouse' => $item['IdWarehouse'],
+                    'id_barang' => $item['IdBarang'],
+                    'nomor_reff' =>'STOK AWAL',
+                    'id_header_trans' =>1,
+                    'id_detail_trans' =>1,
+                    'stok_awal' => 0,
+                    'nominal_awal' => $hpp_average * $item['QtyOnHand'],
+                    'stok_masuk' => $item['QtyOnHand'] ,
+                    'nominal_masuk' => 0,
+                    'stok_keluar' => 0,
+                    'nominal_keluar' => $hpp_average * $item['QtyOnHand'],
+                    'stok_akhir' => $item['QtyOnHand'],
+                    'nominal_akhir' => 0,
+                    'keterangan' =>'STOK AWAL',
+                ]);
+            }
             DB::commit();
             return response()->json(['success'=>true,'data'=>$json]);
         } catch (\Exception $ex) {
