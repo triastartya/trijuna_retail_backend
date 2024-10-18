@@ -466,7 +466,8 @@ class migrasiController extends VierController
             $kartu_stok=[];
             foreach($json as $item){
                 $barang = msBarang::where('id_barang',$item['IdBarang'])->first();
-                $hpp_average = ($barang||$barang->hpp_average!=null)?$barang->hpp_average:0;
+                $hpp_average = ($barang)?$barang->hpp_average:0;
+                $hpp_average = ($hpp_average)?$hpp_average:0;
                 msBarangStok::create([
                     'id_warehouse' => $item['IdWarehouse'],
                     'id_barang' => $item['IdBarang'],
