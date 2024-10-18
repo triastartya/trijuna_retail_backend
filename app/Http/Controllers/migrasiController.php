@@ -458,10 +458,10 @@ class migrasiController extends VierController
             $file = request()->file;
             $content = file_get_contents($file);
             $json = json_decode($content, true);
-            $cek = msBarangStok::first();
-            if($cek){
-                return response()->json(['success'=>false,'data'=>[],'message'=>'data stok sudah ada silahkan di truncate terlebih dahulu']);
-            }
+            // $cek = msBarangStok::first();
+            // if($cek){
+            //     return response()->json(['success'=>false,'data'=>[],'message'=>'data stok sudah ada silahkan di truncate terlebih dahulu']);
+            // }
             $merk=[];
             $kartu_stok=[];
             foreach($json as $item){
