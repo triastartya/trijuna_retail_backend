@@ -25,7 +25,7 @@ use Viershaka\Vier\VierController;
 class migrasiController extends VierController
 {
     public $repository;
-    
+
     public function __construct()
     {
         
