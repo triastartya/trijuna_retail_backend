@@ -107,3 +107,16 @@ truncate tr_setting_stok_opname_group  restart identity;
 truncate tr_setting_stok_opname_merk  restart identity;
 truncate tr_setting_stok_opname_rak  restart identity;
 truncate tr_setting_stok_opname_supplier  restart identity;
+
+SELECT setval('ms_barang_id_barang_seq', (SELECT MAX(id_barang) FROM ms_barang) + 1);
+SELECT setval('ms_barang_stok_id_barang_stok_seq', (SELECT MAX(id_barang_stok) FROM ms_barang_stok) + 1);
+SELECT setval('ms_barang_kartu_stok_id_kartu_stok_seq', (SELECT MAX(id_kartu_stok) FROM ms_barang_kartu_stok) + 1);
+SELECT setval('ms_divisi_id_divisi_seq', (SELECT MAX(id_divisi) FROM ms_divisi) + 1);
+SELECT setval('ms_group_id_group_seq', (SELECT MAX(id_group) FROM ms_group) + 1);
+SELECT setval('tr_setting_harga_id_setting_harga_seq', (SELECT MAX(id_setting_harga) FROM tr_setting_harga) + 1);
+SELECT setval('tr_setting_harga_detail_id_setting_harga_detail_seq', (SELECT MAX(id_setting_harga_detail) FROM tr_setting_harga_detail) + 1);
+SELECT setval('ms_merk_id_merk_seq', (SELECT MAX(id_merk) FROM ms_merk) + 1);
+SELECT setval('pos_bank_id_bank_seq', (SELECT MAX(id_bank) FROM pos_bank) + 1);
+SELECT setval('pos_edc_id_edc_seq', (SELECT MAX(id_edc) FROM pos_edc) + 1);
+SELECT setval('ms_supplier_id_supplier_seq', (SELECT MAX(id_supplier) FROM ms_supplier) + 1);
+SELECT setval('ms_warehouse_id_warehouse_seq', (SELECT MAX(id_warehouse) FROM ms_warehouse) + 1);

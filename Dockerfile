@@ -31,7 +31,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Set PHP configurations for file uploads
 RUN echo "upload_max_filesize=500M" >> /usr/local/etc/php/conf.d/uploads.ini \
     && echo "post_max_size=500M" >> /usr/local/etc/php/conf.d/uploads.ini
-
+    && echo "max_execution_time=0" >> /usr/local/etc/php/conf.d/uploads.ini
 RUN php -m | grep mongodb
 
 # RUN pecl install mongodb
