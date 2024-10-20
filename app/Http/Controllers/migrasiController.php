@@ -384,7 +384,7 @@ class migrasiController extends VierController
         DB::beginTransaction();
         try {
             ini_set('memory_limit',request()->memory);
-            ini_set('max_execution_time', request()->maximum_execution_time);
+            ini_set('max_execution_time', 0);
             $file = request()->file;
             $content = file_get_contents($file);
             $json = json_decode($content, true);
