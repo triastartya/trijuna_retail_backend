@@ -14,6 +14,7 @@ use App\Models\Master\msBarangVersion;
 use App\Models\Master\msDivisi;
 use App\Models\Master\msGroup;
 use App\Models\Master\msLokasi;
+use App\Models\Master\msSatuan;
 use App\Models\Master\trSettingHarga;
 use App\Models\Master\trSettingHargaDetail;
 use App\Repositories\Master\barangRepository;
@@ -463,6 +464,38 @@ class barangController extends VierController
             ");
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $err) {
+            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+        }
+    }
+
+    public function satuan_proses(){
+        DB::beginTransaction();
+        try {
+            ini_set('memory_limit','-1');
+            ini_set('max_execution_time', 0);
+            $data = msBarang::get();
+            DB::select('truncate ms_barang_satuan restart identity;');
+            foreach($data as $barang){
+                if($barang->kode_satuan){
+                    $satuan = msSatuan::where('kode_satuan',$barang->kode_satuan)->first();
+                    msBarangSatuan::create([
+                        'id_barang'=>$barang->id_barang,
+                        'id_satuan'=>$satuan->id_satuan,
+                        'isi'=>1,
+                    ]);
+                }
+                if($barang->kode_satuan2){
+                    
+                }
+                if($barang->kode_satuan3){
+                    
+                }
+            }
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>'oke']);
+        }
+        catch(\Exception $err) {
+            DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
     }
