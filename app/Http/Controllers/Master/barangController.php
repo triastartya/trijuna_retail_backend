@@ -157,6 +157,8 @@ class barangController extends VierController
             ]);
 
             if($request->isi_satuan2!=0 ||$request->isi_satuan2!=null){
+                msBarangSatuan::where('id_barang',$barang->id_barang)
+                ->where('id_satuan',$request->id_satuan2)->delete();
                 $satuan= msBarangSatuan::create([
                     'id_barang'=>$barang->id_barang,
                     'id_satuan'=>$request->id_satuan2,
@@ -165,6 +167,8 @@ class barangController extends VierController
             }
             
             if($request->isi_satuan3!=0 ||$request->isi_satuan3!=null){
+                msBarangSatuan::where('id_barang',$barang->id_barang)
+                ->where('id_satuan',$request->id_satuan3)->delete();
                 $satuan= msBarangSatuan::create([
                     'id_barang'=>$barang->id_barang,
                     'id_satuan'=>$request->id_satuan3,
@@ -223,14 +227,6 @@ class barangController extends VierController
             return response()->json(['success'=>false,'message'=>$ex->getMessage()]);
         }
     }
-
-    // public function lihat_kartu_stok(Request $request){
-    //     try {
-    //         $barang = msBarangKartuStok::where('id_barang',$request->id_barang)
-    //         return response()->json(['success'=>true,'data'=>$barang]);
-    //     } catch (\Exception $ex) {
-    //         return response()->json(['success'=>false,'message'=>$ex->getMessage()]);        }
-//    }
 
     public function lihat_stok(Request $request){
         try {

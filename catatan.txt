@@ -1,3 +1,5 @@
+/api/barang_satuan/proses
+
 Route::get('/all', [$controller, 'all']);
 Route::get('/', [$controller, 'index']);
 Route::get('datatables', [$controller, 'datatables']);
