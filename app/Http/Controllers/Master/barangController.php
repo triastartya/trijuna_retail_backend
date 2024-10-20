@@ -10,6 +10,7 @@ use App\Models\Master\msBarangKartuStok;
 use App\Models\Master\msBarangRak;
 use App\Models\Master\msBarangSatuan;
 use App\Models\Master\msBarangStok;
+use App\Models\Master\msBarangVersion;
 use App\Models\Master\msDivisi;
 use App\Models\Master\msGroup;
 use App\Models\Master\msLokasi;
@@ -104,6 +105,10 @@ class barangController extends VierController
                 ]);
             }
 
+            $version = msBarangVersion::where('id_barang_version',1)->first();
+            $version->version = $version->version+1;
+            $version->save();
+
             DB::commit();
             return response()->json(['success'=>true,'data'=>$barang->kode_barang]);
         } catch (\Exception $ex) {
@@ -157,6 +162,9 @@ class barangController extends VierController
                     'isi'       =>$request->isi_satuan3,
                 ]);
             }
+            $version = msBarangVersion::where('id_barang_version',1)->first();
+            $version->version = $version->version+1;
+            $version->save();
             DB::commit();
             return response()->json(['success'=>true,'data'=>$update]);
         } catch (\Exception $ex) {

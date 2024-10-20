@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Models\Master\msBarang;
+use App\Models\Master\msBarangVersion;
 use App\Models\Master\trSettingHarga;
 use App\Models\Master\trSettingHargaDetail;
 use App\Models\Master\trSettingHargaDetailLokasi;
@@ -49,6 +50,9 @@ class settingHargaController extends VierController
                     ]);
                 }
             }
+            $version = msBarangVersion::where('id_barang_version',1)->first();
+            $version->version = $version->version+1;
+            $version->save();
             DB::commit();
             return response()->json(['success'=>true,'data'=>$settingHarga->id_setting_harga]);
         }
