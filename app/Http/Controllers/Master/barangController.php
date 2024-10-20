@@ -479,6 +479,7 @@ class barangController extends VierController
             ini_set('max_execution_time', 0);
             $data = msBarang::get();
             DB::select('truncate ms_barang_satuan restart identity;');
+            DB::select('update ms_barang set isi =1;');
             foreach($data as $barang){
                 if($barang->kode_satuan){
                     $satuan = msSatuan::where('kode_satuan',$barang->kode_satuan)->first();
