@@ -390,10 +390,10 @@ class migrasiController extends VierController
             $json = json_decode($content, true);
             $data_barang = [];
             $data_setting_harga = [];
-            $setting= trSettingHarga::create([
-                 'id_lokasi' => 1,
-                 'tanggal_mulai_berlaku' => new DateTime()
-            ]);
+            // $setting= trSettingHarga::create([
+            //      'id_lokasi' => 1,
+            //      'tanggal_mulai_berlaku' => new DateTime()
+            // ]);
             foreach($json as $item){
                 $item = (array)$item;
                 $data_barang = [
@@ -430,19 +430,19 @@ class migrasiController extends VierController
                 // dd($data_barang);
                 msBarang::create($data_barang);
 
-                if($item['HargaJual'] != null OR $item['HargaJual'] !=0){
-                    $data_setting_harga =[
-                        'id_setting_harga' => $setting->id_setting_harga,
-                        'tanggal_mulai_berlaku' =>$setting->tanggal_mulai_berlaku,
-                        'id_barang' => $item['IdBarang'],
-                        'harga_jual' => $item['HargaJual'],
-                        'qty_grosir1'=> ($item['JumlahGrosir1']==null)?0:$item['JumlahGrosir1'],
-                        'harga_grosir1'=> ($item['HargaGrosir1']==null)?0:$item['HargaGrosir1'],
-                        'qty_grosir2'=> ($item['JumlahGrosir2']==null)?0:$item['JumlahGrosir2'],
-                        'harga_grosir2'=> ($item['HargaGrosir2']==null)?0:$item['HargaGrosir2'],
-                    ];
-                    trSettingHargaDetail::create($data_setting_harga);
-                }
+                // if($item['HargaJual'] != null OR $item['HargaJual'] !=0){
+                //     $data_setting_harga =[
+                //         'id_setting_harga' => $setting->id_setting_harga,
+                //         'tanggal_mulai_berlaku' =>$setting->tanggal_mulai_berlaku,
+                //         'id_barang' => $item['IdBarang'],
+                //         'harga_jual' => $item['HargaJual'],
+                //         'qty_grosir1'=> ($item['JumlahGrosir1']==null)?0:$item['JumlahGrosir1'],
+                //         'harga_grosir1'=> ($item['HargaGrosir1']==null)?0:$item['HargaGrosir1'],
+                //         'qty_grosir2'=> ($item['JumlahGrosir2']==null)?0:$item['JumlahGrosir2'],
+                //         'harga_grosir2'=> ($item['HargaGrosir2']==null)?0:$item['HargaGrosir2'],
+                //     ];
+                //     trSettingHargaDetail::create($data_setting_harga);
+                // }
             }
             // msBarang::insert($data_barang);
             // trSettingHargaDetail::insert($data_setting_harga);
