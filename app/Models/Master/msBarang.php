@@ -41,7 +41,11 @@ class msBarang extends Model
         'qty_grosir2',
         'harga_grosir2',
         'biaya_barcode',
-        'biaya_listing'
+        'biaya_listing',
+        'kode_satuan2',
+        'isi_satuan2',
+        'kode_satuan3',
+        'isi_satuan3'
     ];
     protected $primaryKey = 'id_barang';
     protected $modelFields = [
@@ -112,7 +116,11 @@ class msBarang extends Model
         'qty_grosir2'=>'',
         'harga_grosir2'=>'',
         'biaya_barcode'=>'',
-        'biaya_listing'=>''
+        'biaya_listing'=>'',
+        'kode_satuan2'=>'',
+        'isi_satuan2'=>'',
+        'kode_satuan3'=>'',
+        'isi_satuan3'=>''
         ];
     }
 
