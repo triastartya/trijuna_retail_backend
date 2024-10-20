@@ -69,6 +69,10 @@ class barangController extends VierController
             unset($data['isi_satuan2']);
             unset($data['id_satuan3']);
             unset($data['isi_satuan3']);
+            $satuan_satu = msSatuan::where('id_satuan',$data['id_satuan'])->first();
+            if($satuan_satu){
+                $data['kode_satuan'] = $satuan_satu->kode_satuan;
+            }
             $barang = msBarang::create($data);
 
             $lokasi = LokasiHelper::use();
@@ -126,6 +130,10 @@ class barangController extends VierController
             unset($data['isi_satuan2']);
             unset($data['id_satuan3']);
             unset($data['isi_satuan3']);
+            $satuan_satu = msSatuan::where('id_satuan',$data['id_satuan'])->first();
+            if($satuan_satu){
+                $data['kode_satuan'] = $satuan_satu->kode_satuan;
+            }
             $update = msBarang::where('id_barang',$request->id_barang)
             ->update($data);
             $barang = msBarang::where('id_barang',$request->id_barang)->first();
@@ -478,11 +486,7 @@ class barangController extends VierController
             foreach($data as $barang){
                 if($barang->kode_satuan){
                     $satuan = msSatuan::where('kode_satuan',$barang->kode_satuan)->first();
-                    msBarangSatuan::create([
-                        'id_barang'=>$barang->id_barang,
-                        'id_satuan'=>$satuan->id_satuan,
-                        'isi'=>1,
-                    ]);
+                    msBarang::where('id_barang',$barang->id_barang)->update(['id_satuan'=>$satuan->id_satuan]);
                 }
                 if($barang->kode_satuan2){
                     $satuan = msSatuan::where('kode_satuan',$barang->kode_satuan2)->first();
