@@ -103,7 +103,7 @@ Route::post('login/kasir',[userController::class,'login_kasir']);
 Route::get('list/kasir',[userController::class,'getkasir']);
 
 Route::get('user_list',[userController::class,'list']);
-Route::get('barang_satuan/proses',[msBarang::class,'satuan_proses']);
+Route::get('barang_satuan/proses',[barangController::class,'satuan_proses']);
 Route::put('user_update/{id_user}',[userController::class,'edit']);
 Route::get('barang/lihat_omzet/{id_barang}',[barangController::class,'lihat_omzet']);
 Route::post('barang/kartu_stok',[barangController::class,'kartu_stok']);

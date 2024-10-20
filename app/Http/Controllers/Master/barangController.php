@@ -485,10 +485,20 @@ class barangController extends VierController
                     ]);
                 }
                 if($barang->kode_satuan2){
-                    
+                    $satuan = msSatuan::where('kode_satuan',$barang->kode_satuan2)->first();
+                    msBarangSatuan::create([
+                        'id_barang'=>$barang->id_barang,
+                        'id_satuan'=>$satuan->id_satuan,
+                        'isi'=>$barang->isi_satuan2,
+                    ]);
                 }
                 if($barang->kode_satuan3){
-                    
+                    $satuan = msSatuan::where('kode_satuan',$barang->kode_satuan3)->first();
+                    msBarangSatuan::create([
+                        'id_barang'=>$barang->id_barang,
+                        'id_satuan'=>$satuan->id_satuan,
+                        'isi'=>$barang->isi_satuan3,
+                    ]);
                 }
             }
             DB::commit();
