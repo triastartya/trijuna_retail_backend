@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Master\barangController;
 use App\Http\Controllers\migrasiController;
 use App\Models\Master\msBarang;
 use App\Models\Master\msBarangStok;
@@ -188,6 +189,13 @@ Route::get('migrasi/barangstok/truncate',function(){
     DB::select('truncate ms_barang_kartu_stok restart identity;');
     return true;
 });
+
+Route::get('/migrasi_updatesatuan',function(){
+    $data = [];
+    return view('migrasi.updatesatuan',['items'=>$data]);
+});
+Route::get('migrasi/updatesatuan',[barangController::class,'satuan_proses']);
+
 
 Route::post('login', function () {
     return response()->json(['status'=>false,'data'=>'anda belum login']);

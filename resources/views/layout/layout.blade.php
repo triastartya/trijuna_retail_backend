@@ -48,6 +48,7 @@
         <a href="{{ url('migrasi_supplier') }}" class="btn btn-outline-primary btn-sm me-3"> supplier</a>
         <a href="{{ url('migrasi_warehouse') }}" class="btn btn-outline-primary btn-sm me-3"> warehouse</a>
         <a href="{{ url('migrasi_barang') }}" class="btn btn-outline-primary btn-sm me-3"> barang</a>
+        <a href="{{ url('migrasi_updatesatuan') }}" class="btn btn-outline-primary btn-sm me-3"> update satuan</a>
         <a href="{{ url('migrasi_barangstok') }}" class="btn btn-outline-primary btn-sm me-3"> Stok</a>
       </div>
       <a href="#"><i class="fa-solid fa-cart-shopping text-primary mx-2"></i></a>
