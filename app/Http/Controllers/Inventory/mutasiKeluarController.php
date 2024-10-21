@@ -107,6 +107,7 @@ class mutasiKeluarController extends VierController
             $mutasi->online = false;
             $mutasi->save();
             $detail_mutasi = trMutasiLokasiDetail::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->get();
+            $lokasi = msLokasi::where('id_lokasi',$mutasi->id_lokasi_tujuan)->first();
             foreach($detail_mutasi as $detail){
                 InventoryStokHelper::pengurangan((object)[
                     'id_barang'       => $detail['id_barang'],
@@ -117,7 +118,8 @@ class mutasiKeluarController extends VierController
                     'id_header_trans' => $mutasi->id_mutasi_lokasi,
                     'id_detail_trans' => $detail['id_mutasi_lokasi_detail'],
                     'jenis'           => 'Mutasi Keluar',
-                    'nominal'         => $detail['sub_total'] // hpp avarage * qty
+                    'nominal'         => $detail['sub_total'], // hpp avarage * qty
+                    'keterangan'      => 'Mutasi Keluar ke '.$lokasi->nama_lokasi
                 ]);
             }
             DB::commit();
@@ -166,6 +168,7 @@ class mutasiKeluarController extends VierController
             $mutasi->online = true;
             $mutasi->save();
             $detail_mutasi = trMutasiLokasiDetail::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->get();
+            $lokasi = msLokasi::where('id_lokasi',$mutasi->id_lokasi_tujuan)->first();
             foreach($detail_mutasi as $detail){
                 InventoryStokHelper::pengurangan((object)[
                     'id_barang'       => $detail['id_barang'],
@@ -176,7 +179,8 @@ class mutasiKeluarController extends VierController
                     'id_header_trans' => $mutasi->id_mutasi_lokasi,
                     'id_detail_trans' => $detail['id_mutasi_lokasi_detail'],
                     'jenis'           => 'Mutasi Keluar',
-                    'nominal'         => $detail['sub_total'] // hpp avarage * qty
+                    'nominal'         => $detail['sub_total'], // hpp avarage * qty
+                    'keterangan'      => 'Mutasi Keluar ke '.$lokasi->nama_lokasi
                 ]);
             }
 

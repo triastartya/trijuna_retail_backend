@@ -86,7 +86,8 @@ class pemusnahanController extends VierController
                     'id_header_trans' => $pemusnahan->id_pemusnahan,
                     'id_detail_trans' => $detail->id_pemusnahan_detail,
                     'jenis'           => 'pemusnahan Bahan',
-                    'nominal'         => $detail->sub_total
+                    'nominal'         => $detail->sub_total,
+                    'keterangan'      => 'Pemusnahan Bahan nomor dokument '.$pemusnahan->nomor_pemusnahan
                 ]);
                 if(!$inventoryPengurangan[0]){
                     DB::rollBack();

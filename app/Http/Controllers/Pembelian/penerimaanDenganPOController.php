@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pembelian;
 use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\InventoryStokHelper;
 use App\Models\Master\msBarang;
+use App\Models\Master\msSupplier;
 use App\Models\Pembelian\trPemesanan;
 use App\Models\Pembelian\trPemesananDetail;
 use App\Models\Pembelian\trPenerimaan;
@@ -130,6 +131,7 @@ class penerimaanDenganPOController extends VierController
             $penerimaan->save();
             $penerimaan->detail = trPenerimaanDetail::where('id_penerimaan',request()->id_penerimaan)->get();
             //=== update stok
+            $supplier = msSupplier::where('id_supplier',$penerimaan->id_supplier)->first();
             foreach(request()->detail as $detail){
 
                 $penerimaan_detail                  = trPenerimaanDetail::where('id_penerimaan_detail',$detail['id_penerimaan_detail'])->first();
@@ -155,7 +157,8 @@ class penerimaanDenganPOController extends VierController
                     'id_header_trans' => $penerimaan->id_penerimaan,
                     'id_detail_trans' => $detail['id_penerimaan_detail'],
                     'jenis'           => 'Penerimaan Dengan PO',
-                    'nominal'         => $detail['sub_total']
+                    'nominal'         => $detail['sub_total'],
+                    'keterangan'      => 'Penerimaan Dengan PO '.$supplier->nama_supplier
                 ]);
 
                 if(request()->is_update_harga_order){

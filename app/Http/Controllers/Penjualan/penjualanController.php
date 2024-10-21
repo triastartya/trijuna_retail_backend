@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Penjualan\posPenjualan;
 use App\Models\Penjualan\posPenjualanDetail;
 use App\Models\Penjualan\posPenjualanPayment;
+use App\Models\User;
 use App\Repositories\Penjualan\penjualanRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,6 +36,7 @@ class penjualanController extends VierController
             unset($data['detail']);
             $data['is_bayar'] = true;
             $penjualan = posPenjualan::create($data);
+            $user = User::where('id_user',$penjualan->id_user_kasir)->frist();
             foreach($request->detail as $detail){
                 $detail['id_penjualan'] = $penjualan->id_penjualan;
                 $penjualan_detail =posPenjualanDetail::create($detail);
@@ -47,7 +49,8 @@ class penjualanController extends VierController
                     'id_header_trans' => $penjualan->id_penjualan,
                     'id_detail_trans' => $penjualan_detail->id_penjualan_detail,
                     'jenis'           => 'Penjualan Kasir',
-                    'nominal'         => $detail['sub_total'] // hpp avarage * qty
+                    'nominal'         => $detail['sub_total'], // hpp avarage * qty
+                    'keterangan'      => 'Penjualan '.$user->nama
                 ]);
             }
             foreach($request->payment as $payment){

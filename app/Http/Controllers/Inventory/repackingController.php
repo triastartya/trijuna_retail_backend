@@ -96,7 +96,8 @@ class repackingController extends VierController
                 'id_header_trans' => $repacking->id_repacking,
                 'id_detail_trans' => $repacking->id_repacking,
                 'jenis'           => 'repacking Hasil',
-                'nominal'         => $repacking->total_hpp_avarage_repacking
+                'nominal'         => $repacking->total_hpp_avarage_repacking,
+                'keterangan'      => 'Repacking dari nomor dokumen'.$repacking->nomor_repacking,
             ]);
             if(!$inventoryPengurangan[0]){
                 DB::rollBack();
@@ -112,8 +113,9 @@ class repackingController extends VierController
                     'nomor_reff'      => $repacking->nomor_repacking,
                     'id_header_trans' => $repacking->id_repacking,
                     'id_detail_trans' => $detail->id_repacking_detail,
-                    'jenis'           => 'repacking Bahan',
-                    'nominal'         => $detail->sub_total
+                    'jenis'           => 'Hasil Repacking',
+                    'nominal'         => $detail->sub_total,
+                    'keterangan'      => 'Hasil Repacking dari nomor dokumen'.$repacking->nomor_repacking,
                 ]);
                 if(!$inventoryPenambahan[0]){
                     DB::rollBack();

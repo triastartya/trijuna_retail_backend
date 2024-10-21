@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pembelian;
 
 use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\InventoryStokHelper;
+use App\Models\Master\msSupplier;
 use App\Models\Pembelian\trReturPembelian;
 use App\Models\Pembelian\trReturPembelianDetail;
 use App\Repositories\Pembelian\returPembelianRepository;
@@ -75,7 +76,7 @@ class returPembelianController extends VierController
             $retur_pembelian->save();
             $retur_pembelian->detail = trReturPembelianDetail::where('id_retur_pembelian',request()->id_retur_pembelian)->get();
             //=== update stok
-            
+            $supplier = msSupplier::where('id_supplier',$retur_pembelian->id_supplier)->first();
             foreach($retur_pembelian->detail as $detail){
                 $inventory = InventoryStokHelper::pengurangan((object)[
                     'id_barang'       => $detail->id_barang,
@@ -86,7 +87,8 @@ class returPembelianController extends VierController
                     'id_header_trans' => $retur_pembelian->id_retur_pembelian,
                     'id_detail_trans' => $detail->id_retur_pembelian_detail,
                     'jenis'           => 'Retur Pembelian',
-                    'nominal'         => $detail->sub_total
+                    'nominal'         => $detail->sub_total,
+                    'keterangan'      => 'Retur Pembalian '.$supplier->nama_supplier
                 ]);
                 if(!$inventory[0]){
                     DB::rollBack();

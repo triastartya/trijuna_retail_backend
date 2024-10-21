@@ -7,6 +7,7 @@ use App\Helpers\InventoryStokHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Penjualan\posRefund;
 use App\Models\Penjualan\posRefundDetail;
+use App\Models\User;
 use App\Repositories\Penjualan\refundRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,6 +30,7 @@ class refundController extends VierController
             $data['no_retur_penjualan'] = GeneradeNomorHelper::long('refund');
             unset($data['detail']);
             $refund = posRefund::create($data);
+            $user = User::where('id_user',$refund->id_user_kasir)->frist();
             foreach($request->detail as $detail){
                 $detail['id_refund'] = $refund->id_refund;
                 $refund_detail =posRefundDetail::create($detail);
@@ -41,7 +43,8 @@ class refundController extends VierController
                     'id_header_trans' => $refund->id_refund,
                     'id_detail_trans' => $refund_detail->id_refund_detail,
                     'jenis'           => 'Retur Penjualan Kasir',
-                    'nominal'         => $detail['sub_total'] // hpp avarage * qty
+                    'nominal'         => $detail['sub_total'], // hpp avarage * qty
+                    'keterangan'      => 'Retur Penjualan '.$user->nama
                 ]);
             }
             DB::commit();

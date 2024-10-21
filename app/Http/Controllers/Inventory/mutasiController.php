@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Viershaka\Vier\VierController;
 use App\Models\Inventory\trMutasi;
 use App\Models\Inventory\trMutasiDetail;
+use App\Models\Master\msWarehouse;
 use App\Repositories\Master\barangRepository;
 use Illuminate\Support\Facades\DB;
 
@@ -78,6 +79,8 @@ class mutasiController extends VierController
             $mutasi->status_mutasi_warehouse = 'VALIDATED';
             $mutasi->save();
             $mutasi->detail = trMutasiDetail::where('id_mutasi_warehouse',request()->id_mutasi_warehouse)->get();
+            $warehouse_asal = msWarehouse::where('id_warehouse',$mutasi->warehouse_asal)->first();
+            $warehouse_tujuan = msWarehouse::where('id_warehouse',$mutasi->warehouse_tujuan)->first();
             //=== update stok
             foreach($mutasi->detail as $detail){
                 $inventoryPengurangan = InventoryStokHelper::pengurangan((object)[
@@ -89,7 +92,8 @@ class mutasiController extends VierController
                     'id_header_trans' => $mutasi->id_mutasi_warehouse,
                     'id_detail_trans' => $detail->id_mutasi_warehouse_detail,
                     'jenis'           => 'Mutasi Warehouse Asal',
-                    'nominal'         => $detail->sub_total
+                    'nominal'         => $detail->sub_total,
+                    'keterangan'      => 'Mutasi Warehouse ke '.$warehouse_tujuan->warehouse
                 ]);
                 if(!$inventoryPengurangan[0]){
                     DB::rollBack();
@@ -104,7 +108,8 @@ class mutasiController extends VierController
                     'id_header_trans' => $mutasi->id_mutasi_warehouse,
                     'id_detail_trans' => $detail->id_mutasi_warehouse_detail,
                     'jenis'           => 'Mutasi Warehouse Tujuan',
-                    'nominal'         => $detail->sub_total
+                    'nominal'         => $detail->sub_total,
+                    'keterangan'      => 'Mutasi Warehouse dari '.$warehouse_asal->warehouse
                 ]);
                 if(!$inventoryPenambahan[0]){
                     DB::rollBack();

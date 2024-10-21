@@ -96,7 +96,8 @@ class produksiController extends VierController
                 'id_header_trans' => $produksi->id_produksi,
                 'id_detail_trans' => $produksi->id_produksi,
                 'jenis'           => 'Produksi Hasil',
-                'nominal'         => $produksi->total_hpp_avarage_produksi
+                'nominal'         => $produksi->total_hpp_avarage_produksi,
+                'keterangan'      => 'Produksi Hasil dari nomor dokumen'.$produksi->nomor_produksi,
             ]);
             if(!$inventoryPenambahan[0]){
                 DB::rollBack();
@@ -113,7 +114,8 @@ class produksiController extends VierController
                     'id_header_trans' => $produksi->id_produksi,
                     'id_detail_trans' => $detail->id_produksi_detail,
                     'jenis'           => 'Produksi Bahan',
-                    'nominal'         => $detail->sub_total
+                    'nominal'         => $detail->sub_total,
+                    'keterangan'      => 'Produksi Untuk Bahan dari nomor dokumen'.$produksi->nomor_produksi,
                 ]);
                 if(!$inventoryPengurangan[0]){
                     DB::rollBack();

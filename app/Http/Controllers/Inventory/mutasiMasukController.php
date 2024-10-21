@@ -164,6 +164,7 @@ class mutasiMasukController extends VierController
             $mutasi->status_mutasi_lokasi = 'VALIDATED';
             $mutasi->save();
             $detail_mutasi = trMutasiLokasiDetail::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->get();
+            $lokasi = msLokasi::where('id_lokasi',$mutasi->id_lokasi_asal)->first();
             foreach($detail_mutasi as $detail){
                 InventoryStokHelper::penambahan((object)[
                     'id_barang'       => $detail['id_barang'],
@@ -174,7 +175,8 @@ class mutasiMasukController extends VierController
                     'id_header_trans' => $mutasi->id_mutasi_lokasi,
                     'id_detail_trans' => $detail['id_mutasi_lokasi_detail'],
                     'jenis'           => 'Mutasi Masuk',
-                    'nominal'         => $detail['sub_total'] // hpp avarage * qty
+                    'nominal'         => $detail['sub_total'], // hpp avarage * qty,
+                    'keterangan'      => 'Mutasi Masuk ke '.$lokasi->nama_lokasi
                 ]);
                 InventoryStokHelper::hitung_hpp_avarage($detail['id_barang'],$detail['qty'],$detail['sub_total']);
             }

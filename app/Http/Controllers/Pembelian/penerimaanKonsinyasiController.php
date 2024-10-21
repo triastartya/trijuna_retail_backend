@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pembelian;
 use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\InventoryStokHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Master\msSupplier;
 use App\Models\Pembelian\trPenerimaanKonsinyasi;
 use App\Models\Pembelian\trPenerimaanKonsinyasiDetail;
 use App\Repositories\Pembelian\pemesananRepository;
@@ -77,7 +78,7 @@ class penerimaanKonsinyasiController extends VierController
             $penerimaan->save();
             $penerimaan->detail = trPenerimaanKonsinyasiDetail::where('id_penerimaan',request()->id_penerimaan)->get();
             //=== update stok
-            
+            $supplier = msSupplier::where('id_supplier',$penerimaan->id_supplier)->first();
             foreach($penerimaan->detail as $detail){
                 InventoryStokHelper::penambahan((object)[
                     'id_barang'       => $detail->id_barang,
@@ -88,7 +89,8 @@ class penerimaanKonsinyasiController extends VierController
                     'id_header_trans' => $penerimaan->id_penerimaan,
                     'id_detail_trans' => $detail->id_penerimaan_detail,
                     'jenis'           => 'Penerimaan Tanpa PO',
-                    'nominal'         => $detail->sub_total
+                    'nominal'         => $detail->sub_total,
+                    'keterangan'      => 'Penerimaan Konsinyasi PO '.$supplier->nama_supplier
                 ]);
                 InventoryStokHelper::hitung_hpp_avarage($detail->id_barang,$detail->qty,$detail->sub_total);
             }
