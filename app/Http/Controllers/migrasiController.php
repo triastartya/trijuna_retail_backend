@@ -587,7 +587,7 @@ class migrasiController extends VierController
                 msBarangStok::create([
                     'id_warehouse' => 4,
                     'id_barang' => $item['IdBarang'],
-                    'qty' =>$item['StokGudangBadStok']
+                    'qty' =>$item['StockGudangBadStok']
                 ]);
                 msBarangKartuStok::create([
                     'tanggal' => date('Y-m-d'),
@@ -597,12 +597,12 @@ class migrasiController extends VierController
                     'id_header_trans' =>1,
                     'id_detail_trans' =>1,
                     'stok_awal' => 0,
-                    'nominal_awal' => $item['HppAverage'] * $item['StokGudangBadStok'],
-                    'stok_masuk' => $item['StokGudangBadStok'] ,
+                    'nominal_awal' => $item['HppAverage'] * $item['StockGudangBadStok'],
+                    'stok_masuk' => $item['StockGudangBadStok'] ,
                     'nominal_masuk' => 0,
                     'stok_keluar' => 0,
-                    'nominal_keluar' => $item['HppAverage'] * $item['StokGudangBadStok'],
-                    'stok_akhir' => $item['StokGudangBadStok'],
+                    'nominal_keluar' => $item['HppAverage'] * $item['StockGudangBadStok'],
+                    'stok_akhir' => $item['StockGudangBadStok'],
                     'nominal_akhir' => 0,
                     'keterangan' =>'STOK AWAL',
                 ]);
