@@ -503,4 +503,115 @@ class migrasiController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+
+    public function barangstokkartustok(){
+        DB::beginTransaction();
+        try {
+            ini_set('memory_limit',request()->memory);
+            ini_set('max_execution_time', 0);
+            $file = request()->file;
+            $content = file_get_contents($file);
+            $json = json_decode($content, true);
+
+            foreach($json as $item){
+                //=== gudang
+                msBarangStok::create([
+                    'id_warehouse' => 1,
+                    'id_barang' => $item['IdBarang'],
+                    'qty' =>$item['StokGudang']
+                ]);
+                msBarangKartuStok::create([
+                    'tanggal' => date('Y-m-d'),
+                    'id_warehouse' => 1,
+                    'id_barang' => $item['IdBarang'],
+                    'nomor_reff' =>'STOK AWAL',
+                    'id_header_trans' =>1,
+                    'id_detail_trans' =>1,
+                    'stok_awal' => 0,
+                    'nominal_awal' => $item['HppAverage'] * $item['StokGudang'],
+                    'stok_masuk' => $item['StokGudang'] ,
+                    'nominal_masuk' => 0,
+                    'stok_keluar' => 0,
+                    'nominal_keluar' => $item['HppAverage'] * $item['StokGudang'],
+                    'stok_akhir' => $item['StokGudang'],
+                    'nominal_akhir' => 0,
+                    'keterangan' =>'STOK AWAL',
+                ]);
+                //======== toko
+                msBarangStok::create([
+                    'id_warehouse' => 2,
+                    'id_barang' => $item['IdBarang'],
+                    'qty' =>$item['StokToko']
+                ]);
+                msBarangKartuStok::create([
+                    'tanggal' => date('Y-m-d'),
+                    'id_warehouse' => 2,
+                    'id_barang' => $item['IdBarang'],
+                    'nomor_reff' =>'STOK AWAL',
+                    'id_header_trans' =>1,
+                    'id_detail_trans' =>1,
+                    'stok_awal' => 0,
+                    'nominal_awal' => $item['HppAverage'] * $item['StokToko'],
+                    'stok_masuk' => $item['StokToko'] ,
+                    'nominal_masuk' => 0,
+                    'stok_keluar' => 0,
+                    'nominal_keluar' => $item['HppAverage'] * $item['StokToko'],
+                    'stok_akhir' => $item['StokToko'],
+                    'nominal_akhir' => 0,
+                    'keterangan' =>'STOK AWAL',
+                ]);
+                //======== StokGudangRetur
+                msBarangStok::create([
+                    'id_warehouse' => 3,
+                    'id_barang' => $item['IdBarang'],
+                    'qty' =>$item['StokGudangRetur']
+                ]);
+                msBarangKartuStok::create([
+                    'tanggal' => date('Y-m-d'),
+                    'id_warehouse' => 3,
+                    'id_barang' => $item['IdBarang'],
+                    'nomor_reff' =>'STOK AWAL',
+                    'id_header_trans' =>1,
+                    'id_detail_trans' =>1,
+                    'stok_awal' => 0,
+                    'nominal_awal' => $item['HppAverage'] * $item['StokGudangRetur'],
+                    'stok_masuk' => $item['StokGudangRetur'] ,
+                    'nominal_masuk' => 0,
+                    'stok_keluar' => 0,
+                    'nominal_keluar' => $item['HppAverage'] * $item['StokGudangRetur'],
+                    'stok_akhir' => $item['StokGudangRetur'],
+                    'nominal_akhir' => 0,
+                    'keterangan' =>'STOK AWAL',
+                ]);
+                //======== StokGudangBadStok
+                msBarangStok::create([
+                    'id_warehouse' => 4,
+                    'id_barang' => $item['IdBarang'],
+                    'qty' =>$item['StokGudangBadStok']
+                ]);
+                msBarangKartuStok::create([
+                    'tanggal' => date('Y-m-d'),
+                    'id_warehouse' => 4,
+                    'id_barang' => $item['IdBarang'],
+                    'nomor_reff' =>'STOK AWAL',
+                    'id_header_trans' =>1,
+                    'id_detail_trans' =>1,
+                    'stok_awal' => 0,
+                    'nominal_awal' => $item['HppAverage'] * $item['StokGudangBadStok'],
+                    'stok_masuk' => $item['StokGudangBadStok'] ,
+                    'nominal_masuk' => 0,
+                    'stok_keluar' => 0,
+                    'nominal_keluar' => $item['HppAverage'] * $item['StokGudangBadStok'],
+                    'stok_akhir' => $item['StokGudangBadStok'],
+                    'nominal_akhir' => 0,
+                    'keterangan' =>'STOK AWAL',
+                ]);
+            }
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$json]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
 }

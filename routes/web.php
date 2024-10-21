@@ -197,6 +197,15 @@ Route::get('/migrasi_updatesatuan',function(){
 Route::get('migrasi/updatesatuan',[barangController::class,'satuan_proses']);
 
 
+Route::get('/migrasi_barangstokkartustok',function(){
+    $data = [];
+    return view('migrasi.barangstokfromkartustok',['items'=>$data]);
+});
+Route::get('migrasi/barangstokkartustok',[migrasiController::class,'barangstokkartustok']);
+
+
+
+
 Route::post('login', function () {
     return response()->json(['status'=>false,'data'=>'anda belum login']);
 });
