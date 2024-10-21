@@ -201,7 +201,7 @@ Route::get('/migrasi_barangstokkartustok',function(){
     $data = [];
     return view('migrasi.barangstokfromkartustok',['items'=>$data]);
 });
-Route::get('migrasi/barangstokkartustok',[migrasiController::class,'barangstokkartustok']);
+Route::post('migrasi/barangstokkartustok',[migrasiController::class,'barangstokkartustok']);
 
 
 
