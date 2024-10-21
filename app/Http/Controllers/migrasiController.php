@@ -505,7 +505,7 @@ class migrasiController extends VierController
     }
 
     public function barangstokkartustok(){
-        DB::beginTransaction();
+        // DB::beginTransaction();
         try {
             ini_set('memory_limit',request()->memory);
             ini_set('max_execution_time', 0);
@@ -607,10 +607,10 @@ class migrasiController extends VierController
                     'keterangan' =>'STOK AWAL',
                 ]);
             }
-            DB::commit();
+            // DB::commit();
             return response()->json(['success'=>true,'data'=>$json]);
         } catch (\Exception $ex) {
-            DB::rollBack();
+            // DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
