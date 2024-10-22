@@ -46,8 +46,6 @@ Pwd     9.3
 Mall    9.8
 sion    9.67
 
-truncate ms_barang_kartu_stok restart identity;
-truncate ms_barang_stok restart identity;
 truncate pos_kroscek_tutup_kasir restart identity ;
 truncate pos_kroscek_tutup_kasir_detail_pendapatan restart identity;
 truncate pos_modal_kasir restart identity;

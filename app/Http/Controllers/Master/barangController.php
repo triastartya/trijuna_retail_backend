@@ -513,7 +513,7 @@ class barangController extends VierController
 
     public function perbaikan_kartu_stok(){
         DB::beginTransaction();
-        $data = msBarang::where('is_active',true)->get();
+        $data = DB::select('SELECT id_barang from pos_penjualan_detail GROUP BY id_barang');
         try {
             foreach($data as $key=>$barang){
                 // kartu stok
@@ -521,27 +521,25 @@ class barangController extends VierController
                 $kartustok = msBarangKartuStok::where('id_barang',$barang->id_barang)
                     ->orderBy('created_at', 'asc')
                     ->get();
+
                 $stok_awal = 0;
                 $nominal_awal = 0;
                 foreach($kartustok as $key=>$kartu){
-                    if($key==0){
-                        $stok_akhir = $stok_awal+$kartu->stok_masuk-$kartu->stok_keluar;
-                        $nominal_akhir = $nominal_awal+$kartu->nominal_masik-$kartu->nominal_keluar;
-                    }else{
-                        $stok_akhir = $kartu->stok_awal+$kartu->stok_masuk-$kartu->stok_keluar;
-                        $nominal_akhir = $kartu->nominal_awal+$kartu->nominal_masik-$kartu->nominal_keluar;
-                    }
-                    msBarangKartuStok::where('id_kartu_stok')
+                    $stok_akhir = $stok_awal+$kartu->stok_masuk-$kartu->stok_keluar;
+                    $nominal_akhir = $nominal_awal+$kartu->nominal_masuk-$kartu->nominal_keluar;
+                    msBarangKartuStok::where('id_kartu_stok',$kartu->id_kartu_stok)
                     ->update([
                         'stok_awal'=>$stok_awal,
                         'stok_akhir'=>$stok_akhir,
                         'nominal_awal'=>$nominal_awal,
                         'nominal_akhir'=>$nominal_akhir
                     ]);
-                    $stok_awal = $stok_awal + $stok_akhir;
-                    $nominal_awal = $nominal_awal + $nominal_akhir;
+                    $stok_awal = $stok_akhir;
+                    $nominal_awal = $nominal_akhir;
                 }
             }
+            DB::commit();
+            return response()->json(['success'=>true,'message'=>'Oke']);
         }
         catch(\Exception $err) {
             DB::rollBack();

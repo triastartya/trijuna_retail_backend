@@ -51,6 +51,8 @@
         <a href="{{ url('migrasi_updatesatuan') }}" class="btn btn-outline-primary btn-sm me-3"> update satuan</a>
         <a href="{{ url('migrasi_barangstok') }}" class="btn btn-outline-primary btn-sm me-3"> Stok</a>
         <a href="{{ url('migrasi_barangstokkartustok') }}" class="btn btn-outline-success btn-sm me-3"> Stok dari kartu stok</a>
+        <a href="{{ url('migrasi_kartustok') }}" class="btn btn-outline-danger btn-sm me-3"> kartu stok</a>
+
       </div>
       <a href="#"><i class="fa-solid fa-cart-shopping text-primary mx-2"></i></a>
     </div>

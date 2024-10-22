@@ -204,6 +204,11 @@ Route::get('/migrasi_barangstokkartustok',function(){
 Route::post('migrasi/barangstokkartustok',[migrasiController::class,'barangstokkartustok']);
 
 
+Route::get('/migrasi_kartustok',function(){
+    $data = [];
+    return view('migrasi.kartustok',['items'=>$data]);
+});
+Route::post('migrasi/kartustok',[barangController::class,'perbaikan_kartu_stok']);
 
 
 Route::post('login', function () {
