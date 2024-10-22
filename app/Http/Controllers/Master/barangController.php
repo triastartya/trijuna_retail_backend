@@ -515,10 +515,35 @@ class barangController extends VierController
         DB::beginTransaction();
         $data = DB::select('SELECT id_barang from pos_penjualan_detail GROUP BY id_barang');
         try {
+            // Toko 
+            $wharehouse_toko = 2;
+            $wharehouse_gudang = 1;
             foreach($data as $key=>$barang){
                 // kartu stok
-                // dd($qty_fisik - $barang->qty_capture);
+                $kartustok_toko = msBarangKartuStok::where('id_barang',$barang->id_barang)
+                    ->where('id_warehouse',$wharehouse_toko)
+                    ->orderBy('created_at', 'asc')
+                    ->get();
+
+                $stok_awal_toko = 0;
+                $nominal_awal_toko = 0;
+                foreach($kartustok_toko as $key=>$kartu){
+                    $stok_akhir_toko = $stok_awal_toko+$kartu->stok_masuk-$kartu->stok_keluar;
+                    $nominal_akhir_toko = $nominal_awal_toko+$kartu->nominal_masuk-$kartu->nominal_keluar;
+                    msBarangKartuStok::where('id_kartu_stok',$kartu->id_kartu_stok)
+                    ->update([
+                        'stok_awal'=>$stok_awal_toko,
+                        'stok_akhir'=>$stok_akhir_toko,
+                        'nominal_awal'=>$nominal_awal_toko,
+                        'nominal_akhir'=>$nominal_akhir_toko
+                    ]);
+                    $stok_awal_toko = $stok_akhir_toko;
+                    $nominal_awal_toko = $nominal_akhir_toko;
+                }
+
+                // kartu gudang
                 $kartustok = msBarangKartuStok::where('id_barang',$barang->id_barang)
+                    ->where('id_warehouse',$wharehouse_gudang)
                     ->orderBy('created_at', 'asc')
                     ->get();
 
