@@ -30,7 +30,7 @@ class refundController extends VierController
             $data['no_retur_penjualan'] = GeneradeNomorHelper::long('refund');
             unset($data['detail']);
             $refund = posRefund::create($data);
-            $user = User::where('id_user',$refund->id_user_kasir)->frist();
+            $user = User::where('id_user',$refund->id_user_kasir)->first();
             foreach($request->detail as $detail){
                 $detail['id_refund'] = $refund->id_refund;
                 $refund_detail =posRefundDetail::create($detail);

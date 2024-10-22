@@ -36,7 +36,7 @@ class penjualanController extends VierController
             unset($data['detail']);
             $data['is_bayar'] = true;
             $penjualan = posPenjualan::create($data);
-            $user = User::where('id_user',$penjualan->id_user_kasir)->frist();
+            $user = User::where('id_user',$penjualan->id_user_kasir)->first();
             foreach($request->detail as $detail){
                 $detail['id_penjualan'] = $penjualan->id_penjualan;
                 $penjualan_detail =posPenjualanDetail::create($detail);
