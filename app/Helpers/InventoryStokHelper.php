@@ -27,7 +27,7 @@ class InventoryStokHelper
         }
         // update kartu stok
         $kartu_stok = msBarangKartuStok::where('id_barang',$data->id_barang)
-                            ->orderBy('tanggal','desc')
+                            ->orderBy('created_at','desc')
                             ->orderBy('id_kartu_stok','desc')
                             ->lockForUpdate()
                             ->first();
@@ -97,7 +97,7 @@ class InventoryStokHelper
         }
         // update kartu stok
         $kartu_stok = msBarangKartuStok::where('id_barang',$data->id_barang)
-                            ->orderBy('tanggal','desc')
+                            ->orderBy('created_at','desc')
                             ->orderBy('id_kartu_stok','desc')
                             ->lockForUpdate()
                             ->first();

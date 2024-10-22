@@ -450,7 +450,7 @@ class barangController extends VierController
         try {
             $kartu_stok = DB::select("select mbks.*,mu.nama from ms_barang_kartu_stok mbks
                             inner join users mu on mbks.created_by = mu.id_user
-                            where mbks.tanggal between '".request()->start."' and '".request()->end."' and mbks.id_barang = ".request()->id_barang." and mbks.id_warehouse = ".request()->id_warehouse);
+                            where mbks.tanggal between '".request()->start."' and '".request()->end."' and mbks.id_barang = ".request()->id_barang." and mbks.id_warehouse = ".request()->id_warehouse ." order by mbks.created_at asc");
             return response()->json(['success'=>true,'data'=>$kartu_stok]);
         } catch(\Exception $err) {
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
