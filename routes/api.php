@@ -97,6 +97,8 @@ Route::get('health',function(){
     return response()->json(['success'=>true,'data'=>'health']);
 });
 
+Route::get('perbaikan_kartu_stok',[barangController::class,'perbaikan_kartu_stok']);
+
 Route::post('register',[userController::class,'register']);
 Route::post('login',[userController::class,'login']);
 Route::post('login/kasir',[userController::class,'login_kasir']);
