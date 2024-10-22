@@ -513,7 +513,7 @@ class barangController extends VierController
 
     public function perbaikan_kartu_stok(){
         DB::beginTransaction();
-        $data = DB::select('SELECT id_barang from pos_penjualan_detail GROUP BY id_barang');
+        $data = DB::select('SELECT id_barang from tr_mutasi_warehouse_detail GROUP BY id_barang');
         try {
             // Toko 
             $wharehouse_toko = 2;
