@@ -49,7 +49,7 @@ class repackingController extends VierController
     
     public function lookup_barang(){
         try{
-            $data = $this->barangUraiRepository->by_id_barang();
+            $data = $this->barangUraiRepository->by_id_barang_param(request()->id_barang);
             return response()->json(['status'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);

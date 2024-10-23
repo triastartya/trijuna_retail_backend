@@ -38,7 +38,7 @@ class barangUraiRepository extends VierRepository
         ',[request()->id_barang]);
     }
 
-    public function by_id_barang_param()
+    public function by_id_barang_param($id_barang)
     {
         return QueryHelper::queryParam("
             select
@@ -58,7 +58,7 @@ class barangUraiRepository extends VierRepository
             left join ms_satuan ms on mb.id_satuan = ms.id_satuan
             inner join users uc on uc.id_user = mbu.created_by
             inner join users uu on uu.id_user = mbu.updated_by
-            where mbu.id_barang = ?
-        ",[request()->id_barang]);
+            where mbu.id_barang = ".$id_barang."
+        ",request());
     }
 }
