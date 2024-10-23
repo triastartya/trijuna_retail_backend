@@ -258,7 +258,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         });
         
         Route::prefix('pemusnahan')->group(function(){
-            Route::get('lookup_barang/{id_barang}',[pemusnahanController::class,'lookup_barang']);
+            Route::post('lookup_barang_by_id_warehouse/{id_warehouse}',[pemusnahanController::class,'lookup_barang']);
             Route::post('insert',[pemusnahanController::class,'insert']);
             Route::get('get_by_id/{id_pemusnahan}',[pemusnahanController::class,'get_by_id']);
             Route::post('get_by_param',[pemusnahanController::class,'get_by_param']);

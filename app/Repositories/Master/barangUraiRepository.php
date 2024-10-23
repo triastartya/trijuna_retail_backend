@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Master;
 
+use App\Helpers\QueryHelper;
 use App\Models\Master\msBarangUrai;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierRepository;
@@ -33,5 +34,29 @@ class barangUraiRepository extends VierRepository
             inner join users uu on uu.id_user = mbu.updated_by
             where mbu.id_barang = ?
         ',[request()->id_barang]);
+    }
+
+    public function by_id_barang_param()
+    {
+        return QueryHelper::queryParam("
+            select
+            mbu.urai_barang as id_barang,
+            mbu.id_barang_urai,
+            mb.barcode,
+            mb.kode_barang,
+            mb.nama_barang,
+            mbu.qty_urai,
+            ms.kode_satuan,
+            mb.hpp_average,
+            mbu.created_by,
+            mbu.updated_by,
+            mbu.created_at,
+            mbu.updated_at from ms_barang_urai mbu
+            inner join ms_barang mb on mbu.urai_barang = mb.id_barang
+            left join ms_satuan ms on mb.id_satuan = ms.id_satuan
+            inner join users uc on uc.id_user = mbu.created_by
+            inner join users uu on uu.id_user = mbu.updated_by
+            where mbu.id_barang = ?
+        ",[request()->id_barang]);
     }
 }

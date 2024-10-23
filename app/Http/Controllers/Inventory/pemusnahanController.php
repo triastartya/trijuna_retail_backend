@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Inventory\trPemusnahan;
 use App\Models\Inventory\trPemusnahanDetail;
 use App\Repositories\Inventory\pemusnahanRepository;
+use App\Repositories\Master\barangRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierController;
@@ -15,9 +16,11 @@ use Viershaka\Vier\VierController;
 class pemusnahanController extends VierController
 {
     public $repository;
-    
+    public $barangRepository;
+
     public function __construct()
     {
+        $this->barangRepository = new barangRepository();
         $this->repository = new pemusnahanRepository();
         parent::__construct($this->repository);
     }
@@ -58,6 +61,15 @@ class pemusnahanController extends VierController
     public function get_by_param(){
         try{
             $data = $this->repository->by_param();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function lookup_barang(){
+        try{
+            $data = $this->barangRepository->by_id_wharehouse(request()->id_warehouse);
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
