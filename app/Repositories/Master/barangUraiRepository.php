@@ -23,6 +23,7 @@ class barangUraiRepository extends VierRepository
             mb.kode_barang,
             mb.nama_barang,
             mbu.qty_urai,
+            mb.hpp_average,
             mbu.created_by,
             mbu.updated_by,
             mbu.created_at,
