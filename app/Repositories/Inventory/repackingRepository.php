@@ -21,6 +21,7 @@ class repackingRepository extends VierRepository
             tr.nomor_repacking,
             tr.tanggal_repacking,
             tr.id_warehouse,
+            mw.warehouse,
             tr.keterangan,
             tr.id_barang,
             mb.kode_barang,

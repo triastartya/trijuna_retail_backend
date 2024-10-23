@@ -106,14 +106,14 @@ class InventoryStokHelper
             'nomor_reff' => $data->nomor_reff,
             'id_header_trans' =>$data->id_header_trans,
             'id_detail_trans' =>$data->id_detail_trans,
-            'stok_awal' =>$kartu_stok->stok_akhir,
-            'nominal_awal' => $kartu_stok->nominal_akhir,
+            'stok_awal' =>($kartu_stok)?$kartu_stok->stok_akhir:0,
+            'nominal_awal' => ($kartu_stok)?$kartu_stok->nominal_akhir:0,
             'stok_masuk' =>0,
             'nominal_masuk' =>0,
             'stok_keluar' =>$data->qty,
             'nominal_keluar' =>$data->nominal,
-            'stok_akhir'=>$kartu_stok->stok_akhir - $data->qty,
-            'nominal_akhir'=>$kartu_stok->nominal_akhir - $data->nominal,
+            'stok_akhir'=>(($kartu_stok)?$kartu_stok->stok_akhir:0) - $data->qty,
+            'nominal_akhir'=>(($kartu_stok)?$kartu_stok->nominal_akhir:0) - $data->nominal,
             'keterangan' => $data->keterangan
         ]);
         return [true,'berhasil'];
