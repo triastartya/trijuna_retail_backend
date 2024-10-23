@@ -32,7 +32,7 @@ class barangKomponenRepository extends VierRepository
             mbk.created_at,
             mbk.updated_at from ms_barang_komponen mbk
             left join ms_barang mb on mb.id_barang = mbk.komponen_barang
-            inner join ms_satuan ms on mb.id_satuan = ms.id_satuan
+            left join ms_satuan ms on mb.id_satuan = ms.id_satuan
             inner join users uc on uc.id_user = mbk.created_by
             inner join users uu on uu.id_user = mbk.updated_by
             where mbk.id_barang = ?
