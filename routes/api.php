@@ -242,7 +242,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         });
         
         Route::prefix('produksi')->group(function(){
-            Route::get('lookup_barang/{id_barang}',[produksiController::class,'lookup_barang']);
+            Route::post('lookup_barang/{id_barang}',[produksiController::class,'lookup_barang']);
             Route::post('insert',[produksiController::class,'insert']);
             Route::get('get_by_id/{id_produksi}',[produksiController::class,'get_by_id']);
             Route::post('get_by_param',[produksiController::class,'get_by_param']);
@@ -250,7 +250,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         });
         
         Route::prefix('repacking')->group(function(){
-            Route::get('lookup_barang/{id_barang}',[repackingController::class,'lookup_barang']);
+            Route::post('lookup_barang/{id_barang}',[repackingController::class,'lookup_barang']);
             Route::post('insert',[repackingController::class,'insert']);
             Route::get('get_by_id/{id_repacking}',[repackingController::class,'get_by_id']);
             Route::post('get_by_param',[repackingController::class,'get_by_param']);
