@@ -512,6 +512,8 @@ class barangController extends VierController
     }
 
     public function perbaikan_kartu_stok(){
+        ini_set('memory_limit',request()->memory);
+        ini_set('max_execution_time', 0);
         DB::beginTransaction();
         $data = DB::select('SELECT id_barang from pos_penjualan_detail GROUP BY id_barang');
         try {
