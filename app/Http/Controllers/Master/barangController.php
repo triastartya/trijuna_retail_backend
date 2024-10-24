@@ -585,13 +585,22 @@ class barangController extends VierController
             foreach($json as $item){
                 $barang =  msBarang::where('kode_barang',$item['kode_barang'])->first();
                 if($barang){
-                    $update_stok_on_hand =  msBarangStok::where('id_barang',$item['id_barang'])
+                    // $update_stok_on_hand =  msBarangStok::where('id_barang',$item['id_barang'])
+                    // ->update([
+                    //     'id_barang' => $barang->id_barang
+                    // ]);
+                    // $update_kartustok =  msBarangKartuStok::where('id_barang',$item['id_barang'])
+                    // ->update([
+                    //     'id_barang' => $barang->id_barang
+                    // ]);
+
+                    $update_stok_on_hand =  msBarangStok::where('id_barang',$barang->id_barang)
                     ->update([
-                        'id_barang' => $barang->id_barang
+                        'id_barang' => $item['id_barang']
                     ]);
-                    $update_kartustok =  msBarangKartuStok::where('id_barang',$item['id_barang'])
+                    $update_kartustok =  msBarangKartuStok::where('id_barang',$barang->id_barang)
                     ->update([
-                        'id_barang' => $barang->id_barang
+                        'id_barang' => $item['id_barang']
                     ]);
                 }else{
                     $err_data[]=[
