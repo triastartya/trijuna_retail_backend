@@ -211,6 +211,14 @@ Route::get('/migrasi_kartustok',function(){
 Route::post('migrasi/kartustok',[barangController::class,'perbaikan_kartu_stok']);
 
 
+
+Route::get('/migrasi_id_barang',function(){
+    $data =[];
+    return view('migrasi.id_barang',['items'=>$data]);
+});
+Route::post('migrasi/id_barang',[barangController::class,'perbaiakan_id_barang']);
+
+
 Route::post('login', function () {
     return response()->json(['status'=>false,'data'=>'anda belum login']);
 });

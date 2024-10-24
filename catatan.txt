@@ -120,3 +120,7 @@ SELECT setval('pos_bank_id_bank_seq', (SELECT MAX(id_bank) FROM pos_bank) + 1);
 SELECT setval('pos_edc_id_edc_seq', (SELECT MAX(id_edc) FROM pos_edc) + 1);
 SELECT setval('ms_supplier_id_supplier_seq', (SELECT MAX(id_supplier) FROM ms_supplier) + 1);
 SELECT setval('ms_warehouse_id_warehouse_seq', (SELECT MAX(id_warehouse) FROM ms_warehouse) + 1);
+
+
+ALTER TABLE pos_penjualan
+ADD CONSTRAINT unique_nota_penjualan UNIQUE (nota_penjualan);

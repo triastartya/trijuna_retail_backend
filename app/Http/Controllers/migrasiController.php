@@ -446,7 +446,7 @@ class migrasiController extends VierController
             }
             // msBarang::insert($data_barang);
             // trSettingHargaDetail::insert($data_setting_harga);
-            DB::select("SELECT setval('ms_barang_id_barang_seq', (SELECT MAX(id_barang) FROM ms_barang))");
+            // DB::select("SELECT setval('ms_barang_id_barang_seq', (SELECT MAX(id_barang) FROM ms_barang))");
             DB::commit();
             return response()->json(['success'=>true,'data'=>$json]);
         } catch (\Exception $ex) {

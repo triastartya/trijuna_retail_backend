@@ -573,4 +573,37 @@ class barangController extends VierController
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
     }
+
+    public function perbaiakan_id_barang(){
+        try {
+            ini_set('memory_limit',request()->memory);
+            ini_set('max_execution_time', 0);
+            $file = request()->file;
+            $content = file_get_contents($file);
+            $json = json_decode($content, true);
+            $err_data = [];
+            foreach($json as $item){
+                $barang =  msBarang::where('kode_barang',$item['kode_barang'])->first();
+                if($barang){
+                    $update_stok_on_hand =  msBarangStok::where('id_barang',$item['id_barang'])
+                    ->update([
+                        'id_barang' => $barang->id_barang
+                    ]);
+                    $update_kartustok =  msBarangKartuStok::where('id_barang',$item['id_barang'])
+                    ->update([
+                        'id_barang' => $barang->id_barang
+                    ]);
+                }else{
+                    $err_data[]=[
+                        'kode_barang' => $item['kode_barang'],
+                        'message' => 'tidak ada di database'
+                    ];
+                }
+            }
+            return response()->json(['success'=>true,'data'=>$err_data]);
+        } catch (\Exception $ex) {
+            // DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
 }
