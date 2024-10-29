@@ -64,12 +64,15 @@ use App\Http\Controllers\Inventory\mutasiKeluarController;
 use App\Http\Controllers\Inventory\mutasiMasukController;
 use App\Http\Controllers\Inventory\trInputStokOpnameController;
 use App\Http\Controllers\Inventory\trSettingStokOpnameController;
+use App\Http\Controllers\Laporan\BkpController;
+use App\Http\Controllers\Master\memberPoinSettingController;
 use App\Http\Controllers\Master\PotonganPembelianController;
 use App\Http\Controllers\Master\rekeningOwnerController;
 use App\Http\Controllers\migrasiController;
 use App\Http\Controllers\Penjualan\refundController;
 use App\Models\Inventory\trSettingStokOpname;
 use App\Models\Master\msBarang;
+use App\Models\Master\msMember;
 use App\Models\Master\msRekeningOwner;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Row;
@@ -332,6 +335,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             
         });
 
+
+        Route::prefix('setting_poin')->group(function(){
+            Route::post('simpan',[memberPoinSettingController::class,'insert']);
+            Route::get('get',[memberPoinSettingController::class,'get']);
+        });
+
+        Route::get('reset_poin_member',[memberController::class,'reset_poin']);
+
         Route::prefix('penjualan')->group(function(){
             Route::get('minimal',[penjualanController::class,'minimal']);
             Route::post('insert',[penjualanController::class,'insert']);
@@ -397,6 +408,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         });
 
         Route::pointResource('paymentMethod', posPaymentMethodController::class);
+
+        Route::prefix('laporan')->group(function(){
+            Route::post('bkp',[BkpController::class,'bkp']);
+            Route::post('non_bkp',[BkpController::class,'non_bkp']); 
+            Route::post('rekap_bkp',[BkpController::class,'rekap_bkp']);
+        });
     });
 });
 

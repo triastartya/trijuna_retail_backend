@@ -149,7 +149,7 @@ class barangRepository extends VierRepository
             left join ms_satuan m on mb.kode_satuan = m.kode_satuan
             inner join users uc on uc.id_user = mb.created_by
             inner join users uu on uu.id_user = mb.updated_by
-        ',request());
+        ',request(),'all');
         
         foreach($data as $index => $row){
             $stok_toko = msBarangStok::where('id_barang',$row->id_barang)->where('id_warehouse',2)->first();
@@ -157,7 +157,7 @@ class barangRepository extends VierRepository
             $data[$index] = (object) array_merge((array)$row,
             [
                 "stok_toko" => ($stok_toko)?$stok_toko->qty:0,
-                "stok_gudang" => ($stok_gudang)?$stok_gudang->qty:0,
+                "stok_gudang" => ($stok_gudang)?$stok_gudang->qty:0
             ]
             );
         }

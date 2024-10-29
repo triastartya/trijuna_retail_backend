@@ -42,7 +42,11 @@ class QueryHelper
         }
         
         if($lastString==''){
-            $query .= ' limit 300';
+            if($lastString=='all'){
+                $query .= '';
+            }else{
+                $query .= ' limit 300';
+            }
         }else{
             $query .= $lastString;
         }

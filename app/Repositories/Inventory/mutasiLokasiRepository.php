@@ -170,6 +170,8 @@ class mutasiLokasiRepository extends VierRepository
             tmw.id_mutasi_lokasi_detail,
             tmw.urut,
             tmw.id_barang,
+            mb.kode_barang,
+            mb.barcode,
             mb.nama_barang,
             tmw.banyak,
             tmw.kode_satuan,
@@ -181,6 +183,6 @@ class mutasiLokasiRepository extends VierRepository
             inner join ms_barang mb on tmw.id_barang = mb.id_barang
             where tmw.id_mutasi_lokasi = ?
             order by urut
-        ",[request()->id_mutasi_lokasi]);            
+        ",[request()->id_mutasi_lokasi]);
     }
 }
