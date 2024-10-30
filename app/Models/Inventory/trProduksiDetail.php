@@ -27,7 +27,7 @@ class trProduksiDetail extends Model
             'id_produksi'=> 'required',
             'urut' => 'required',
             'id_barang' => 'required',
-            'kode_satuan' => 'required',
+            'kode_satuan' => '',
             'qty' => 'required',
             'hpp_average' => 'required',
             'sub_total' => 'required'
