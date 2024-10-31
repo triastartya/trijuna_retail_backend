@@ -7,6 +7,7 @@ use App\Helpers\InventoryStokHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Inventory\trMutasiLokasi;
 use App\Models\Inventory\trMutasiLokasiDetail;
+use App\Models\Master\msBarang;
 use App\Models\Master\msLokasi;
 use App\Repositories\Inventory\mutasiLokasiRepository;
 use App\Repositories\Master\barangRepository;
@@ -49,6 +50,10 @@ class mutasiMasukController extends VierController
             unset($data['updated_at']);
             $mutasi = trMutasiLokasi::create($data);
             foreach($request['detail'] as $detail){
+                $cekBarang = msBarang::where('kode_barang',$detail['kode_barang'])->first();
+                if(!$cekBarang){
+                    throw new \Exception('barang tidak di temukan, '.$detail['kode_barang'].' - '.$detail['nama_barang']);
+                }
                 $detail['id_mutasi_lokasi'] = $mutasi->id_mutasi_lokasi;
                 unset($detail['created_at']);
                 unset($detail['updated_at']);

@@ -189,7 +189,10 @@ class mutasiKeluarController extends VierController
             // === kirim ==
             $data = DB::select("select * from tr_mutasi_lokasi where id_mutasi_lokasi=".request()->id_mutasi_lokasi);
             
-            $data[0]->detail = DB::select('select * from tr_mutasi_lokasi_detail where id_mutasi_lokasi = '.request()->id_mutasi_lokasi);
+            $data[0]->detail = DB::select('
+                select tmld.*,mb.kode_barang,mb.barcode,mb.nama_barang from tr_mutasi_lokasi_detail tmld 
+                inner join ms_barang mb on tmld.id_barang=mb.id_barang where tmld.id_mutasi_lokasi = '.request()->id_mutasi_lokasi
+            );
             
             $lokasi = msLokasi::where('id_lokasi',$mutasi->id_lokasi_tujuan)->first();
             
