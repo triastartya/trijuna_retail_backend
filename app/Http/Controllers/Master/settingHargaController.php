@@ -71,15 +71,18 @@ class settingHargaController extends VierController
                                     ],
                                 ],
                             ];
+                            // dd($request);
                             $response = Http::withOptions(['verify' => false])->post($lokasi_kirim->server.'/api/setting_harga_api',$request);
+                            
                             if ($response->successful()) {
                                 $res = $response->object();
+                                // dd($res);
                                 if($res->success){
                                     $kirim = 'berhasil';
                                     $ket = 'berhasil';
                                 }else{
                                     $kirim = 'gagal';
-                                    $ket = $res->message;    
+                                    $ket = $res->message;
                                 }
                             } else {
                                 $kirim = 'gagal';
@@ -120,9 +123,9 @@ class settingHargaController extends VierController
             foreach($request->detail as $detail){
                 $data_detail = $detail;
                 $cek_barang = msBarang::where('kode_barang',$data_detail['kode_barang'])->first();
-                if($cek_barang){
+                if(!$cek_barang){
                     DB::rollBack();
-                    return response()->json(['success'=>false,'message'=>'kode barang tidak di temukan'.$data_detail['kode_barang'].' '.$data_detail['nama_barang']]);
+                    return response()->json(['success'=>false,'message'=>'kode barang tidak di temukan '.$data_detail['kode_barang'].' '.$data_detail['nama_barang']]);
                 }
                 unset($data_detail['lokasi']);
                 $data_detail['tanggal_mulai_berlaku'] = $data['tanggal_mulai_berlaku'];

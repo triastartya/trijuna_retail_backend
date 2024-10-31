@@ -12,6 +12,8 @@ class trSettingHargaDetailLokasi extends Model
     protected $primaryKey = 'id_setting_harga_detail_lokasi';
     protected $fillable = [
         'id_setting_harga_detail',
-        'id_lokasi'
+        'id_lokasi',
+        'kirim',
+        'keterangan'
     ];
 }
