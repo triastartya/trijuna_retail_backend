@@ -85,6 +85,8 @@ class settingHargaRepository extends VierRepository
             tshdl.id_setting_harga_detail,
             tshdl.id_lokasi,
             ml.nama_lokasi,
+            tshdl.kirim,
+            tshdl.keterangan,
             tshdl.created_at,
             tshdl.updated_at
             from tr_setting_harga_detail_lokasi tshdl

@@ -50,7 +50,7 @@ class settingHargaController extends VierController
                     $use = LokasiHelper::use();
                     $kirim = '';
                     $ket = '';
-                    // if($use->id_likasi != $lokasi){
+                    if($use->id_lokasi != $lokasi){
                         try {
                             $lokasi_kirim = msLokasi::where('id_lokasi',$lokasi)->first();
                             $brng = msBarang::where('id_barang',$data_detail['id_barang'])->first();
@@ -92,7 +92,7 @@ class settingHargaController extends VierController
                             $kirim = 'gagal';
                             $ket = $err->getMessage();
                         }
-                    // }
+                    }
                     trSettingHargaDetailLokasi::create([
                         'id_setting_harga_detail' => $trSettingHargaDetail->id_setting_harga_detail,
                         'id_lokasi' =>$lokasi,
@@ -119,7 +119,6 @@ class settingHargaController extends VierController
             $data = $request->all();
             unset($data['detail']);
             $settingHarga = trSettingHarga::create($data);
-            $c = LokasiHelper::use();
             foreach($request->detail as $detail){
                 $data_detail = $detail;
                 $cek_barang = msBarang::where('kode_barang',$data_detail['kode_barang'])->first();
@@ -127,7 +126,7 @@ class settingHargaController extends VierController
                     DB::rollBack();
                     return response()->json(['success'=>false,'message'=>'kode barang tidak di temukan '.$data_detail['kode_barang'].' '.$data_detail['nama_barang']]);
                 }
-                unset($data_detail['lokasi']);
+                
                 $data_detail['tanggal_mulai_berlaku'] = $data['tanggal_mulai_berlaku'];
                 $data_detail['id_setting_harga'] = $settingHarga->id_setting_harga;
                 $update_master = msBarang::where('id_barang',$data_detail['id_barang'])->update([
