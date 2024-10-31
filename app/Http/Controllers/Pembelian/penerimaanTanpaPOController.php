@@ -99,7 +99,8 @@ class penerimaanTanpaPOController extends VierController
                     'id_detail_trans' => $detail->id_penerimaan_detail,
                     'jenis'           => 'Penerimaan Tanpa PO',
                     'nominal'         => $detail->sub_total,
-                    'keterangan'      => 'Penerimaan Tanpa PO '.$supplier->nama_supplier
+                    'keterangan'      => 'Penerimaan Tanpa PO '.$supplier->nama_supplier,
+                    'transaksi'       => 'tr_penerimaan'
                 ]);
                 if(request()->is_update_harga_order){
                     msBarang::where('id_barang',$detail->id_barang)

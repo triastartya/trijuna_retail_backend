@@ -176,7 +176,8 @@ class mutasiMasukController extends VierController
                     'id_detail_trans' => $detail['id_mutasi_lokasi_detail'],
                     'jenis'           => 'Mutasi Masuk',
                     'nominal'         => $detail['sub_total'], // hpp avarage * qty,
-                    'keterangan'      => 'Mutasi Masuk ke '.$lokasi->nama_lokasi
+                    'keterangan'      => 'Mutasi Masuk ke '.$lokasi->nama_lokasi,
+                    'transaksi'       => 'tr_mutasi_lokasi'
                 ]);
                 InventoryStokHelper::hitung_hpp_avarage($detail['id_barang'],$detail['qty'],$detail['sub_total']);
             }

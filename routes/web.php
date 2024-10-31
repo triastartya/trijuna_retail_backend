@@ -183,6 +183,7 @@ Route::get('/migrasi_barangstok',function(){
     $data = [];
     return view('migrasi.barangstok',['items'=>$data]);
 });
+
 Route::post('migrasi/barangstok',[migrasiController::class,'barangstok']);
 Route::get('migrasi/barangstok/truncate',function(){
     DB::select('truncate ms_barang_stok restart identity;');

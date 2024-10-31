@@ -98,6 +98,7 @@ class produksiController extends VierController
                 'jenis'           => 'Produksi Hasil',
                 'nominal'         => $produksi->total_hpp_avarage_produksi,
                 'keterangan'      => 'Produksi Hasil dari nomor dokumen'.$produksi->nomor_produksi,
+                'transaksi'       => 'tr_produksi'
             ]);
             if(!$inventoryPenambahan[0]){
                 DB::rollBack();
@@ -116,6 +117,7 @@ class produksiController extends VierController
                     'jenis'           => 'Produksi Bahan',
                     'nominal'         => $detail->sub_total,
                     'keterangan'      => 'Produksi Untuk Bahan dari nomor dokumen'.$produksi->nomor_produksi,
+                    'transaksi'       => 'tr_produksi'
                 ]);
                 if(!$inventoryPengurangan[0]){
                     DB::rollBack();

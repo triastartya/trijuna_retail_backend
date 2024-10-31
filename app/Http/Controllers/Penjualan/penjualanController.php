@@ -50,7 +50,8 @@ class penjualanController extends VierController
                     'id_detail_trans' => $penjualan_detail->id_penjualan_detail,
                     'jenis'           => 'Penjualan Kasir',
                     'nominal'         => $detail['sub_total'], // hpp avarage * qty
-                    'keterangan'      => 'Penjualan '.$user->nama
+                    'keterangan'      => 'Penjualan '.$user->nama,
+                    'transaksi'       => 'pos_penjualan',
                 ]);
             }
             foreach($request->payment as $payment){

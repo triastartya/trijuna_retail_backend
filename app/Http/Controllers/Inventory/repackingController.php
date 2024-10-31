@@ -98,6 +98,7 @@ class repackingController extends VierController
                 'jenis'           => 'repacking Hasil',
                 'nominal'         => $repacking->total_hpp_avarage_repacking,
                 'keterangan'      => 'Repacking dari nomor dokumen'.$repacking->nomor_repacking,
+                'transaksi'       => 'tr_repacking'
             ]);
             if(!$inventoryPengurangan[0]){
                 DB::rollBack();
@@ -116,6 +117,7 @@ class repackingController extends VierController
                     'jenis'           => 'Hasil Repacking',
                     'nominal'         => $detail->sub_total,
                     'keterangan'      => 'Hasil Repacking dari nomor dokumen'.$repacking->nomor_repacking,
+                    'transaksi'       => 'tr_repacking'
                 ]);
                 if(!$inventoryPenambahan[0]){
                     DB::rollBack();

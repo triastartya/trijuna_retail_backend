@@ -93,7 +93,8 @@ class mutasiController extends VierController
                     'id_detail_trans' => $detail->id_mutasi_warehouse_detail,
                     'jenis'           => 'Mutasi Warehouse Asal',
                     'nominal'         => $detail->sub_total,
-                    'keterangan'      => 'Mutasi Warehouse ke '.$warehouse_tujuan->warehouse
+                    'keterangan'      => 'Mutasi Warehouse ke '.$warehouse_tujuan->warehouse,
+                    'transaksi'       => 'tr_mutasi_warehouse'
                 ]);
                 if(!$inventoryPengurangan[0]){
                     DB::rollBack();
@@ -109,7 +110,8 @@ class mutasiController extends VierController
                     'id_detail_trans' => $detail->id_mutasi_warehouse_detail,
                     'jenis'           => 'Mutasi Warehouse Tujuan',
                     'nominal'         => $detail->sub_total,
-                    'keterangan'      => 'Mutasi Warehouse dari '.$warehouse_asal->warehouse
+                    'keterangan'      => 'Mutasi Warehouse dari '.$warehouse_asal->warehouse,
+                    'transaksi'       => 'tr_mutasi_warehouse'
                 ]);
                 if(!$inventoryPenambahan[0]){
                     DB::rollBack();

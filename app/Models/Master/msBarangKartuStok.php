@@ -28,6 +28,7 @@ class msBarangKartuStok extends Model
         'stok_akhir',
         'nominal_akhir',
         'keterangan',
+        'transaksi'
     ];
     protected $primaryKey = 'id_kartu_stok';
     protected $guarded = [];  
@@ -51,7 +52,8 @@ class msBarangKartuStok extends Model
             'nominal_akhir'=>'required',
             'keterangan'=>'',
             'created_by'=>'',
-            'updated_by'=>''
+            'updated_by'=>'',
+            'transaksi'=>'',
         ];
     }
 }

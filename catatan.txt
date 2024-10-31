@@ -124,3 +124,18 @@ SELECT setval('ms_warehouse_id_warehouse_seq', (SELECT MAX(id_warehouse) FROM ms
 
 ALTER TABLE pos_penjualan
 ADD CONSTRAINT unique_nota_penjualan UNIQUE (nota_penjualan);
+
+Select
+    b.IdBarang,
+    b.KodeBarang,
+    b.HppAverage,
+    isnull(StokGudang.Stok,0) as StokGudang,
+    isnull(StokToko.Stok,0) as StokToko,
+    isnull(StokGudangRetur.Stok,0) as StokGudangRetur,
+    isnull(StokGudangBadStok.Stok,0) as StockGudangBadStok
+From MasterBarang b
+outer apply fn_CaptureStock(1,b.IdBarang,getdate()) as StokGudang
+outer apply fn_CaptureStock(2,b.IdBarang,getdate()) as StokToko
+outer apply fn_CaptureStock(3,b.IdBarang,getdate()) as StokGudangRetur
+outer apply fn_CaptureStock(4,b.IdBarang,getdate()) as StokGudangBadStok
+Order by IdBarang

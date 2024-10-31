@@ -425,7 +425,8 @@ class migrasiController extends VierController
                     'qty_grosir2'=> ($item['JumlahGrosir2']==null)?0:$item['JumlahGrosir2'],
                     'harga_grosir2'=> ($item['HargaGrosir2']==null)?0:$item['HargaGrosir2'],
                     'created_by'=>1,
-                    'updated_by'=>1
+                    'updated_by'=>1,
+                    'is_active'=>$item['StatusActive']
                 ];
                 // dd($data_barang);
                 msBarang::create($data_barang);

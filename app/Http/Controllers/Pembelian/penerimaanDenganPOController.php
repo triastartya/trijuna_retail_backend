@@ -158,7 +158,8 @@ class penerimaanDenganPOController extends VierController
                     'id_detail_trans' => $detail['id_penerimaan_detail'],
                     'jenis'           => 'Penerimaan Dengan PO',
                     'nominal'         => $detail['sub_total'],
-                    'keterangan'      => 'Penerimaan Dengan PO '.$supplier->nama_supplier
+                    'keterangan'      => 'Penerimaan Dengan PO '.$supplier->nama_supplier,
+                    'transaksi'       => 'tr_penerimaan'
                 ]);
 
                 if(request()->is_update_harga_order){

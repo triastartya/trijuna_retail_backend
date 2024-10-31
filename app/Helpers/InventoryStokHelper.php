@@ -47,7 +47,8 @@ class InventoryStokHelper
                 'nominal_keluar' =>0,
                 'stok_akhir'=>$data->qty,
                 'nominal_akhir'=>$data->nominal,
-                'keterangan' => $data->keterangan
+                'keterangan' => $data->keterangan,
+                'transaksi'=>$data->transaksi,
             ]);
         }else{
             msBarangKartuStok::create([
@@ -65,7 +66,8 @@ class InventoryStokHelper
                 'nominal_keluar' =>0,
                 'stok_akhir'=>$kartu_stok->stok_akhir + $data->qty,
                 'nominal_akhir'=>$kartu_stok->nominal_akhir + $data->nominal,
-                'keterangan' => $data->keterangan
+                'keterangan' => $data->keterangan,
+                'transaksi'=>$data->transaksi,
             ]);
         }
         return [true,'berhasil'];
@@ -114,7 +116,8 @@ class InventoryStokHelper
             'nominal_keluar' =>$data->nominal,
             'stok_akhir'=>(($kartu_stok)?$kartu_stok->stok_akhir:0) - $data->qty,
             'nominal_akhir'=>(($kartu_stok)?$kartu_stok->nominal_akhir:0) - $data->nominal,
-            'keterangan' => $data->keterangan
+            'keterangan' => $data->keterangan,
+            'transaksi'=>$data->transaksi,
         ]);
         return [true,'berhasil'];
     }

@@ -87,7 +87,8 @@ class returKonsinyasiController extends VierController
                     'id_detail_trans' => $detail->id_retur_pembelian_detail,
                     'jenis'           => 'Retur Konsinyasi',
                     'nominal'         => $detail->sub_total,
-                    'keterangan'      => 'Retur Konsinyasi '.$supplier->nama_supplier
+                    'keterangan'      => 'Retur Konsinyasi '.$supplier->nama_supplier,
+                    'transaksi'       => 'tr_retur_konsinyasi'
                 ]);
                 if(!$inventory[0]){
                     DB::rollBack();

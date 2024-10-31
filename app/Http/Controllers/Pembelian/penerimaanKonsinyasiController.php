@@ -90,7 +90,8 @@ class penerimaanKonsinyasiController extends VierController
                     'id_detail_trans' => $detail->id_penerimaan_detail,
                     'jenis'           => 'Penerimaan Tanpa PO',
                     'nominal'         => $detail->sub_total,
-                    'keterangan'      => 'Penerimaan Konsinyasi PO '.$supplier->nama_supplier
+                    'keterangan'      => 'Penerimaan Konsinyasi PO '.$supplier->nama_supplier,
+                    'transaksi'       => 'tr_penerimaan_konsinyasi'
                 ]);
                 InventoryStokHelper::hitung_hpp_avarage($detail->id_barang,$detail->qty,$detail->sub_total);
             }

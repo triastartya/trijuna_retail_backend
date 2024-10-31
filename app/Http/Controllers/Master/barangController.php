@@ -511,108 +511,108 @@ class barangController extends VierController
         }
     }
 
-    public function perbaikan_kartu_stok(){
-        DB::beginTransaction();
-        try {
-            ini_set('memory_limit','-1');
-            ini_set('max_execution_time', 0);
-            $data = DB::select('SELECT id_barang from pos_penjualan_detail GROUP BY id_barang');
-            // Toko 
-            $wharehouse_toko = 2;
-            $wharehouse_gudang = 1;
-            foreach($data as $key=>$barang){
-                // kartu stok
-                $kartustok_toko = msBarangKartuStok::where('id_barang',$barang->id_barang)
-                    ->where('id_warehouse',$wharehouse_toko)
-                    ->orderBy('created_at', 'asc')
-                    ->get();
+    // public function perbaikan_kartu_stok(){
+    //     DB::beginTransaction();
+    //     try {
+    //         ini_set('memory_limit','-1');
+    //         ini_set('max_execution_time', 0);
+    //         $data = DB::select('SELECT id_barang from pos_penjualan_detail GROUP BY id_barang');
+    //         // Toko 
+    //         $wharehouse_toko = 2;
+    //         $wharehouse_gudang = 1;
+    //         foreach($data as $key=>$barang){
+    //             // kartu stok
+    //             $kartustok_toko = msBarangKartuStok::where('id_barang',$barang->id_barang)
+    //                 ->where('id_warehouse',$wharehouse_toko)
+    //                 ->orderBy('created_at', 'asc')
+    //                 ->get();
 
-                $stok_awal_toko = 0;
-                $nominal_awal_toko = 0;
-                foreach($kartustok_toko as $key=>$kartu){
-                    $stok_akhir_toko = $stok_awal_toko+$kartu->stok_masuk-$kartu->stok_keluar;
-                    $nominal_akhir_toko = $nominal_awal_toko+$kartu->nominal_masuk-$kartu->nominal_keluar;
-                    msBarangKartuStok::where('id_kartu_stok',$kartu->id_kartu_stok)
-                    ->update([
-                        'stok_awal'=>$stok_awal_toko,
-                        'stok_akhir'=>$stok_akhir_toko,
-                        'nominal_awal'=>$nominal_awal_toko,
-                        'nominal_akhir'=>$nominal_akhir_toko
-                    ]);
-                    $stok_awal_toko = $stok_akhir_toko;
-                    $nominal_awal_toko = $nominal_akhir_toko;
-                }
+    //             $stok_awal_toko = 0;
+    //             $nominal_awal_toko = 0;
+    //             foreach($kartustok_toko as $key=>$kartu){
+    //                 $stok_akhir_toko = $stok_awal_toko+$kartu->stok_masuk-$kartu->stok_keluar;
+    //                 $nominal_akhir_toko = $nominal_awal_toko+$kartu->nominal_masuk-$kartu->nominal_keluar;
+    //                 msBarangKartuStok::where('id_kartu_stok',$kartu->id_kartu_stok)
+    //                 ->update([
+    //                     'stok_awal'=>$stok_awal_toko,
+    //                     'stok_akhir'=>$stok_akhir_toko,
+    //                     'nominal_awal'=>$nominal_awal_toko,
+    //                     'nominal_akhir'=>$nominal_akhir_toko
+    //                 ]);
+    //                 $stok_awal_toko = $stok_akhir_toko;
+    //                 $nominal_awal_toko = $nominal_akhir_toko;
+    //             }
 
-                // kartu gudang
-                $kartustok = msBarangKartuStok::where('id_barang',$barang->id_barang)
-                    ->where('id_warehouse',$wharehouse_gudang)
-                    ->orderBy('created_at', 'asc')
-                    ->get();
+    //             // kartu gudang
+    //             $kartustok = msBarangKartuStok::where('id_barang',$barang->id_barang)
+    //                 ->where('id_warehouse',$wharehouse_gudang)
+    //                 ->orderBy('created_at', 'asc')
+    //                 ->get();
 
-                $stok_awal = 0;
-                $nominal_awal = 0;
-                foreach($kartustok as $key=>$kartu){
-                    $stok_akhir = $stok_awal+$kartu->stok_masuk-$kartu->stok_keluar;
-                    $nominal_akhir = $nominal_awal+$kartu->nominal_masuk-$kartu->nominal_keluar;
-                    msBarangKartuStok::where('id_kartu_stok',$kartu->id_kartu_stok)
-                    ->update([
-                        'stok_awal'=>$stok_awal,
-                        'stok_akhir'=>$stok_akhir,
-                        'nominal_awal'=>$nominal_awal,
-                        'nominal_akhir'=>$nominal_akhir
-                    ]);
-                    $stok_awal = $stok_akhir;
-                    $nominal_awal = $nominal_akhir;
-                }
-            }
-            DB::commit();
-            return response()->json(['success'=>true,'message'=>'Oke']);
-        }
-        catch(\Exception $err) {
-            DB::rollBack();
-            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
-        }
-    }
+    //             $stok_awal = 0;
+    //             $nominal_awal = 0;
+    //             foreach($kartustok as $key=>$kartu){
+    //                 $stok_akhir = $stok_awal+$kartu->stok_masuk-$kartu->stok_keluar;
+    //                 $nominal_akhir = $nominal_awal+$kartu->nominal_masuk-$kartu->nominal_keluar;
+    //                 msBarangKartuStok::where('id_kartu_stok',$kartu->id_kartu_stok)
+    //                 ->update([
+    //                     'stok_awal'=>$stok_awal,
+    //                     'stok_akhir'=>$stok_akhir,
+    //                     'nominal_awal'=>$nominal_awal,
+    //                     'nominal_akhir'=>$nominal_akhir
+    //                 ]);
+    //                 $stok_awal = $stok_akhir;
+    //                 $nominal_awal = $nominal_akhir;
+    //             }
+    //         }
+    //         DB::commit();
+    //         return response()->json(['success'=>true,'message'=>'Oke']);
+    //     }
+    //     catch(\Exception $err) {
+    //         DB::rollBack();
+    //         return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+    //     }
+    // }
 
-    public function perbaiakan_id_barang(){
-        try {
-            ini_set('memory_limit',request()->memory);
-            ini_set('max_execution_time', 0);
-            $file = request()->file;
-            $content = file_get_contents($file);
-            $json = json_decode($content, true);
-            $err_data = [];
-            foreach($json as $item){
-                $barang =  msBarang::where('kode_barang',$item['kode_barang'])->first();
-                if($barang){
-                    // $update_stok_on_hand =  msBarangStok::where('id_barang',$item['id_barang'])
-                    // ->update([
-                    //     'id_barang' => $barang->id_barang
-                    // ]);
-                    // $update_kartustok =  msBarangKartuStok::where('id_barang',$item['id_barang'])
-                    // ->update([
-                    //     'id_barang' => $barang->id_barang
-                    // ]);
+    // public function perbaiakan_id_barang(){
+    //     try {
+    //         ini_set('memory_limit',request()->memory);
+    //         ini_set('max_execution_time', 0);
+    //         $file = request()->file;
+    //         $content = file_get_contents($file);
+    //         $json = json_decode($content, true);
+    //         $err_data = [];
+    //         foreach($json as $item){
+    //             $barang =  msBarang::where('kode_barang',$item['kode_barang'])->first();
+    //             if($barang){
+    //                 // $update_stok_on_hand =  msBarangStok::where('id_barang',$item['id_barang'])
+    //                 // ->update([
+    //                 //     'id_barang' => $barang->id_barang
+    //                 // ]);
+    //                 // $update_kartustok =  msBarangKartuStok::where('id_barang',$item['id_barang'])
+    //                 // ->update([
+    //                 //     'id_barang' => $barang->id_barang
+    //                 // ]);
 
-                    $update_stok_on_hand =  msBarangStok::where('id_barang',$barang->id_barang)
-                    ->update([
-                        'id_barang' => $item['id_barang']
-                    ]);
-                    $update_kartustok =  msBarangKartuStok::where('id_barang',$barang->id_barang)
-                    ->update([
-                        'id_barang' => $item['id_barang']
-                    ]);
-                }else{
-                    $err_data[]=[
-                        'kode_barang' => $item['kode_barang'],
-                        'message' => 'tidak ada di database'
-                    ];
-                }
-            }
-            return response()->json(['success'=>true,'data'=>$err_data]);
-        } catch (\Exception $ex) {
-            // DB::rollBack();
-            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
-        }
-    }
+    //                 $update_stok_on_hand =  msBarangStok::where('id_barang',$barang->id_barang)
+    //                 ->update([
+    //                     'id_barang' => $item['id_barang']
+    //                 ]);
+    //                 $update_kartustok =  msBarangKartuStok::where('id_barang',$barang->id_barang)
+    //                 ->update([
+    //                     'id_barang' => $item['id_barang']
+    //                 ]);
+    //             }else{
+    //                 $err_data[]=[
+    //                     'kode_barang' => $item['kode_barang'],
+    //                     'message' => 'tidak ada di database'
+    //                 ];
+    //             }
+    //         }
+    //         return response()->json(['success'=>true,'data'=>$err_data]);
+    //     } catch (\Exception $ex) {
+    //         // DB::rollBack();
+    //         return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+    //     }
+    // }
 }

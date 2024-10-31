@@ -44,7 +44,8 @@ class refundController extends VierController
                     'id_detail_trans' => $refund_detail->id_refund_detail,
                     'jenis'           => 'Retur Penjualan Kasir',
                     'nominal'         => $detail['sub_total'], // hpp avarage * qty
-                    'keterangan'      => 'Retur Penjualan '.$user->nama
+                    'keterangan'      => 'Retur Penjualan '.$user->nama,
+                    'transaksi'       => 'pos_refund',
                 ]);
             }
             DB::commit();

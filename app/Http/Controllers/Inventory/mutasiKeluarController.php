@@ -24,7 +24,7 @@ class mutasiKeluarController extends VierController
     public $repository;
     public $barangRepository;
     public $lokasiRepository;
-    
+
     public function __construct()
     {
         $this->repository = new mutasiLokasiRepository();
@@ -58,7 +58,7 @@ class mutasiKeluarController extends VierController
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
     }
-    
+
     public function get_by_id(){
         try{
             $data = $this->repository->get_by_id();
@@ -77,7 +77,7 @@ class mutasiKeluarController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
-    
+
     public function lookup_barang(){
         try{
             $data = $this->barangRepository->by_id_wharehouse(request()->id_warehouse);
@@ -86,7 +86,7 @@ class mutasiKeluarController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
-    
+
     public function lookup_lokasi(){
         try{
             $data = $this->lokasiRepository->get_lokasi_status_online();
@@ -119,7 +119,8 @@ class mutasiKeluarController extends VierController
                     'id_detail_trans' => $detail['id_mutasi_lokasi_detail'],
                     'jenis'           => 'Mutasi Keluar',
                     'nominal'         => $detail['sub_total'], // hpp avarage * qty
-                    'keterangan'      => 'Mutasi Keluar ke '.$lokasi->nama_lokasi
+                    'keterangan'      => 'Mutasi Keluar ke '.$lokasi->nama_lokasi,
+                    'transaksi'       => 'tr_mutasi_lokasi'
                 ]);
             }
             DB::commit();
@@ -180,7 +181,8 @@ class mutasiKeluarController extends VierController
                     'id_detail_trans' => $detail['id_mutasi_lokasi_detail'],
                     'jenis'           => 'Mutasi Keluar',
                     'nominal'         => $detail['sub_total'], // hpp avarage * qty
-                    'keterangan'      => 'Mutasi Keluar ke '.$lokasi->nama_lokasi
+                    'keterangan'      => 'Mutasi Keluar ke '.$lokasi->nama_lokasi,
+                    'transaksi'       => 'tr_mutasi_lokasi'
                 ]);
             }
 
