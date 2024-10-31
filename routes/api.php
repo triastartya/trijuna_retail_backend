@@ -120,6 +120,8 @@ Route::get('dashboard',[DashboardController::class,'pembelian']);
 
 Route::post('mutasi_lokasi_masuk/insertbyapi',[mutasiMasukController::class,'insertbyapi']);
 
+Route::post('setting_harga_api',[settingHargaController::class,'insertbyapi']);
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['middleware' => ModifRequest::class], function () {
         Route::get('hr_karyawan',[karyawanController::class,'getall']);
