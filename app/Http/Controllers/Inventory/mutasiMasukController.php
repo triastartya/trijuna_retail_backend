@@ -64,7 +64,6 @@ class mutasiMasukController extends VierController
             return response()->json(['success'=>true,'data'=>$mutasi->id_mutasi_lokasi]);
         }
         catch(\Exception $err) {
-            throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
