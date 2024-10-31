@@ -192,5 +192,4 @@ class mutasiMasukController extends VierController
             return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
-
 }

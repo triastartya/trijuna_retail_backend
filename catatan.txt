@@ -141,3 +141,5 @@ outer apply fn_CaptureStock(4,b.IdBarang,getdate()) as StokGudangBadStok
 Order by IdBarang
 
 docker image prune -a -f
+
+SELECT setval('ms_lokasi_id_lokasi_seq', (SELECT MAX(id_lokasi) FROM ms_lokasi) + 1);
