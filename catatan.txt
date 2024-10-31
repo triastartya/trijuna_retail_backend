@@ -139,3 +139,5 @@ outer apply fn_CaptureStock(2,b.IdBarang,getdate()) as StokToko
 outer apply fn_CaptureStock(3,b.IdBarang,getdate()) as StokGudangRetur
 outer apply fn_CaptureStock(4,b.IdBarang,getdate()) as StokGudangBadStok
 Order by IdBarang
+
+docker image prune -a -f
