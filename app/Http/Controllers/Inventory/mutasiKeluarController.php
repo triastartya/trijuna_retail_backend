@@ -197,7 +197,7 @@ class mutasiKeluarController extends VierController
             $lokasi = msLokasi::where('id_lokasi',$mutasi->id_lokasi_tujuan)->first();
             
             $response = Http::withOptions(['verify' => false])->post($lokasi->server.'/api/mutasi_lokasi_masuk/insertbyapi',$data[0]);
-
+            dd($response);
             if ($response->successful()) {
                 $res = $response->object();
                 if($res->status){

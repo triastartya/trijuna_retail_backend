@@ -35,7 +35,7 @@ class mutasiMasukController extends VierController
         DB::beginTransaction();
         try {
             $lokasi = msLokasi::where('is_use',true)->first();
-            $data = (array)$request;
+            $data = (array)$request->all();
             $data['is_deleted'] = 0;
             $data['status_mutasi_lokasi'] = 'OPEN';
             $data['nomor_mutasi_keluar'] =  $data['nomor_mutasi_lokasi'];
