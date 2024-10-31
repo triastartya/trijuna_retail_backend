@@ -24,7 +24,7 @@ class bankController extends VierController
         DB::beginTransaction();
         try {
             $response = File::json(base_path().'/public/data/bank.json');
-            $delete =posBank::truncate(); 
+            $delete =posBank::truncate();
             foreach($response as $item){
                 posBank::create([
                     'id_bank' =>$item['idBank'],

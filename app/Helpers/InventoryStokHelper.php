@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class InventoryStokHelper
 {
+
     public static function penambahan($data){
         $barang_stok = msBarangStok::where('id_barang',$data->id_barang)
                         ->where('id_warehouse',$data->id_warehouse)
@@ -72,7 +73,7 @@ class InventoryStokHelper
         }
         return [true,'berhasil'];
     }
-    
+
     public static function pengurangan($data){
         $barang_stok = msBarangStok::where('id_barang',$data->id_barang)
                         ->where('id_warehouse',$data->id_warehouse)
@@ -138,4 +139,5 @@ class InventoryStokHelper
         $master_barang->save();
         return true;
     }
+
 }

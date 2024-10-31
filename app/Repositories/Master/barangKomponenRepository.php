@@ -61,6 +61,6 @@ class barangKomponenRepository extends VierRepository
             inner join users uc on uc.id_user = mbk.created_by
             inner join users uu on uu.id_user = mbk.updated_by
             where mbk.id_barang = ".$id_barang."
-        ",request());
+        ",[request()]);
     }
 }
