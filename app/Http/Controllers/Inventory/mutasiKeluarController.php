@@ -196,11 +196,17 @@ class mutasiKeluarController extends VierController
             
             $lokasi = msLokasi::where('id_lokasi',$mutasi->id_lokasi_tujuan)->first();
             
+            $online = Http::withOptions(['verify' => false])->get($lokasi->server."/api/health");
+            if($online->successful()){
+            }else{
+                throw new \Exception($online->status().', cabang '.$lokasi->nama_lokasi.' sedang offline ip server ='.$lokasi->server);
+            }
+
             $response = Http::withOptions(['verify' => false])->post($lokasi->server.'/api/mutasi_lokasi_masuk/insertbyapi',$data[0]);
-            dd($response);
+            // dd($response);
             if ($response->successful()) {
                 $res = $response->object();
-                if($res->status){
+                if($res->success){
                     DB::commit();
                     return response()->json(['status'=>true,'data'=>'oke']);
                 }else{
