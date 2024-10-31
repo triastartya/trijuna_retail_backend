@@ -211,11 +211,16 @@ class mutasiKeluarController extends VierController
                     return response()->json(['status'=>true,'data'=>'oke']);
                 }else{
                     DB::rollBack();
-                    return response()->json(['status'=>false,'data'=>[],'message'=>$res->message]);    
+                    return response()->json(['status'=>false,'data'=>$data[0],'message'=>$res->message]);    
                 }
             } else {
                 DB::rollBack();
-                return response()->json(['status'=>false,'data'=>[],'message'=>$response->status().', err']);
+                return response()->json([
+                    'status'=>false,
+                    'data'=>$data[0],
+                    'url'=>$lokasi->server.'/api/mutasi_lokasi_masuk/insertbyapi',
+                    'message'=>$response->status().', err'
+                ]);
             }
         }catch (\Exception $ex) {
             DB::rollBack();
