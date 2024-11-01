@@ -13,6 +13,7 @@ class msBarang extends Model
     
     protected $table = 'ms_barang';
     protected $fillable = [
+        'id_barang',
         'id_divisi',
         'id_group',
         'kode_barang',
