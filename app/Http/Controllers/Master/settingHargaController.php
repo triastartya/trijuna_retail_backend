@@ -113,7 +113,8 @@ class settingHargaController extends VierController
         }
     }
 
-    public function insertbyapi(Request $request){
+    public function insertbyapi(Request $request)
+    {
         DB::beginTransaction();
         try {
             $data = $request->all();
@@ -136,6 +137,8 @@ class settingHargaController extends VierController
                     'qty_grosir2' => $data_detail['qty_grosir2'],
                     'harga_grosir2' => $data_detail['harga_grosir2'],
                 ]);
+                unset($data_detail['kode_barang']);
+                unset($data_detail['nama_barang']);
                 $trSettingHargaDetail = trSettingHargaDetail::create($data_detail);
             }
             $version = msBarangVersion::where('id_barang_version',1)->first();
