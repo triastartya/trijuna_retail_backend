@@ -397,7 +397,7 @@ class migrasiController extends VierController
             foreach($json as $item){
                 $item = (array)$item;
                 $data_barang = [
-                    'id_barang_old'=>$item['IdBarang'],
+                    'id_barang'=>$item['IdBarang'],
                     'id_divisi'=>$item['IdDivisi'],
                     'id_group'=>$item['IdGrup'],
                     'kode_barang'=>$item['KodeBarang'],
