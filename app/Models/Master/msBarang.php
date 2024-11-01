@@ -49,7 +49,7 @@ class msBarang extends Model
         'kode_satuan3',
         'isi_satuan3'
     ];
-    protected $primaryKey = 'id_barang';
+    // protected $primaryKey = 'id_barang';
     protected $modelFields = [
         ['name' => 'id_divisi', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
         ['name' => 'id_group', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
