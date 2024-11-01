@@ -12,8 +12,9 @@ class msBarang extends Model
     use HasFactory,VierModel,CreatedUpdatedBy;
     
     protected $table = 'ms_barang';
+    protected $primaryKey = 'id_barang';
     protected $fillable = [
-        'id_barang',
+        'id_barang_old',
         'id_divisi',
         'id_group',
         'kode_barang',
@@ -87,6 +88,7 @@ class msBarang extends Model
     public function rules()
     {
         return [
+        'id_barang_old'=>'',
         'id_barang'=>'',
         'id_divisi'=>'',
         'id_group'=>'',
