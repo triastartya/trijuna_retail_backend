@@ -24,7 +24,9 @@ class posPenjualanDetail extends Model
         'diskon2',
         'sub_total',
         'display_diskon1',
-        'display_diskon2'
+        'display_diskon2',
+        'hpp_average',
+        'laba'
     ];
     
     public function rules()
@@ -39,7 +41,9 @@ class posPenjualanDetail extends Model
             'diskon2'           =>'',
             'sub_total'         =>'required',
             'display_diskon1'   =>'',
-            'display_diskon2'   =>''
+            'display_diskon2'   =>'',
+            'hpp_average'       =>'',
+            'laba'              =>''
         ];
     }
 }

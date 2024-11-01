@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Penjualan;
 use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\InventoryStokHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Master\msBarang;
 use App\Models\Penjualan\posPenjualan;
 use App\Models\Penjualan\posPenjualanDetail;
 use App\Models\Penjualan\posPenjualanPayment;
@@ -38,6 +39,9 @@ class penjualanController extends VierController
             $penjualan = posPenjualan::create($data);
             $user = User::where('id_user',$penjualan->id_user_kasir)->first();
             foreach($request->detail as $detail){
+                $barang = msBarang::where('id_barang',$detail['id_barang'])->first();
+                $detail['hpp_average'] = $barang->hpp_average;
+                $detail['laba'] = $barang->harga_jual - $barang->hpp_average;
                 $detail['id_penjualan'] = $penjualan->id_penjualan;
                 $penjualan_detail =posPenjualanDetail::create($detail);
                 InventoryStokHelper::pengurangan((object)[
