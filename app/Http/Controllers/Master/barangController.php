@@ -343,7 +343,7 @@ class barangController extends VierController
             
         }
     }
-    
+
     public function barang_by_param(){
         try{
             $data = $this->repository->by_param();
@@ -506,6 +506,15 @@ class barangController extends VierController
             return response()->json(['success'=>true,'data'=>'oke']);
         }
         catch(\Exception $err) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+        }
+    }
+
+    public function poin_member(){
+        try {
+        
+        }catch(\Exception $err) {
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Master\barangController;
+use App\Http\Controllers\Master\memberController;
 use App\Http\Controllers\migrasiController;
 use App\Models\Master\msBarang;
 use App\Models\Master\msBarangStok;
@@ -223,3 +224,10 @@ Route::post('migrasi/id_barang',[barangController::class,'perbaiakan_id_barang']
 Route::post('login', function () {
     return response()->json(['status'=>false,'data'=>'anda belum login']);
 });
+
+Route::get('/migrasi_poin',function(){
+    $data = [];
+    return view('migrasi.poin',['items'=>$data]);
+});
+Route::get('migrasi/poin',[memberController::class,'poin_member']);
+

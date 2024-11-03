@@ -301,6 +301,7 @@ class migrasiController extends VierController
             $merk=[];
             foreach($json as $item){
                 $merk = [
+                    'id_member_old' => $item['IdCustomer'],
                     'id_member' => $item['IdCustomer'],
                     'kode_member' =>$item['KodeCustomer'],
                     'nama_member' =>$item['NamaCustomer'],
@@ -328,6 +329,25 @@ class migrasiController extends VierController
             return response()->json(['success'=>true,'data'=>$merk]);
         } catch (\Exception $ex) {
             DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function poin(){
+        try {
+            ini_set('memory_limit',request()->memory);
+            ini_set('max_execution_time', 0);
+            $file = request()->file;
+            $content = file_get_contents($file);
+            $json = json_decode($content, true);
+
+            foreach($json as $item){
+                msMember::where('id_member',$item['IdCustomer'])
+                ->update('jumlah_poin',$item['JumlahPoin']);
+            }
+
+            return response()->json(['success'=>true,'data'=>1]);
+        } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
