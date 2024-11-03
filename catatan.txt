@@ -142,4 +142,5 @@ Order by IdBarang
 
 docker image prune -a -f
 
-SELECT setval('ms_lokasi_id_lokasi_seq', (SELECT MAX(id_lokasi) FROM ms_lokasi) + 1);
+update ms_barang set id_barang=id_barang_old
+SELECT setval('ms_barang_id_barang_seq', (SELECT MAX(id_barang) FROM ms_barang) + 1);
