@@ -229,5 +229,5 @@ Route::get('/migrasi_poin',function(){
     $data = [];
     return view('migrasi.poin',['items'=>$data]);
 });
-Route::get('migrasi/poin',[memberController::class,'poin_member']);
+Route::post('migrasi/poin',[memberController::class,'poin_member']);
 
