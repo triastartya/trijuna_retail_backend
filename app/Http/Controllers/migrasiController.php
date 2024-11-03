@@ -343,9 +343,9 @@ class migrasiController extends VierController
 
             foreach($json as $item){
                 msMember::where('id_member',$item['IdCustomer'])
-                ->update('jumlah_poin',$item['JumlahPoin']);
+                ->update('jumlah_poin',$item['JumlahPoint']);
             }
-            
+
             return response()->json(['success'=>true,'data'=>1]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
