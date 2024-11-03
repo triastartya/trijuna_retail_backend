@@ -14,6 +14,7 @@ class msMember extends Model
     
     protected $table = 'ms_member';
     protected $fillable = [
+        'id_member_old',
         'kode_member',
         'nama_member',
         'alamat',
@@ -61,6 +62,7 @@ class msMember extends Model
     {
         return [
             'id_member'     =>'',
+            'id_member_old' =>'',
             'kode_member'   =>'',
             'nama_member'   =>'required',
             'alamat'        =>'required',
