@@ -136,7 +136,21 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::put('hr_departemen/{id}',[departemenController::class,'update']);
         Route::delete('hr_departemen/{id}',[departemenController::class,'destroy']);
         Route::pointResource('user_group', userGroupController::class);
-        Route::pointResource('member',memberController::class);
+        // Route::pointResource('member',memberController::class);
+
+        Route::prefix('member')->group(function(){
+            Route::get('/all', [memberController::class, 'all']);
+            Route::get('/', [memberController::class, 'tarik']);
+            Route::get('datatables', [memberController::class, 'datatables']);
+            Route::get('lov', [memberController::class, 'lov']);
+            Route::post('table', [memberController::class, 'table']);
+            Route::get('{id}', [memberController::class, 'show']);
+            Route::post('/',[memberController::class, 'store']);
+            Route::put('{id}',[memberController::class,'update']);
+            Route::delete('{id}',[memberController::class,'destroy']);
+            Route::get('detail/dictionary', [memberController::class, 'dictionary']);
+        });
+
         Route::post('member/by_param',[memberController::class,'member_by_param']);
         Route::pointResource('divisi',divisiController::class);
         Route::get('divisi/data/import',[divisiController::class,'import_divisi']);
