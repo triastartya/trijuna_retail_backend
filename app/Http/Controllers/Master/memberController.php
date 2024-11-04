@@ -21,6 +21,8 @@ class memberController extends VierController
 
     public function tarik(){
         try{
+            ini_set('memory_limit',-1);
+            ini_set('max_execution_time', 0);
             $data = msMember::get();
             return response()->json(['success'=>true,'data'=>[
                 'data' => $data
