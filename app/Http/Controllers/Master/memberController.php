@@ -18,6 +18,17 @@ class memberController extends VierController
 
         parent::__construct($this->repository);
     }
+
+    public function tarik(){
+        try{
+            $data = msMember::get();
+            return response()->json(['success'=>true,'data'=>[
+                'data' => $data
+            ]]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
     
     public function member_by_param()
     {
