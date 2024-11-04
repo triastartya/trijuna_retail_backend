@@ -42,13 +42,13 @@ class QueryHelper
         }
         
         if($lastString==''){
+                $query .= ' limit 300';
+        }else{
             if($lastString=='all'){
                 $query .= '';
             }else{
-                $query .= ' limit 300';
+                $query .= $lastString;
             }
-        }else{
-            $query .= $lastString;
         }
         
         return DB::select($query);
