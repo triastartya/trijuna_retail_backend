@@ -127,7 +127,7 @@ class settingHargaController extends VierController
                     DB::rollBack();
                     return response()->json(['success'=>false,'message'=>'kode barang tidak di temukan '.$data_detail['kode_barang'].' '.$data_detail['nama_barang']]);
                 }
-                
+                $data_detail['id_barang'] = $cek_barang->id_barang; // input id barang sesuai id barang yang ada di lokasi tujuan
                 $data_detail['tanggal_mulai_berlaku'] = $data['tanggal_mulai_berlaku'];
                 $data_detail['id_setting_harga'] = $settingHarga->id_setting_harga;
                 $update_master = msBarang::where('id_barang',$data_detail['id_barang'])->update([
