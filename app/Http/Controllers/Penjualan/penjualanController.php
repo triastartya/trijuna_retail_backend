@@ -28,7 +28,8 @@ class penjualanController extends VierController
     public function insert(Request $request){
         DB::beginTransaction();
         try {
-            $cek = posPenjualan::where('nota_penjualan',$request->no_faktur)->first();
+            $cek = posPenjualan::where('nota_penjualan',$request->no_faktur)
+            ->lockForUpdate()->first();
             if($cek){
                 throw new \Exception('duplikat no faktur');
             }
