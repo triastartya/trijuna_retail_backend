@@ -128,12 +128,15 @@ class InventoryStokHelper
         $stok_on_hand = msBarangStok::where('id_barang',$id_barang)->sum('qty');
         $stok_persediaan = ($stok_on_hand)?$stok_on_hand:0;
         $hpp_average = ($master_barang->hpp_average)?$master_barang->hpp_average:0;
-        if($hpp_average<=0 || $stok_persediaan<=0){
+        if($hpp_average==0 || $stok_persediaan==0){
             $hpp_average = $subtotal/$qty;
         }else{
-            $modal = $stok_persediaan*$hpp_average;
-            $total_nominal_persediaan = $modal + $subtotal;
-            $hpp_average = $total_nominal_persediaan / ($stok_persediaan+$qty);
+            if($stok_persediaan<0){
+            }else{
+                $modal = $stok_persediaan*$hpp_average;
+                $total_nominal_persediaan = $modal + $subtotal;
+                $hpp_average = $total_nominal_persediaan / ($stok_persediaan+$qty);
+            }
         }
         $master_barang->hpp_average = floor($hpp_average);
         $master_barang->save();
