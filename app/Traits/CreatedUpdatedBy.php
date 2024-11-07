@@ -23,7 +23,7 @@ trait CreatedUpdatedBy
         // updating updated_by when model is updated
         static::updating(function ($model) {
             if (!$model->isDirty('updated_by')) {
-                $model->updated_by = Auth::user()->id_user;
+                $model->updated_by = (Auth::user())?Auth::user()->id_user:1;
             }
         });
     }

@@ -520,6 +520,16 @@ class barangController extends VierController
         }
     }
 
+    public function get_version(){
+        try {
+            $version = msBarangVersion::where('id_barang_version','1')->first();
+            return response()->json(['success'=>true,'data'=>$version]);
+        }catch(\Exception $err) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+        }
+    }
+
     // public function perbaikan_kartu_stok(){
     //     DB::beginTransaction();
     //     try {
