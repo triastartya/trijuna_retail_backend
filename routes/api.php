@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backupController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Finance\bayarHutangController;
 use App\Http\Controllers\Finance\bayarHutangPelunasanController;
@@ -118,6 +119,8 @@ Route::get('barang/lihat_stok_omzet/{id_barang}',[barangController::class,'lihat
 Route::get('barang/lihat_stok_omzet_cabang/{id_barang}',[barangController::class,'lihat_stok_omzet_cabang']);
 Route::get('barang/lihat_stok_cabang/{id_barang}',[barangController::class,'lihat_stok_cabang']);
 Route::get('dashboard',[DashboardController::class,'pembelian']);
+
+Route::get('backup', [backupController::class, 'runBackup']);
 
 Route::post('mutasi_lokasi_masuk/insertbyapi',[mutasiMasukController::class,'insertbyapi']);
 
