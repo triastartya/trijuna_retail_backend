@@ -107,7 +107,12 @@ class mutasiMasukController extends VierController
             unset($data['updated_at']);
             $mutasi = trMutasiLokasi::create($data);
             foreach($request['detail'] as $detail){
+                $cekBarang = msBarang::where('kode_barang',$detail['kode_barang'])->first();
+                if(!$cekBarang){
+                    throw new \Exception('barang tidak di temukan, '.$detail['kode_barang'].' - '.$detail['nama_barang']);
+                }
                 $detail['id_mutasi_lokasi'] = $mutasi->id_mutasi_lokasi;
+                $detail['id_barang'] = $cekBarang->id_barang; // input id barang sesuai id barang yang ada di lokasi tujuan
                 unset($detail['created_at']);
                 unset($detail['updated_at']);
                 unset($detail['id_mutasi_lokasi_detail']);

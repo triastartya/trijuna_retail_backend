@@ -55,7 +55,13 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
         ],
-
+        'google_drive' => [
+            'driver' => 'google',
+            'client_id' => env('GOOGLE_DRIVE_CLIENT_ID'),
+            'client_secret' => env('GOOGLE_DRIVE_CLIENT_SECRET'),
+            'redirect_uri' => env('GOOGLE_DRIVE_REDIRECT_URI'),
+            'refresh_token' => env('GOOGLE_DRIVE_REFRESH_TOKEN'),
+        ],
     ],
 
     /*

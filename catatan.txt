@@ -144,3 +144,4 @@ docker image prune -a -f
 
 update ms_barang set id_barang=id_barang_old
 SELECT setval('ms_barang_id_barang_seq', (SELECT MAX(id_barang) FROM ms_barang) + 1);
+

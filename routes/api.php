@@ -106,6 +106,7 @@ Route::post('register',[userController::class,'register']);
 Route::post('login',[userController::class,'login']);
 Route::post('login/kasir',[userController::class,'login_kasir']);
 Route::get('list/kasir',[userController::class,'getkasir']);
+Route::get('version_barang',[barangController::class,'get_version']);
 
 Route::get('user_list',[userController::class,'list']);
 Route::get('barang_satuan/proses',[barangController::class,'satuan_proses']);
@@ -296,9 +297,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
         Route::pointResource('ms_promo_diskon_setting_barang',msPromoDiskonSettingBarangController::class);
         Route::get('ms_promo_diskon_setting_barang_by_id_promo_diskon/{id_promo_diskon}',[msPromoDiskonSettingBarangController::class,'by_id_promo_diskon']);
-        Route::pointResource('ms_promo_diskon_setting_merk',msPromoDiskonSettingMerkController::class);
+        // Route::pointResource('ms_promo_diskon_setting_merk',msPromoDiskonSettingMerkController::class);
+        Route::post('ms_promo_diskon_setting_merk',[msPromoDiskonSettingMerkController::class,'insert_barang_promo']);
         Route::get('ms_promo_diskon_setting_merk_by_id_promo_diskon/{id_promo_diskon}',[msPromoDiskonSettingMerkController::class,'by_id_promo_diskon']);
-        Route::pointResource('ms_promo_diskon_setting_supplier',msPromoDiskonSettingSupplierController::class);
+        // Route::pointResource('ms_promo_diskon_setting_supplier',msPromoDiskonSettingSupplierController::class);
+        Route::post('ms_promo_diskon_setting_supplier',[msPromoDiskonSettingSupplierController::class,'insert_barang_promo']);
         Route::get('ms_promo_diskon_setting_supplier_by_id_promo_diskon/{id_promo_diskon}',[msPromoDiskonSettingSupplierController::class,'by_id_promo_diskon']);
         
         Route::pointResource('ms_promo_hadiah',msPromoHadianController::class);
