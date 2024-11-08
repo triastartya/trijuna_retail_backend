@@ -355,6 +355,8 @@ class barangController extends VierController
 
     public function barang_no_limit_by_param(){
         try{
+            ini_set('memory_limit',"-1");
+            ini_set('max_execution_time', 0);
             $data = $this->repository->no_limit_by_param();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
