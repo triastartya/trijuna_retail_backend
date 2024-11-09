@@ -6,6 +6,9 @@ use App\Helpers\GeneradeNomorHelper;
 use App\Helpers\InventoryStokHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Master\msBarang;
+use App\Models\Master\msMember;
+use App\Models\Master\msMemberPoinSetting;
+use App\Models\Master\msMemberPoinSettingGroup;
 use App\Models\Penjualan\posPenjualan;
 use App\Models\Penjualan\posPenjualanDetail;
 use App\Models\Penjualan\posPenjualanPayment;
@@ -39,6 +42,9 @@ class penjualanController extends VierController
             $data['is_bayar'] = true;
             $penjualan = posPenjualan::create($data);
             $user = User::where('id_user',$penjualan->id_user_kasir)->first();
+            $nominal_poin = 0;
+            $point_setting = msMemberPoinSetting::where('id_member_poin_setting',1)->first();
+            $point_setting_group = msMemberPoinSettingGroup::get();
             foreach($request->detail as $detail){
                 $barang = msBarang::where('id_barang',$detail['id_barang'])->first();
                 $detail['hpp_average'] = $barang->hpp_average;
@@ -58,11 +64,27 @@ class penjualanController extends VierController
                     'keterangan'      => 'Penjualan '.$user->nama,
                     'transaksi'       => 'pos_penjualan',
                 ]);
+                // ======== ambil nominal yg dapat poin
+                if($data['id_member']){
+                    if(count($point_setting_group)>0){
+                        $exists = $point_setting_group->contains('id_group', $barang->id_group);
+                        if($exists){
+                            $nominal_poin = $nominal_poin + $detail['subtotal'];
+                        }
+                    }
+                }
             }
             foreach($request->payment as $payment){
                 $payment['id_penjualan'] = $penjualan->id_penjualan;
                 posPenjualanPayment::create($payment);
             }
+            if($data['id_member'] AND $nominal_poin > 0 AND $point_setting){
+                $jumlah_poin = floor($nominal_poin/$point_setting->nominal) * $point_setting->dapat_poin;
+                $member = msMember::where('id_member',$data['id_member'])->first();
+                $member = ($jumlah_poin>0)?$member->jumlah_poin + $jumlah_poin :$member->jumlah_poin;
+                $member->save();
+            }
+
             DB::commit();
             return response()->json(['success'=>true,'data'=>$penjualan->id_penjualan]);
         }

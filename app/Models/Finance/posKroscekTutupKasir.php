@@ -22,6 +22,8 @@ class posKroscekTutupKasir extends Model
         'pendapatan_versi_user',
         'pendapatan_versi_system',
         'selisih',
+        'refund',
+        'setor_bank',
         'keterangan',
         'created_by',
         'updated_by'
@@ -36,6 +38,7 @@ class posKroscekTutupKasir extends Model
             'pendapatan_versi_user'=>'required',
             'pendapatan_versi_system'=>'required',
             'selisih'=>'',
+            'refund',
             'keterangan'=>'',
             'created_by'=>'',
             'updated_by'=>''

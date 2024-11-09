@@ -13,6 +13,7 @@ use App\Models\Finance\posTutupKasirDetailPendapatanCash;
 use App\Models\Penjualan\posPenjualan;
 use App\Models\Penjualan\posPenjualanDetail;
 use App\Models\Penjualan\posPenjualanPayment;
+use App\Models\Penjualan\posRefund;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
@@ -47,6 +48,8 @@ class posTutupKasirController extends VierController
             $data['tanggal_tutup_kasir'] = Carbon::now()->format('Y-m-d H:i:s');
             unset($data['detail']);
             // insert data tutup kasir
+            $total_refund = posRefund::where('id_user_kasir',$data['id_user_kasir'])->whereNull('id_tutup_kasir')->sum('total_refund');
+            $data['refund'] = $total_refund;
             $tutup_kasir = posTutupKasir::create($data);
             foreach($request->detail as $detail){
                 $detail['id_tutup_kasir'] = $tutup_kasir->id_tutup_kasir;
@@ -59,6 +62,8 @@ class posTutupKasirController extends VierController
                     $kembalian_sistem = $this->repository->kembalian_sistem();
                     // jika cash get nominal sistem di kurangi kembalian
                     $nominal_sistem = $nominal_sistem - $kembalian_sistem;
+                    // di kurangi refund
+                    $nominal_sistem = $nominal_sistem - $total_refund;
                 }
                 $detail['nominal_sistem'] = $nominal_sistem;
                 // hitung selisih 
@@ -86,6 +91,12 @@ class posTutupKasirController extends VierController
                 ]);
             //update id_tutup_kasir di pos penjualan;
             posPenjualan::where('id_user_kasir',$data['id_user_kasir'])
+            ->whereNull('id_tutup_kasir')
+            ->update([
+                'id_tutup_kasir'=>$tutup_kasir->id_tutup_kasir
+            ]);
+            //update refund
+            posRefund::where('id_user_kasir',$data['id_user_kasir'])
             ->whereNull('id_tutup_kasir')
             ->update([
                 'id_tutup_kasir'=>$tutup_kasir->id_tutup_kasir

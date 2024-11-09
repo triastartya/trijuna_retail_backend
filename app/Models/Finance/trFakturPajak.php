@@ -24,7 +24,8 @@ class trFakturPajak extends Model
         'nama_ttd_faktur',
         'keterangan',
         'deleted_by',
-        'deleted_at'
+        'deleted_at',
+        'retur'
     ];
     
     public function rules()
@@ -41,6 +42,7 @@ class trFakturPajak extends Model
             'keterangan'=>'',
             'deleted_by'=>'',
             'deleted_at'=>'',
+            'retur' => '',
         ];
     }
 }

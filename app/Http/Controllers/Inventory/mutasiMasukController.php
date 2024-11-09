@@ -180,7 +180,7 @@ class mutasiMasukController extends VierController
                 InventoryStokHelper::penambahan((object)[
                     'id_barang'       => $detail['id_barang'],
                     'nama_barang'     => '',
-                    'id_warehouse'    => $mutasi->warehouse_asal,
+                    'id_warehouse'    => $mutasi->warehouse_tujuan,
                     'qty'             => $detail['qty'],
                     'nomor_reff'      => $mutasi->nomor_mutasi_lokasi,
                     'id_header_trans' => $mutasi->id_mutasi_lokasi,

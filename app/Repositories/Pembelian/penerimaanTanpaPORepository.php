@@ -130,7 +130,7 @@ class penerimaanTanpaPORepository extends VierRepository
             tpd.qty_bonus,
             tpd.nama_bonus,
             tpd.selisih,
-            tpd.netto,
+            tpd.netto as harga_beli_netto,
             tpd.harga_jual
             from tr_penerimaan_detail tpd
             inner join ms_barang mb on tpd.id_barang = mb.id_barang

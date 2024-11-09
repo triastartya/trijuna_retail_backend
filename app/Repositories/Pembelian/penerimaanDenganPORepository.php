@@ -231,7 +231,7 @@ class penerimaanDenganPORepository extends VierRepository
             tpd.nama_bonus,
             tpd.biaya_barcode,
             tpd.selisih,
-            tpd.netto,
+            tpd.netto as harga_beli_netto,
             tpd.harga_jual
             from tr_penerimaan_detail tpd
             inner join ms_barang mb on tpd.id_barang = mb.id_barang

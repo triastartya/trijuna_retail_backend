@@ -72,6 +72,8 @@ class posKroscekTutupKasirController extends VierController
                 'id_tutup_kasir' => $request->id_tutup_kasir,
                 'tanggal_kroscek_tutup_kasir' => $request->tanggal_kroscek_tutup_kasir,
                 'keterangan' => $request->keterangan,
+                'refund' => $tutup_kasir->refund,
+                'setor_bank' => $tutup_kasir->setor_bank,
                 'pendapatan_versi_user' => $versi_kasir,
                 'pendapatan_versi_system' => $versi_sistem,
                 'selisih' => $versi_sistem - $versi_kasir

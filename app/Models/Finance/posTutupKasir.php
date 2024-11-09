@@ -22,6 +22,8 @@ class posTutupKasir extends Model
         'modal_kasir',
         'pengeluaran',
         'penerimaan',
+        'refund',
+        'setor_bank',
         'sisa_saldo',
         'keterangan',
         'status_tutup_kasir',
