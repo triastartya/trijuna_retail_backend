@@ -300,15 +300,15 @@ class barangRepository extends VierRepository
             where mb.is_active = true
         ');
         
-        foreach($data as $index => $row){
-            if($row->diskon !=0 AND $row->diskon_mulai != null AND $row->diskon_selesai != null){
-                $paymentDate = date('Y-m-d');
-                if (($paymentDate >= $row->diskon_mulai) && ($paymentDate <= $row->diskon_selesai)){
+        // foreach($data as $index => $row){
+            // if($row->diskon !=0 AND $row->diskon_mulai != null AND $row->diskon_selesai != null){
+            //     $paymentDate = date('Y-m-d');
+            //     if (($paymentDate >= $row->diskon_mulai) && ($paymentDate <= $row->diskon_selesai)){
     
-                }else{
-                    $row->diskon = 0;
-                }
-            }
+            //     }else{
+            //         $row->diskon = 0;
+            //     }
+            // }
             // $data[$index] = (object) array_merge((array)$data[$index],$this->repository_setting_harga->harga_jual_by_id_barang($row->id_barang),);
             // $data[$index] = (object) array_merge((array)$data[$index],[
             //     "qty_grosir1" => 0,
@@ -317,29 +317,29 @@ class barangRepository extends VierRepository
             //     "harga_grosir2" => 0,
             // ]);
             // $data[$index] = (object) array_merge((array)$data[$index],$this->repository_promo_diskon->get_from_pos($row->id_barang,$row->id_merk,$row->id_supplier));
-            $data[$index] = (object) array_merge((array)$data[$index],
-            [
-                "id_promo_diskon" => 0,
-                "is_nominal" => 0,
-                "minimal_qty"=>0,
-                "promo_diskon" => 0,
-                "kuota" => 0,
-                "tanggal_mulai" => null
-            ]
-            );
-            $data[$index] = (object) array_merge((array)$data[$index],
-                [
-                    "id_promo_hadiah" => 0,
-                    "is_kelipatan_hadiah" => false,
-                    "minimal_qty_hadiah"=>0,
-                    "hadiah" => "",
-                    "tgl" => 0
-                ]
-            );
+            // $data[$index] = (object) array_merge((array)$data[$index],
+            // [
+            //     "id_promo_diskon" => 0,
+            //     "is_nominal" => 0,
+            //     "minimal_qty"=>0,
+            //     "promo_diskon" => 0,
+            //     "kuota" => 0,
+            //     "tanggal_mulai" => null
+            // ]
+            // );
+            // $data[$index] = (object) array_merge((array)$data[$index],
+            //     [
+            //         "id_promo_hadiah" => 0,
+            //         "is_kelipatan_hadiah" => false,
+            //         "minimal_qty_hadiah"=>0,
+            //         "hadiah" => "",
+            //         "tgl" => 0
+            //     ]
+            // );
             // $data[$index] = (object) array_merge((array)$data[$index],$this->repository_promo_hadiah->get_from_pos($row->id_barang,$row->id_merk,$row->id_supplier));
-        }
+        // }
         
-        return $data;        
+        return $data;
     }
 
     public function by_id_supplier($id_supplier){
