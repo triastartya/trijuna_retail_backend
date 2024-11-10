@@ -69,7 +69,7 @@ class penjualanController extends VierController
                     if(count($point_setting_group)>0){
                         $exists = $point_setting_group->contains('id_group', $barang->id_group);
                         if($exists){
-                            $nominal_poin = $nominal_poin + $detail['subtotal'];
+                            $nominal_poin = $nominal_poin + $detail['sub_total'];
                         }
                     }
                 }
@@ -81,14 +81,17 @@ class penjualanController extends VierController
             if($data['id_member'] AND $nominal_poin > 0 AND $point_setting){
                 $jumlah_poin = floor($nominal_poin/$point_setting->nominal) * $point_setting->dapat_poin;
                 $member = msMember::where('id_member',$data['id_member'])->first();
-                $member = ($jumlah_poin>0)?$member->jumlah_poin + $jumlah_poin :$member->jumlah_poin;
-                $member->save();
+                if ($member) {
+                    $member->jumlah_poin = ($jumlah_poin>0)?$member->jumlah_poin + $jumlah_poin :$member->jumlah_poin;
+                    $member->save();
+                }
             }
 
             DB::commit();
             return response()->json(['success'=>true,'data'=>$penjualan->id_penjualan]);
         }
         catch(\Exception $err) {
+            throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
