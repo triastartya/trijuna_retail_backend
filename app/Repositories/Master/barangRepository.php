@@ -96,7 +96,6 @@ class barangRepository extends VierRepository
             );
             $data[$index]->satuan = $this->repository_barang_satuan->to_barang_by_param($row->id_barang);
         }
-        
         return $data;
         
     }
@@ -277,7 +276,7 @@ class barangRepository extends VierRepository
 
     public function barang_pos(){
         $data =  DB::select('
-            select 
+            select
             mb.id_merk,
             mb.id_supplier,
             mb.id_barang,

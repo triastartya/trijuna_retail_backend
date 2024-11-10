@@ -26,6 +26,8 @@ class posKroscekTutupKasirRepository extends VierRepository
                 ptk.pengeluaran,
                 ptk.penerimaan,
                 ptk.sisa_saldo,
+                ptk.refund,
+				ptk.setor_bank,
                 ptk.keterangan,
                 ptk.status_tutup_kasir,
                 ptk.id_kroscek_tutup_kasir
@@ -47,6 +49,8 @@ class posKroscekTutupKasirRepository extends VierRepository
             pktk.tanggal_kroscek_tutup_kasir,
             pktk.pendapatan_versi_user,
             pktk.pendapatan_versi_system,
+            pktk.refund,
+			pktk.setor_bank,
             pktk.selisih,
             pktk.keterangan as keterangan_kroscek,
             ptk.keterangan as keterangan_tutup_kasir,
@@ -55,7 +59,7 @@ class posKroscekTutupKasirRepository extends VierRepository
             from pos_kroscek_tutup_kasir pktk
             inner join pos_tutup_kasir ptk on pktk.id_kroscek_tutup_kasir=ptk.id_kroscek_tutup_kasir
             inner join users uk on uk.id_user = ptk.id_user_kasir
-            inner join users uc on uc.id_user = pktk.created_by 
+            inner join users uc on uc.id_user = pktk.created_by
         ",request());
     }
 
@@ -70,6 +74,8 @@ class posKroscekTutupKasirRepository extends VierRepository
             pktk.tanggal_kroscek_tutup_kasir,
             pktk.pendapatan_versi_user,
             pktk.pendapatan_versi_system,
+            pktk.refund,
+			pktk.setor_bank,
             pktk.selisih,
             pktk.keterangan as keterangan_kroscek,
             ptk.keterangan as keterangan_tutup_kasir,
