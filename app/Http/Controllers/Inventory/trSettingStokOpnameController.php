@@ -200,6 +200,7 @@ class trSettingStokOpnameController extends VierController
                 ]);
                 // kartu stok
                 // dd($qty_fisik - $barang->qty_capture);
+                // dd($settingSO);
                 $insert_kartu_stok = msBarangKartuStok::create([
                     'tanggal' => $settingSO->tanggal_setting_stok_opname,
                     'created_at' => $settingSO->tanggal_setting_stok_opname,
@@ -221,7 +222,7 @@ class trSettingStokOpnameController extends VierController
                 ]);
                 
                 $kartustok = msBarangKartuStok::where('id_barang',$barang->id_barang)
-                    ->where('id_warehouse',request()->id_warehouse)
+                    ->where('id_warehouse',$settingSO->id_warehouse)
                     ->where('created_at','>=',$settingSO->tanggal_setting_stok_opname)
                     ->orderBy('created_at', 'asc')
                     ->get();
@@ -247,7 +248,7 @@ class trSettingStokOpnameController extends VierController
                 if(!$barang_stok){
                     msBarangStok::create([
                         'id_barang' => $barang->id_barang,
-                        'id_warehouse' => request()->id_warehouse,
+                        'id_warehouse' =>$settingSO->id_warehouse,
                         'qty' => $qty_fisik
                     ]);
                 }else{
@@ -258,6 +259,7 @@ class trSettingStokOpnameController extends VierController
             DB::commit();
             return response()->json(['success'=>true,'data'=>$settingSO]);
         }catch(\Exception $err) {
+            throw $err;
             DB::rollBack();
             // return $err;
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);

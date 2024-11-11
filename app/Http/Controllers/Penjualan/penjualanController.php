@@ -90,7 +90,7 @@ class penjualanController extends VierController
             return response()->json(['success'=>true,'data'=>$penjualan->id_penjualan]);
         }
         catch(\Exception $err) {
-            throw $err;
+            // throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
