@@ -183,4 +183,61 @@ class penerimaanDenganPOController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+    public function edit(){
+        try {
+            $data = request()->all();
+            $id_penerimaan = 0;
+            trPenerimaanDetail::where('id_penerimaan',$data[0]['id_penerimaan'])->delete();
+            foreach($data as $detail){
+                // unset($detail['id_penerimaan_detail']);
+                // unset($detail['barcode']);
+                // unset($detail['kode_barang']);
+                // unset($detail['nama_barang']);
+                // unset($detail['nama_satuan']);
+                $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
+                $d = $detail;
+                $d['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
+                $d['selisih'] = $master_barang->harga_beli_terakhir - $detail['harga_order'];
+                $d['netto'] = $detail['harga_order'] + ($detail['harga_order'] * 0.11);
+                $d['harga_jual'] = $master_barang->harga_jual;
+                $d['diskon_persen_1'] = ($detail['diskon_persen_1'])?$detail['diskon_persen_1']:0;
+                $d['diskon_nominal_1'] = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
+                $d['diskon_persen_2'] = ($detail['diskon_persen_2'])?$detail['diskon_persen_2']:0;
+                $d['diskon_nominal_2'] = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
+                $d['diskon_persen_3'] = ($detail['diskon_persen_3'])?$detail['diskon_persen_3']:0;
+                $d['diskon_nominal_3'] = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
+                $d['qty_bonus'] = ($detail['qty_bonus'])?$detail['qty_bonus']:0;
+                $d['netto'] = ($detail['harga_beli_netto'])?$detail['harga_beli_netto']:0;
+                $id_penerimaan = $detail['id_penerimaan'];
+                // unset($d['harga_beli_netto']);
+                $penerimaanDetail= trPenerimaanDetail::create($d);
+            }
+            $qty = array_reduce($data, function($sum, $item) {
+                return $sum + $item['qty'];
+            }, 0);
+            // dd($qty);
+            
+            $sub_total = array_reduce($data, function($sum, $item) {
+                return $sum + $item['sub_total'];
+            }, 0);
+            // dd($sub_total);
+            $penerimaan = trPenerimaan::where('id_penerimaan',$id_penerimaan)->first();
+           
+            $ppn = ($sub_total-$penerimaan->diskon_nominal)*0.11;
+            
+            $penerimaan->qty = $qty;
+            $penerimaan->sub_total1 = $sub_total;
+            $penerimaan->sub_total2 = $sub_total-$penerimaan->diskon_nominal;
+            $penerimaan->ppn_nominal = $ppn;
+            $penerimaan->total_transaksi = $sub_total - $penerimaan->diskon_nominal - $ppn + $penerimaan->pembulatan;
+            $penerimaan->save();
+            // dd($data);
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$id_penerimaan]);
+        } catch (\Exception $ex) {
+            throw  $ex;
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
 }

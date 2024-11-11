@@ -210,6 +210,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('get_by_param',[penerimaanDenganPOController::class,'get_by_param']);
             Route::get('get_by_id/{id_penerimaan}',[penerimaanDenganPOController::class,'get_by_id']);
             Route::post('validasi',[penerimaanDenganPOController::class,'validasi']);
+            Route::post('edit',[penerimaanDenganPOController::class,'edit']);
         });
 
         Route::prefix('faktur_pajak')->group(function(){

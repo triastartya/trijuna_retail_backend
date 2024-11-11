@@ -86,7 +86,6 @@ class penjualanController extends VierController
                     $member->save();
                 }
             }
-
             DB::commit();
             return response()->json(['success'=>true,'data'=>$penjualan->id_penjualan]);
         }
