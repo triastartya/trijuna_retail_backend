@@ -51,6 +51,36 @@ class trInputStokOpnameController extends VierController
         }
     }
 
+    public function edit(Request $request){
+        try{
+            
+            trInputStokOpnameDetail::where('id_input_stok_opname',$request->id_input_stok_opname)->delete();
+            foreach($request->detail as $detail){
+                $detail['id_input_stok_opname'] = $request->id_input_stok_opname;
+                trInputStokOpnameDetail::create($detail);
+            }
+
+            $banyak = array_reduce($request->detail, function($sum, $item) {
+                return $sum + $item['banyak'];
+            }, 0);
+
+            $grand_total = array_reduce($request->detail, function($sum, $item) {
+                return $sum + $item['sub_total'];
+            }, 0);
+
+            $penerimaan = trInputStokOpname::where('id_input_stok_opname',$request->id_input_stok_opname)->first();
+            $penerimaan->qty = $banyak;
+            $penerimaan->sub_total_1 = $grand_total;
+            $penerimaan->sub_total_2 = $grand_total;
+            $penerimaan->total_transaksi = $grand_total;
+            $penerimaan->save();
+            
+            return response()->json(['success'=>true,'data'=>$request->id_input_stok_opname]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
     public function by_id(){
         try{
             $data = $this->repository->get_by_id();

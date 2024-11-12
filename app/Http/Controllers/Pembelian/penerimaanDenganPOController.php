@@ -65,9 +65,12 @@ class penerimaanDenganPOController extends VierController
                             ]);
             foreach($request->detail as $detail){
                 $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
+                $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
+                $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
+                $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['harga_order'];
-                $detail['netto'] = $detail['harga_order'] + ($detail['harga_order'] * 0.11);
+                $detail['netto'] = $detail['harga_order'] + ($detail['harga_order'] * 0.11) - $d1 - $d2 -$d3 ;
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
                 $detail['diskon_persen_1'] = ($detail['diskon_persen_1'])?$detail['diskon_persen_1']:0;
@@ -133,7 +136,6 @@ class penerimaanDenganPOController extends VierController
             //=== update stok
             $supplier = msSupplier::where('id_supplier',$penerimaan->id_supplier)->first();
             foreach(request()->detail as $detail){
-
                 $penerimaan_detail                  = trPenerimaanDetail::where('id_penerimaan_detail',$detail['id_penerimaan_detail'])->first();
                 $penerimaan_detail->harga_order     = $detail['harga_order'];
                 $penerimaan_detail->diskon_persen_1 = $detail['diskon_persen_1'];
@@ -147,7 +149,7 @@ class penerimaanDenganPOController extends VierController
                 $penerimaan_detail->nama_bonus      = $detail['nama_bonus'];
                 $penerimaan_detail->biaya_barcode   = $detail['biaya_barcode'];
                 $penerimaan_detail->save();
-                
+
                 InventoryStokHelper::penambahan((object)[
                     'id_barang'       => $detail['id_barang'],
                     'nama_barang'     => '',
@@ -165,7 +167,7 @@ class penerimaanDenganPOController extends VierController
                 if(request()->is_update_harga_order){
                     msBarang::where('id_barang',$detail['id_barang'])
                     ->update([
-                        'harga_order' => $detail['harga_order'],
+                        'harga_order' => $detail['harga_beli_netto'],
                     ]);
                 }
 
@@ -183,6 +185,7 @@ class penerimaanDenganPOController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+    
     public function edit(){
         try {
             $data = request()->all();
@@ -235,7 +238,7 @@ class penerimaanDenganPOController extends VierController
             DB::commit();
             return response()->json(['success'=>true,'data'=>$id_penerimaan]);
         } catch (\Exception $ex) {
-            throw  $ex;
+            // throw  $ex;
             DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }

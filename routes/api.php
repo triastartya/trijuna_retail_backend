@@ -197,6 +197,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         
         Route::prefix('pembelian')->group(function(){
             Route::post('insert',[pemesananController::class,'insert']);
+            Route::post('edit',[pemesananController::class,'edit']);
             Route::get('get_by_id/{id_pemesanan}',[pemesananController::class,'get_by_id']);
             Route::post('get_by_param',[pemesananController::class,'get_by_param']);
             Route::post('lookup_barang',[pemesananController::class,'lookup_barang']);
@@ -428,6 +429,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('get_barang_by_setting_so/{id_setting_stok_opname}',[trInputStokOpnameController::class,'get_barang_by_setting_so']);
             Route::post('get_by_param',[trInputStokOpnameController::class,'by_param']);
             Route::get('get_by_id/{id_input_stok_opname}',[trInputStokOpnameController::class,'by_id']);
+            Route::post('edit',[trInputStokOpnameController::class,'edit']);
         });
 
         Route::pointResource('paymentMethod', posPaymentMethodController::class);
