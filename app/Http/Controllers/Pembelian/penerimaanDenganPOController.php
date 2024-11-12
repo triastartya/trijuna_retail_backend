@@ -81,9 +81,9 @@ class penerimaanDenganPOController extends VierController
                 $detail['diskon_nominal_3'] = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
                 $detail['qty_bonus'] = ($detail['qty_bonus'])?$detail['qty_bonus']:0;
                 $penerimaanDetail= trPenerimaanDetail::create($detail);
-                $pemesananDetail = trPemesananDetail::where('id_pemesanan_detail',$detail['id_pemesanan_detail'])->first();
-                $pemesananDetail->qty_terima = $pemesananDetail->qty_terima + $data['qty'];
-                $pemesananDetail->save();
+                // $pemesananDetail = trPemesananDetail::where('id_pemesanan_detail',$detail['id_pemesanan_detail'])->first();
+                // $pemesananDetail->qty_terima = $pemesananDetail->qty_terima + $data['qty'];
+                // $pemesananDetail->save();
             }
             
             DB::commit();
@@ -254,6 +254,17 @@ class penerimaanDenganPOController extends VierController
             unset($data['detail']);
             unset($data['nomor_pemesanan']);
             unset($data['nama_supplier']);
+            //==== hitung
+            $qty = array_reduce($request->detail, function($sum, $item) {
+                return $sum + $item['qty'];
+            }, 0);
+            $sub_total = array_reduce($request->detail, function($sum, $item) {
+                return $sum + $item['sub_total'];
+            }, 0);
+            $data['qty'] = $qty;
+            $data['sub_total1'] = $sub_total;
+            $data['sub_total2'] = $sub_total - $data['diskon_nominal'];
+            $data['total_transaksi'] = $data['sub_total2'] + $data['ppn_nominal'] + $data['potongan'] + $data['pembulatan'];
             $penerimaan = trPenerimaan::where('id_penerimaan',$request->id_penerimaan)->update($data);
             trPenerimaanDetail::where('id_penerimaan',$request->id_penerimaan)->delete();
             foreach($request->detail as $detail){

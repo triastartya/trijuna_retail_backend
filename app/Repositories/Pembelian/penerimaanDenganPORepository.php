@@ -193,7 +193,8 @@ class penerimaanDenganPORepository extends VierRepository
             tp.created_by,
             tp.updated_by,
             tp.created_at,
-            tp.updated_at
+            tp.updated_at,
+            tp.is_ppn
             from tr_penerimaan tp
             inner join ms_lokasi ml on ml.id_lokasi=tp.id_lokasi
             inner join ms_warehouse mw on mw.id_warehouse=tp.id_warehouse
