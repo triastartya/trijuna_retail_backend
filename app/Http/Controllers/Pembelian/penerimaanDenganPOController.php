@@ -249,14 +249,15 @@ class penerimaanDenganPOController extends VierController
     public function edit(Request $request){
         DB::beginTransaction();
         try {
-            $pemesanan = trPemesanan::where('id_pemesanan',$request->id_pemesanan)->first();
             $data = $request->all();
-            $data['id_supplier'] = $pemesanan->id_supplier;
             $data['jenis_penerimaan'] = 1;
             unset($data['detail']);
-            $penerimaan = trPenerimaan::where('id_penerimaan')->update($data);
-
+            unset($data['nomor_pemesanan']);
+            unset($data['nama_supplier']);
+            $penerimaan = trPenerimaan::where('id_penerimaan',$request->id_penerimaan)->update($data);
+            trPenerimaanDetail::where('id_penerimaan',$request->id_penerimaan)->delete();
             foreach($request->detail as $detail){
+                unset($detail['id_penerimaan_detail']);
                 $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
                 $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
                 $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
@@ -274,15 +275,13 @@ class penerimaanDenganPOController extends VierController
                 $detail['diskon_nominal_3'] = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
                 $detail['qty_bonus'] = ($detail['qty_bonus'])?$detail['qty_bonus']:0;
                 $penerimaanDetail= trPenerimaanDetail::create($detail);
-                $pemesananDetail = trPemesananDetail::where('id_pemesanan_detail',$detail['id_pemesanan_detail'])->first();
-                $pemesananDetail->qty_terima = $pemesananDetail->qty_terima + $data['qty'];
-                $pemesananDetail->save();
             }
             
             DB::commit();
-            return response()->json(['success'=>true,'data'=>$penerimaan->id_penerimaan]);
+            return response()->json(['success'=>true,'data'=>$penerimaan]);
         }
         catch(\Exception $err) {
+            throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
