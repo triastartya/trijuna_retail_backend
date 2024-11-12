@@ -49,15 +49,17 @@ class pemesananController extends VierController
     public function edit(Request $request){
         DB::beginTransaction();
         try {
-            $pemesanan = trPemesananDetail::where('id_pemesanan',$request->id_pemesanan)->delete();
+            $delete = trPemesananDetail::where('id_pemesanan',$request->id_pemesanan)->delete();
+
             foreach($request->detail as $detail){
                 $detail['id_pemesanan'] = $request->id_pemesanan;
                 trPemesananDetail::create($detail);
             }
             DB::commit();
-            return response()->json(['success'=>true,'data'=>$pemesanan->id_pemesanan]);
+            return response()->json(['success'=>true,'data'=>$request->id_pemesanan]);
         }
         catch(\Exception $err) {
+            throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
