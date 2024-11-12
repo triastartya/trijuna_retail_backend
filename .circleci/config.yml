@@ -67,7 +67,7 @@ jobs:
       - run:
           name: Deploy app to server
           command: |
-            ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd aplikasi && ./deployer-api-retail.sh"
+            ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd aplikasi && ./deployer-api-retail.sh && docker image prune -a -f"
 workflows :
   basic-workflow:
     jobs:
