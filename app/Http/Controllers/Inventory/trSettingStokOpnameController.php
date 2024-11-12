@@ -259,9 +259,18 @@ class trSettingStokOpnameController extends VierController
             DB::commit();
             return response()->json(['success'=>true,'data'=>$settingSO]);
         }catch(\Exception $err) {
-            throw $err;
+            // throw $err;
             DB::rollBack();
             // return $err;
+            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+        }
+    }
+
+    public function delete_detial(){
+        try {
+            $detail = trSettingStokOpnameCapture::where('id_setting_stok_opname_capture',request()->id_setting_stok_opname_capture)->delete();
+            return response()->json(['success'=>true,'data'=>$detail]);
+        }catch(\Exception $err) {
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
     }

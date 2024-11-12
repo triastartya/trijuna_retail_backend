@@ -185,8 +185,8 @@ class penerimaanDenganPOController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
-    
-    public function edit(){
+
+    public function edit_lama(){
         try {
             $data = request()->all();
             $id_penerimaan = 0;
@@ -239,6 +239,85 @@ class penerimaanDenganPOController extends VierController
             return response()->json(['success'=>true,'data'=>$id_penerimaan]);
         } catch (\Exception $ex) {
             // throw  $ex;
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function edit(Request $request){
+        DB::beginTransaction();
+        try {
+            $pemesanan = trPemesanan::where('id_pemesanan',$request->id_pemesanan)->first();
+            $data = $request->all();
+            $data['id_supplier'] = $pemesanan->id_supplier;
+            $data['jenis_penerimaan'] = 1;
+            unset($data['detail']);
+            $penerimaan = trPenerimaan::where('id_penerimaan')->update($data);
+
+            foreach($request->detail as $detail){
+                $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
+                $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
+                $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
+                $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
+                $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
+                $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['harga_order'];
+                $detail['netto'] = $detail['harga_order'] + ($detail['harga_order'] * 0.11) - $d1 - $d2 -$d3 ;
+                $detail['harga_jual'] = $master_barang->harga_jual;
+                $detail['id_penerimaan'] = $data['id_penerimaan'];
+                $detail['diskon_persen_1'] = ($detail['diskon_persen_1'])?$detail['diskon_persen_1']:0;
+                $detail['diskon_nominal_1'] = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
+                $detail['diskon_persen_2'] = ($detail['diskon_persen_2'])?$detail['diskon_persen_2']:0;
+                $detail['diskon_nominal_2'] = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
+                $detail['diskon_persen_3'] = ($detail['diskon_persen_3'])?$detail['diskon_persen_3']:0;
+                $detail['diskon_nominal_3'] = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
+                $detail['qty_bonus'] = ($detail['qty_bonus'])?$detail['qty_bonus']:0;
+                $penerimaanDetail= trPenerimaanDetail::create($detail);
+                $pemesananDetail = trPemesananDetail::where('id_pemesanan_detail',$detail['id_pemesanan_detail'])->first();
+                $pemesananDetail->qty_terima = $pemesananDetail->qty_terima + $data['qty'];
+                $pemesananDetail->save();
+            }
+            
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$penerimaan->id_penerimaan]);
+        }
+        catch(\Exception $err) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+        }
+    }
+
+    public function pembatalan(){
+        DB::beginTransaction();
+        try{
+            //=== get update pemesanan
+            $penerimaan = trPenerimaan::where('id_penerimaan',request()->id_penerimaan)->first();
+            if($penerimaan->status_penerimaan == 'CANCEL'){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si cancel']);
+            }
+            $penerimaan->status_penerimaan  = 'CANCEL';
+            $penerimaan->save();
+            $detail = trPenerimaanDetail::where('id_penerimaan',request()->id_penerimaan)->get();
+            //=== update stok
+            $supplier = msSupplier::where('id_supplier',$penerimaan->id_supplier)->first();
+            foreach($detail as $detail){
+                InventoryStokHelper::pengurangan((object)[
+                    'id_barang'       => $detail->id_barang,
+                    'nama_barang'     => '',
+                    'id_warehouse'    => $penerimaan->id_warehouse,
+                    'qty'             => $detail->qty + $detail->qty_bonus,
+                    'nomor_reff'      => $penerimaan->nomor_penerimaan,
+                    'id_header_trans' => $penerimaan->id_penerimaan,
+                    'id_detail_trans' => $detail->id_penerimaan_detail,
+                    'jenis'           => 'Penerimaan Dengan PO',
+                    'nominal'         => $detail->sub_total,
+                    'keterangan'      => 'Cancel Penerimaan Dengan PO '.$supplier->nama_supplier. ',nomor penerimaan '.$penerimaan->nomor_penerimaan,
+                    'transaksi'       => 'tr_penerimaan'
+                ]);
+                InventoryStokHelper::hitung_hpp_avarage($detail->id_barang,$detail->qty,$detail->sub_total);
+            }
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$penerimaan]);
+        } catch (\Exception $ex) {
             DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }

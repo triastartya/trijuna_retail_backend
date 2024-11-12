@@ -212,6 +212,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('get_by_id/{id_penerimaan}',[penerimaanDenganPOController::class,'get_by_id']);
             Route::post('validasi',[penerimaanDenganPOController::class,'validasi']);
             Route::post('edit',[penerimaanDenganPOController::class,'edit']);
+            Route::post('cancel',[penerimaanDenganPOController::class,'pembatalan']);
         });
 
         Route::prefix('faktur_pajak')->group(function(){
@@ -421,6 +422,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('get_by_id/{id_setting_stok_opname}',[trSettingStokOpnameController::class,'by_id']);
             Route::get('kalkulasi/{id_setting_stok_opname}',[trSettingStokOpnameController::class,'kalkulasi']);
             Route::post('finalisasi',[trSettingStokOpnameController::class,'finalisasi']);
+            Route::get('delete_detail/{id_setting_stok_opname_capture}',[trSettingStokOpnameController::class,'delete_detial']);
         });
 
         Route::prefix('input_stok_opname')->group(function(){
