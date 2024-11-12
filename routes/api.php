@@ -315,9 +315,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         
         Route::pointResource('ms_promo_hadiah_setting_barang',msPromoHadiahSettingBarangController::class);
         Route::get('ms_promo_hadiah_setting_barang_by_id_promo_hadiah/{id_promo_hadiah}',[msPromoHadiahSettingBarangController::class,'by_id_promo_hadiah']);
-        Route::pointResource('ms_promo_hadiah_setting_merk',msPromoHadiahSettingMerkController::class);
+        
+        // Route::pointResource('ms_promo_hadiah_setting_merk',msPromoHadiahSettingMerkController::class);
+        Route::post('ms_promo_hadiah_setting_merk',[msPromoHadiahSettingMerkController::class,'insert_barang_promo']);
         Route::get('ms_promo_diskon_setting_merk_by_id_promo_hadiah/{id_promo_hadiah}',[msPromoHadiahSettingMerkController::class,'by_id_promo_hadiah']);
-        Route::pointResource('ms_promo_hadiah_setting_supplier',msPromoHadiahSettingSupplierController::class);
+        
+        // Route::pointResource('ms_promo_hadiah_setting_supplier',msPromoHadiahSettingSupplierController::class);
+        Route::post('ms_promo_hadiah_setting_supplier',[msPromoHadiahSettingSupplierController::class,'insert_barang_promo']);
         Route::get('ms_promo_diskon_setting_supplier_by_id_promo_hadiah/{id_promo_hadiah}',[msPromoHadiahSettingSupplierController::class,'by_id_promo_hadiah']);
         
         Route::pointResource('ms_promo_bonus',msPromoBonusController::class);
