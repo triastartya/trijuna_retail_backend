@@ -50,7 +50,6 @@ class pemesananController extends VierController
         DB::beginTransaction();
         try {
             $delete = trPemesananDetail::where('id_pemesanan',$request->id_pemesanan)->delete();
-
             foreach($request->detail as $detail){
                 $detail['id_pemesanan'] = $request->id_pemesanan;
                 trPemesananDetail::create($detail);
