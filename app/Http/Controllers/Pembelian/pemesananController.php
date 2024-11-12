@@ -54,6 +54,23 @@ class pemesananController extends VierController
                 $detail['id_pemesanan'] = $request->id_pemesanan;
                 trPemesananDetail::create($detail);
             }
+
+            $pemesanan = trPemesanan::where('id_pemesanan',$request->id_pemesanan)->first();
+            $banyak = array_reduce($request->detail, function($sum, $item) {
+                return $sum + $item['banyak'];
+            }, 0);
+
+            $grand_total = array_reduce($request->detail, function($sum, $item) {
+                return $sum + $item['sub_total'];
+            }, 0);
+
+            $pemesanan->qty = $banyak;
+            $pemesanan->sub_total1 = $grand_total;
+            $pemesanan->ppn_nominal = 0;
+            $pemesanan->sub_total2 = $grand_total;
+            $pemesanan->total_transaksi = $grand_total;
+            $pemesanan->save();
+
             DB::commit();
             return response()->json(['success'=>true,'data'=>$request->id_pemesanan]);
         }
