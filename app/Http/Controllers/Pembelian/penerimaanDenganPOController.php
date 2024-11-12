@@ -107,6 +107,8 @@ class penerimaanDenganPOController extends VierController
     public function get_by_id(){
         try{
             $data = $this->repository->get_by_id();
+            $pemesanan = trPemesanan::where('id_pemesanan',$data->id_pemesanan)->first();
+            $data->id_supplier = $pemesanan->id_supplier;
             $data->detail = $this->repository->detail_by_id_penerimaan();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
