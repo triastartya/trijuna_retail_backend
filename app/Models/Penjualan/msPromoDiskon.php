@@ -46,4 +46,8 @@ class msPromoDiskon extends Model
             'is_active'=>''
         ];
     }
+
+    public function barang(){
+        return $this->hasMany(msPromoDiskonSettingBarang::class,'id_promo_diskon','id_promo_diskon');
+    }
 }

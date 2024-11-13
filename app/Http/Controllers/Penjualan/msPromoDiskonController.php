@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Penjualan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Penjualan\msPromoDiskon;
 use App\Repositories\Penjualan\msPromoDiskonRepository;
 use App\Repositories\Penjualan\msPromoDiskonSettingBarangRepository;
 use App\Repositories\Penjualan\msPromoDiskonSettingMerkRepository;
@@ -32,6 +33,17 @@ class msPromoDiskonController extends VierController
             $data->barang = $this->repository_diskon_barang->by_id_promo_diskon();
             $data->merk = $this->repository_diskon_merk->by_id_promo_diskon();
             $data->supplier = $this->repository_diskon_supplier->by_id_promo_diskon();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {  
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function pos_promo_diskon(){
+        try{
+            $now = date("Y-m-d");
+            $data = msPromoDiskon::with('barang')->where('tanggal_mulai','<=',$now)
+            ->where('tanggal_berakhir','>=',$now)->get();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {  
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);

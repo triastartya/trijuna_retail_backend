@@ -48,4 +48,8 @@ class msPromoHadiah extends Model
             'is_active'=>''
         ];
     }
+
+    public function barang(){
+        return $this->hasMany(msPromoHadiahSettingBarang::class,'id_promo_hadiah','id_promo_hadiah');
+    }
 }

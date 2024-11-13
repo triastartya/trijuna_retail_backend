@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Penjualan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Penjualan\msPromoHadiah;
 use App\Repositories\Penjualan\msPromoHadiahRepository;
 use App\Repositories\Penjualan\msPromoHadiahSettingBarangRepository;
 use App\Repositories\Penjualan\msPromoHadiahSettingMerkRepository;
@@ -32,6 +33,17 @@ class msPromoHadianController extends VierController
             $data->barang = $this->repository_hadiah_barang->by_id_promo_hadiah();
             $data->merk = $this->repository_hadiah_merk->by_id_promo_hadiah();
             $data->supplier = $this->repository_hadiah_supplier->by_id_promo_hadiah();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {  
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function pos_promo_hadiah(){
+        try{
+            $now = date("Y-m-d");
+            $data = msPromoHadiah::with('barang')->where('tanggal_mulai','<=',$now)
+            ->where('tanggal_berakhir','>=',$now)->get();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {  
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);

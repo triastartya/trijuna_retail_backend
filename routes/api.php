@@ -75,9 +75,9 @@ use App\Models\Inventory\trSettingStokOpname;
 use App\Models\Master\msBarang;
 use App\Models\Master\msMember;
 use App\Models\Master\msRekeningOwner;
+use App\Models\Penjualan\msPromoDiskon;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Row;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -123,8 +123,12 @@ Route::get('dashboard',[DashboardController::class,'pembelian']);
 Route::get('backup', [backupController::class, 'runBackup']);
 
 Route::post('mutasi_lokasi_masuk/insertbyapi',[mutasiMasukController::class,'insertbyapi']);
-
 Route::post('setting_harga_api',[settingHargaController::class,'insertbyapi']);
+
+Route::get('pos_promo_diskon',[msPromoDiskonController::class,'pos_promo_diskon']);
+Route::get('pos_promo_hadiah',[msPromoHadianController::class,'pos_promo_hadiah']);
+Route::get('pos_promo_bonus',[msPromoBonusController::class,'pos_promo_bonus']);
+
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['middleware' => ModifRequest::class], function () {

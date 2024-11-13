@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Penjualan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Penjualan\msPromoHadiah;
 use App\Repositories\Penjualan\msPromoHadiahSettingBarangRepository;
 use Illuminate\Http\Request;
 use Viershaka\Vier\VierController;
@@ -25,4 +26,6 @@ class msPromoHadiahSettingBarangController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+
+    
 }

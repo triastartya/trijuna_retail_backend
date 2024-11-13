@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Penjualan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Penjualan\msPromoBonus;
 use App\Models\Penjualan\msPromoBonusSettingBarang;
 use App\Models\Penjualan\msPromoBonusSettingSupplier;
 use App\Repositories\Penjualan\msPromoBonusRepository;
@@ -39,6 +40,17 @@ class msPromoBonusController extends VierController
             $data->barang = $this->repository_bonus_barang->by_id_promo_bonus();
             // $data->merk = $this->repository_bonus_merk->by_id_promo_bonus();
             // $data->supplier = $this->repository_bonus_supplier->by_id_promo_bonus();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {  
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function pos_promo_bonus(){
+        try{
+            $now = date("Y-m-d");
+            $data = msPromoBonus::with('barang')->where('tanggal_mulai','<=',$now)
+            ->where('tanggal_berakhir','>=',$now)->get();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {  
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);

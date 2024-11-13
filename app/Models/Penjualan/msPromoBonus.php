@@ -46,4 +46,8 @@ class msPromoBonus extends Model
             'is_active'=>''
         ];
     }
+
+    public function barang(){
+        return $this->hasMany(msPromoBonusSettingBarang::class,'id_promo_bonus','id_promo_bonus');
+    }
 }
