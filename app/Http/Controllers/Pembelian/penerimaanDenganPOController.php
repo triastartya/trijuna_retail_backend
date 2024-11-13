@@ -63,11 +63,14 @@ class penerimaanDenganPOController extends VierController
                             ->update([
                                 'status_pemesanan' => 'DITERIMA'
                             ]);
+            $urut = 0;
             foreach($request->detail as $detail){
+                $urut++;
                 $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
                 $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
                 $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
                 $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
+                $detail['urut'] = $urut;
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['netto'] = $detail['harga_order'] + ($detail['harga_order'] * 0.11) - $d1 - $d2 -$d3 ;
                 $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
