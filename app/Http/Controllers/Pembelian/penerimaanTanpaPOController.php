@@ -40,7 +40,7 @@ class penerimaanTanpaPOController extends VierController
                 $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['harga_order'];
-                $detail['netto'] = $detail['harga_order'] + ($detail['harga_order'] * 0.11);
+                $detail['netto'] = $detail['harga_order'];
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
                 $detail['biaya_barcode'] = 0;
