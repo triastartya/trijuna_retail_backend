@@ -36,6 +36,11 @@ class penerimaanTanpaPOController extends VierController
             $data['total_biaya_barcode'] = 0;
             unset($data['detail']);
             $penerimaan = trPenerimaanTanpaPo::create($data);
+            if($data['diskon_persen']==0){
+                if($data['diskon_nominal']!=0){
+                    $data['diskon_persen'] = number_format(($data['diskon_nominal']/$data['sub_total1'])*100);
+                }
+            }
             $urut= 0;
             foreach($request->detail as $detail){
                 $urut++;
@@ -44,10 +49,11 @@ class penerimaanTanpaPOController extends VierController
                 $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
                 $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
                 $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
+                $dfooter = ($data['diskon_persen']==0)?0:($data['diskon_persen']/100)*$detail['harga_order'];
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['urut'] = $urut;
                 $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
-                $detail['netto'] = $detail['harga_order'] + $ppn - $d1 - $d2 -$d3 ;
+                $detail['netto'] = $detail['harga_order'] + $ppn - $d1 - $d2 - $d3 - $dfooter ;
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
                 $detail['biaya_barcode'] = 0;
@@ -150,6 +156,11 @@ class penerimaanTanpaPOController extends VierController
             $data['total_transaksi'] = $data['sub_total2'] + $data['ppn_nominal'] + $data['potongan'] + $data['pembulatan'];
             $penerimaan = trPenerimaanTanpaPo::where('id_penerimaan',$request->id_penerimaan)->update($data);
             trPenerimaanTanpaPoDetail::where('id_penerimaan',$request->id_penerimaan)->delete();
+            if($data['diskon_persen']==0){
+                if($data['diskon_nominal']!=0){
+                    $data['diskon_persen'] = number_format(($data['diskon_nominal']/$data['sub_total1'])*100);
+                }
+            }
             $urut= 0;
             foreach($request->detail as $detail){
                 $urut++;
@@ -159,9 +170,10 @@ class penerimaanTanpaPOController extends VierController
                 $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
                 $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
                 $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
+                $dfooter = ($data['diskon_persen']==0)?0:($data['diskon_persen']/100)*$detail['harga_order'];
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['urut'] = $urut;
-                $detail['netto'] = $detail['harga_order'] + $ppn - $d1 - $d2 -$d3 ;
+                $detail['netto'] = $detail['harga_order'] + $ppn - $d1 - $d2 - $d3 - $dfooter ;
                 $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $data['id_penerimaan'];
