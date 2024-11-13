@@ -56,6 +56,8 @@ class mutasiRepository extends VierRepository
                 tmw.id_mutasi_warehouse,
                 tmw.urut,
                 tmw.id_barang,
+                mb.kode_barang,
+                mb.barcode,
                 mb.nama_barang,
                 tmw.banyak,
                 tmw.kode_satuan,

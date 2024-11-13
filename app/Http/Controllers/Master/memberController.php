@@ -51,4 +51,16 @@ class memberController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+
+    public function update_status_member()
+    {
+        try{
+            $data = msMember::where('id_member',request()->id_member)->first();
+            $data->is_active = !$data->is_active;
+            $data->save();
+            return response()->json(['success'=>true,'data'=>1]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
 }

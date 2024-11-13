@@ -40,7 +40,7 @@ class memberRepository extends VierRepository
                    mm.updated_at from ms_member mm
             inner join users uc on uc.id_user = mm.created_by
             inner join users uu on uu.id_user = mm.updated_by
-        ',request(),' order by kode_member DESC limit 300 ');
+        ',request(),'all');
     }
     
     public function by_param_active(){

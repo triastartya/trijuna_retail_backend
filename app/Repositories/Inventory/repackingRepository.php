@@ -98,6 +98,8 @@ class repackingRepository extends VierRepository
             trd.id_repacking_detail,
             trd.urut,
             trd.id_barang,
+            mb.kode_barang,
+            mb.barcode,
             mb.nama_barang,
             trd.kode_satuan,
             trd.qty,

@@ -159,6 +159,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('detail/dictionary', [memberController::class, 'dictionary']);
         });
 
+        Route::get('memberUpdateStatus/{id_member}',[memberController::class,'update_status_member']);
+
         Route::post('member/by_param',[memberController::class,'member_by_param']);
         Route::pointResource('divisi',divisiController::class);
         Route::get('divisi/data/import',[divisiController::class,'import_divisi']);
