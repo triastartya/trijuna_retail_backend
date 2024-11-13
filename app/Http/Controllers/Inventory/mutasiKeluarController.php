@@ -143,7 +143,7 @@ class mutasiKeluarController extends VierController
             if($data[0]->status_mutasi_lokasi!='VALIDATED'){
                 throw new \Exception('data mutasi belum di validasi');
             }
-            $data[0]->detail = DB::select('select * from tr_mutasi_lokasi_detail where id_mutasi_lokasi = '.request()->id_mutasi_lokasi);
+            $data[0]->detail = DB::select('select tmld.*,mb.kode_barang,mb.nama_barang from tr_mutasi_lokasi_detail tmld inner join ms_barang mb on tmld.id_barang=mb.id_barang where tmld.id_mutasi_lokasi = '.request()->id_mutasi_lokasi);
             // Convert array to JSON
             $jsonContent = json_encode($data[0], JSON_PRETTY_PRINT);
 
