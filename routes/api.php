@@ -233,6 +233,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('get_by_param',[penerimaanTanpaPOController::class,'get_by_param']);
             Route::get('get_by_id/{id_penerimaan}',[penerimaanTanpaPOController::class,'get_by_id']);
             Route::post('validasi',[penerimaanTanpaPOController::class,'validasi']);
+            Route::post('edit',[penerimaanTanpaPOController::class,'edit']);
+            Route::post('cancel',[penerimaanTanpaPOController::class,'pembatalan']);
         });
         
         Route::prefix('penerimaan_konsinyasi')->group(function(){
