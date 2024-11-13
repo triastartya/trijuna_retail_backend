@@ -70,9 +70,9 @@ class penerimaanDenganPOController extends VierController
             }
             foreach($request->detail as $detail){
                 $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
-                $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
-                $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
-                $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
+                $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']/$detail['qty']:0;
+                $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']/$detail['qty']:0;
+                $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']/$detail['qty']:0;
                 $dfooter = ($data['diskon_persen']==0)?0:($data['diskon_persen']/100)*$detail['harga_order'];
                 $ppn = ($data['is_ppn']==true)?$detail['harga_order'] * 0.11:0;
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
@@ -285,9 +285,9 @@ class penerimaanDenganPOController extends VierController
                 unset($detail['id_penerimaan_detail']);
                 $ppn = ($data['is_ppn']==true)?$detail['harga_order'] * 0.11:0;
                 $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
-                $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
-                $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
-                $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
+                $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']/$detail['qty']:0;
+                $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']/$detail['qty']:0;
+                $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']/$detail['qty']:0;
                 $dfooter = ($data['diskon_persen']==0)?0:($data['diskon_persen']/100)*$detail['harga_order'];
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['urut'] = $urut;
