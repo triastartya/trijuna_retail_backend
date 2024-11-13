@@ -68,8 +68,9 @@ class penerimaanDenganPOController extends VierController
                 $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
                 $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
                 $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
+                $ppn = ($data['is_ppn']==true)?$detail['harga_order'] * 0.11:0;
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
-                $detail['netto'] = $detail['harga_order'] + ($detail['harga_order'] * 0.11) - $d1 - $d2 -$d3 ;
+                $detail['netto'] = $detail['harga_order'] + $ppn - $d1 - $d2 -$d3 ;
                 $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
@@ -271,13 +272,14 @@ class penerimaanDenganPOController extends VierController
             foreach($request->detail as $detail){
                 $urut++;
                 unset($detail['id_penerimaan_detail']);
+                $ppn = ($data['is_ppn']==true)?$detail['harga_order'] * 0.11:0;
                 $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
                 $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']:0;
                 $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']:0;
                 $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']:0;
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['urut'] = $urut;
-                $detail['netto'] = $detail['harga_order'] + ($detail['harga_order'] * 0.11) - $d1 - $d2 -$d3 ;
+                $detail['netto'] = $detail['harga_order'] + $ppn - $d1 - $d2 -$d3 ;
                 $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $data['id_penerimaan'];

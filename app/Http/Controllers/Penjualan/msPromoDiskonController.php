@@ -43,7 +43,7 @@ class msPromoDiskonController extends VierController
         try{
             $now = date("Y-m-d");
             $data = msPromoDiskon::with('barang')->where('tanggal_mulai','<=',$now)
-            ->where('tanggal_berakhir','>=',$now)->get();
+            ->where('tanggal_berakhir','>=',$now)->where('is_active',true)->get();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {  
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
