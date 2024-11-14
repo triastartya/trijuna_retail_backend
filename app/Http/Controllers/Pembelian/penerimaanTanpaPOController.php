@@ -52,8 +52,8 @@ class penerimaanTanpaPOController extends VierController
                 $dfooter = ($data['diskon_persen']==0)?0:($data['diskon_persen']/100)*$detail['harga_order'];
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['urut'] = $urut;
-                $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
                 $detail['netto'] = $detail['harga_order'] + $ppn - $d1 - $d2 - $d3 - $dfooter ;
+                $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
                 $detail['biaya_barcode'] = 0;
@@ -64,6 +64,7 @@ class penerimaanTanpaPOController extends VierController
             return response()->json(['success'=>true,'data'=>$penerimaan->id_penerimaan]);
         }
         catch(\Exception $err) {
+            throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }

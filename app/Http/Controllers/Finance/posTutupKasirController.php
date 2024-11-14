@@ -64,6 +64,8 @@ class posTutupKasirController extends VierController
                     $nominal_sistem = $nominal_sistem - $kembalian_sistem;
                     // di kurangi refund
                     $nominal_sistem = $nominal_sistem - $total_refund;
+                    // di kurangi stor bank
+                    $nominal_sistem = $nominal_sistem - $detail['setor_bank'];
                 }
                 $detail['nominal_sistem'] = $nominal_sistem;
                 // hitung selisih 
