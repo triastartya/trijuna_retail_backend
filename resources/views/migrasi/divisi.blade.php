@@ -13,6 +13,12 @@
                 <form id="formDivisi">
                 <div class="row" >
                     <div class="col-md-12 mb-2">
+                        <div class="floating-label">
+                            <input id="text-placeholder" ng-model="tes" class="form-control form-control-sm" placeholder="Lorem ipsum dolor sit amet"/>
+                            <label for="text-placeholder">input text placeholder</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-2">
                         <div class="form-group row">
                             <input type="file" class="form-control-file" id="file" name="file">
                         </div>
@@ -60,6 +66,7 @@
 @section('ctrl')
     <script>
     app.controller("myCtrl", function($scope,$http) {
+        $scope.tes = "haloo";
                 $('#datatable').DataTable();
 
         $('#formDivisi').validate({
