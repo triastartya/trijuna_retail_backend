@@ -425,6 +425,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('by_id/{id_mutasi_lokasi}',[mutasiLokasiController::class,'get_by_id']);
             Route::post('validasi',[mutasiKeluarController::class,'validasi']);
             Route::post('validasi_online',[mutasiKeluarController::class,'validasi_online']);
+            Route::post('cancel',[mutasiKeluarController::class,'pembatalan']);
             // Route::get('download/{id_mutasi_lokasi}',[mutasiKeluarController::class,'download']);
         });
 

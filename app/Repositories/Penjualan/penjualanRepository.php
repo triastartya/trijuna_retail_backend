@@ -235,8 +235,8 @@ class penjualanRepository extends VierRepository
         ppm.nama_payment_method,
         ppp.id_bank,
         pb.nama_bank,
-        ppp.id_edc,
-        pe.nama_edc,
+        '' as id_edc,
+        '' as nama_edc,
         ppp.trace_number,
         ppp.jenis_kartu,
         ppp.card_holder,
@@ -247,7 +247,6 @@ class penjualanRepository extends VierRepository
              from pos_penjualan_peyment ppp
              inner join pos_payment_method ppm on ppp.id_payment_method = ppm.id_payment_method
              left join pos_bank pb on ppp.id_bank = pb.id_bank
-             left join pos_edc pe on ppp.id_edc = pe.id_edc
             where ppp.id_penjualan = ?
             order by ppp.urut
         ",[request()->id_penjualan]);            

@@ -131,6 +131,9 @@ class penerimaanDenganPOController extends VierController
             if($penerimaan->status_penerimaan == 'VALIDATED'){
                 return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si validasi']);
             }
+            if($penerimaan->status_penerimaan == 'CANCEL'){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah di cancel']);
+            }
             $penerimaan->status_penerimaan  = 'VALIDATED';
             $penerimaan->sub_total1         = request()->sub_total1;
             $penerimaan->diskon_persen      = request()->diskon_persen;
@@ -256,6 +259,10 @@ class penerimaanDenganPOController extends VierController
     public function edit(Request $request){
         DB::beginTransaction();
         try {
+            $cek = trPenerimaan::where('id_penerimaan',request()->id_penerimaan)->first();
+            if($cek->status_penerimaan == 'VALIDATED'){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si validasi']);
+            }
             $data = $request->all();
             $data['jenis_penerimaan'] = 1;
             unset($data['detail']);

@@ -161,15 +161,28 @@ class mutasiKeluarController extends VierController
     public function validasi_online(){
         DB::beginTransaction();
         try{
+            //get data mutasi
             $mutasi = trMutasiLokasi::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->first();
             if($mutasi->status_mutasi_lokasi == 'VALIDATED'){
                 throw new \Exception('data mutasi sudah di validasi');
             }
+            if($mutasi->status_mutasi_lokasi == 'CANCEL'){
+                throw new \Exception('data mutasi sudah di cancel');
+            }
+            //get lokasi server
+            $lokasi = msLokasi::where('id_lokasi',$mutasi->id_lokasi_tujuan)->first();
+            // cek online atau offline
+            $online = Http::withOptions(['verify' => false])->get($lokasi->server."/api/health");
+            if($online->successful()){
+            }else{
+                throw new \Exception($online->status().', cabang '.$lokasi->nama_lokasi.' sedang offline ip server ='.$lokasi->server);
+            }
+            // validasi
             $mutasi->status_mutasi_lokasi = 'VALIDATED';
             $mutasi->online = true;
             $mutasi->save();
             $detail_mutasi = trMutasiLokasiDetail::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->get();
-            $lokasi = msLokasi::where('id_lokasi',$mutasi->id_lokasi_tujuan)->first();
+            
             foreach($detail_mutasi as $detail){
                 InventoryStokHelper::pengurangan((object)[
                     'id_barang'       => $detail['id_barang'],
@@ -185,8 +198,7 @@ class mutasiKeluarController extends VierController
                     'transaksi'       => 'tr_mutasi_lokasi'
                 ]);
             }
-
-            // === kirim ==
+            // kirim mutasi keluar ke cabang jadi mutasi masuk
             $data = DB::select("select * from tr_mutasi_lokasi where id_mutasi_lokasi=".request()->id_mutasi_lokasi);
             
             $data[0]->detail = DB::select('
@@ -195,12 +207,6 @@ class mutasiKeluarController extends VierController
             );
             
             $lokasi = msLokasi::where('id_lokasi',$mutasi->id_lokasi_tujuan)->first();
-            
-            $online = Http::withOptions(['verify' => false])->get($lokasi->server."/api/health");
-            if($online->successful()){
-            }else{
-                throw new \Exception($online->status().', cabang '.$lokasi->nama_lokasi.' sedang offline ip server ='.$lokasi->server);
-            }
 
             $response = Http::withOptions(['verify' => false])->post($lokasi->server.'/api/mutasi_lokasi_masuk/insertbyapi',$data[0]);
             // dd($response);
@@ -224,6 +230,21 @@ class mutasiKeluarController extends VierController
             }
         }catch (\Exception $ex) {
             DB::rollBack();
+            return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function pembatalan(){
+        try{
+            $mutasi = trMutasiLokasi::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->first();
+            if($mutasi->status_mutasi_lokasi == 'VALIDATED'){
+                throw new \Exception('data mutasi sudah di validasi');
+            }
+            $mutasi_lokasi = trMutasiLokasi::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->first();
+            $mutasi_lokasi->status_mutasi_lokasi = "CANCEL";
+            $mutasi_lokasi->save();
+            return response()->json(['status'=>true,'data'=>$mutasi_lokasi]);
+        } catch (\Exception $ex) {
             return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }

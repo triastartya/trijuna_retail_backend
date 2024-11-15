@@ -97,6 +97,9 @@ class penerimaanTanpaPOController extends VierController
             if($penerimaan->status_penerimaan == 'VALIDATED'){
                 return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si validasi']);
             }
+            if($penerimaan->status_penerimaan == 'CANCEL'){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si cancel']);
+            }
             $penerimaan->status_penerimaan = 'VALIDATED';
             $penerimaan->save();
             $penerimaan->detail = trPenerimaanTanpaPoDetail::where('id_penerimaan',request()->id_penerimaan)->get();
@@ -141,6 +144,10 @@ class penerimaanTanpaPOController extends VierController
         try {
             $data = $request->all();
             $data['jenis_penerimaan'] = 2;
+            $cek = trPenerimaanTanpaPo::find(request()->id_penerimaan);
+            if($cek->status_penerimaan == 'VALIDATED'){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si validasi']);
+            }
             unset($data['detail']);
             unset($data['nomor_pemesanan']);
             unset($data['nama_supplier']);
