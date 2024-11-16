@@ -102,8 +102,8 @@ class trSettingStokOpnameController extends VierController
                     'id_barang'=>$barang->id_barang,
                     'tanggal_setting_stok_opname'=>$so->tanggal_setting_stok_opname,
                     'qty_capture'=> ($stock_capture)?$stock_capture->stok_akhir:0,
-                    'hpp_average'=>$barang->hpp_average,
-                    'harga_jual'=>$barang->harga_jual
+                    'hpp_average'=>($barang->hpp_average)?$barang->hpp_average:0,
+                    'harga_jual'=>($barang->harga_jual)?$barang->harga_jual:0
                 ]);
             }
 
@@ -111,6 +111,7 @@ class trSettingStokOpnameController extends VierController
             return response()->json(['success'=>true,'data'=>$so->id_setting_stok_opname]);
         }
         catch(\Exception $err) {
+            // throw $err;
             DB::rollBack();
             // return $err;
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
