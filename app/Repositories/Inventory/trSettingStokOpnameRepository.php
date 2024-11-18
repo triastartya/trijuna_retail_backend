@@ -16,24 +16,29 @@ class trSettingStokOpnameRepository extends VierRepository
 
     public function get_by_id(){
         $data =  DB::select("
-                select id_setting_stok_opname,
-                nomor_stok_opname,
-                tanggal_setting_stok_opname,
-                jenis_stok_opname,
-                keterangan,
-                total_fisik_harga_jual,
-                total_capture_harga_jual,
-                total_selisih_harga_jual,
-                total_capture_hpp_average,
-                total_fisik_hpp_average,
-                total_selisih_hpp_average,
-                created_by,
-                updated_by,
-                created_at,
-                updated_at,
-                status
-                from tr_setting_stok_opname
-                where id_setting_stok_opname = ?
+                select tsso.id_setting_stok_opname,
+                tsso.nomor_stok_opname,
+                tsso.tanggal_setting_stok_opname,
+				mw.warehouse,
+                tsso.jenis_stok_opname,
+                tsso.keterangan,
+                tsso.total_qty_selisih,
+                tsso.total_fisik_harga_jual,
+                tsso.total_capture_harga_jual,
+                tsso.total_selisih_harga_jual,
+                tsso.total_capture_hpp_average,
+                tsso.total_fisik_hpp_average,
+                tsso.total_selisih_hpp_average,
+                tsso.created_by,
+                tsso.updated_by,
+                tsso.created_at,
+                tsso.updated_at,
+                tsso.status,
+                tsso.finalisasi_at,
+				tsso.finalisasi_keterangan
+                from tr_setting_stok_opname tsso
+				inner join ms_warehouse mw on tsso.id_warehouse=mw.id_warehouse
+                where tsso.id_setting_stok_opname = ?
             ",[request()->id_setting_stok_opname]);
             
         return $data[0];

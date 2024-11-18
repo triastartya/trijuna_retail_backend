@@ -30,7 +30,8 @@ class trSettingStokOpname extends Model
         'status',
         'finalisasi_at',
         'finalisasi_by',
-        'finalisasi_keterangan'
+        'finalisasi_keterangan',
+        'total_qty_selisih'
     ];
     public function rules(){
         return[
@@ -51,7 +52,8 @@ class trSettingStokOpname extends Model
             'status'=>'',
             'finalisasi_at'=>'',
             'finalisasi_by'=>'',
-            'finalisasi_keterangan'=>''
+            'finalisasi_keterangan'=>'',
+            'total_qty_selisih'=>''
         ];
     }
 }

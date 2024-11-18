@@ -435,6 +435,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('get_by_id/{id_setting_stok_opname}',[trSettingStokOpnameController::class,'by_id']);
             Route::get('kalkulasi/{id_setting_stok_opname}',[trSettingStokOpnameController::class,'kalkulasi']);
             Route::post('finalisasi',[trSettingStokOpnameController::class,'finalisasi']);
+            Route::get('cetak_finalisasi/{id_setting_stok_opname}',[trSettingStokOpnameController::class,'cetak_finalisasi']);
             Route::get('delete_detail/{id_setting_stok_opname_capture}',[trSettingStokOpnameController::class,'delete_detial']);
         });
 

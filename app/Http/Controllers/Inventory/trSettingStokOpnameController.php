@@ -185,6 +185,7 @@ class trSettingStokOpnameController extends VierController
             $total_fisik_hpp_average =0;
             $total_capture_hpp_average =0;
             $total_selisih_hpp_average =0;
+            $total_qty_selisih=0;
             foreach($data as $key=>$barang){
 
                 $query = DB::select("select sum(tisod.qty_fisik) as qty_fisik
@@ -193,7 +194,7 @@ class trSettingStokOpnameController extends VierController
                 where tiso.id_setting_stok_opname=? and tisod.id_barang=?",[request()->id_setting_stok_opname,$barang->id_barang]);
                 $get_qty_fisik = $query[0];
                 $qty_fisik = ($get_qty_fisik->qty_fisik)?$get_qty_fisik->qty_fisik:0;
-
+                $qty_selisih = $barang->qty_capture - $qty_fisik;
                 trSettingStokOpnameCapture::where('id_setting_stok_opname_capture',$barang->id_setting_stok_opname_capture)
                 ->update([
                     "qty_fisik" => $qty_fisik,
@@ -205,16 +206,17 @@ class trSettingStokOpnameController extends VierController
                     "sub_total_capture_hpp_average" => $barang->qty_capture * $barang->hpp_average,
                     "sub_total_selisih_hpp_average" =>  ($barang->qty_capture - $qty_fisik) * $barang->hpp_average
                 ]);
-                $total_fisik_harga_jual =$qty_fisik * $barang->harga_jual;
-                $total_capture_harga_jual =$barang->qty_capture * $barang->harga_jual;
-                $total_selisih_harga_jual =($barang->qty_capture - $qty_fisik) * $barang->harga_jual;
-                $total_fisik_hpp_average =$qty_fisik * $barang->hpp_average;
-                $total_capture_hpp_average =$barang->qty_capture * $barang->hpp_average;
-                $total_selisih_hpp_average =($barang->qty_capture - $qty_fisik) * $barang->hpp_average;
+                $total_fisik_harga_jual =$total_fisik_harga_jual + ($qty_fisik * $barang->harga_jual);
+                $total_capture_harga_jual =$total_capture_harga_jual+($barang->qty_capture * $barang->harga_jual);
+                $total_selisih_harga_jual =$total_selisih_harga_jual+(($barang->qty_capture - $qty_fisik) * $barang->harga_jual);
+                $total_fisik_hpp_average =$total_fisik_hpp_average+($qty_fisik * $barang->hpp_average);
+                $total_capture_hpp_average =$total_capture_hpp_average+($barang->qty_capture * $barang->hpp_average);
+                $total_selisih_hpp_average =$total_selisih_hpp_average+(($barang->qty_capture - $qty_fisik) * $barang->hpp_average);
+                $total_qty_selisih = $total_qty_selisih +$qty_selisih;
                 // kartu stok
                 // dd($barang->qty_capture - $qty_fisik );
                 // dd($settingSO);
-                $qty_selisih = $barang->qty_capture - $qty_fisik;
+                
                 $insert_kartu_stok = msBarangKartuStok::create([
                     'tanggal' => $settingSO->tanggal_setting_stok_opname,
                     'created_at' => $settingSO->tanggal_setting_stok_opname,
@@ -271,6 +273,7 @@ class trSettingStokOpnameController extends VierController
                 }
             }
             trSettingStokOpname::where('id_setting_stok_opname',request()->id_setting_stok_opname)->update([
+                "total_qty_selisih" =>$total_qty_selisih,
                 "total_fisik_harga_jual" => $total_fisik_harga_jual,
                 "total_capture_harga_jual" => $total_capture_harga_jual,
                 "total_selisih_harga_jual" => $total_selisih_harga_jual,
@@ -285,6 +288,16 @@ class trSettingStokOpnameController extends VierController
             DB::rollBack();
             // return $err;
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+        }
+    }
+
+    public function cetak_finalisasi(){
+        try{
+            $data = $this->repository->get_by_id();
+            $data->detail = $this->repository->get_barang_by_setting_so();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
 
