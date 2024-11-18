@@ -64,7 +64,7 @@ class penerimaanTanpaPOController extends VierController
             return response()->json(['success'=>true,'data'=>$penerimaan->id_penerimaan]);
         }
         catch(\Exception $err) {
-            throw $err;
+            // throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
@@ -199,7 +199,7 @@ class penerimaanTanpaPOController extends VierController
             return response()->json(['success'=>true,'data'=>$penerimaan]);
         }
         catch(\Exception $err) {
-            throw $err;
+            //throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }

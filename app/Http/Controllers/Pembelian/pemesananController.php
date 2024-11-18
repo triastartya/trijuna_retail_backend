@@ -75,7 +75,7 @@ class pemesananController extends VierController
             return response()->json(['success'=>true,'data'=>$request->id_pemesanan]);
         }
         catch(\Exception $err) {
-            throw $err;
+            // throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
