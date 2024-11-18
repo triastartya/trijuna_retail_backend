@@ -266,6 +266,8 @@ class penjualanRepository extends VierRepository
         mb.kode_satuan,
         mb.id_merk,
         mm.merk,
+        ms.id_supplier,
+		ms.nama_supplier,
         CEIL(sum(ppd.qty_jual::float)) as qty_jual,
         CEIL((sum(ppd.sub_total::float) / sum(ppd.qty_jual::float))) as harga_jual,
         sum(ppd.diskon1) as diskon1,
@@ -277,6 +279,7 @@ class penjualanRepository extends VierRepository
         left join ms_group mg on mg.id_group = mb.id_group
         left join ms_divisi md on md.id_divisi=mb.id_divisi
         left join  ms_merk mm on mm.id_merk=mb.id_merk
+        left join ms_supplier ms on mb.id_supplier=ms.id_supplier
         where (pp.tanggal_penjualan BETWEEN '".request()->start."' and '".request()->end."')",
         request(),
         '
@@ -291,7 +294,9 @@ class penjualanRepository extends VierRepository
         mg.group,
         mb.kode_satuan,
         mb.id_merk,
-        mm.merk
+        mm.merk,
+        ms.id_supplier,
+		ms.nama_supplier
         ');
     }
 }

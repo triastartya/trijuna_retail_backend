@@ -170,7 +170,19 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('merk/data/import',[merkController::class,'import']);
         Route::pointResource('satuan',satuanController::class);
         Route::get('satuan/data/import',[satuanController::class,'import']);
-        Route::pointResource('lokasi',lokasiController::class);
+        // Route::pointResource('lokasi',lokasiController::class);
+        Route::prefix('lokasi')->group(function(){
+            Route::get('/all', [lokasiController::class, 'all']);
+            Route::get('/', [lokasiController::class, 'all_status_online']);
+            Route::get('datatables', [lokasiController::class, 'datatables']);
+            Route::get('lov', [lokasiController::class, 'lov']);
+            Route::post('table', [lokasiController::class, 'table']);
+            Route::get('{id}', [lokasiController::class, 'show']);
+            Route::post('/',[lokasiController::class, 'store']);
+            Route::put('{id}',[lokasiController::class,'update']);
+            Route::delete('{id}',[lokasiController::class,'destroy']);
+            Route::get('detail/dictionary', [memberController::class, 'dictionary']);
+        });
         Route::pointResource('merk',merkController::class);
         Route::pointResource('rak',rakController::class);
         Route::pointResource('warehouse',warehouseController::class);
