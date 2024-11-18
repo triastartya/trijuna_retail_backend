@@ -172,7 +172,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('satuan/data/import',[satuanController::class,'import']);
         // Route::pointResource('lokasi',lokasiController::class);
         Route::prefix('lokasi')->group(function(){
-            Route::get('/all', [lokasiController::class, 'all']);
+            Route::get('/all', [lokasiController::class, 'all_status_online']);
             Route::get('/', [lokasiController::class, 'all_status_online']);
             Route::get('datatables', [lokasiController::class, 'datatables']);
             Route::get('lov', [lokasiController::class, 'lov']);
