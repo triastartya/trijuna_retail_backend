@@ -31,6 +31,16 @@ class bayarHutangPelunasanController extends VierController
             unset($data['detail_transfer']);
             unset($data['detail_cash']);
             unset($data['detail_giro']);
+            $tot_transfer = array_reduce($request->detail_transfer, function($sum, $item) {
+                return $sum + $item['nominal_bayar'];
+            }, 0);
+            $tot_cash = array_reduce($request->detail_cash, function($sum, $item) {
+                return $sum + $item['nominal_bayar'];
+            }, 0);
+            $tot_gito = array_reduce($request->detail_giro, function($sum, $item) {
+                return $sum + $item['nominal_bayar'];
+            }, 0);
+            $data['jumlah_bayar'] = $tot_transfer+$tot_cash+$tot_gito;
             $bayar_hutang_pelunasan = trBayarHutangPelunasan::create($data);
             trBayarHutang::where('id_bayar_hutang',$request->id_bayar_hutang)
             ->update([
@@ -43,6 +53,7 @@ class bayarHutangPelunasanController extends VierController
                 trBayarHutangPelunasanTransfer::create($detail);
             }
             foreach($request->detail_cash as $detail){
+                $detail['waktu_penyerahan']=$detail['waktu_bayar'];
                 $detail['id_bayar_hutang_pelunasan'] = $bayar_hutang_pelunasan->id_bayar_hutang_pelunasan;
                 trBayarHutangPelunasanCash::create($detail);
             }
