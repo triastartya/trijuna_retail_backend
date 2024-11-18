@@ -36,7 +36,8 @@ class trPenerimaanTanpaPo extends Model
         'total_biaya_barcode',
         'is_deleted',
         'deleted_by',
-        'deleted_at'
+        'deleted_at',
+        'is_ppn'
     ];
     
     public function rules()
@@ -66,6 +67,7 @@ class trPenerimaanTanpaPo extends Model
             'is_deleted'=>'',
             'deleted_by'=>'',
             'deleted_at'=>'',
+            'is_ppn'=>''
         ];
     }
     // use HasFactory,CreatedUpdatedBy;
