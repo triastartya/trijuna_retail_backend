@@ -179,6 +179,12 @@ class trSettingStokOpnameController extends VierController
             $settingSO->save();
             // kalkulasi 
             $data = $this->repository->get_barang_by_setting_so();
+            $total_fisik_harga_jual =0;
+            $total_capture_harga_jual =0;
+            $total_selisih_harga_jual =0;
+            $total_fisik_hpp_average =0;
+            $total_capture_hpp_average =0;
+            $total_selisih_hpp_average =0;
             foreach($data as $key=>$barang){
 
                 $query = DB::select("select sum(tisod.qty_fisik) as qty_fisik
@@ -191,17 +197,24 @@ class trSettingStokOpnameController extends VierController
                 trSettingStokOpnameCapture::where('id_setting_stok_opname_capture',$barang->id_setting_stok_opname_capture)
                 ->update([
                     "qty_fisik" => $qty_fisik,
-                    "qty_selisih" =>  $qty_fisik - $barang->qty_capture,
+                    "qty_selisih" =>  $barang->qty_capture - $qty_fisik,
                     "sub_total_fisik_harga_jual" =>  $qty_fisik * $barang->harga_jual,
                     "sub_total_capture_harga_jual" => $barang->qty_capture * $barang->harga_jual,
-                    "sub_total_selisih_harga_jual" =>  ($qty_fisik - $barang->qty_capture) * $barang->harga_jual,
+                    "sub_total_selisih_harga_jual" =>  ($barang->qty_capture - $qty_fisik) * $barang->harga_jual,
                     "sub_total_fisik_hpp_average" =>  $qty_fisik * $barang->hpp_average,
                     "sub_total_capture_hpp_average" => $barang->qty_capture * $barang->hpp_average,
-                    "sub_total_selisih_hpp_average" =>  ($qty_fisik - $barang->qty_capture) * $barang->hpp_average
+                    "sub_total_selisih_hpp_average" =>  ($barang->qty_capture - $qty_fisik) * $barang->hpp_average
                 ]);
+                $total_fisik_harga_jual =$qty_fisik * $barang->harga_jual;
+                $total_capture_harga_jual =$barang->qty_capture * $barang->harga_jual;
+                $total_selisih_harga_jual =($barang->qty_capture - $qty_fisik) * $barang->harga_jual;
+                $total_fisik_hpp_average =$qty_fisik * $barang->hpp_average;
+                $total_capture_hpp_average =$barang->qty_capture * $barang->hpp_average;
+                $total_selisih_hpp_average =($barang->qty_capture - $qty_fisik) * $barang->hpp_average;
                 // kartu stok
-                // dd($qty_fisik - $barang->qty_capture);
+                // dd($barang->qty_capture - $qty_fisik );
                 // dd($settingSO);
+                $qty_selisih = $barang->qty_capture - $qty_fisik;
                 $insert_kartu_stok = msBarangKartuStok::create([
                     'tanggal' => $settingSO->tanggal_setting_stok_opname,
                     'created_at' => $settingSO->tanggal_setting_stok_opname,
@@ -213,12 +226,12 @@ class trSettingStokOpnameController extends VierController
                     'id_detail_trans' => $barang->id_setting_stok_opname_capture,
                     'stok_awal' => $barang->qty_capture,
                     'nominal_awal' => ($barang->qty_capture) * $barang->hpp_average,
-                    'stok_masuk' => ($qty_fisik - $barang->qty_capture>0)?$qty_fisik - $barang->qty_capture:0,
-                    'nominal_masuk' => ($qty_fisik - $barang->qty_capture>0)?($qty_fisik - $barang->qty_capture) * $barang->hpp_average:0,
-                    'stok_keluar' => ($qty_fisik - $barang->qty_capture<0)?$qty_fisik - $barang->qty_capture:0,
-                    'nominal_keluar' => ($qty_fisik - $barang->qty_capture<0)?($qty_fisik - $barang->qty_capture) * $barang->hpp_average:0,
-                    'stok_akhir' => $qty_fisik - $barang->qty_capture,
-                    'nominal_akhir' => ($qty_fisik - $barang->qty_capture) * $barang->hpp_average,
+                    'stok_masuk' => ($qty_selisih <0)?$qty_selisih*-1 :0,
+                    'nominal_masuk' => ($qty_selisih <0)?($qty_selisih*-1) * $barang->hpp_average:0,
+                    'stok_keluar' => ($qty_selisih>0)?$qty_selisih:0,
+                    'nominal_keluar' => ($qty_selisih >0)?$qty_selisih * $barang->hpp_average:0,
+                    'stok_akhir' => $barang->qty_capture - $qty_selisih ,
+                    'nominal_akhir' => ($barang->qty_capture - $qty_selisih ) * $barang->hpp_average,
                     'keterangan' => 'stok opname , tanggal '.$settingSO->tanggal_setting_stok_opname.', nomor SO '.$settingSO->nomor_stok_opname
                 ]);
                 
@@ -244,7 +257,7 @@ class trSettingStokOpnameController extends VierController
                 
                 //==== stok warehouse
                 $barang_stok = msBarangStok::where('id_barang',$barang->id_barang)
-                        ->where('id_warehouse',request()->id_warehouse)
+                        ->where('id_warehouse',$settingSO->id_warehouse)
                         ->lockForUpdate()->first();
                 if(!$barang_stok){
                     msBarangStok::create([
@@ -257,6 +270,14 @@ class trSettingStokOpnameController extends VierController
                     $barang_stok->save();
                 }
             }
+            trSettingStokOpname::where('id_setting_stok_opname',request()->id_setting_stok_opname)->update([
+                "total_fisik_harga_jual" => $total_fisik_harga_jual,
+                "total_capture_harga_jual" => $total_capture_harga_jual,
+                "total_selisih_harga_jual" => $total_selisih_harga_jual,
+                "total_fisik_hpp_average" => $total_fisik_hpp_average,
+                "total_capture_hpp_average" => $total_capture_hpp_average,
+                "total_selisih_hpp_average" => $total_selisih_hpp_average,
+            ]);
             DB::commit();
             return response()->json(['success'=>true,'data'=>$settingSO]);
         }catch(\Exception $err) {
