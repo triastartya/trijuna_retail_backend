@@ -142,4 +142,19 @@ class posTutupKasirController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage(), 'code' => $ex->getCode()]);
         }
     }
+
+    public function get_transaksi()
+    {
+        try{
+            $length = strlen(request()->id_kasir);
+            $data = $data =  DB::select("
+                SELECT no_faktur,id_user_kasir,tanggal_penjualan from pos_penjualan
+                where substr(no_faktur,6,".$length.") = ? and tanggal_penjualan=?
+                order by nota_penjualan
+            ",[request()->id_kasir,request()->tanggal_penjualan]);
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage(), 'code' => $ex->getCode()]);
+        }
+    }
 }

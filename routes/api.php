@@ -413,6 +413,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('kasir_belum_tutup_kasir',[posTutupKasirController::class,'kasir_belum_closing']);
             Route::post('history_tutup_kasir',[posTutupKasirController::class,'history']);
             Route::get('detail_tutup_kasir/{id_tutup_kasir}',[posTutupKasirController::class,'detail_tutup_kasir']);
+            Route::post('get_transaksi',[posTutupKasirController::class,'get_transaksi']);
         });
 
         Route::prefix('kroscek_tutup_kasir')->group(function(){
