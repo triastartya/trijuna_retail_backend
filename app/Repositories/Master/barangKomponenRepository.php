@@ -26,6 +26,7 @@ class barangKomponenRepository extends VierRepository
             mb.barcode,
             mb.kode_barang,
             mb.nama_barang,
+            mb.hpp_average,
             mbk.qty_komponen,
             ms.kode_satuan,
             uc.nama as created_by,
