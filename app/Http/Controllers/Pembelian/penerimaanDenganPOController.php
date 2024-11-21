@@ -296,7 +296,7 @@ class penerimaanDenganPOController extends VierController
                 $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']/$detail['qty']:0;
                 $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']/$detail['qty']:0;
                 $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']/$detail['qty']:0;
-                $dfooter = ($data['diskon_persen']!=0)?0:($data['diskon_persen']/100)*$detail['harga_order'];
+                $dfooter = ($data['diskon_persen']==0)?0:($data['diskon_persen']/100)*$detail['harga_order'];
                 // $dfooter = $data['diskon_persen']/100*$detail['harga_order'];
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['urut'] = $urut;
