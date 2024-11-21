@@ -219,8 +219,6 @@ class trSettingStokOpnameController extends VierController
                 
                 $insert_kartu_stok = msBarangKartuStok::create([
                     'tanggal' => $settingSO->tanggal_setting_stok_opname,
-                    'created_at' => $settingSO->tanggal_setting_stok_opname,
-                    'updated_at' => $settingSO->tanggal_setting_stok_opname,
                     'id_barang' => $barang->id_barang,
                     'id_warehouse' => $settingSO->id_warehouse,
                     'nomor_reff' => $settingSO->nomor_stok_opname,
@@ -236,6 +234,11 @@ class trSettingStokOpnameController extends VierController
                     'nominal_akhir' => ($barang->qty_capture - $qty_selisih ) * $barang->hpp_average,
                     'keterangan' => 'stok opname , tanggal '.$settingSO->tanggal_setting_stok_opname.', nomor SO '.$settingSO->nomor_stok_opname
                 ]);
+
+                msBarangKartuStok::where('id_kartu_stok',$insert_kartu_stok->id_kartu_stok)->update([
+                    'created_at' => $settingSO->tanggal_setting_stok_opname
+                ]);
+
                 
                 $kartustok = msBarangKartuStok::where('id_barang',$barang->id_barang)
                     ->where('id_warehouse',$settingSO->id_warehouse)
