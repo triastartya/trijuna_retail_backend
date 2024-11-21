@@ -249,7 +249,7 @@ class trSettingStokOpnameController extends VierController
                 foreach($kartustok as $key=>$kartu){
                     if($key!=0){
                         $stok_akhir = $kartu->stok_awal+$kartu->stok_masuk-$kartu->stok_keluar;
-                        msBarangKartuStok::where('id_kartu_stok')
+                        msBarangKartuStok::where('id_kartu_stok',$kartu->id_kartu_stok)
                         ->update([
                             'stok_awal'=>$stok_awal,
                             'stok_akhir'=>$stok_akhir
