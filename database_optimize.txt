@@ -1,0 +1,45 @@
+ ALTER TABLE ms_barang_stok
+  ADD CONSTRAINT "fk_ms_barang_stok_barang_id_barang" FOREIGN KEY ("id_barang") REFERENCES "public"."ms_barang" ("id_barang") MATCH FULL ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT "fk_ms_barang_stok_warehouse_id_warehouse" FOREIGN KEY ("id_warehouse") REFERENCES "public"."ms_warehouse" ("id_warehouse") ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+CREATE INDEX "idx_ms_barang_stok_id_barang" ON ms_barang_stok USING hash (
+  "id_barang"
+);
+
+CREATE INDEX "idx_ms_barang_stok_id_warehouse" ON ms_barang_stok USING hash (
+  "id_warehouse"
+);
+
+ALTER TABLE "public"."ms_barang_satuan"
+  ADD CONSTRAINT "idx_ms_barang_satuan_ms_barang_id_barang" FOREIGN KEY ("id_barang") REFERENCES "public"."ms_barang" ("id_barang") ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT "idx_ms_barang_satuan_ms_satuan_id_satuan" FOREIGN KEY ("id_satuan") REFERENCES "public"."ms_satuan" ("id_satuan") ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+CREATE INDEX "idx_ms_barang_satuan_id_barang" ON "public"."ms_barang_satuan" USING hash (
+  "id_barang"
+);
+
+CREATE INDEX "idx_ms_barang_satuan_id_satuan" ON "public"."ms_barang_satuan" USING hash (
+  "id_satuan"
+);
+
+ALTER TABLE "public"."ms_barang"
+  ADD CONSTRAINT "fk_ms_barang_ms_divisi_id_divisi" FOREIGN KEY ("id_divisi") REFERENCES "public"."ms_divisi" ("id_divisi") ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT "fk_ms_barang_ms_group_id_group" FOREIGN KEY ("id_group") REFERENCES "public"."ms_group" ("id_group") ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT "fk_ms_barang_ms_supplier_id_supplier" FOREIGN KEY ("id_supplier") REFERENCES "public"."ms_supplier" ("id_supplier") ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT "fk_ms_barang_ms_satuan_id_satuan" FOREIGN KEY ("id_satuan") REFERENCES "public"."ms_satuan" ("id_satuan") ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+CREATE INDEX "idx_ms_barang_id_divisi" ON "public"."ms_barang" USING hash (
+  "id_divisi"
+);
+
+CREATE INDEX "idx_ms_barang_id_group" ON "public"."ms_barang" USING hash (
+  "id_group"
+);
+
+CREATE INDEX "idx_ms_barang_id_supplier" ON "public"."ms_barang" USING hash (
+  "id_supplier"
+);
+
+CREATE INDEX "idx_ms_barang_id_satuan" ON "public"."ms_barang" USING hash (
+  "id_satuan"
+);
