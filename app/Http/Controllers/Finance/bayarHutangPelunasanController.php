@@ -8,7 +8,9 @@ use App\Models\Finance\trBayarHutangPelunasan;
 use App\Models\Finance\trBayarHutangPelunasanCash;
 use App\Models\Finance\trBayarHutangPelunasanGiro;
 use App\Models\Finance\trBayarHutangPelunasanTransfer;
+use App\Models\Finance\trBayarHutangPotonganLain;
 use App\Repositories\Finance\bayarHutangPelunasanRepository;
+use App\Repositories\Finance\bayarHutangRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierController;
@@ -16,10 +18,12 @@ use Viershaka\Vier\VierController;
 class bayarHutangPelunasanController extends VierController
 {
     public $repository;
+    public $bayar_hutang_repository;
     
     public function __construct()
     {
         $this->repository = new bayarHutangPelunasanRepository();
+        $this->bayar_hutang_repository = new bayarHutangRepository();
         parent::__construct($this->repository);
     }
 
@@ -76,6 +80,9 @@ class bayarHutangPelunasanController extends VierController
             $data->transfer = $this->repository->get_transfer();
             $data->giro = trBayarHutangPelunasanGiro::where('id_bayar_hutang_pelunasan',$data->id_bayar_hutang_pelunasan)->get();
             $data->cash = trBayarHutangPelunasanCash::where('id_bayar_hutang_pelunasan',$data->id_bayar_hutang_pelunasan)->get();
+            $data->faktur = $this->bayar_hutang_repository->detail_faktur_by_id_bayar_hutang($data->id_bayar_hutang);
+            $data->retur = $this->bayar_hutang_repository->detail_potongan_by_id_bayar_hutang($data->id_bayar_hutang);
+            $data->potongan = trBayarHutangPotonganLain::where('id_bayar_hutang',$data->id_bayar_hutang)->get();
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {  
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);

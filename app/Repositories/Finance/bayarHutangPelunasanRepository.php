@@ -41,6 +41,7 @@ class bayarHutangPelunasanRepository extends VierRepository
     public function get_by_id(){
         $data = DB::select("
             select
+            tbhp.id_bayar_hutang,
             tbhp.id_bayar_hutang_pelunasan,
             ms.nama_supplier,
             ms.kode_supplier,

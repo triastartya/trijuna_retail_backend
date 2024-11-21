@@ -157,6 +157,29 @@ class bayarHutangRepository extends VierRepository
         ",[request()->id_bayar_hutang]);
     }
 
+    public function detail_faktur_by_id_bayar_hutang($id_bayar_hutang){
+        return DB::select("
+            select tp.nomor_penerimaan,tp.tanggal_nota,tp.created_at,tp.total_transaksi
+            from tr_bayar_hutang_faktur tbhf
+            inner join tr_penerimaan tp on tbhf.id_penerimaan=tp.id_penerimaan
+            where tbhf.id_bayar_hutang = ?
+        ",[$id_bayar_hutang]);
+    }
+
+    public function detail_potongan_by_id_bayar_hutang($id_bayar_hutang){
+        return DB::select("
+            select 
+            trp.nomor_retur_pembelian,
+            trp.tanggal_retur_pembelian,
+            trp.created_at,
+            trp.total_harga
+            from tr_retur_pembelian trp
+            inner join ms_warehouse mw on trp.id_warehouse = mw.id_warehouse
+            inner join tr_bayar_hutang_potongan tbhp on tbhp.id_retur_pembelian=trp.id_retur_pembelian
+            where id_bayar_hutang = ?;
+        ",[$id_bayar_hutang]);            
+    }
+
     public function detail_potongan_by_id(){
         return DB::select("
             select 
