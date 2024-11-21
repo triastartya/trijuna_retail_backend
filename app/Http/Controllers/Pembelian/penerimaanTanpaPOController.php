@@ -44,16 +44,17 @@ class penerimaanTanpaPOController extends VierController
             $urut= 0;
             foreach($request->detail as $detail){
                 $urut++;
-                $ppn = ($data['is_ppn']==true)?$detail['harga_order'] * 0.11:0;
                 $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
                 $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']/$detail['qty']:0;
                 $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']/$detail['qty']:0;
                 $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']/$detail['qty']:0;
-                $dfooter = ($data['diskon_persen']==0)?0:($data['diskon_persen']/100)*$detail['harga_order'];
-                // $dfooter = $data['diskon_persen']/100*$detail['harga_order'];
+                $harga_order_bersih_atas = $detail['harga_order'] - $d1 - $d2 - $d3;
+                $dfooter = ($data['diskon_persen']==0)?0:($data['diskon_persen']/100)*$harga_order_bersih_atas;
+                $harga_order_bersih_bawah = $harga_order_bersih_atas - $dfooter;
+                $ppn = ($data['is_ppn']==true)?$harga_order_bersih_bawah * 0.11:0;
+                $detail['netto'] = $harga_order_bersih_bawah + $ppn;
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['urut'] = $urut;
-                $detail['netto'] = $detail['harga_order'] + $ppn - $d1 - $d2 - $d3 - $dfooter ;
                 $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
@@ -174,16 +175,17 @@ class penerimaanTanpaPOController extends VierController
             foreach($request->detail as $detail){
                 $urut++;
                 unset($detail['id_penerimaan_detail']);
-                $ppn = ($data['is_ppn']==true)?$detail['harga_order'] * 0.11:0;
                 $master_barang = msBarang::where('id_barang',$detail['id_barang'])->first();
                 $d1 = ($detail['diskon_nominal_1'])?$detail['diskon_nominal_1']/$detail['qty']:0;
                 $d2 = ($detail['diskon_nominal_2'])?$detail['diskon_nominal_2']/$detail['qty']:0;
                 $d3 = ($detail['diskon_nominal_3'])?$detail['diskon_nominal_3']/$detail['qty']:0;
-                $dfooter = ($data['diskon_persen']==0)?0:($data['diskon_persen']/100)*$detail['harga_order'];
-                // $dfooter = $data['diskon_persen']/100*$detail['harga_order'];
+                $harga_order_bersih_atas = $detail['harga_order'] - $d1 - $d2 - $d3;
+                $dfooter = ($data['diskon_persen']==0)?0:($data['diskon_persen']/100)*$harga_order_bersih_atas;
+                $harga_order_bersih_bawah = $harga_order_bersih_atas - $dfooter;
+                $ppn = ($data['is_ppn']==true)?$harga_order_bersih_bawah * 0.11:0;
+                $detail['netto'] = $harga_order_bersih_bawah + $ppn;
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['urut'] = $urut;
-                $detail['netto'] = $detail['harga_order'] + $ppn - $d1 - $d2 - $d3 - $dfooter ;
                 $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $data['id_penerimaan'];
