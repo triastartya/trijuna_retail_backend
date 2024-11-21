@@ -238,7 +238,6 @@ class trSettingStokOpnameController extends VierController
                 msBarangKartuStok::where('id_kartu_stok',$insert_kartu_stok->id_kartu_stok)->update([
                     'created_at' => $settingSO->tanggal_setting_stok_opname
                 ]);
-
                 
                 $kartustok = msBarangKartuStok::where('id_barang',$barang->id_barang)
                     ->where('id_warehouse',$settingSO->id_warehouse)
@@ -248,13 +247,13 @@ class trSettingStokOpnameController extends VierController
                 $stok_awal = 0;
                 foreach($kartustok as $key=>$kartu){
                     if($key!=0){
-                        $stok_akhir = $kartu->stok_awal+$kartu->stok_masuk-$kartu->stok_keluar;
+                        $stok_akhir = $stok_awal+$kartu->stok_masuk-$kartu->stok_keluar;
                         msBarangKartuStok::where('id_kartu_stok',$kartu->id_kartu_stok)
                         ->update([
                             'stok_awal'=>$stok_awal,
                             'stok_akhir'=>$stok_akhir
                         ]);
-                        $stok_awal = $stok_awal + $stok_akhir;
+                        $stok_awal = $stok_akhir;
                     }else{
                         $stok_awal = $kartu->stok_akhir;
                     }
