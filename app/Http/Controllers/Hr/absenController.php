@@ -21,6 +21,15 @@ class absenController extends VierController
         parent::__construct($this->repository);
     }
 
+    public function tanggal(){
+        $data = DB::select("
+            select hk.nama_karyawan,ha.*
+            from hr_absen ha inner join hr_karyawan hk on ha.id_karyawan=hk.id_karyawan
+            where ha.tanggal between ? and ? ;
+        ",[request()->start,request()->end]);
+        return response()->json(['success'=>true,'data'=>['data'=>$data]]);
+    }
+
     public function byparam(){
         $data = DB::select("
             select hk.nama_karyawan,ha.*
