@@ -25,10 +25,11 @@ class absenController extends VierController
         $data = DB::select("
             select hk.nama_karyawan,ha.*
             from hr_absen ha inner join hr_karyawan hk on ha.id_karyawan=hk.id_karyawan
-            where ha.tanggal between ? and ?;
-        ",[request()->start,request()->end]);
+            where ha.tanggal between ? and ? and ha.id_karyawan = ? order by ha.tanggal;
+        ",[request()->start,request()->end,request()->id_karyawan]);
         return response()->json(['success'=>true,'data'=>['data'=>$data]]);
-    } 
+    }
+    
 
     public function absen(){
         try{

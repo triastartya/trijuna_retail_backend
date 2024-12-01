@@ -136,8 +136,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('hr_karyawan',[karyawanController::class,'store']);
         Route::put('hr_karyawan/{id}',[karyawanController::class,'update']);
         Route::delete('hr_karyawan/{id}',[karyawanController::class,'destroy']);
-        Route::get('absen/{start}/{end}',[absenController::class,'byparam']);
+        Route::get('absen/{start}/{end}/{id_karyawan}',[absenController::class,'byparam']);
         Route::post('absen',[absenController::class,'absen']);
+        // Route::post('absen/byparam',[absenController::class,'byparamfilter']);
         Route::post('raw/tes',[divisiController::class,'testing']);
         Route::get('hr_departemen',[departemenController::class,'getall']);
         Route::post('hr_departemen',[departemenController::class,'store']);

@@ -13,7 +13,7 @@ class msPromoBonus extends Model
     use HasFactory,VierModel,CreatedUpdatedBy;
     
     protected $table = 'ms_promo_bonus';
-    protected $fillable = ['id_promo_bonus','kode_promo_bonus','nama_promo_bonus','is_kelipatan','id_barang','kuota','keterangan','tanggal_mulai','tanggal_berakhir','gambar','is_active','created_by','updated_by','is_active'];
+    protected $fillable = ['id_promo_bonus','kode_promo_bonus','nama_promo_bonus','is_kelipatan','id_barang','kuota','keterangan','tanggal_mulai','tanggal_berakhir','gambar','is_active','created_by','updated_by','is_active','is_tampil_pos'];
     protected $primaryKey = 'id_promo_bonus';
     protected $modelFields = [
         ['name'=>'id_promo_bonus', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
@@ -26,7 +26,8 @@ class msPromoBonus extends Model
         ['name'=>'tanggal_mulai','type'=>ModelDictionary::COLUMN_TYPE_DATE],
         ['name'=>'tanggal_berakhir','type'=>ModelDictionary::COLUMN_TYPE_DATE],
         ['name'=>'gambar','type'=>ModelDictionary::COLUMN_TYPE_STRING],
-        ['name'=>'is_active','type'=>ModelDictionary::COLUMN_TYPE_BOOLEAN]
+        ['name'=>'is_active','type'=>ModelDictionary::COLUMN_TYPE_BOOLEAN],
+        ['name'=>'is_tampil_pos','type'=>ModelDictionary::COLUMN_TYPE_BOOLEAN]
     ];
     protected $guarded = [];
     protected $appends = [];
@@ -43,7 +44,8 @@ class msPromoBonus extends Model
             'tanggal_mulai'=>'required',
             'tanggal_berakhir'=>'required',
             'gambar'=>'',
-            'is_active'=>''
+            'is_active'=>'',
+            'is_tampil_pos'=>''
         ];
     }
 

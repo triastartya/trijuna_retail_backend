@@ -13,7 +13,7 @@ class msPromoDiskon extends Model
     use HasFactory,VierModel,CreatedUpdatedBy;
     
     protected $table = 'ms_promo_diskon';
-    protected $fillable = ['id_promo_diskon','is_nominal','kode_promo_diskon','nama_promo_diskon','minimal_qty','diskon','kuota','tanggal_mulai','tanggal_berakhir','gambar','is_active'];
+    protected $fillable = ['id_promo_diskon','is_nominal','kode_promo_diskon','nama_promo_diskon','minimal_qty','diskon','kuota','tanggal_mulai','tanggal_berakhir','gambar','is_active','is_tampil_pos'];
     protected $primaryKey = 'id_promo_diskon';
     protected $modelFields = [
         ['name'=>'id_promo_diskon', 'type' => ModelDictionary::COLUMN_TYPE_INTEGER],
@@ -26,7 +26,8 @@ class msPromoDiskon extends Model
         ['name'=>'tanggal_mulai','type'=>ModelDictionary::COLUMN_TYPE_DATE],
         ['name'=>'tanggal_berakhir','type'=>ModelDictionary::COLUMN_TYPE_DATE],
         ['name'=>'gambar','type'=>ModelDictionary::COLUMN_TYPE_STRING],
-        ['name'=>'is_active','type'=>ModelDictionary::COLUMN_TYPE_BOOLEAN]
+        ['name'=>'is_active','type'=>ModelDictionary::COLUMN_TYPE_BOOLEAN],
+        ['name'=>'is_tampil_pos','type'=>ModelDictionary::COLUMN_TYPE_BOOLEAN]
     ];
     protected $guarded = [];  
     protected $appends = [];
@@ -43,7 +44,8 @@ class msPromoDiskon extends Model
             'tanggal_mulai'=>'required',
             'tanggal_berakhir'=>'required',
             'gambar'=>'',
-            'is_active'=>''
+            'is_active'=>'',
+            'is_tampil_pos'=>''
         ];
     }
 
