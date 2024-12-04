@@ -66,6 +66,9 @@ use App\Http\Controllers\Inventory\mutasiMasukController;
 use App\Http\Controllers\Inventory\trInputStokOpnameController;
 use App\Http\Controllers\Inventory\trSettingStokOpnameController;
 use App\Http\Controllers\Laporan\BkpController;
+use App\Http\Controllers\Laporan\laporanOmsetController;
+use App\Http\Controllers\Laporan\laporanPembelianController;
+use App\Http\Controllers\Laporan\laporanPenjualanController;
 use App\Http\Controllers\Master\memberPoinSettingController;
 use App\Http\Controllers\Master\PotonganPembelianController;
 use App\Http\Controllers\Master\rekeningOwnerController;
@@ -469,6 +472,21 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::post('bkp',[BkpController::class,'bkp']);
             Route::post('non_bkp',[BkpController::class,'non_bkp']); 
             Route::post('rekap_bkp',[BkpController::class,'rekap_bkp']);
+        
+        });
+        Route::prefix('laporan_pembelian')->group(function(){
+            Route::get('ppn/{start}/{end}',[laporanPembelianController::class,'ppn']);
+            Route::get('rokok/{start}/{end}',[laporanPembelianController::class,'rokok']);
+        });
+        Route::prefix('laporan_penjualan')->group(function(){
+            Route::get('grosir/{start}/{end}',[laporanPenjualanController::class,'grosir']);
+            Route::get('eceran/{start}/{end}',[laporanPenjualanController::class,'eceran']);
+            Route::get('rokok/{start}/{end}',[laporanPenjualanController::class,'rokok']);
+            Route::get('sembako/{start}/{end}',[laporanPenjualanController::class,'sembako']);
+        });
+        Route::prefix('laporan_omzet')->group(function(){
+            Route::get('breakdown_monthly/{tahun}',[laporanOmsetController::class,'breakdown_monthly']);
+            Route::get('breakdown_daily/{bulan}',[laporanOmsetController::class,'breakdown_daily']);
         });
     });
 });
