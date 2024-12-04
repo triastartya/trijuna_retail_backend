@@ -362,4 +362,33 @@ class penerimaanDenganPOController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+
+    public function perbaikan_netto(){
+        try{
+            $data = DB::select('
+                select 
+                    tpd.*,
+                    tp.diskon_persen as diskon,
+                    tp.tanggal_nota as tanggal,
+                    tp.is_ppn,tp.ppn_nominal
+                from tr_penerimaan_detail tpd 
+                inner join tr_penerimaan tp on tpd.id_penerimaan=tp.id_penerimaan
+                where tp.tanggal_nota BETWEEN ? and ?
+            ',[request()->start,request()->end]);
+            foreach($data as $key=>$item){
+                $harga_order_bersih_atas = $item->harga_order - $item->diskon_nominal_1 - $item->diskon_nominal_2 - $item->diskon_nominal_3;
+                $dfooter = ($item->diskon==0)?0:($item->diskon/100)*$harga_order_bersih_atas;
+                $harga_order_bersih_bawah = $harga_order_bersih_atas - $dfooter;
+                $ppn = ($item->ppn_nominal>0)?$harga_order_bersih_bawah * 0.11:0;
+                $netto =  $harga_order_bersih_bawah + $ppn;
+                trPenerimaanDetail::where('id_penerimaan_detail',$item->id_penerimaan_detail)
+                ->update([
+                    'netto'=>$netto
+                ]);
+            }
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
 }

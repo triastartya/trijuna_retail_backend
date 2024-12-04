@@ -78,6 +78,7 @@ use App\Models\Inventory\trSettingStokOpname;
 use App\Models\Master\msBarang;
 use App\Models\Master\msMember;
 use App\Models\Master\msRekeningOwner;
+use App\Models\Pembelian\trPenerimaan;
 use App\Models\Penjualan\msPromoDiskon;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Row;
@@ -99,6 +100,8 @@ use Maatwebsite\Excel\Row;
 
 Route::get('add',[ReportController::class,'addtes']);
 Route::get('get',[ReportController::class,'gettes']);
+
+Route::get('perbaikan_netto/{start}/{end}',[penerimaanDenganPOController::class,'perbaikan_netto']);
 
 Route::get('health',function(){
     return response()->json(['success'=>true,'data'=>'health']);

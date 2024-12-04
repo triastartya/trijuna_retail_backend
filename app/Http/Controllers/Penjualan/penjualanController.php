@@ -11,6 +11,7 @@ use App\Models\Master\msMemberPoinSetting;
 use App\Models\Master\msMemberPoinSettingGroup;
 use App\Models\Penjualan\posPenjualan;
 use App\Models\Penjualan\posPenjualanDetail;
+use App\Models\Penjualan\posPenjualanLogError;
 use App\Models\Penjualan\posPenjualanPayment;
 use App\Models\User;
 use App\Repositories\Penjualan\penjualanRepository;
@@ -92,6 +93,12 @@ class penjualanController extends VierController
         catch(\Exception $err) {
             // throw $err;
             DB::rollBack();
+            // posPenjualanLogError::create([
+            //     'no_faktur'=>$request->no_faktur,
+            //     'date'=>date('Y-m-d H:i:s'),
+            //     'request' => json_encode($request->all()),
+            //     'error_message' => $err
+            // ]);
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
     }
