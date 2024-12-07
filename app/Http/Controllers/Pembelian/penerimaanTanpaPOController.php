@@ -55,7 +55,8 @@ class penerimaanTanpaPOController extends VierController
                 $detail['netto'] = $harga_order_bersih_bawah + $ppn;
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['urut'] = $urut;
-                $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
+                // $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
+                $detail['selisih'] =  $detail['netto'] - $master_barang->harga_beli_terakhir;
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $penerimaan->id_penerimaan;
                 $detail['biaya_barcode'] = 0;
@@ -186,7 +187,8 @@ class penerimaanTanpaPOController extends VierController
                 $detail['netto'] = $harga_order_bersih_bawah + $ppn;
                 $detail['harga_beli_sebelumnya'] = $master_barang->harga_beli_terakhir;
                 $detail['urut'] = $urut;
-                $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
+                // $detail['selisih'] = $master_barang->harga_beli_terakhir - $detail['netto'];
+                $detail['selisih'] =  $detail['netto'] - $master_barang->harga_beli_terakhir;
                 $detail['harga_jual'] = $master_barang->harga_jual;
                 $detail['id_penerimaan'] = $data['id_penerimaan'];
                 $detail['diskon_persen_1'] = ($detail['diskon_persen_1'])?$detail['diskon_persen_1']:0;
