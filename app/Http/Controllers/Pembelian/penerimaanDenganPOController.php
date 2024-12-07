@@ -65,7 +65,7 @@ class penerimaanDenganPOController extends VierController
                             ]);
             // if($data['diskon_persen']==0){
                 if($data['diskon_nominal']!=0){
-                    $data['diskon_persen'] = number_format(($data['diskon_nominal']/$data['sub_total1'])*100);
+                    $data['diskon_persen'] = number_format(($data['diskon_nominal']/$data['sub_total1'])*100,2);
                 }
             // }
             foreach($request->detail as $detail){
@@ -284,7 +284,7 @@ class penerimaanDenganPOController extends VierController
             trPenerimaanDetail::where('id_penerimaan',$request->id_penerimaan)->delete();
             // if($data['diskon_persen']==0){
                 if($data['diskon_nominal']!=0){
-                    $data['diskon_persen'] = number_format(($data['diskon_nominal']/$data['sub_total1'])*100);
+                    $data['diskon_persen'] = number_format(($data['diskon_nominal']/$data['sub_total1'])*100,2);
                 }
             // }
             $penerimaan = trPenerimaan::where('id_penerimaan',$request->id_penerimaan)->update($data);

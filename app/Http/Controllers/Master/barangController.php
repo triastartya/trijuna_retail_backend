@@ -462,7 +462,7 @@ class barangController extends VierController
     public function history_penerimaan(){
         try {
             $data = DB::select("
-                select tpd.qty,tpd.qty_bonus,tpd.harga_order as harga_beli,tp.tanggal_nota,ms.nama_supplier
+                select tpd.qty,tpd.qty_bonus,tpd.netto as harga_beli,tp.tanggal_nota,ms.nama_supplier
                 from tr_penerimaan tp inner join tr_penerimaan_detail tpd on tp.id_penerimaan=tpd.id_penerimaan
                 inner join ms_supplier ms on tp.id_supplier=ms.id_supplier
                 where id_barang = ".request()->id_barang."
