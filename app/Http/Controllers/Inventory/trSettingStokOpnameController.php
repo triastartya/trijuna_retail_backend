@@ -89,22 +89,31 @@ class trSettingStokOpnameController extends VierController
                     $item = msBarang::whereIn('id_barang',$barang)->get();
                     break;
             }
-            // dd($item);
             foreach($item as $barang){
                 $stock_capture = msBarangKartuStok::where('id_barang',$barang->id_barang)
                 ->where('id_warehouse',request()->id_warehouse)
                 ->where('created_at','<=',request()->tanggal_setting_stok_opname)
                 ->orderBy('created_at', 'desc')
                 ->first();
-                // dd($stock_capture);
-                trSettingStokOpnameCapture::create([
-                    'id_setting_stok_opname' =>$so->id_setting_stok_opname,
-                    'id_barang'=>$barang->id_barang,
-                    'tanggal_setting_stok_opname'=>$so->tanggal_setting_stok_opname,
-                    'qty_capture'=> ($stock_capture)?$stock_capture->stok_akhir:0,
-                    'hpp_average'=>($barang->hpp_average)?$barang->hpp_average:0,
-                    'harga_jual'=>($barang->harga_jual)?$barang->harga_jual:0
-                ]);
+                if($stock_capture){
+                    trSettingStokOpnameCapture::create([
+                        'id_setting_stok_opname' =>$so->id_setting_stok_opname,
+                        'id_barang'=>$barang->id_barang,
+                        'tanggal_setting_stok_opname'=>$so->tanggal_setting_stok_opname,
+                        'qty_capture'=> ($stock_capture)?$stock_capture->stok_akhir:0,
+                        'hpp_average'=>($barang->hpp_average)?$barang->hpp_average:0,
+                        'harga_jual'=>($barang->harga_jual)?$barang->harga_jual:0
+                    ]);
+                }else{
+                    trSettingStokOpnameCapture::create([
+                        'id_setting_stok_opname' =>$so->id_setting_stok_opname,
+                        'id_barang'=>$barang->id_barang,
+                        'tanggal_setting_stok_opname'=>$so->tanggal_setting_stok_opname,
+                        'qty_capture'=> 0,
+                        'hpp_average'=>0,
+                        'harga_jual'=>0
+                    ]);
+                }
             }
 
             DB::commit();
