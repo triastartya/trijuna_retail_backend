@@ -21,7 +21,7 @@ class ModifRequest
     {
         if($request->method()=="POST" & $this->parse($request)=="member"){
             $request->merge([
-                'kode_member'=>GeneradeNomorHelper::long('member'),
+                'kode_member'=>GeneradeNomorHelper::member('member'),
                 'password'=>bcrypt($request->password)
             ]);
         }

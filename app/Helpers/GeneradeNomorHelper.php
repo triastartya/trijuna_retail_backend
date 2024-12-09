@@ -22,6 +22,14 @@ class GeneradeNomorHelper
         $master_counter_forupdate->save();
         return sprintf('%04s', $master_counter_forupdate->counter);
     }
+
+    public static function member($keterangan)
+    {
+        $master_counter_forupdate = nomorCounter::where('keterangan',$keterangan)->lockForUpdate()->first();
+        $master_counter_forupdate->counter = $master_counter_forupdate->counter + 1;
+        $master_counter_forupdate->save();
+        return 'M' . sprintf('%05s', $master_counter_forupdate->counter);
+    }
     
     public static function long($keterangan)
     {
