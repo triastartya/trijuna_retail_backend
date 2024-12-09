@@ -182,7 +182,7 @@ class penerimaanDenganPOController extends VierController
                 if(request()->is_update_harga_order){
                     msBarang::where('id_barang',$detail['id_barang'])
                     ->update([
-                        'harga_order' => $detail['harga_beli_netto'],
+                        'harga_order' => $penerimaan_detail->harga_order,
                     ]);
                 }
 
