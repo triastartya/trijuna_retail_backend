@@ -302,9 +302,11 @@ class penjualanRepository extends VierRepository
         ');
         foreach($data as $key=>$item){
             $refund = DB::select("
-                SELECT sum(prd.qty_jual) as qty from pos_refund pr inner join pos_refund_detail prd on pr.id_refund=prd.id_refund_detail 
-                where prd.id_barang = 73106 and (pr.tanggal_refund BETWEEN '".request()->start."' and '".request()->end."')");
-            $data[$key] = $item->qty_jual - ($refund[0]->qty)?$refund[0]->qty:0;
+                SELECT sum(prd.qty_jual) as qty from pos_refund pr inner join pos_refund_detail prd on pr.id_refund=prd.id_refund
+                where prd.id_barang = ".$data[$key]->id_barang." and (pr.tanggal_refund BETWEEN '".request()->start."' and '".request()->end."')");
+            // dd($data[$key]->id_barang);
+            $qty_refund = ($refund[0]->qty)?(float)$refund[0]->qty:0;
+            $data[$key]->qty_jual = (float)$data[$key]->qty_jual - $qty_refund;
         }
         return $data;
     }
