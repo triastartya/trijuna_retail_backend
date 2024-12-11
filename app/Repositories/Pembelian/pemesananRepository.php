@@ -84,7 +84,9 @@ class pemesananRepository extends VierRepository
                 tpd.diskon_nominal_3,
                 tpd.sub_total,
                 tpd.qty_bonus,
-                tpd.nama_bonus
+                tpd.nama_bonus,
+                tpd.omset,
+                tpd.stok
                 from tr_pemesanan_detail tpd
                 inner join ms_barang mb on tpd.id_barang = mb.id_barang
                 inner join ms_satuan ms on tpd.kode_satuan = ms.kode_satuan

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pembelian;
 
 use App\Helpers\GeneradeNomorHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Master\msBarangStok;
 use App\Models\Pembelian\trPemesanan;
 use App\Models\Pembelian\trPemesananDetail;
 use App\Repositories\Master\barangRepository;
@@ -33,8 +34,21 @@ class pemesananController extends VierController
             $data['nomor_pemesanan'] = GeneradeNomorHelper::long('pemesanan');
             unset($data['detail']);
             $pemesanan = trPemesanan::create($data);
+            $lastMonth = date('Y-m', strtotime('first day of last month'));
             foreach($request->detail as $detail){
+                $omset = DB::select("
+                    select
+                    SUM(trd.qty_jual) as qty_jual
+                    from pos_penjualan_detail trd
+                    inner join pos_penjualan pp on trd.id_penjualan=pp.id_penjualan
+                    where trd.id_barang = ?
+                    and
+                    TO_CHAR(tanggal_penjualan, 'YYYY-MM') = ?;
+                ",[$detail['id_barang'],$lastMonth]);
+                $stok = msBarangStok::where('id_barang',$detail['id_barang'])->where('id_warehouse',2)->first();
                 $detail['id_pemesanan'] = $pemesanan->id_pemesanan;
+                $detail['omset'] = ($omset[0]->qty_jual)?$omset[0]->qty_jual:0;
+                $detail['stok'] = ($stok)?$stok->qty:0;
                 trPemesananDetail::create($detail);
             }
             DB::commit();

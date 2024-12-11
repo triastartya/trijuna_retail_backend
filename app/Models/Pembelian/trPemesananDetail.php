@@ -34,7 +34,9 @@ class trPemesananDetail extends Model
         'sub_total',
         'qty_bonus',
         'biaya_barcode',
-        'nama_bonus'
+        'nama_bonus',
+        'omset',
+        'stok'
     ];
     
     public function rules()
@@ -60,6 +62,8 @@ class trPemesananDetail extends Model
             'sub_total'=>'required',
             'qty_bonus'=>'',
             'nama_bonus'=>'',
+            'omset'=>'',
+            'stok'=>''
         ];
     }
 }
