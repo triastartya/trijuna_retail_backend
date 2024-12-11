@@ -254,56 +254,56 @@ class penjualanRepository extends VierRepository
 
     public function sell_out_item(){
         $data =  QueryHelper::queryParam("
-        select
-        mb.kode_barang,
-        mb.barcode,
-        mb.nama_barang,
-        mb.id_barang,
-        mb.id_divisi,
-        md.divisi,
-        mb.id_group,
-        mg.group,
-        mb.kode_satuan,
-        mb.id_merk,
-        mb.harga_order as harga_beli,
-        mm.merk,
-        ms.id_supplier,
-		ms.nama_supplier,
-        CEIL(sum(ppd.qty_jual::float)) as qty_jual,
-        CEIL((sum(ppd.sub_total::float) / sum(ppd.qty_jual::float))) as harga_jual,
-        sum(ppd.diskon1) as diskon1,
-        sum(ppd.diskon2) as diskon2,
-        sum(ppd.sub_total::float) as subtotal
-        from pos_penjualan pp
-        inner join pos_penjualan_detail ppd on pp.id_penjualan=ppd.id_penjualan
-        inner join ms_barang mb on mb.id_barang = ppd.id_barang
-        left join ms_group mg on mg.id_group = mb.id_group
-        left join ms_divisi md on md.id_divisi=mb.id_divisi
-        left join  ms_merk mm on mm.id_merk=mb.id_merk
-        left join ms_supplier ms on mb.id_supplier=ms.id_supplier
-        where (pp.tanggal_penjualan BETWEEN '".request()->start."' and '".request()->end."')",
-        request(),
-        '
-        group by
-        mb.kode_barang,
-        mb.barcode,
-        mb.nama_barang,
-        mb.id_barang,
-        mb.id_divisi,
-        md.divisi,
-        mb.id_group,
-        mg.group,
-        mb.kode_satuan,
-        mb.id_merk,
-        mb.harga_order,
-        mm.merk,
-        ms.id_supplier,
-		ms.nama_supplier
+            select
+            mb.kode_barang,
+            mb.barcode,
+            mb.nama_barang,
+            mb.id_barang,
+            mb.id_divisi,
+            md.divisi,
+            mb.id_group,
+            mg.group,
+            mb.kode_satuan,
+            mb.id_merk,
+            mb.harga_beli_terakhir as harga_beli,
+            mm.merk,
+            ms.id_supplier,
+            ms.nama_supplier,
+            CEIL(sum(ppd.qty_jual::float)) as qty_jual,
+            CEIL((sum(ppd.sub_total::float) / sum(ppd.qty_jual::float))) as harga_jual,
+            sum(ppd.diskon1) as diskon1,
+            sum(ppd.diskon2) as diskon2,
+            sum(ppd.sub_total::float) as subtotal
+            from pos_penjualan pp
+            inner join pos_penjualan_detail ppd on pp.id_penjualan=ppd.id_penjualan
+            inner join ms_barang mb on mb.id_barang = ppd.id_barang
+            left join ms_group mg on mg.id_group = mb.id_group
+            left join ms_divisi md on md.id_divisi=mb.id_divisi
+            left join  ms_merk mm on mm.id_merk=mb.id_merk
+            left join ms_supplier ms on mb.id_supplier=ms.id_supplier
+            where (pp.tanggal_penjualan BETWEEN '".request()->start."' and '".request()->end."')",
+            request(),
+            '
+            group by
+            mb.kode_barang,
+            mb.barcode,
+            mb.nama_barang,
+            mb.id_barang,
+            mb.id_divisi,
+            md.divisi,
+            mb.id_group,
+            mg.group,
+            mb.kode_satuan,
+            mb.id_merk,
+            mb.harga_order,
+            mm.merk,
+            ms.id_supplier,
+            ms.nama_supplier
         ');
         foreach($data as $key=>$item){
             $refund = DB::select("
-            SELECT sum(prd.qty_jual) as qty from pos_refund pr inner join pos_refund_detail prd on pr.id_refund=prd.id_refund_detail 
-            where prd.id_barang = 73106 and (pr.tanggal_refund BETWEEN '".request()->start."' and '".request()->end."')");
+                SELECT sum(prd.qty_jual) as qty from pos_refund pr inner join pos_refund_detail prd on pr.id_refund=prd.id_refund_detail 
+                where prd.id_barang = 73106 and (pr.tanggal_refund BETWEEN '".request()->start."' and '".request()->end."')");
             $data[$key] = $item->qty_jual - ($refund[0]->qty)?$refund[0]->qty:0;
         }
         return $data;
