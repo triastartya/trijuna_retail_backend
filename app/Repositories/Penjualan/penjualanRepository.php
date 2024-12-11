@@ -253,7 +253,7 @@ class penjualanRepository extends VierRepository
     }
 
     public function sell_out_item(){
-        return QueryHelper::queryParam("
+        $data =  QueryHelper::queryParam("
         select
         mb.kode_barang,
         mb.barcode,
@@ -265,6 +265,7 @@ class penjualanRepository extends VierRepository
         mg.group,
         mb.kode_satuan,
         mb.id_merk,
+        mb.harga_order as harga_beli,
         mm.merk,
         ms.id_supplier,
 		ms.nama_supplier,
@@ -294,9 +295,17 @@ class penjualanRepository extends VierRepository
         mg.group,
         mb.kode_satuan,
         mb.id_merk,
+        mb.harga_order,
         mm.merk,
         ms.id_supplier,
 		ms.nama_supplier
         ');
+        foreach($data as $key=>$item){
+            $refund = DB::select("
+            SELECT sum(prd.qty_jual) as qty from pos_refund pr inner join pos_refund_detail prd on pr.id_refund=prd.id_refund_detail 
+            where prd.id_barang = 73106 and (pr.tanggal_refund BETWEEN '".request()->start."' and '".request()->end."')");
+            $data[$key] = $item->qty_jual - ($refund[0]->qty)?$refund[0]->qty:0;
+        }
+        return $data;
     }
 }
