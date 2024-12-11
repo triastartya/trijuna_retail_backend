@@ -65,7 +65,11 @@ class barangRepository extends VierRepository
             mb.created_at,
             uu.nama as updated_by,
             mb.updated_at,
-            mb.harga_jual
+            mb.harga_jual,
+            mb.qty_grosir1,
+            mb.harga_grosir1,
+            mb.qty_grosir2,
+            mb.harga_grosir2
             from ms_barang mb
             left join ms_divisi md on mb.id_divisi = md.id_divisi
             left join ms_group mg on mb.id_group = mg.id_group
