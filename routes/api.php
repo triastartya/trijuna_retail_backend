@@ -326,7 +326,19 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::pointResource('modal_kasir',modalKasirController::class);
         Route::get('modal_kasir_get',[modalKasirController::class,'getall']);
         
-        Route::pointResource('ms_promo_diskon',msPromoDiskonController::class);
+        // Route::pointResource('ms_promo_diskon',msPromoDiskonController::class);
+        Route::prefix('ms_promo_diskon')->group(function(){
+            Route::get('/all', [msPromoDiskonController::class, 'all']);
+            Route::get('/', [msPromoDiskonController::class, 'getall']);
+            Route::get('datatables', [msPromoDiskonController::class, 'datatables']);
+            Route::get('lov', [msPromoDiskonController::class, 'lov']);
+            Route::post('table', [msPromoDiskonController::class, 'table']);
+            Route::get('{id}', [msPromoDiskonController::class, 'show']);
+            Route::post('/',[msPromoDiskonController::class, 'store']);
+            Route::put('{id}',[msPromoDiskonController::class,'update']);
+            Route::delete('{id}',[msPromoDiskonController::class,'destroy']);
+            Route::get('detail/dictionary', [msPromoDiskonController::class, 'dictionary']);
+        });
         Route::get('ms_promo_diskon_detail/{id_promo_diskon}',[msPromoDiskonController::class,'get_detail']);
 
         Route::pointResource('ms_promo_diskon_setting_barang',msPromoDiskonSettingBarangController::class);
