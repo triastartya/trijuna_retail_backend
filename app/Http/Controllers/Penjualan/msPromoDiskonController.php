@@ -25,6 +25,15 @@ class msPromoDiskonController extends VierController
         $this->repository_diskon_supplier = new msPromoDiskonSettingSupplierRepository();
         parent::__construct($this->repository);
     }
+
+    public function getall(){
+        try{
+            $data = msPromoDiskon::all();
+            return response()->json(['success'=>true,'data'=>['data'=>$data]]);
+        } catch(\Exception $ex) {  
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
     
     public function get_detail()
     {
