@@ -30,6 +30,10 @@ class returPembelianController extends VierController
             $data['jenis_retur'] = 1;
             $data['nomor_retur_pembelian'] = GeneradeNomorHelper::long('retur pembelian');
             unset($data['detail']);
+            $sub_total = array_reduce($request->detail, function($sum, $item) {
+                return $sum + $item['sub_total'];
+            }, 0);
+            $data['total_harga'] = $sub_total;
             $retur_pembelian = trReturPembelian::create($data);
             foreach($request->detail as $detail){
                 $detail['id_retur_pembelian'] = $retur_pembelian->id_retur_pembelian;
@@ -58,6 +62,10 @@ class returPembelianController extends VierController
         try{
             $data = $this->repository->get_by_id();
             $data->detail = $this->repository->detail_by_id();
+            $sub_total = array_reduce($data->detail, function($sum, $item) {
+                return $sum + $item->sub_total;
+            }, 0);
+            $data->total_harga = $sub_total;
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
