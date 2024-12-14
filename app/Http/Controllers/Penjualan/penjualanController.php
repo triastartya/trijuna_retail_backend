@@ -48,7 +48,9 @@ class penjualanController extends VierController
             $point_setting_group = msMemberPoinSettingGroup::get();
             foreach($request->detail as $detail){
                 $barang = msBarang::where('id_barang',$detail['id_barang'])->first();
-                $detail['hpp_average'] = ($barang->hpp_average)?$barang->hpp_average:0;
+                $hpp_average = ($barang)?$barang->hpp_average:0;
+                $hpp_average = ($hpp_average)?$hpp_average:0;
+                $detail['hpp_average'] = $hpp_average;
                 $detail['laba'] = $barang->harga_jual - ($barang->hpp_average)?$barang->hpp_average:0;
                 $detail['id_penjualan'] = $penjualan->id_penjualan;
                 $penjualan_detail =posPenjualanDetail::create($detail);
