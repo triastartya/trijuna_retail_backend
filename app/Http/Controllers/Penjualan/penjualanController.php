@@ -71,11 +71,13 @@ class penjualanController extends VierController
                     'transaksi'       => 'pos_penjualan',
                 ]);
                 // ======== ambil nominal yg dapat poin
-                if($data['id_member']){
-                    if(count($point_setting_group)>0){
-                        $exists = $point_setting_group->contains('id_group', $barang->id_group);
-                        if($exists){
-                            $nominal_poin = $nominal_poin + $detail['sub_total'];
+                if($barang){
+                    if($data['id_member']){
+                        if(count($point_setting_group)>0){
+                            $exists = $point_setting_group->contains('id_group', $barang->id_group);
+                            if($exists){
+                                $nominal_poin = $nominal_poin + $detail['sub_total'];
+                            }
                         }
                     }
                 }
