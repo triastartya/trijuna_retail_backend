@@ -298,7 +298,8 @@ class penjualanRepository extends VierRepository
             mb.harga_order,
             mm.merk,
             ms.id_supplier,
-            ms.nama_supplier
+            ms.nama_supplier,
+            mb.harga_beli_terakhir
         ');
         foreach($data as $key=>$item){
             $refund = DB::select("
