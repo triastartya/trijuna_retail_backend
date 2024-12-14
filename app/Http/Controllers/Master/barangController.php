@@ -43,6 +43,10 @@ class barangController extends VierController
         DB::beginTransaction();
         try {
             $data = $request->all();
+            $barcode = msBarang::where('barcode',$request->barcode)->lockForUpdate()->first();
+            if($barcode){
+                throw new \Exception('duplikat barcode');
+            }
             if($data['kode_barang']==''){
                 $divisi = msDivisi::where('id_divisi',$data['id_divisi'])->first();
                 $group = msGroup::where('id_group',$data['id_group'])->first();
