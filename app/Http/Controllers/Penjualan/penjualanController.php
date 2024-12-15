@@ -134,10 +134,16 @@ class penjualanController extends VierController
     public function get_by_param(){
         try{
             $data = $this->repository->by_param();
+            $jumlah_item = array_reduce($data, function($sum, $item) {
+                return $sum + $item->qty_jual;
+            }, 0);
+            $omzet_penjualan = array_reduce($data, function($sum, $item) {
+                return $sum + $item->total_transaksi;
+            }, 0);
             return response()->json(['success'=>true,'data'=>[
                 'detail'=>$data,
-                'jumlah_item'=>0,
-                'omzet_penjualan'=>0
+                'jumlah_item'=>round($jumlah_item,2),
+                'omzet_penjualan'=>round($omzet_penjualan, 2)
             ]]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);

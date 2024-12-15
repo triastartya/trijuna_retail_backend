@@ -141,20 +141,57 @@ class penjualanRepository extends VierRepository
             pp.deleted_at,
             pp.deleted_reason,
             ud.nama as deleted_by,
-            pp.deleted_at,
-            pp.deleted_reason,
             uc.nama as created_by,
             pp.created_at,
             uu.nama as updated_by,
-            pp.updated_at
+            pp.updated_at,
+            sum(ppd.qty_jual) as qty_jual
             from pos_penjualan pp
+            inner join pos_penjualan_detail ppd on pp.id_penjualan=ppd.id_penjualan
             inner join users uk on uk.id_user = pp.id_user_kasir
             inner join users uc on uc.id_user = pp.created_by
             inner join users uu on uu.id_user = pp.updated_by
             left join ms_member mm on pp.id_member = mm.id_member
             left join users ud on ud.id_user = pp.deleted_by
-            where is_deleted = false 
-        ",request());
+            where is_deleted = false
+        ",request(),'
+            group by 
+			pp.id_penjualan,
+            pp.id_user_kasir,
+            uk.nama,
+            pp.is_bayar,
+            pp.tanggal_penjualan,
+            pp.no_faktur,
+            pp.id_member,
+            mm.nomor_identitas,
+            mm.nama_member,
+            mm.kode_member,
+            mm.alamat,
+            mm.no_handphone,
+            pp.total_diskon_dalam,
+            pp.total_transaksi,
+            pp.diskon_luar_persen,
+            pp.diskon_luar_nominal,
+            pp.ongkos_kirim,
+            pp.pembulatan,
+            pp.total_transaksi2,
+            pp.total_bayar,
+            pp.kembali,
+            pp.biaya_bank,
+            pp.is_using_voucher,
+            pp.id_pos_kasir,
+            pp.id_tutup_kasir,
+            pp.is_deleted,
+            pp.deleted_at,
+            pp.deleted_reason,
+            ud.nama ,
+            uc.nama ,
+            pp.created_at,
+            uu.nama ,
+            pp.updated_at
+            order by pp.nota_penjualan
+		    limit 1000
+        ');
     }
 
     public function belum_lunas(){

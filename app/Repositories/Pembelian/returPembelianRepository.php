@@ -69,6 +69,7 @@ class returPembelianRepository extends VierRepository
         ms.nama_supplier,
         trp.mekanisme,
         trp.total_harga,
+        trp.total_faktur_pajak,
         trp.qty,
         trp.status_retur,
         trp.is_deleted,
@@ -108,7 +109,10 @@ class returPembelianRepository extends VierRepository
         trpd.harga_satuan,
         trpd.sub_total,
         trpd.created_at,
-        trpd.updated_at
+        trpd.updated_at,
+        trpd.qty_faktur_pajak,
+        trpd.harga_satuan_faktur_pajak,
+        trpd.sub_total_faktur_pajak
         from tr_retur_pembelian_detail trpd
         inner join ms_barang mb on trpd.id_barang = mb.id_barang
         inner join ms_satuan ms on trpd.kode_satuan = ms.kode_satuan

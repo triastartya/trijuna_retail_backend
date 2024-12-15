@@ -116,6 +116,7 @@ class returPembelianController extends VierController
         DB::beginTransaction();
         try {
             $data = $request->all();
+            // dd($data);
             $retur_pembelian = trReturPembelian::where('id_retur_pembelian',$data['id_retur_pembelian'])->update([
                 'total_faktur_pajak' => $data['total_faktur_pajak']
             ]);
@@ -127,9 +128,50 @@ class returPembelianController extends VierController
                 ]);
             }
             DB::commit();
+            return response()->json(['success'=>true,'data'=>$data]);
+        }
+        catch(\Exception $err) {
+            // throw $err;
+            DB::rollBack();
+            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+        }
+    }
+
+    public function cancel(Request $request){
+        DB::beginTransaction();
+        try {
+            $data = $request->all();
+            $retur_pembelian = trReturPembelian::where('id_retur_pembelian',$data['id_retur_pembelian'])->first();
+            $retur_pembelian->status_retur = 'BATAL';
+            $retur_pembelian->save();
+            $retur_pembelian_detail = trReturPembelianDetail::where('id_retur_pembelian',$data['id_retur_pembelian'])->get();
+            if($retur_pembelian->status_retur=='VALIDATED'){
+                $supplier = msSupplier::where('id_supplier',$retur_pembelian->id_supplier)->first();
+                foreach($retur_pembelian_detail as $detail){
+                    $inventory = InventoryStokHelper::penambahan((object)[
+                        'id_barang'       => $detail->id_barang,
+                        'nama_barang'     => '',
+                        'id_warehouse'    => $retur_pembelian->id_warehouse,
+                        'qty'             => $detail->qty,
+                        'nomor_reff'      => $retur_pembelian->nomor_retur_pembelian,
+                        'id_header_trans' => $retur_pembelian->id_retur_pembelian,
+                        'id_detail_trans' => $detail->id_retur_pembelian_detail,
+                        'jenis'           => 'Pembatalan Retur Pembelian',
+                        'nominal'         => $detail->sub_total,
+                        'keterangan'      => 'Pembatalan Retur Pembalian '.$supplier->nama_supplier,
+                        'transaksi'       => 'tr_retur_pembelian'
+                    ]);
+                    if(!$inventory[0]){
+                        DB::rollBack();
+                        throw($inventory[1]);
+                    }
+                }
+            }
+            DB::commit();
             return response()->json(['success'=>true,'data'=>$retur_pembelian->id_retur_pembelian]);
         }
         catch(\Exception $err) {
+            throw $err;
             DB::rollBack();
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
