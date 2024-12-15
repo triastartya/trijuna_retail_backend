@@ -22,6 +22,7 @@ class trReturPembelianDetail extends Model
         'harga_satuan',
         'sub_total',
         'qty_faktur_pajak',
+        'harga_satuan_faktur_pajak',
         'sub_total_faktur_pajak'
     ];
     
