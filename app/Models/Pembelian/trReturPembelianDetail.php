@@ -20,7 +20,9 @@ class trReturPembelianDetail extends Model
         'isi',
         'qty',
         'harga_satuan',
-        'sub_total'
+        'sub_total',
+        'qty_faktur_pajak',
+        'sub_total_faktur_pajak'
     ];
     
     public function rules()
@@ -35,7 +37,9 @@ class trReturPembelianDetail extends Model
             'isi'                   =>'required',
             'qty'                   =>'required',
             'harga_satuan'          =>'required',
-            'sub_total'             =>'required'
+            'sub_total'             =>'required',
+            'qty_faktur_pajak'      =>'required',
+            'sub_total_faktur_pajak'=>'required'
         ];
     }
 }

@@ -22,13 +22,13 @@ use Viershaka\Vier\VierController;
 class penjualanController extends VierController
 {
     public $repository;
-    
+
     public function __construct()
     {
         $this->repository = new penjualanRepository();
         parent::__construct($this->repository);
     }
-    
+
     public function insert(Request $request){
         DB::beginTransaction();
         try {
@@ -109,7 +109,7 @@ class penjualanController extends VierController
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
     }
-    
+
     public function get_by_id(){
         try{
             $data = $this->repository->get_by_id();
@@ -130,11 +130,15 @@ class penjualanController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
-    
+
     public function get_by_param(){
         try{
             $data = $this->repository->by_param();
-            return response()->json(['success'=>true,'data'=>$data]);
+            return response()->json(['success'=>true,'data'=>[
+                'detail'=>$data,
+                'jumlah_item'=>0,
+                'omzet_penjualan'=>0
+            ]]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }

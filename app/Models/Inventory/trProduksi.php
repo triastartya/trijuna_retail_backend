@@ -43,7 +43,7 @@ class trProduksi extends Model
             'hpp_avarage_produksi'=>'required',
             'total_hpp_avarage_produksi'=>'required',
             'total_hpp_avarage_komponen'=>'required',
-            'status_produksi'=>'required',
+            'status_produksi'=>'',
             'is_deleted'=>'',
             'deleted_by'=>'',
             'deleted_at'=>'',

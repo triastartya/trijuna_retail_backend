@@ -28,7 +28,8 @@ class trReturPembelian extends Model
         'deleted_at',
         'deleted_reason',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'total_faktur_pajak'
     ];
     
     public function rules()
@@ -49,7 +50,8 @@ class trReturPembelian extends Model
             'deleted_at'=>'required',
             'deleted_reason'=>'required',
             'created_by'=>'',
-            'updated_by'=>''
+            'updated_by'=>'',
+            'total_faktur_pajak'=>''
         ];
     }
 }

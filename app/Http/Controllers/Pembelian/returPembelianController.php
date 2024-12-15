@@ -110,5 +110,27 @@ class returPembelianController extends VierController
             DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
-    }    
+    }
+    public function edit(Request $request){
+        DB::beginTransaction();
+        try {
+            $data = $request->all();
+            $retur_pembelian = trReturPembelian::where('id_retur_pembelian',$data['id_retur_pembelian'])->update([
+                'total_faktur_pajak' => $data['total_faktur_pajak']
+            ]);
+            foreach($request->detail as $detail){
+                $detail['id_retur_pembelian'] = $retur_pembelian->id_retur_pembelian;
+                $data=trReturPembelianDetail::where('id_retur_pembelian_detail',$detail['id_retur_pembelian_detail'])->update([
+                    'qty_faktur_pajak'=>$detail['qty_faktur_pajak'],
+                    'sub_total_faktur_pajak'=>$detail['sub_total_faktur_pajak']
+                ]);
+            }
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$retur_pembelian->id_retur_pembelian]);
+        }
+        catch(\Exception $err) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'message'=>$err->getMessage()]);
+        }
+    }
 }

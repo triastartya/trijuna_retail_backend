@@ -9,6 +9,7 @@ use App\Models\Inventory\trMutasi;
 use App\Models\Inventory\trMutasiDetail;
 use App\Models\Inventory\trMutasiLokasi;
 use App\Models\Inventory\trMutasiLokasiDetail;
+use App\Models\Master\msBarangStok;
 use App\Models\Master\msLokasi;
 use App\Repositories\Inventory\mutasiLokasiRepository;
 use App\Repositories\Master\barangRepository;
@@ -48,6 +49,14 @@ class mutasiKeluarController extends VierController
             $mutasi = trMutasiLokasi::create($data);
             foreach($request->detail as $detail){
                 $detail['id_mutasi_lokasi'] = $mutasi->id_mutasi_lokasi;
+                $stok = msBarangStok::where('id_barang',$detail['id_barang'])->where('id_warehouse',$detail['warehouse_asal'])->first();
+                if($stok){
+                    throw new \Exception('barang , '.$detail['nama_barang'].' , stok saat ini tidak tersedia');
+                }else{
+                    if($stok->qty < 0){
+                        throw new \Exception('barang , '.$detail['nama_barang'].' , stok saat ini '.$stok->qty);
+                    }
+                }
                 trMutasiLokasiDetail::create($detail);
             }
             DB::commit();
