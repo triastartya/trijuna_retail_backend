@@ -28,18 +28,19 @@ class trReturPembelianDetail extends Model
     public function rules()
     {
         return [
-            'id_retur_pembelian_detail'  =>'',
-            'id_retur_pembelian'         =>'required',
-            'urut'                  =>'required',
-            'id_barang'             =>'required',
-            'banyak'                =>'required',
-            'kode_satuan'           =>'required',
-            'isi'                   =>'required',
-            'qty'                   =>'required',
-            'harga_satuan'          =>'required',
-            'sub_total'             =>'required',
-            'qty_faktur_pajak'      =>'required',
-            'sub_total_faktur_pajak'=>'required'
+            'id_retur_pembelian_detail' =>'',
+            'id_retur_pembelian'        =>'required',
+            'urut'                      =>'required',
+            'id_barang'                 =>'required',
+            'banyak'                    =>'required',
+            'kode_satuan'               =>'required',
+            'isi'                       =>'required',
+            'qty'                       =>'required',
+            'harga_satuan'              =>'required',
+            'sub_total'                 =>'required',
+            'qty_faktur_pajak'          =>'',
+            'harga_satuan_faktur_pajak' =>'',
+            'sub_total_faktur_pajak'    =>''
         ];
     }
 }
