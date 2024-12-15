@@ -49,7 +49,7 @@ class mutasiKeluarController extends VierController
             $mutasi = trMutasiLokasi::create($data);
             foreach($request->detail as $detail){
                 $detail['id_mutasi_lokasi'] = $mutasi->id_mutasi_lokasi;
-                $stok = msBarangStok::where('id_barang',$detail['id_barang'])->where('id_warehouse',$detail['warehouse_asal'])->first();
+                $stok = msBarangStok::where('id_barang',$detail['id_barang'])->where('id_warehouse',$data['warehouse_asal'])->first();
                 if($stok){
                     throw new \Exception('barang , '.$detail['nama_barang'].' , stok saat ini tidak tersedia');
                 }else{
