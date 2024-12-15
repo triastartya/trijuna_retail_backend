@@ -266,9 +266,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         
         Route::prefix('retur_pembelian')->group(function(){
             Route::post('insert',[returPembelianController::class,'insert']);
+            Route::post('edit',[returPembelianController::class,'edit']);
             Route::post('get_by_param',[returPembelianController::class,'get_by_param']);
             Route::get('get_by_id/{id_retur_pembelian}',[returPembelianController::class,'get_by_id']);
             Route::post('validasi',[returPembelianController::class,'validasi']);
+            Route::post('cancel',[returPembelianController::class,'cancel']);
         });
         
         Route::prefix('retur_konsinyasi')->group(function(){
@@ -277,7 +279,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('get_by_id/{id_retur_pembelian}',[returKonsinyasiController::class,'get_by_id']);
             Route::post('validasi',[returKonsinyasiController::class,'validasi']);
         });
-
+        
         Route::prefix('mutasi_warehouse')->group(function(){
             Route::post('lookup_barang/{id_warehouse}',[mutasiController::class,'lookup_barang']);
             Route::post('insert',[mutasiController::class,'insert']);
@@ -326,7 +328,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::pointResource('modal_kasir',modalKasirController::class);
         Route::get('modal_kasir_get',[modalKasirController::class,'getall']);
         
-        // Route::pointResource('ms_promo_diskon',msPromoDiskonController::class);
         Route::prefix('ms_promo_diskon')->group(function(){
             Route::get('/all', [msPromoDiskonController::class, 'all']);
             Route::get('/', [msPromoDiskonController::class, 'getall']);
