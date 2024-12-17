@@ -42,7 +42,10 @@ class fakturPajakRepository extends VierRepository
                     WHEN tfp.retur = false THEN tp.nomor_penerimaan
                     ELSE trp.nomor_retur_pembelian
             END AS nomor_penerimaan,
-            tp.tanggal_nota,
+            CASE
+                    WHEN tfp.retur = false THEN tp.tanggal_nota
+                    ELSE trp.tanggal_retur_pembelian
+            END AS tanggal_nota,
             tfp.id_faktur_pajak,
             tfp.id_penerimaan,
             tfp.dasar_pengenaan_pajak,
@@ -94,7 +97,10 @@ class fakturPajakRepository extends VierRepository
                     WHEN tfp.retur = false THEN tp.nomor_penerimaan
                     ELSE trp.nomor_retur_pembelian
             END AS nomor_penerimaan,
-            tp.tanggal_nota,
+            CASE
+                    WHEN tfp.retur = false THEN tp.tanggal_nota
+                    ELSE trp.tanggal_retur_pembelian
+            END AS tanggal_nota,
             tfp.id_faktur_pajak,
             tfp.id_penerimaan,
             tfp.dasar_pengenaan_pajak,
