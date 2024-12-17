@@ -120,4 +120,33 @@ class fakturPajakRepository extends VierRepository
         ",[request()->id_faktur_pajak]);
         return $data[0];
     }
+
+    public function detail_by_faktur($id_penerimaan,$is_retur){
+        if($is_retur){
+            return DB::select("
+                select 
+                trpd.id_barang,
+                mb.nama_barang,
+                trpd.qty,
+                trpd.harga_satuan_faktur_pajak as harga_satuan,
+                trpd.sub_total_faktur_pajak as sub_total
+                from tr_retur_pembelian_detail trpd 
+                inner join ms_barang mb on trpd.id_barang=mb.id_barang
+                where id_retur_pembelian=?
+            ",[$id_penerimaan]);
+        }else{
+            return DB::select("
+                SELECT 
+                tpd.id_barang,
+                mb.nama_barang,
+                tpd.qty,
+                tpd.harga_order as harga_satuan,
+                tpd.sub_total as sub_total
+                from tr_penerimaan_detail tpd
+                inner join ms_barang mb on tpd.id_barang=mb.id_barang
+                where id_penerimaan = ?
+        ",[$id_penerimaan]);
+        }
+        
+    }
 }

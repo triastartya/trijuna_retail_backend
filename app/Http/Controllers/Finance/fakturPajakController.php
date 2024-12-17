@@ -54,6 +54,7 @@ class fakturPajakController extends VierController
     public function get_by_id(){
         try{
             $data = $this->repository->get_by_id();
+            $data->detail = $this->repository->detail_by_faktur($data->id_penerimaan,$data->retur);
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {  
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
