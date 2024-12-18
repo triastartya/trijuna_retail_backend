@@ -135,7 +135,6 @@ Route::get('pos_promo_diskon',[msPromoDiskonController::class,'pos_promo_diskon'
 Route::get('pos_promo_hadiah',[msPromoHadianController::class,'pos_promo_hadiah']);
 Route::get('pos_promo_bonus',[msPromoBonusController::class,'pos_promo_bonus']);
 
-
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['middleware' => ModifRequest::class], function () {
         Route::get('hr_karyawan',[karyawanController::class,'getall']);
@@ -152,7 +151,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::put('hr_departemen/{id}',[departemenController::class,'update']);
         Route::delete('hr_departemen/{id}',[departemenController::class,'destroy']);
         Route::pointResource('user_group', userGroupController::class);
-        // Route::pointResource('member',memberController::class);
+        Route::get('user_group_menu/get_menu_by_id_user_group/{id_group}',[userGroupController::class,'get_menu_by_id_user_group']);
+        Route::post('user_group_menu/assign',[userGroupController::class,'user_group_menu_update']);
 
         Route::prefix('member')->group(function(){
             Route::get('/all', [memberController::class, 'all']);

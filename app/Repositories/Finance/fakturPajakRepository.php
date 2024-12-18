@@ -153,6 +153,5 @@ class fakturPajakRepository extends VierRepository
                 where id_penerimaan = ?
         ",[$id_penerimaan]);
         }
-        
     }
 }

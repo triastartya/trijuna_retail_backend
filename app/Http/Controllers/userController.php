@@ -7,6 +7,7 @@ use Viershaka\Vier\VierController;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class userController extends VierController
@@ -57,15 +58,37 @@ class userController extends VierController
             auth('web')->login($user);
             request()->session()->regenerate();
             $lokasi = msLokasi::where('is_use',true)->first();
+            $menu_query = DB::select("SELECT mm.* FROM users_group_menus ugm
+                    inner join ms_menu mm on ugm.id_menu=mm.id_menu where id_group=?
+                    order by urut",[$user->id_group]);
+            $menu = $this->buildMenuTree($menu_query);
             $hasil =  array_merge($user->toArray(), [
                 'token' => $user->createToken(config('app.name'))->plainTextToken,
                 'version' => '_development',
-                'lokasi' => $lokasi
+                'lokasi' => $lokasi,
+                'menu' => $menu
             ]);
             return response()->json(['success'=>true,'data'=>$hasil]);
         } catch (\Exception $ex) {
+            // throw $ex;
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
+    }
+
+    function buildMenuTree($menuItems, $parentId=null){
+        $branch = [];
+
+        foreach ($menuItems as $menuItem) {
+            if ($menuItem->id_menu_parent === $parentId) {
+                $children = $this->buildMenuTree($menuItems, $menuItem->id_menu);
+                if ($children) {
+                    $menuItem->items = $children;
+                }
+                $branch[] = $menuItem;
+            }
+        }
+
+        return $branch;
     }
 
     public function list(){
