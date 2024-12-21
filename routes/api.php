@@ -69,6 +69,7 @@ use App\Http\Controllers\Laporan\BkpController;
 use App\Http\Controllers\Laporan\laporanOmsetController;
 use App\Http\Controllers\Laporan\laporanPembelianController;
 use App\Http\Controllers\Laporan\laporanPenjualanController;
+use App\Http\Controllers\Laporan\laporanStokController;
 use App\Http\Controllers\Master\memberPoinSettingController;
 use App\Http\Controllers\Master\PotonganPembelianController;
 use App\Http\Controllers\Master\rekeningOwnerController;
@@ -286,6 +287,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::get('get_by_id/{id_mutasi_warehouse}',[mutasiController::class,'get_by_id']);
             Route::post('get_by_param',[mutasiController::class,'get_by_param']);
             Route::post('validasi',[mutasiController::class,'validasi']);
+            Route::post('cancel',[mutasiController::class,'pembatalan']);
         });
         
         Route::prefix('mutasi_lokasi')->group(function(){
@@ -503,6 +505,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::prefix('laporan_omzet')->group(function(){
             Route::get('breakdown_monthly/{tahun}',[laporanOmsetController::class,'breakdown_monthly']);
             Route::get('breakdown_daily/{bulan}',[laporanOmsetController::class,'breakdown_daily']);
+        });
+        Route::prefix('laporan_profit')->group(function(){
+            Route::get('breakdown_monthly/{tahun}',[laporanOmsetController::class,'breakdown_profit_monthly']);
+            Route::get('breakdown_daily/{bulan}',[laporanOmsetController::class,'breakdown_profit_daily']);
+        });
+        Route::prefix('laporan_stok')->group(function(){
+            Route::post('capture/{tanggal_capture}',[laporanStokController::class,'stok_capture']);
         });
     });
 });

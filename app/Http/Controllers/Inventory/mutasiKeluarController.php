@@ -112,6 +112,9 @@ class mutasiKeluarController extends VierController
             if($mutasi->status_mutasi_lokasi == 'VALIDATED'){
                 throw new \Exception('data mutasi sudah di validasi');
             }
+            if($mutasi->status_mutasi_lokasi == 'CANCEL'){
+                throw new \Exception('data mutasi sudah di cancel');
+            }
             $mutasi->status_mutasi_lokasi = 'VALIDATED';
             $mutasi->online = false;
             $mutasi->save();
@@ -247,7 +250,7 @@ class mutasiKeluarController extends VierController
         try{
             $mutasi = trMutasiLokasi::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->first();
             if($mutasi->status_mutasi_lokasi == 'VALIDATED'){
-                throw new \Exception('data mutasi sudah di validasi');
+                throw new \Exception('data mutasi sudah di validasi tidak bisa di batalkan');
             }
             $mutasi_lokasi = trMutasiLokasi::where('id_mutasi_lokasi',request()->id_mutasi_lokasi)->first();
             $mutasi_lokasi->status_mutasi_lokasi = "CANCEL";

@@ -76,6 +76,9 @@ class mutasiController extends VierController
             if($mutasi->status_mutasi_warehouse == 'VALIDATED'){
                 return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si validasi']);
             }
+            if($mutasi->status_mutasi_warehouse == 'CANCEL'){
+                return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si cancel']);
+            }
             $mutasi->status_mutasi_warehouse = 'VALIDATED';
             $mutasi->save();
             $mutasi->detail = trMutasiDetail::where('id_mutasi_warehouse',request()->id_mutasi_warehouse)->get();
@@ -132,6 +135,60 @@ class mutasiController extends VierController
             return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function pembatalan(){
+        try{
+            $mutasi = trMutasi::where('id_mutasi_warehouse',request()->id_mutasi_warehouse)->first();
+            $mutasi->status_mutasi_warehouse = "CANCEL";
+            $mutasi->save();
+            $mutasi->detail = trMutasiDetail::where('id_mutasi_warehouse',request()->id_mutasi_warehouse)->get();
+            $warehouse_asal = msWarehouse::where('id_warehouse',$mutasi->warehouse_asal)->first();
+            $warehouse_tujuan = msWarehouse::where('id_warehouse',$mutasi->warehouse_tujuan)->first();
+            //=== update stok
+            if($mutasi->status_mutasi_warehouse == 'VALIDATED'){
+                foreach($mutasi->detail as $detail){
+                    $inventoryPengurangan = InventoryStokHelper::pengurangan((object)[
+                        'id_barang'       => $detail->id_barang,
+                        'nama_barang'     => '',
+                        'id_warehouse'    => $mutasi->warehouse_tujuan,
+                        'qty'             => $detail->qty,
+                        'nomor_reff'      => $mutasi->id_mutasi_warehouse,
+                        'id_header_trans' => $mutasi->id_mutasi_warehouse,
+                        'id_detail_trans' => $detail->id_mutasi_warehouse_detail,
+                        'jenis'           => 'Pembatalan Mutasi Warehouse Tujuan',
+                        'nominal'         => $detail->sub_total,
+                        'keterangan'      => 'Pembatalan Mutasi Warehouse dari '.$warehouse_asal->warehouse,
+                        'transaksi'       => 'tr_mutasi_warehouse'
+                    ]);
+                    if(!$inventoryPengurangan[0]){
+                        DB::rollBack();
+                        throw new \Exception($inventoryPengurangan[1]);
+                    }
+                    $inventoryPenambahan = InventoryStokHelper::penambahan((object)[
+                        'id_barang'       => $detail->id_barang,
+                        'nama_barang'     => '',
+                        'id_warehouse'    => $mutasi->warehouse_asal,
+                        'qty'             => $detail->qty,
+                        'nomor_reff'      => $mutasi->id_mutasi_warehouse,
+                        'id_header_trans' => $mutasi->id_mutasi_warehouse,
+                        'id_detail_trans' => $detail->id_mutasi_warehouse_detail,
+                        'jenis'           => 'Pembatalan Mutasi Warehouse Asal',
+                        'nominal'         => $detail->sub_total,
+                        'keterangan'      => 'Pembatalan Mutasi Warehouse dari '.$warehouse_tujuan->warehouse,
+                        'transaksi'       => 'tr_mutasi_warehouse'
+                    ]);
+                    if(!$inventoryPenambahan[0]){
+                        DB::rollBack();
+                        throw new \Exception($inventoryPenambahan[1]);
+                    }
+                }
+            }
+            DB::commit();
+            return response()->json(['status'=>true,'data'=>$mutasi]);
+        } catch (\Exception $ex) {
+            return response()->json(['status'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
 }

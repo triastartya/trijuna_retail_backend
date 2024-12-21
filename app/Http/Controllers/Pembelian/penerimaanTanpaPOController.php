@@ -221,24 +221,25 @@ class penerimaanTanpaPOController extends VierController
             }
             $penerimaan->status_penerimaan  = 'CANCEL';
             $penerimaan->save();
-            $detail = trPenerimaanTanpaPoDetail::where('id_penerimaan',request()->id_penerimaan)->get();
-            //=== update stok
-            $supplier = msSupplier::where('id_supplier',$penerimaan->id_supplier)->first();
-            foreach($detail as $detail){
-                InventoryStokHelper::pengurangan((object)[
-                    'id_barang'       => $detail->id_barang,
-                    'nama_barang'     => '',
-                    'id_warehouse'    => $penerimaan->id_warehouse,
-                    'qty'             => $detail->qty + $detail->qty_bonus,
-                    'nomor_reff'      => $penerimaan->nomor_penerimaan,
-                    'id_header_trans' => $penerimaan->id_penerimaan,
-                    'id_detail_trans' => $detail->id_penerimaan_detail,
-                    'jenis'           => 'Penerimaan Tanpa Dengan PO',
-                    'nominal'         => $detail->sub_total,
-                    'keterangan'      => 'Cancel Penerimaan Dengan PO '.$supplier->nama_supplier. ',nomor penerimaan '.$penerimaan->nomor_penerimaan,
-                    'transaksi'       => 'tr_penerimaan'
-                ]);
-                InventoryStokHelper::hitung_hpp_avarage($detail->id_barang,$detail->qty,$detail->sub_total);
+            if($penerimaan->status_penerimaan == 'VALIDATED'){
+                $detail = trPenerimaanTanpaPoDetail::where('id_penerimaan',request()->id_penerimaan)->get();
+                //=== update stok
+                $supplier = msSupplier::where('id_supplier',$penerimaan->id_supplier)->first();
+                foreach($detail as $detail){
+                    InventoryStokHelper::pengurangan((object)[
+                        'id_barang'       => $detail->id_barang,
+                        'nama_barang'     => '',
+                        'id_warehouse'    => $penerimaan->id_warehouse,
+                        'qty'             => $detail->qty + $detail->qty_bonus,
+                        'nomor_reff'      => $penerimaan->nomor_penerimaan,
+                        'id_header_trans' => $penerimaan->id_penerimaan,
+                        'id_detail_trans' => $detail->id_penerimaan_detail,
+                        'jenis'           => 'Penerimaan Tanpa Dengan PO',
+                        'nominal'         => $detail->sub_total,
+                        'keterangan'      => 'Cancel Penerimaan Dengan PO '.$supplier->nama_supplier. ',nomor penerimaan '.$penerimaan->nomor_penerimaan,
+                        'transaksi'       => 'tr_penerimaan'
+                    ]);
+                }
             }
             DB::commit();
             return response()->json(['success'=>true,'data'=>$penerimaan]);

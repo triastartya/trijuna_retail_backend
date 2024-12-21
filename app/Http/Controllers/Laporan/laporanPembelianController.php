@@ -26,7 +26,7 @@ class laporanPembelianController extends VierController
             mg.kode_group,
             mg.group,
             sum(tpd.qty) as qty,
-            ROUND(sum(sum(tpd.harga_order*tpd.qty))::numeric,2) as nilai
+            ROUND(sum(tpd.harga_order*tpd.qty)::numeric,2) as nilai
             from tr_penerimaan tp 
             inner join tr_penerimaan_detail tpd on tp.id_penerimaan=tpd.id_penerimaan
             inner join ms_barang mb on tpd.id_barang=mb.id_barang
@@ -63,7 +63,7 @@ class laporanPembelianController extends VierController
             mg.kode_group,
             mg.group,
             sum(tpd.qty) as qty,
-            ROUND(sum(sum(tpd.harga_order*tpd.qty))::numeric,2) as nilai
+            ROUND(sum(tpd.harga_order*tpd.qty)::numeric,2) as nilai
             from tr_penerimaan tp 
             inner join tr_penerimaan_detail tpd on tp.id_penerimaan=tpd.id_penerimaan
             inner join ms_barang mb on tpd.id_barang=mb.id_barang
