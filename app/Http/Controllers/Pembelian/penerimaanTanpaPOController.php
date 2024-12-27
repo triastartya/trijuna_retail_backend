@@ -13,6 +13,8 @@ use App\Repositories\Pembelian\penerimaanTanpaPORepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierController;
+use Illuminate\Support\Facades\Auth;
+
 
 class penerimaanTanpaPOController extends VierController
 {
@@ -104,6 +106,8 @@ class penerimaanTanpaPOController extends VierController
                 return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si cancel']);
             }
             $penerimaan->status_penerimaan = 'VALIDATED';
+            $penerimaan->valiadsi_at = date('d-m-Y H:i:s');
+            $penerimaan->valiadsi_by = (Auth::user())?Auth::user()->id_user:1;
             $penerimaan->save();
             $penerimaan->detail = trPenerimaanTanpaPoDetail::where('id_penerimaan',request()->id_penerimaan)->get();
             //=== update stok

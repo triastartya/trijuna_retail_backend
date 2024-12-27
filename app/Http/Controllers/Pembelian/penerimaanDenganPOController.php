@@ -15,6 +15,7 @@ use App\Repositories\Pembelian\penerimaanDenganPORepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Viershaka\Vier\VierController;
+use Illuminate\Support\Facades\Auth;
 
 class penerimaanDenganPOController extends VierController
 {
@@ -146,6 +147,8 @@ class penerimaanDenganPOController extends VierController
             $penerimaan->pembulatan         = request()->pembulatan;
             $penerimaan->total_transaksi    = request()->total_transaksi;
             $penerimaan->total_biaya_barcode= request()->total_biaya_barcode;
+            $penerimaan->valiadsi_at = date('d-m-Y H:i:s');
+            $penerimaan->valiadsi_by = (Auth::user())?Auth::user()->id_user:1;
             $penerimaan->save();
             $penerimaan->detail = trPenerimaanDetail::where('id_penerimaan',request()->id_penerimaan)->get();
             //=== update stok

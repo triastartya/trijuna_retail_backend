@@ -40,7 +40,9 @@ class trPenerimaan extends Model
         'deleted_at',
         'is_ppn',
         'is_item_include_ppn',
-        'is_update_harga_order'
+        'is_update_harga_order',
+        'validasi_at',
+        'validasi_by'
     ];
     
     public function rules()
@@ -72,7 +74,9 @@ class trPenerimaan extends Model
             'deleted_at'=>'',
             'is_ppn'=>'required',
             'is_item_include_ppn'=>'required',
-            'is_update_harga_order'=>'required'
+            'is_update_harga_order'=>'required',
+            'validasi_at',
+            'validasi_by'
         ];
     }
 }
