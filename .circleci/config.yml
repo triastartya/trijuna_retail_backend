@@ -63,11 +63,11 @@ jobs:
             docker push triastartya/api-retail:latest
       - add_ssh_keys:
           fingerprints:
-            - 'SHA256:hQ5CqSmDxYcA4Lnw5PxRF1d+IMIvioaMeObtbnzFaaw'
+            - 'SHA256:CLBdI8hNCkEMOakCXKBMYjXXFZ4U6wME62QlDkiKfOg'
       - run:
           name: Deploy app to server
           command: |
-            ssh -o StrictHostKeyChecking=no -p 2220 trias@203.194.112.71 "cd aplikasi && ./deployer-api-retail.sh && docker image prune -a -f"
+            ssh -o StrictHostKeyChecking=no -p 22022 zenith@195.35.29.84 "cd aplikasi && ./deployer-api-retail.sh && docker image prune -a -f"
 workflows :
   basic-workflow:
     jobs:

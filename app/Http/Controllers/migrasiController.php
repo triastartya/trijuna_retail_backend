@@ -637,4 +637,33 @@ class migrasiController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
+
+    public function perbaikan_kartu_stok(){
+        DB::beginTransaction();
+        try {
+            $kartustok = msBarangKartuStok::where('id_barang',request()->id_barang)
+                ->where('id_warehouse',request()->id_warehouse)
+                ->where('created_at','>=',request()->tanggal)
+                ->orderBy('created_at', 'asc')
+                ->get();
+            $stok_awal = 0;
+            foreach($kartustok as $key=>$kartu){
+                if($key!=0){
+                    $stok_akhir = $stok_awal+$kartu->stok_masuk-$kartu->stok_keluar;
+                    msBarangKartuStok::where('id_kartu_stok',$kartu->id_kartu_stok)
+                    ->update([
+                        'stok_awal'=>$stok_awal,
+                        'stok_akhir'=>$stok_akhir
+                    ]);
+                    $stok_awal = $stok_akhir;
+                }else{
+                    $stok_awal = $kartu->stok_akhir;
+                }
+            }
+            DB::commit();
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
 }

@@ -231,3 +231,9 @@ Route::get('/migrasi_poin',function(){
 });
 Route::post('migrasi/poin',[migrasiController::class,'poin']);
 
+
+Route::get('/perbaikan_kartu_stok',function(){
+    $data = [];
+    return view('migrasi.perbaikan_kartu_stok',['items'=>$data]);
+});
+Route::post('migrasi/perbaikan_kartu_stok',[migrasiController::class,'perbaikan_kartu_stok']);
