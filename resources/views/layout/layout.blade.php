@@ -38,7 +38,7 @@
     <div class="d-flex flex-row justify-content-between">
       <div class="d-flex flex-row">
         <a href="#"><i class="fa-solid fa-grip me-3"></i></a>
-        <a href="{{ url('migrasi') }}" class="btn btn-outline-primary btn-sm me-3"> merk</a>
+        {{-- <a href="{{ url('migrasi') }}" class="btn btn-outline-primary btn-sm me-3"> merk</a>
         <a href="{{ url('migrasi_divisi') }}" class="btn btn-outline-primary btn-sm me-3"> divisi</a>
         <a href="{{ url('migrasi_group') }}" class="btn btn-outline-primary btn-sm me-3"> group</a>
         <a href="{{ url('migrasi_rak') }}" class="btn btn-outline-primary btn-sm me-3"> rak</a>
@@ -52,7 +52,8 @@
         <a href="{{ url('migrasi_updatesatuan') }}" class="btn btn-outline-primary btn-sm me-3"> update satuan</a>
         <a href="{{ url('migrasi_barangstok') }}" class="btn btn-outline-primary btn-sm me-3"> Stok</a>
         <a href="{{ url('migrasi_barangstokkartustok') }}" class="btn btn-outline-success btn-sm me-3"> Stok dari kartu stok</a>
-        <a href="{{ url('migrasi_poin') }}" class="btn btn-outline-success btn-sm me-3"> POIN</a>
+        <a href="{{ url('migrasi_poin') }}" class="btn btn-outline-success btn-sm me-3"> POIN</a> --}}
+        <a href="{{ url('perbaikan_kartu_stok') }}" class="btn btn-outline-success btn-sm me-3"> Perbaikan Kartu Stok</a>
         {{-- <a href="{{ url('migrasi_kartustok') }}" class="btn btn-outline-danger btn-sm me-3"> kartu stok</a>
         <a href="{{ url('migrasi_id_barang') }}" class="btn btn-outline-danger btn-sm me-3"> perbaikan id barang</a> --}}
       </div>

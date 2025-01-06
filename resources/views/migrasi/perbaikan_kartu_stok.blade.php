@@ -37,10 +37,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <button type="submit" class="btn btn-primary">Import Data</button>
-                    </div>
-                    <div class="col-md-6 d-flex justify-content-end">
-                        <button type="button" class="btn btn-danger" ng-click="delRak()">Truncate Data</button>
+                        <button type="submit" class="btn btn-primary">Proses</button>
                     </div>
                 </div>
                 </form>
@@ -96,7 +93,7 @@
                     success: function(data)
                     {
                         if(data.success){
-                            Swal.fire({icon: 'success',title: 'Merek Berhasil Di Simpan',text: '',}).then(function(){
+                            Swal.fire({icon: 'success',title: 'Berhasil',text: '',}).then(function(){
                                 {{-- window.location.reload(); --}}
                             })
                         }else{
@@ -114,22 +111,6 @@
                 return false;
             }
         });
-
-        $scope.delRak= function(){
-            Swal.fire({
-                title: "Yakin menghapus semua data Rak?",
-                showCancelButton: true,
-                confirmButtonText: "Ya Hapus",
-            }).then(function(result){
-                console.log(result);
-                if (result.isConfirmed) {
-                    $http.get("{{ url('migrasi/rak/truncate') }}").then(function(res){
-                        console.log('respon truncate Rak',res)
-                        Swal.fire("Berhasil di Hapus!", "", "success");
-                    })
-                }
-            })
-        }
     });
     </script>
 @endsection

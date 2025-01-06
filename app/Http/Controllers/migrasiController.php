@@ -642,7 +642,7 @@ class migrasiController extends VierController
         DB::beginTransaction();
         try {
             $kartustok = msBarangKartuStok::where('id_barang',request()->id_barang)
-                ->where('id_warehouse',request()->id_warehouse)
+                ->where('id_warehouse',request()->warehouse)
                 ->where('created_at','>=',request()->tanggal)
                 ->orderBy('created_at', 'asc')
                 ->get();
@@ -660,7 +660,9 @@ class migrasiController extends VierController
                     $stok_awal = $kartu->stok_akhir;
                 }
             }
+            
             DB::commit();
+            return response()->json(['success'=>true,'data'=>$stok_awal]);
         } catch (\Exception $ex) {
             DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
