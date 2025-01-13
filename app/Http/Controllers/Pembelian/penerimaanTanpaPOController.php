@@ -20,14 +20,14 @@ class penerimaanTanpaPOController extends VierController
 {
     public $repository;
     public $repository_pemesanan;
-    
+
     public function __construct()
     {
         $this->repository = new penerimaanTanpaPORepository();
         $this->repository_pemesanan = new pemesananRepository();
         parent::__construct($this->repository);
     }
-    
+
     public function insert(Request $request){
         DB::beginTransaction();
         try {
@@ -74,7 +74,7 @@ class penerimaanTanpaPOController extends VierController
             return response()->json(['success'=>false,'message'=>$err->getMessage()]);
         }
     }
-    
+
     public function get_by_param(){
         try{
             $data = $this->repository->by_param();
@@ -83,7 +83,7 @@ class penerimaanTanpaPOController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
-    
+
     public function get_by_id(){
         try{
             $data = $this->repository->get_by_id();
@@ -93,7 +93,7 @@ class penerimaanTanpaPOController extends VierController
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
         }
     }
-    
+
     public function validasi(){
         DB::beginTransaction();
         try{
@@ -106,7 +106,7 @@ class penerimaanTanpaPOController extends VierController
                 return response()->json(['success'=>false,'data'=>[],'message'=>'transaksi ini sudah si cancel']);
             }
             $penerimaan->status_penerimaan = 'VALIDATED';
-            $penerimaan->validasi_at = date('d-m-Y H:i:s');
+            $penerimaan->validasi_at = date('Y-m-d H:i:s');
             $penerimaan->validasi_by = (Auth::user())?Auth::user()->id_user:1;
             $penerimaan->save();
             $penerimaan->detail = trPenerimaanTanpaPoDetail::where('id_penerimaan',request()->id_penerimaan)->get();

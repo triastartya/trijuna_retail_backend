@@ -147,7 +147,7 @@ class penerimaanDenganPOController extends VierController
             $penerimaan->pembulatan         = request()->pembulatan;
             $penerimaan->total_transaksi    = request()->total_transaksi;
             $penerimaan->total_biaya_barcode= request()->total_biaya_barcode;
-            $penerimaan->validasi_at = date('d-m-Y H:i:s');
+            $penerimaan->validasi_at = date('Y-m-d H:i:s');
             $penerimaan->validasi_by = (Auth::user())?Auth::user()->id_user:1;
             $penerimaan->save();
             $penerimaan->detail = trPenerimaanDetail::where('id_penerimaan',request()->id_penerimaan)->get();
