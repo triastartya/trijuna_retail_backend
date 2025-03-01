@@ -131,7 +131,7 @@ class pemesananRepository extends VierRepository
             inner join users uc on uc.id_user = tp.created_by
             inner join users uu on uu.id_user = tp.updated_by
             left join users ud on ud.id_user = tp.deleted_by"
-        ,request());
+        ,request(),' ORDER BY tp.created_at desc limit 500');
     }
     
     public function get_pemesanan_by_param_open(){
@@ -171,7 +171,7 @@ class pemesananRepository extends VierRepository
             inner join users uu on uu.id_user = tp.updated_by
             left join users ud on ud.id_user = tp.deleted_by
             where tp.status_pemesanan = 'OPEN' "
-        ,request());
+        ,request(),' ORDER BY tp.created_at desc limit 500');
     }
     
     public function get_pemesanan_detail_by_id_pemesanan_for_penerimaan(){
@@ -206,7 +206,7 @@ class pemesananRepository extends VierRepository
                 inner join ms_satuan ms on tpd.kode_satuan = ms.kode_satuan
                 where tpd.id_pemesanan = ".request()->id_pemesanan."
                 order by urut
-            ",request());            
+            ",request(),' ORDER BY tp.created_at desc limit 500');            
             foreach($data as $index => $row){
                 $data[$index]->satuan = $this->repository_barang_satuan->to_barang_by_param($row->id_barang);
             }

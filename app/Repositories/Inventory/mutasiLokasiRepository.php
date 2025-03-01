@@ -86,7 +86,7 @@ class mutasiLokasiRepository extends VierRepository
             inner join users uc on uc.id_user = tml.created_by
             inner join users uu on uu.id_user = tml.updated_by
             left join users ud on ud.id_user = tml.deleted_by
-        ",request());
+        ",request(),' ORDER BY tml.created_at desc limit 500');
     }
 
     public function by_param_masuk(){
@@ -123,7 +123,7 @@ class mutasiLokasiRepository extends VierRepository
             inner join users uu on uu.id_user = tml.updated_by
             left join users ud on ud.id_user = tml.deleted_by
             where tml.jenis_mutasi = 1
-        ",request());
+        ",request(),' ORDER BY tml.created_at desc limit 500');
     }
 
     public function by_param_keluar(){
@@ -160,7 +160,7 @@ class mutasiLokasiRepository extends VierRepository
             inner join users uu on uu.id_user = tml.updated_by
             left join users ud on ud.id_user = tml.deleted_by
             where tml.jenis_mutasi = 2
-        ",request());
+        ",request(),' ORDER BY tml.created_at desc limit 500');
     }
     
     public function get_detail(){

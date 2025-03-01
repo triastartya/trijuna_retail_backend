@@ -99,6 +99,6 @@ class mutasiRepository extends VierRepository
             inner join users uc on uc.id_user = tmw.created_by
             inner join users uu on uu.id_user = tmw.updated_by
             left join users ud on ud.id_user = tmw.deleted_by"
-        ,request());
+        ,request(),' ORDER BY tmw.created_at desc limit 500');
     }
 }
