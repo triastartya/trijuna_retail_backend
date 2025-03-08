@@ -206,7 +206,7 @@ class pemesananRepository extends VierRepository
                 inner join ms_satuan ms on tpd.kode_satuan = ms.kode_satuan
                 where tpd.id_pemesanan = ".request()->id_pemesanan."
                 order by urut
-            ",request(),' ORDER BY tp.created_at desc limit 500');            
+            ",request());            
             foreach($data as $index => $row){
                 $data[$index]->satuan = $this->repository_barang_satuan->to_barang_by_param($row->id_barang);
             }
