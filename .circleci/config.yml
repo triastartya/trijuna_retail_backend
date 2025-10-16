@@ -34,14 +34,18 @@ jobs:
       - run:
           name: Install Composer & MongoDB extension
           command: |
-            # Update PECL channel
+            set -e
+
+            # Update PECL channel supaya tidak warning
             sudo pecl channel-update pecl.php.net
 
-            # Install MongoDB PECL
-            yes '' | sudo pecl install mongodb
+            # Install MongoDB dengan mode non-interaktif
+            printf "\n" | sudo pecl install mongodb || true
 
-            # Enable mongodb extension
+            # Aktifkan extension
             echo "extension=mongodb.so" | sudo tee /etc/php/8.3/cli/conf.d/20-mongodb.ini
+
+            # Pastikan php bisa load extension tanpa crash
             php -m | grep mongodb
 
             # Install Composer
