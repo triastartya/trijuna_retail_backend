@@ -22,15 +22,15 @@ jobs:
     steps:
       - checkout
       - run:
-          name: install php8.3
+          name: install php8.1
           command: |
             sudo add-apt-repository ppa:ondrej/php -y
             sudo apt-get update
             sudo apt-get install --fix-missing -y
-            sudo apt-get install php8.3 php8.3-cli
+            sudo apt-get install php8.1 php8.1-cli
       - run:
           name: install php-extention
-          command: sudo apt-get install -y php8.3-cli php8.3-common php8.3-mysql php8.3-zip php8.3-gd php8.3-mbstring php8.3-curl php8.3-xml php8.3-bcmath php8.3-dev
+          command: sudo apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath php8.1-dev
       - run:
           name: Install Composer & MongoDB extension
           command: |
@@ -43,7 +43,7 @@ jobs:
             printf "\n" | sudo pecl install mongodb || true
 
             # Aktifkan extension
-            echo "extension=mongodb.so" | sudo tee /etc/php/8.3/cli/conf.d/20-mongodb.ini
+            echo "extension=mongodb.so" | sudo tee /etc/php/8.1/cli/conf.d/20-mongodb.ini
 
             # Pastikan php bisa load extension tanpa crash
             php -m | grep mongodb
