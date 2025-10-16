@@ -53,9 +53,14 @@
         <a href="{{ url('migrasi_barangstok') }}" class="btn btn-outline-primary btn-sm me-3"> Stok</a>
         <a href="{{ url('migrasi_barangstokkartustok') }}" class="btn btn-outline-success btn-sm me-3"> Stok dari kartu stok</a>
         <a href="{{ url('migrasi_poin') }}" class="btn btn-outline-success btn-sm me-3"> POIN</a> --}}
-        <a href="{{ url('perbaikan_kartu_stok') }}" class="btn btn-outline-success btn-sm me-3"> Perbaikan Kartu Stok</a>
+        {{-- <a href="{{ url('perbaikan_kartu_stok') }}" class="btn btn-outline-success btn-sm me-3"> Perbaikan Kartu Stok</a> --}}
         {{-- <a href="{{ url('migrasi_kartustok') }}" class="btn btn-outline-danger btn-sm me-3"> kartu stok</a>
         <a href="{{ url('migrasi_id_barang') }}" class="btn btn-outline-danger btn-sm me-3"> perbaikan id barang</a> --}}
+        <a href="{{ url('m_supplier') }}" class="btn btn-outline-danger btn-sm me-3"> Master Supplier</a>
+        <a href="{{ url('m_satuan') }}" class="btn btn-outline-danger btn-sm me-3"> Master Satuan</a>
+        <a href="{{ url('m_merk') }}" class="btn btn-outline-danger btn-sm me-3"> Master Merk</a>
+        <a href="{{ url('m_divisi') }}" class="btn btn-outline-danger btn-sm me-3"> Master Divisi Dan Group</a>
+        <a href="{{ url('m_barang') }}" class="btn btn-outline-danger btn-sm me-3"> Barang</a>
       </div>
       <a href="#"><i class="fa-solid fa-cart-shopping text-primary mx-2"></i></a>
     </div>

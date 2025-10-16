@@ -7,7 +7,7 @@
         <!-- Default box -->
         <div class="card mt-3">
             <div class="card-header">
-                <h4 class="card-title">Migrasi Data Customer From Excel File</h4>
+                <h4 class="card-title">Migrasi Data Satuan From Excel File</h4>
             </div>
             <div class="card-body">
                 <form id="formCustomer">
@@ -97,7 +97,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                     },
-                    url: "{{ url('migrasi/customer') }}",
+                    url: "{{ url('migrasi/m_satuan') }}",
                     type: "POST",
                     data: formData,
                     mimeType: "multipart/form-data",
@@ -108,7 +108,7 @@
                     success: function(data)
                     {
                         if(data.success){
-                            Swal.fire({icon: 'success',title: 'Merek Berhasil Di Simpan',text: '',}).then(function(){
+                            Swal.fire({icon: 'success',title: 'Satuan Berhasil Di Simpan',text: '',}).then(function(){
                                 {{-- window.location.reload(); --}}
                             })
                         }else{
@@ -131,14 +131,14 @@
 
         $scope.delCustomer= function(){
             Swal.fire({
-                title: "Yakin menghapus semua data Customer?",
+                title: "Yakin menghapus semua data Satuan?",
                 showCancelButton: true,
                 confirmButtonText: "Ya Hapus",
             }).then(function(result){
                 console.log(result);
                 if (result.isConfirmed) {
-                    $http.get("{{ url('migrasi/customer/truncate') }}").then(function(res){
-                        console.log('respon truncate Customer',res)
+                    $http.get("{{ url('migrasi/m_satuan/truncate') }}").then(function(res){
+                        console.log('respon truncate Satuan',res)
                         Swal.fire("Berhasil di Hapus!", "", "success");
                     })
                 }

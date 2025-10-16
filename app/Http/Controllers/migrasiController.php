@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Master\msBarang;
 use App\Models\Master\msBarangKartuStok;
 use App\Models\Master\msBarangRak;
+use App\Models\Master\msBarangSatuan;
 use App\Models\Master\msBarangStok;
 use App\Models\Master\msDivisi;
 use App\Models\Master\msGroup;
@@ -20,6 +21,7 @@ use App\Models\Penjualan\posEdc;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use Viershaka\Vier\VierController;
 
 class migrasiController extends VierController
@@ -327,6 +329,237 @@ class migrasiController extends VierController
             DB::select("SELECT setval('ms_member_id_member_seq', (SELECT MAX(id_member) FROM ms_member))");
             DB::commit();
             return response()->json(['success'=>true,'data'=>$merk]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function m_supplier(){
+        DB::beginTransaction();
+        try {
+            ini_set('memory_limit',request()->memory);
+            ini_set('max_execution_time', request()->maximum_execution_time);
+            // $file = request()->file;
+            $rows = Excel::toArray([], request()->file)[0];
+            $data = [];
+            foreach ($rows as $index => $item) {
+                if ($index === 0) continue; // skip header
+                $data[] = [
+                    // 'id_supplier' => $item['IdSupplier'],
+                    'kode_supplier' =>$item[0],
+                    'nama_supplier' =>$item[1],
+                    'alamat' =>$item[2],
+                    'kota' =>$item[3],
+                    'kecamatan' =>'',
+                    'kelurahan' =>'',
+                    'keterangan' =>$item[14],
+                    'limit_hutang' =>100000000,
+                    'no_handphone' =>$item[7],
+                    'email' =>'',
+                    'sisa_hutang' =>0,
+                    'is_active' => true,
+                    'created_by' =>1,
+                    'updated_by' =>1                ];
+            }
+            // dd($data);
+            msSupplier::insert($data);
+            DB::select("SELECT setval('ms_supplier_id_supplier_seq', (SELECT MAX(id_supplier) FROM ms_supplier))");
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function m_divisi(){
+        DB::beginTransaction();
+        try {
+            ini_set('memory_limit',request()->memory);
+            ini_set('max_execution_time', request()->maximum_execution_time);
+            // $file = request()->file;
+            $rows = Excel::toArray([], request()->file)[0];
+            $data = [];
+            $data_group = [];
+            foreach ($rows as $index => $item) {
+                if ($index === 0) continue; // skip header
+                $data[] = [
+                    // 'id_supplier' => $item['IdSupplier'],
+                    'kode_divisi' =>$item[1],
+                    'divisi' =>$item[2],
+                    'is_active' => true,
+                    'created_by' =>1,
+                    'updated_by' =>1                ];
+                $data_group[] = [
+                    // 'id_supplier' => $item['IdSupplier'],
+                    'kode_group' =>$item[1],
+                    'group' =>$item[2],
+                    'is_active' => true,
+                    'created_by' =>1,
+                    'updated_by' =>1                ];
+            }
+            // dd($data);
+            msDivisi::insert($data);
+            msGroup::insert($data_group);
+            DB::select("SELECT setval('ms_divisi_id_divisi_seq', (SELECT MAX(id_divisi) FROM ms_divisi))");           
+            DB::select("SELECT setval('ms_group_id_group_seq', (SELECT MAX(id_group) FROM ms_group))");
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function m_merk(){
+        DB::beginTransaction();
+        try {
+            ini_set('memory_limit',request()->memory);
+            ini_set('max_execution_time', request()->maximum_execution_time);
+            // $file = request()->file;
+            $rows = Excel::toArray([], request()->file)[0];
+            $data = [];
+            foreach ($rows as $index => $item) {
+                if ($index === 0) continue; // skip header
+                $data[] = [
+                    'merk' =>$item[0],
+                    'is_active' => true,
+                    'created_by' =>1,
+                    'updated_by' =>1                ];
+            }
+            // dd($data);
+            msMerk::insert($data);
+            DB::select("SELECT setval('ms_merk_id_merk_seq', (SELECT MAX(id_merk) FROM ms_merk))");           
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function m_satuan(){
+        DB::beginTransaction();
+        try {
+            ini_set('memory_limit',request()->memory);
+            ini_set('max_execution_time', request()->maximum_execution_time);
+            // $file = request()->file;
+            $rows = Excel::toArray([], request()->file)[0];
+            $data = [];
+            foreach ($rows as $index => $item) {
+                if ($index === 0) continue; // skip header
+                $data[] = [
+                    'kode_satuan' =>$item[0],
+                    'nama_satuan' =>$item[0],
+                    'is_active' => true,
+                    'created_by' =>1,
+                    'updated_by' =>1                ];
+            }
+            // dd($data);
+            msSatuan::insert($data);
+            DB::select("SELECT setval('ms_satuan_id_satuan_seq', (SELECT MAX(id_satuan) FROM ms_satuan))");
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$data]);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
+        }
+    }
+
+    public function m_barang(){
+        DB::beginTransaction();
+        try {
+            ini_set('memory_limit',request()->memory);
+            ini_set('max_execution_time', request()->maximum_execution_time);
+            // $file = request()->file;
+            $rows = Excel::toArray([], request()->file)[0];
+            $data = [];
+            $ms_satuan = msSatuan::all();
+            $ms_divisi = msDivisi::all();
+            $ms_merk = msMerk::all();
+            foreach ($rows as $index => $item) {
+                if ($index === 0) continue; // skip header
+                $divisi = $ms_divisi->firstWhere('divisi', $item[2]);
+                $merk   = $ms_merk->firstWhere('merk', $item[3]);
+                $satuan   = $ms_satuan->firstWhere('nama_satuan', $item[4]);
+                $satuan2   = $ms_satuan->firstWhere('nama_satuan', $item[5]);
+                $satuan3   = $ms_satuan->firstWhere('nama_satuan', $item[6]);
+
+                $data_barang = [
+                    'id_divisi'             =>($divisi)?$divisi->id_divisi:null,
+                    'id_group'              =>($divisi)?$divisi->id_divisi:null,
+                    'kode_barang'           =>$item[0],
+                    'barcode'               =>$item[8],
+                    'nama_barang'           =>$item[1],
+                    'kode_satuan'           =>($satuan2)?$satuan2->kode_satuan:null,
+                    'harga_order'           =>$item[16],
+                    'harga_beli_terakhir'   =>$item[16],
+                    'hpp_average'           =>$item[16],
+                    'is_ppn'                =>true,
+                    'nama_label'            =>$item[1],
+                    'id_satuan'             =>($satuan)?$satuan->id_satuan:null,
+                    'stok_min'              =>$item[61],
+                    'harga_jual'            =>$item[21],
+                    'qty_grosir1'           =>$item[22],
+                    'harga_grosir1'         =>$item[23],
+                    'qty_grosir2'           =>$item[24],
+                    'harga_grosir2'         =>$item[25],
+                    'isi'                   =>1,
+                    'kode_satuan2'          =>($satuan2)?$satuan2->kode_satuan:null,
+                    'isi_satuan2'           => $item[13],
+                    'kode_satuan3'          =>($satuan3)?$satuan3->kode_satuan:null,
+                    'isi_satuan3'           => $item[14],
+                    'is_active'             => true,
+                    'created_by'            =>1,
+                    'updated_by'            =>1
+                ];
+                $barang = msBarang::create($data_barang);
+                if($barang->kode_satuan2!=null){
+                    $satuan= msBarangSatuan::create([
+                        'id_barang'=>$barang->id_barang,
+                        'id_satuan'=>$satuan2->id_satuan,
+                        'isi'       =>$item[13],
+                    ]);
+                }
+                if($barang->kode_satuan3!=null){
+                    $satuan= msBarangSatuan::create([
+                        'id_barang'=>$barang->id_barang,
+                        'id_satuan'=>$satuan3->id_satuan,
+                        'isi'       =>$item[14],
+                    ]);
+                }
+                msBarangStok::create([
+                    'id_warehouse' => 2,
+                    'id_barang' => $barang->id_barang,
+                    'qty' =>$item[60]
+                ]);
+                msBarangKartuStok::create([
+                    'tanggal' => date('Y-m-d'),
+                    'id_warehouse' => 2,
+                    'id_barang' => $barang->id_barang,
+                    'nomor_reff' =>'STOK AWAL',
+                    'id_header_trans' =>1,
+                    'id_detail_trans' =>1,
+                    'stok_awal' => 0,
+                    'nominal_awal' => 0,
+                    'stok_masuk' => $item[60],
+                    'nominal_masuk' => $item[16] * $item[60],
+                    'stok_keluar' => 0,
+                    'nominal_keluar' => 0,
+                    'stok_akhir' => $item[60],
+                    'nominal_akhir' => $item[16] * $item[60],
+                    'keterangan' =>'STOK AWAL',
+                ]);
+            }
+            // dd($data);
+            // msSatuan::insert($data);
+            DB::select("SELECT setval('ms_barang_id_barang_seq', (SELECT MAX(id_barang) FROM ms_barang))");
+            DB::select("SELECT setval('ms_barang_satuan_id_barang_satuan_seq', (SELECT MAX(id_barang_satuan) FROM ms_barang_satuan))");
+            DB::select("SELECT setval('ms_barang_stok_id_barang_stok_seq', (SELECT MAX(id_barang_stok) FROM ms_barang_stok))");
+            DB::select("SELECT setval('ms_barang_kartu_stok_id_kartu_stok_seq', (SELECT MAX(id_kartu_stok) FROM ms_barang_kartu_stok))");
+            DB::commit();
+            return response()->json(['success'=>true,'data'=>$data]);
         } catch (\Exception $ex) {
             DB::rollBack();
             return response()->json(['success'=>false,'data'=>[],'message'=>$ex->getMessage()]);
