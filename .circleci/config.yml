@@ -34,14 +34,15 @@ jobs:
       - run:
           name: install composer
           command: |
-            sudo pecl install mongodb
-            echo "extension=mongodb.so" | sudo tee -a /etc/php/8.3/cli/php.ini
+            sudo pecl channel-update pecl.php.net
+            yes '' | sudo pecl install mongodb
+            echo "extension=mongodb.so" | sudo tee /etc/php/8.3/cli/conf.d/20-mongodb.ini
+            php -m | grep mongodb
             curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
-            HASH=`curl -sS https://composer.github.io/installer.sig`
-            echo $HASH
-            php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+            HASH="$(curl -sS https://composer.github.io/installer.sig)"
+            php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('/tmp/composer-setup.php'); exit(1); }"
             sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-            composer
+            composer --version
       - run:
           name: composer install
           command: |
