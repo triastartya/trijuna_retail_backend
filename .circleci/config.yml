@@ -15,27 +15,27 @@ jobs:
             ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd aplikasi/backend && ./deployer.sh"
   build-development:
     machine:
-      image: ubuntu-2204:current
+      image: ubuntu-2004:current
       docker_layer_caching: true
     # If running ARM, the resource class needs to be added. Omitting this defaults to amd64
     resource_class: medium
     steps:
       - checkout
       - run:
-          name: install php8.1
+          name: install php8.3
           command: |
             sudo add-apt-repository ppa:ondrej/php
             sudo apt-get update
             sudo apt-get install --fix-missing
-            sudo apt-get install php8.1 php8.1-cli
+            sudo apt-get install php8.3 php8.3-cli
       - run:
           name: install php-extention
-          command: sudo apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath php8.1-dev
+          command: sudo apt-get install -y php8.3-cli php8.3-common php8.3-mysql php8.3-zip php8.3-gd php8.3-mbstring php8.3-curl php8.3-xml php8.3-bcmath php8.3-dev
       - run:
           name: install composer
           command: |
             sudo pecl install mongodb
-            echo "extension=mongodb.so" | sudo tee -a /etc/php/8.1/cli/php.ini
+            echo "extension=mongodb.so" | sudo tee -a /etc/php/8.3/cli/php.ini
             curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
             HASH=`curl -sS https://composer.github.io/installer.sig`
             echo $HASH
