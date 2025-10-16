@@ -15,7 +15,7 @@ jobs:
             ssh -o StrictHostKeyChecking=no trias@203.194.112.71 "cd aplikasi/backend && ./deployer.sh"
   build-development:
     machine:
-      image: ubuntu-2004:current
+      image: ubuntu-2204:current
       docker_layer_caching: true
     # If running ARM, the resource class needs to be added. Omitting this defaults to amd64
     resource_class: medium
