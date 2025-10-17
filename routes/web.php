@@ -237,3 +237,57 @@ Route::get('/perbaikan_kartu_stok',function(){
     return view('migrasi.perbaikan_kartu_stok',['items'=>$data]);
 });
 Route::post('migrasi/perbaikan_kartu_stok',[migrasiController::class,'perbaikan_kartu_stok']);
+
+Route::get('/m_supplier',function(){
+    $data = [];
+    return view('migrasi.msupplier',['items'=>$data]);
+});
+Route::post('migrasi/m_supplier',[migrasiController::class,'m_supplier']);
+Route::get('migrasi/m_supplier/truncate',function(){
+    DB::select('truncate ms_supplier restart identity;');
+    return true;
+});
+
+Route::get('/m_satuan',function(){
+    $data = [];
+    return view('migrasi.msatuan',['items'=>$data]);
+});
+Route::post('migrasi/m_satuan',[migrasiController::class,'m_satuan']);
+Route::get('migrasi/m_satuan/truncate',function(){
+    DB::select('truncate ms_satuan restart identity;');
+    return true;
+});
+
+Route::get('/m_merk',function(){
+    $data = [];
+    return view('migrasi.mmerk',['items'=>$data]);
+});
+Route::post('migrasi/m_merk',[migrasiController::class,'m_merk']);
+Route::get('migrasi/m_merk/truncate',function(){
+    DB::select('truncate ms_merk restart identity;');
+    return true;
+});
+
+Route::get('/m_divisi',function(){
+    $data = [];
+    return view('migrasi.mdivisi',['items'=>$data]);
+});
+Route::post('migrasi/m_divisi',[migrasiController::class,'m_divisi']);
+Route::get('migrasi/m_divisi/truncate',function(){
+    DB::select('truncate ms_divisi restart identity;');
+    DB::select('truncate ms_group restart identity;');
+    return true;
+});
+
+Route::get('/m_barang',function(){
+    $data = [];
+    return view('migrasi.mbarang',['items'=>$data]);
+});
+Route::post('migrasi/m_barang',[migrasiController::class,'m_barang']);
+Route::get('migrasi/m_barang/truncate',function(){
+    DB::select('truncate ms_barang restart identity;');
+    DB::select('truncate ms_barang_satuan restart identity;');
+    DB::select('truncate ms_barang_stok restart identity;');
+    DB::select('truncate ms_barang_kartu_stok restart identity;');
+    return true;
+});
